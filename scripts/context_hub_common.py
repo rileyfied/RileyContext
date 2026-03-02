@@ -10,8 +10,8 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import getpass
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 KNOWN_PROJECT_HASHTAGS = {
     "#youtube",
@@ -73,6 +73,10 @@ class ResolvedPaths:
     repo_root: Path
     riley_root: Path
     context_hub: Path
+    runtime_root: Path
+    runtime_index_dir: Path
+    runtime_context_dir: Path
+    lock_dir: Path
     captures_root: Path
     captures_inbox: Path
     captures_processed: Path
@@ -101,6 +105,10 @@ class ResolvedPaths:
             "repo_root": str(self.repo_root),
             "riley_root": str(self.riley_root),
             "context_hub": str(self.context_hub),
+            "runtime_root": str(self.runtime_root),
+            "runtime_index_dir": str(self.runtime_index_dir),
+            "runtime_context_dir": str(self.runtime_context_dir),
+            "lock_dir": str(self.lock_dir),
             "captures_root": str(self.captures_root),
             "captures_inbox": str(self.captures_inbox),
             "captures_processed": str(self.captures_processed),
@@ -249,7 +257,18 @@ def infer_tags(path_rel: str, filename: str, text: str, meta_tags: list[str] | N
     return sorted(tags)
 
 
-def resolve_paths(require_existing_root: bool = True, riley_root: str | Path | None = None) -> ResolvedPaths:
+def _default_runtime_root() -> Path:
+    xdg_data_home = os.environ.get("XDG_DATA_HOME", "").strip()
+    if xdg_data_home:
+        return Path(xdg_data_home).expanduser() / "rileyfile" / "runtime"
+    return Path.home() / ".rileyfile" / "runtime"
+
+
+def resolve_paths(
+    require_existing_root: bool = True,
+    riley_root: str | Path | None = None,
+    runtime_root: str | Path | None = None,
+) -> ResolvedPaths:
     user = getpass.getuser()
     repo_root = Path(__file__).resolve().parents[1]
     icloud_root = Path(f"/Users/{user}/Library/Mobile Documents/com~apple~CloudDocs")
@@ -263,7 +282,18 @@ def resolve_paths(require_existing_root: bool = True, riley_root: str | Path | N
     if require_existing_root and not selected_root.exists():
         raise FileNotFoundError(f"RileyFile root missing: {selected_root}")
 
+    if runtime_root is not None:
+        selected_runtime_root = Path(runtime_root).expanduser().resolve()
+    else:
+        runtime_override = os.environ.get("RILEYFILE_RUNTIME_ROOT", "").strip()
+        selected_runtime_root = (
+            Path(runtime_override).expanduser().resolve() if runtime_override else _default_runtime_root().resolve()
+        )
+
     context_hub = selected_root / "CONTEXT_HUB"
+    runtime_index_dir = selected_runtime_root / "index"
+    runtime_context_dir = selected_runtime_root / "context"
+    lock_dir = selected_runtime_root / ".lock"
     captures_root = context_hub / "captures"
     captures_inbox = captures_root / "inbox"
     captures_processed = captures_root / "_processed"
@@ -286,18 +316,21 @@ def resolve_paths(require_existing_root: bool = True, riley_root: str | Path | N
     digest_dir = context_dir / "_daily_digest"
     archive_dir = context_dir / "_archive"
 
-    state_json = context_dir / ".state.json"
-    index_sqlite = index_dir / "RILEY_INDEX.sqlite"
-    index_ndjson = index_dir / "RILEY_INDEX.ndjson"
+    state_json = runtime_context_dir / ".state.json"
+    index_sqlite = runtime_index_dir / "RILEY_INDEX.sqlite"
+    index_ndjson = runtime_index_dir / "RILEY_INDEX.ndjson"
     ingest_log = context_dir / "_ingest_log.ndjson"
     candidates_md = context_dir / "_candidates.md"
     promotions_md = context_dir / "_promotions.md"
-    promotions_state = context_dir / ".promotions_state.json"
+    promotions_state = runtime_context_dir / ".promotions_state.json"
 
     riley_context = selected_root / "RILEY_CONTEXT.md"
 
     must_create = [
         context_hub,
+        selected_runtime_root,
+        runtime_index_dir,
+        runtime_context_dir,
         captures_root,
         captures_inbox,
         captures_processed,
@@ -331,6 +364,10 @@ def resolve_paths(require_existing_root: bool = True, riley_root: str | Path | N
         repo_root=repo_root,
         riley_root=selected_root,
         context_hub=context_hub,
+        runtime_root=selected_runtime_root,
+        runtime_index_dir=runtime_index_dir,
+        runtime_context_dir=runtime_context_dir,
+        lock_dir=lock_dir,
         captures_root=captures_root,
         captures_inbox=captures_inbox,
         captures_processed=captures_processed,
@@ -355,6 +392,7 @@ def resolve_paths(require_existing_root: bool = True, riley_root: str | Path | N
 
 
 def open_db(index_sqlite: Path) -> sqlite3.Connection:
+    index_sqlite.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(index_sqlite)
     conn.execute(
         """

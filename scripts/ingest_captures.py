@@ -178,6 +178,7 @@ def canonical_sha_for(src: Path, file_type: str) -> tuple[str, str | None]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Ingest capture artifacts")
     parser.add_argument("--rileyfile-root", default=None, help="Override RileyFile root path")
+    parser.add_argument("--runtime-root", default=None, help="Override local runtime root path")
     parser.add_argument("--mode", choices=["inbox", "all"], default="inbox", help="Ingest scope")
     parser.add_argument("--first-run", action="store_true", help="Alias for --mode all")
     args = parser.parse_args()
@@ -185,7 +186,11 @@ def main() -> int:
     mode = "all" if args.first_run else args.mode
 
     try:
-        paths = resolve_paths(require_existing_root=True, riley_root=args.rileyfile_root)
+        paths = resolve_paths(
+            require_existing_root=True,
+            riley_root=args.rileyfile_root,
+            runtime_root=args.runtime_root,
+        )
         conn = open_db(paths.index_sqlite)
 
         existing_shas = {

@@ -85,10 +85,15 @@ def merge_into_context(context_text: str, blocks: list[tuple[str, str, str]]) ->
 def main() -> int:
     parser = argparse.ArgumentParser(description="Merge promotion blocks into RILEY_CONTEXT.md")
     parser.add_argument("--rileyfile-root", default=None, help="Override RileyFile root path")
+    parser.add_argument("--runtime-root", default=None, help="Override local runtime root path")
     args = parser.parse_args()
 
     try:
-        paths = resolve_paths(require_existing_root=True, riley_root=args.rileyfile_root)
+        paths = resolve_paths(
+            require_existing_root=True,
+            riley_root=args.rileyfile_root,
+            runtime_root=args.runtime_root,
+        )
 
         promo_text = paths.promotions_md.read_text(encoding="utf-8", errors="ignore") if paths.promotions_md.exists() else ""
         blocks = parse_promotion_blocks(promo_text)

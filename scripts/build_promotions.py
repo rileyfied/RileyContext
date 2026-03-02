@@ -91,10 +91,15 @@ def promotion_block(entry: dict, tag: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build candidates and promotions")
     parser.add_argument("--rileyfile-root", default=None, help="Override RileyFile root path")
+    parser.add_argument("--runtime-root", default=None, help="Override local runtime root path")
     args = parser.parse_args()
 
     try:
-        paths = resolve_paths(require_existing_root=True, riley_root=args.rileyfile_root)
+        paths = resolve_paths(
+            require_existing_root=True,
+            riley_root=args.rileyfile_root,
+            runtime_root=args.runtime_root,
+        )
 
         entries = read_log(paths.ingest_log)
         state = load_state(paths.promotions_state)

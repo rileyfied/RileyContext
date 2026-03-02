@@ -1,8 +1,46 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "Missing dependency: python3"
+  echo "Install suggestion: brew install python"
+  exit 1
+fi
+
+if ! python3 - <<'PY' >/dev/null 2>&1
+import sqlite3
+PY
+then
+  echo "Missing dependency: sqlite (python sqlite3 module)"
+  echo "Install suggestion: brew install sqlite"
+  exit 1
+fi
+
+if ! command -v pdftotext >/dev/null 2>&1; then
+  echo "Missing dependency: pdftotext"
+  echo "Install suggestion: brew install poppler"
+  exit 1
+fi
+
+RESOLVE_ARGS=()
+if [[ -n "${RILEYFILE_ROOT:-}" ]]; then
+  RESOLVE_ARGS+=(--rileyfile-root "$RILEYFILE_ROOT")
+fi
+if [[ -n "${RILEYFILE_RUNTIME_ROOT:-}" ]]; then
+  RESOLVE_ARGS+=(--runtime-root "$RILEYFILE_RUNTIME_ROOT")
+fi
+
+PATH_JSON="$(python3 "$SCRIPT_DIR/resolve_paths.py" --json "${RESOLVE_ARGS[@]}")"
+RILEY_ROOT="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["riley_root"])')"
+RUNTIME_ROOT="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["runtime_root"])')"
+LOCK_DIR="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["lock_dir"])')"
+STATE_JSON="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["state_json"])')"
+CAPTURE_ROOTS_CSV="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(",".join(d.get("capture_roots", [])))')"
+INBOX_ROOTS_CSV="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(",".join(d.get("inbox_roots", [])))')"
+
 # --- single-instance lock (prevents concurrent sqlite writes) ---
-LOCK_DIR="${RILEYFILE_ROOT:-$(pwd)}/CONTEXT_HUB/.lock"
 LOCK_TTL_SECONDS="${LOCK_TTL_SECONDS:-3600}"
 
 acquire_lock() {
@@ -39,40 +77,6 @@ acquire_lock
 trap release_lock EXIT INT TERM
 # --- end lock ---
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-if ! command -v python3 >/dev/null 2>&1; then
-  echo "Missing dependency: python3"
-  echo "Install suggestion: brew install python"
-  exit 1
-fi
-
-if ! python3 - <<'PY' >/dev/null 2>&1
-import sqlite3
-PY
-then
-  echo "Missing dependency: sqlite (python sqlite3 module)"
-  echo "Install suggestion: brew install sqlite"
-  exit 1
-fi
-
-if ! command -v pdftotext >/dev/null 2>&1; then
-  echo "Missing dependency: pdftotext"
-  echo "Install suggestion: brew install poppler"
-  exit 1
-fi
-
-RESOLVE_ARGS=()
-if [[ -n "${RILEYFILE_ROOT:-}" ]]; then
-  RESOLVE_ARGS+=(--rileyfile-root "$RILEYFILE_ROOT")
-fi
-
-PATH_JSON="$(python3 "$SCRIPT_DIR/resolve_paths.py" --json "${RESOLVE_ARGS[@]}")"
-RILEY_ROOT="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["riley_root"])')"
-STATE_JSON="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["state_json"])')"
-CAPTURE_ROOTS_CSV="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(",".join(d.get("capture_roots", [])))')"
-INBOX_ROOTS_CSV="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(",".join(d.get("inbox_roots", [])))')"
-
 FULL_INGEST_COMPLETED="$(python3 - <<PY
 import json, pathlib
 p = pathlib.Path(r'''$STATE_JSON''')
@@ -101,7 +105,8 @@ p.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 PY
 }
 
-COMMON_ARGS=(--rileyfile-root "$RILEY_ROOT")
+COMMON_ARGS=(--rileyfile-root "$RILEY_ROOT" --runtime-root "$RUNTIME_ROOT")
+echo "runtime_root=$RUNTIME_ROOT"
 
 if [[ "$FULL_INGEST_COMPLETED" != "1" ]]; then
   echo "run_mode=full_baseline"

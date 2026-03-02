@@ -37,6 +37,7 @@ def should_hash(rel_path: str, ext: str) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Index RileyFile tree into sqlite")
     parser.add_argument("--rileyfile-root", default=None, help="Override RileyFile root path")
+    parser.add_argument("--runtime-root", default=None, help="Override local runtime root path")
     parser.add_argument(
         "--progress-every",
         type=int,
@@ -46,7 +47,11 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
-        paths = resolve_paths(require_existing_root=True, riley_root=args.rileyfile_root)
+        paths = resolve_paths(
+            require_existing_root=True,
+            riley_root=args.rileyfile_root,
+            runtime_root=args.runtime_root,
+        )
         conn = open_db(paths.index_sqlite)
         conn.execute("PRAGMA journal_mode=WAL;")
         conn.execute("PRAGMA synchronous=NORMAL;")

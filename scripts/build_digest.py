@@ -87,10 +87,15 @@ def build_signals(capture_rows: list[dict], changed_rows: list[tuple]) -> list[t
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build daily digest")
     parser.add_argument("--rileyfile-root", default=None, help="Override RileyFile root path")
+    parser.add_argument("--runtime-root", default=None, help="Override local runtime root path")
     args = parser.parse_args()
 
     try:
-        paths = resolve_paths(require_existing_root=True, riley_root=args.rileyfile_root)
+        paths = resolve_paths(
+            require_existing_root=True,
+            riley_root=args.rileyfile_root,
+            runtime_root=args.runtime_root,
+        )
         conn = open_db(paths.index_sqlite)
         ingest_rows = read_ingest_lines(paths.ingest_log)
 
