@@ -32,7 +32,11 @@ if [[ -n "${RILEYFILE_RUNTIME_ROOT:-}" ]]; then
   RESOLVE_ARGS+=(--runtime-root "$RILEYFILE_RUNTIME_ROOT")
 fi
 
-PATH_JSON="$(python3 "$SCRIPT_DIR/resolve_paths.py" --json "${RESOLVE_ARGS[@]}")"
+if (( ${#RESOLVE_ARGS[@]} > 0 )); then
+  PATH_JSON="$(python3 "$SCRIPT_DIR/resolve_paths.py" --json "${RESOLVE_ARGS[@]}")"
+else
+  PATH_JSON="$(python3 "$SCRIPT_DIR/resolve_paths.py" --json)"
+fi
 RILEY_ROOT="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["riley_root"])')"
 RUNTIME_ROOT="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["runtime_root"])')"
 LOCK_DIR="$(printf '%s' "$PATH_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["lock_dir"])')"
