@@ -68,23 +68,49 @@ def to_candidates_markdown(entries: list[dict]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def promotion_block(entry: dict, tag: str) -> str:
+def read_content_snippet(riley_root, processed_path: str, max_chars: int = 500) -> str | None:
+    """Read file content, skip first-line hashtag header, return snippet."""
+    try:
+        full_path = Path(riley_root) / processed_path
+        if not full_path.exists():
+            return None
+        raw = full_path.read_text(encoding="utf-8", errors="ignore").strip()
+        if not raw:
+            return None
+        lines = raw.splitlines()
+        # Skip first line if it's only hashtags
+        if lines and all(tok.startswith("#") for tok in lines[0].split()):
+            lines = lines[1:]
+        content = "\n".join(lines).strip()
+        if not content:
+            return None
+        if len(content) > max_chars:
+            content = content[:max_chars].rstrip() + "…"
+        return content
+    except Exception:
+        return None
+
+
+def promotion_block(entry: dict, tag: str, riley_root=None) -> str:
     path = entry.get("processed_path", "")
     tags = entry.get("tags", []) if isinstance(entry.get("tags"), list) else []
-    note = entry.get("note", "") or "No note provided."
+    note = entry.get("note", "") or None
     source_app = entry.get("source_app", "") or "Unknown"
     captured_at = entry.get("captured_at", "") or entry.get("processed_at", "") or "Unknown"
     sha = entry.get("sha", "")
 
-    bullets = [
-        f"- Capture path: `{path}`",
-        f"- Captured at: {captured_at}",
-        f"- Source app: {source_app}",
-        f"- Note: {note}",
-        f"- Inferred tags: {' '.join(tags) if tags else '(none)'}",
-    ]
+    content = read_content_snippet(riley_root, path) if riley_root else None
 
-    lines = [f"### {tag}", *bullets, f"[context_ingest_sha={sha}]", ""]
+    bullets = [
+        f"- Captured at: {captured_at}",
+        f"- Tags: {' '.join(tags) if tags else '(none)'}",
+    ]
+    if note:
+        bullets.append(f"- Note: {note}")
+    if content:
+        bullets.append(f"- Content: {content}")
+
+    lines = [f"### {tag} — `{path}`", *bullets, f"[context_ingest_sha={sha}]", ""]
     return "\n".join(lines)
 
 
@@ -126,7 +152,7 @@ def main() -> int:
         if grouped:
             for tag in sorted(grouped.keys()):
                 for entry in grouped[tag]:
-                    promotion_lines.append(promotion_block(entry, tag))
+                    promotion_lines.append(promotion_block(entry, tag, riley_root=paths.riley_root))
         else:
             promotion_lines.append("- No promotion-eligible entries this run.")
         paths.promotions_md.write_text("\n".join(promotion_lines).rstrip() + "\n", encoding="utf-8")
