@@ -115,7 +115,9 @@ def main() -> int:
                 str(t).lower()
                 for t in (entry.get("explicit_tags", []) if isinstance(entry.get("explicit_tags"), list) else [])
             ]
-            tag = first_project_tag(explicit_tags)
+            tag = explicit_tags[0] if explicit_tags else first_project_tag(
+                [str(t).lower() for t in (entry.get("tags", []) if isinstance(entry.get("tags"), list) else [])]
+            )
             in_to_context = is_forced_context(entry)
             if tag or in_to_context:
                 grouped[tag or "#general"].append(entry)
