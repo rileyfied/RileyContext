@@ -33,6 +33,8 @@ URL_LINE_RE = re.compile(r"^https?://\S+$", re.IGNORECASE)
 
 def normalize_explicit_tags(raw: Any) -> list[str]:
     out: list[str] = []
+    if isinstance(raw, str):
+        raw = raw.split()
     if not isinstance(raw, list):
         return out
     for item in raw:
