@@ -239,6 +239,23 @@ Chapter 1: Intro: What is Claude Skills 2.0?
 0:1313 secondsNo babysitting. I am going to…
 [context_ingest_sha=1660452f04ec0dfb164ea184a3b70d9566648d9a13ee187ad8ba64b2bec0ea83]
 
+### #productivity — `CONTEXT_HUB/captures/_processed/capture_20260314_194023.md`
+- Captured at: 2026-03-14T19:48:25.793677-04:00
+- Tags: #productivity
+- Content: timestamp: 2026-03-14T19:40:23
+source: claude-direct
+tags: pipeline, rileyfile, infrastructure, capture-skill
+---
+Session summary: Pipeline consolidation & capture skill fixes (2026-03-14)
+
+Key changes made this session:
+
+1. PERMISSIONS STREAMLINED — Added broad allow rules for pipeline commands (ls, wc, cat, tail, head, grep, git, python3, bash) so skills don't stall on approval pop-ups. Critical for phone/remote sessions where pop-ups aren't visible.
+
+2. TWO-REPO SPLIT FIXED — Discovered ~/dev…
+[context_ingest_sha=1ae8507b91eb099a70f450a929f40add5e53eed2716ae482fe94f52de3b3e61a]
+
+
 ## DAILY LOG
 
 ### 2026-02-23 02:29:01
