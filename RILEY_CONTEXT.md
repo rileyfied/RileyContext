@@ -1,53 +1,43 @@
 ---
 
-## SYNC PROTOCOL v2 (ACTIVE)
+## SYNC PROTOCOL v3 (ACTIVE)
 
 Canonical Source of Truth:
-- GitHub repository (rileyfied/rileyfile)
+- Google Drive: `My Drive/RileyContext/`
+- This file, all captures, context hub, and pipeline scripts live here.
+- Claude.ai reads directly via Google Drive connector. No fetch commands needed.
+- GitHub mirror (rileyfied/rileyfile) is updated automatically for GPT/Gemini URL access.
 
-Single Writer:
-- Codex (local) is the only agent allowed to modify RILEY_CONTEXT.md.
+Who Can Write:
+- Claude Code (laptop or desktop) runs the pipeline and writes RILEY_CONTEXT.md.
+- Phone captures drop into `RileyContext/CONTEXT_HUB/captures/inbox/` via Shortcuts.
 
-Agent Roles:
-- ChatGPT, Claude, Gemini generate summaries only.
-- They do NOT modify context files directly.
-- They do NOT run compile systems.
-- They do NOT merge or push changes.
-
-Update Mechanism:
-- Codex-controlled write paths only:
-  - `./scripts/eod_append.sh <file> <SOURCE>` for manual daily log appends.
-  - `./scripts/sync_context.sh` for ingest/promotions merge runs.
-- Automated scheduling is active via launchd:
-  - `com.rileyfile.sync_context` runs hourly (`StartInterval=3600`) and pushes updates.
-- Runtime state is local-only (`~/.rileyfile/runtime` by default):
-  - `RILEY_INDEX.sqlite`, `.state.json`, `.promotions_state.json`, and lock artifacts.
-- Canonical context content remains in the GitHub repo root and `CONTEXT_HUB/context/`.
+Runtime State (local-only, not synced):
+- `~/.rileyfile/runtime/` — sqlite index, state json, lock files.
 
 Deprecated Systems:
-- Inbox folder workflows
-- Compile scripts
-- CoWork merge systems
 - iCloud as canonical bus
-- Any automated context regeneration outside Codex
-
-All prior sync logic is permanently deprecated.
+- Local ~/dev/rileyfile as primary (now GitHub mirror only)
+- Scheduled 8am/10pm pushes (no longer needed — you're already in the cloud folder)
+- Codex as single writer (Claude Code is now the engineer)
 
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-03-14
+## Last Updated: 2026-03-15
 
-> **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents. Hosted at: https://raw.githubusercontent.com/rileyfied/rileyfile/main/RILEY_CONTEXT.md
+> **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
+> **Primary**: Google Drive `My Drive/RileyContext/RILEY_CONTEXT.md` (Claude.ai, Gemini)
+> **Mirror**: https://raw.githubusercontent.com/rileyfied/rileyfile/main/RILEY_CONTEXT.md (GPT, other agents)
 
 ---
 
-## CONTEXT HUB STATUS (2026-03-02)
+## CONTEXT HUB STATUS (2026-03-15)
 
-- Context Hub v3 hardening is complete and active.
+- Context Hub v3 migrated to Google Drive as canonical root.
 - Runtime/content split is live:
-  - Runtime state uses local path (`~/.rileyfile/runtime` default, overridable by `RILEYFILE_RUNTIME_ROOT`).
-  - Canonical outputs remain in repo/iCloud (`RILEY_CONTEXT.md`, ingest logs, digests, candidates, promotions).
+  - Runtime state uses local path (`~/.rileyfile/runtime`).
+  - All content lives in Google Drive (`RILEY_CONTEXT.md`, captures, digests, promotions).
 - Launchd scheduling is active:
   - `com.rileyfile.sync_context` runs hourly and executes index -> ingest -> digest -> promotions -> merge -> commit -> push.
 - Break-glass and rollback runbooks exist in:
@@ -254,6 +244,28 @@ Key changes made this session:
 
 2. TWO-REPO SPLIT FIXED — Discovered ~/dev…
 [context_ingest_sha=1ae8507b91eb099a70f450a929f40add5e53eed2716ae482fe94f52de3b3e61a]
+
+### #capture — `CONTEXT_HUB/captures/_processed/#capture #schedule #context #BrainDump #brainstorm #7shifts #capture-2.txt`
+- Captured at: 2026-03-15T05:05:37.626852-04:00
+- Tags: #7shifts #braindump #brainstorm #capture #capture-2 #context #schedule
+- Content: /capture
+
+Figure out how we are going to schedule catering team members or just schedule team members to be the catering point person each day. This will involve Myles and Seth and Michelle and will require their feedback and ideas as we try it out. The goal:
+-increase catering fan base & sales!
+-sustainable excellence
+-best place on the island to order catered food
+-best place on the island to prepare/serve catered food
+-allow catering to be our pleasure rather than a pain in the bleeping bleep…
+[context_ingest_sha=16df052f1b77d6e57a43badd530d77b70cd150aae3b6857fbb1eac3217f1fad7]
+
+### #capture — `CONTEXT_HUB/captures/_processed/#capture #schedule #context #BrainDump #brainstorm #7shifts #capture.txt`
+- Captured at: 2026-03-15T05:05:37.627983-04:00
+- Tags: #7shifts #braindump #brainstorm #capture #context #schedule
+- Content: /capture
+
+REMEMBER AND EXPLORE THIS IDEA IMMEDIATELY!!!!!
+come up with an idea where we don’t have to send brakes in the middle of the shift… Like minors work a few hours in hospitality and then switch with another minor who worked the morning in service. The service team member takes a break and then works hospitality for the remainder of the shift. The team member who worked hospitality in the morning switches to service when the other team member comes off of service. This helps reduce the mo…
+[context_ingest_sha=db036f2a6dd7e95d2a24575ed766f7b7a8a347e8849f1121083f09111a5322cb]
 
 
 ## DAILY LOG

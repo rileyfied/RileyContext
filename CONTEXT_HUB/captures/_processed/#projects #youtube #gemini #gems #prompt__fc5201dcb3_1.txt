@@ -1,0 +1,34 @@
+#projects #youtube #gemini #gems #prompt
+
+Idea for a Gemini Gem: YouTube growth engine.
+
+Prompt:
+
+Create an Al mini app called "YouTube Growth Engine". Build this app
+as a multi-step workflow with separate nodes for each stage. Do NOT
+combine steps into one generation node. Required workflow structure
+Node 1: Topic Input
+- Accept a YouTube niche or topic.
+Node 2: Subtopic Decomposition
+- Break the niche into 5-10 high-potential subtopics.
+Node 3: Audience & Demand Analysis
+- Identify audience intent and content demand signals.
+From Node 3, branch into three parallel strategy nodes:
+Node 4A: Viral Shorts Strategy
+- Generate 5 Shorts video ideas with titles.
+Node 4B: Long-Form Authority Strategy
+- Generate 5 long-form video titles and outlines.
+Node 4C: Faceless Automation Strategy
+- Generate 5 automation-style video concepts.
+Node 5: Strategy Comparison
+- Compare the three strategies:
+- Growth speed
+- Effort level
+- Monetization potential
+- Risk level
+Node 6: Final Recommendation
+- Select the strongest strategy with reasoning.
+Node 7: Render Growth Blueprint
+- Render all results into a structured HTML report.
+Each stage must be implemented as a separate workflow node.
+Do not collapse steps.
