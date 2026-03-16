@@ -270,7 +270,15 @@ come up with an idea where we don’t have to send brakes in the middle of the s
 ### ## — `CONTEXT_HUB/captures/_processed/10-12. PHILIPPIANS 25–11.md`
 - Captured at: 2026-03-16T06:00:23.298663-04:00
 - Tags: ##
-- Content: ## 10-12. PHILIPPIANS 2:5–11  
+- Content: ## 10-12. PHILIPPIANS 2:5–11
+
+### #capture — `CONTEXT_HUB/captures/_processed/test_capture_20260316_173117.txt`
+- Captured at: 2026-03-16T17:31:21.663284-04:00
+- Tags: #capture #test
+- Content: Pipeline test capture from Claude Code. Testing that captures land in Google Drive inbox and get processed correctly.
+[context_ingest_sha=4bd7806e14bc35fa2766c499601de4e5d8d8a81de9e94316e7e02fab75ee4282]
+
+
 ##   
 ## Philippians 2:5–11  
 ## Tone: Reverent, steady, rising declaration. Not slow.
