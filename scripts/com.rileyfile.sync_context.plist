@@ -37,14 +37,12 @@
   <dict>
     <key>PATH</key>
     <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
-    <key>RILEYFILE_ROOT</key>
-    <string>/Users/rileycolleyFW/Library/Mobile Documents/com~apple~CloudDocs/RileyFile</string>
   </dict>
 
   <key>StandardOutPath</key>
-  <string>/Users/rileycolleyFW/dev/rileyfile/logs/context_hub.stdout.log</string>
+  <string>/Users/rileycolleyFW/.rileyfile/logs/context_hub.stdout.log</string>
 
   <key>StandardErrorPath</key>
-  <string>/Users/rileycolleyFW/dev/rileyfile/logs/context_hub.stderr.log</string>
+  <string>/Users/rileycolleyFW/.rileyfile/logs/context_hub.stderr.log</string>
 </dict>
 </plist>
