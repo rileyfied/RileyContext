@@ -18,13 +18,13 @@ Runtime State (local-only, not synced):
 Deprecated Systems:
 - iCloud as canonical bus
 - Local ~/dev/rileyfile as primary (now GitHub mirror only)
-- Scheduled 8am/10pm pushes (no longer needed — you're already in the cloud folder)
+- iCloud as pipeline root (caused deadlocks; local repo is canonical)
 - Codex as single writer (Claude Code is now the engineer)
 
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-03-16
+## Last Updated: 2026-03-17
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Primary**: Google Drive `My Drive/RileyContext/RILEY_CONTEXT.md` (Claude.ai, Gemini)
@@ -39,7 +39,7 @@ Deprecated Systems:
   - Runtime state uses local path (`~/.rileyfile/runtime`).
   - All content lives in Google Drive (`RILEY_CONTEXT.md`, captures, digests, promotions).
 - Launchd scheduling is active:
-  - `com.rileyfile.sync_context` runs hourly and executes index -> ingest -> digest -> promotions -> merge -> commit -> push.
+  - `com.rileyfile.sync_context` runs twice daily (8am and 10pm) and executes index -> ingest -> digest -> promotions -> merge -> commit -> push.
 - Break-glass and rollback runbooks exist in:
   - `CONTEXT_HUB/context/README_ingest.md`.
 - Known edge risks resolved:
@@ -271,6 +271,27 @@ come up with an idea where we don’t have to send brakes in the middle of the s
 - Tags: #capture #test
 - Content: Pipeline test capture from Claude Code. Testing that captures land in Google Drive inbox and get processed correctly.
 [context_ingest_sha=4bd7806e14bc35fa2766c499601de4e5d8d8a81de9e94316e7e02fab75ee4282]
+
+### #aibrief — `CONTEXT_HUB/captures/_processed/capture-2026-03-17-063033.txt`
+- Captured at: 2026-03-17T08:00:04.017119-04:00
+- Tags: #7shifts #aibrief #cfa #prompt #schedule
+- Content: ---
+captured: 2026-03-17 06:31:51
+source: CaptureApp
+---
+
+#cfa #schedule #7shifts #Prompt
+
+
+
+PROMPT FOR CLAUDE.ai or CLAUDE COWORK or CODEX or GEMINI CODE:
+
+https://login.7shifts.com/oauth2/authorize?client_id=36ebe0e2-ffd0-4fa2-84ff-937870aef5db&response_type=code&redirect_uri=https%3A%2F%2Fapp.7shifts.com%2Foauth2%2Fcallback&tenant_id=88d83f1a-7084-dc05-b977-57e205198ff6&code_challenge=iCjM5ay2I3VZEHbMmOOM7r8CDDaKOfDY1M6gst_yvn8&state=tbRMeAT6gN6B5uKRN4kfd2VThC-WSubL-mDmssFP5ec
+
+
+
+This is a lo…
+[context_ingest_sha=740d45b42ba9e3d56f6716611451e0071bf0406bcc017514bf07b019c2397f3c]
 
 
 ##   
