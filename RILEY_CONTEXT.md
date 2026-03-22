@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-03-17
+## Last Updated: 2026-03-22
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Primary**: Google Drive `My Drive/RileyContext/RILEY_CONTEXT.md` (Claude.ai, Gemini)
@@ -292,6 +292,47 @@ https://login.7shifts.com/oauth2/authorize?client_id=36ebe0e2-ffd0-4fa2-84ff-937
 
 This is a lo…
 [context_ingest_sha=740d45b42ba9e3d56f6716611451e0071bf0406bcc017514bf07b019c2397f3c]
+
+### #armor — `CONTEXT_HUB/captures/_processed/Faceless%20Bible%20Videos.pdf.pdf`
+- Captured at: 2026-03-22T08:00:02.016541-04:00
+- Tags: #aitools #armor #audio #bible #scripture #youtube
+- Content: %PDF-1.4
+%
+1 0 obj
+<</Title (Faceless Bible Videos)
+/Producer (Skia/PDF m148 Google Docs Renderer)>>
+endobj
+3 0 obj
+<</ca 1
+/BM /Normal>>
+endobj
+7 0 obj
+<</Filter /FlateDecode
+/Length 12325>> stream
+x}$9r~0G+
+ya-	0-ˀ߈"dޞmIj2H'^~
+/;H翼_3
+__ۻz!ߟWq^~?~_^?WyAh^~wuE^~q@Jo8)?(m?|m )xV!
+ 1F̀R: n?0F?
+NN8F^\ 
+%oU循
+Rap@bT*FP1hkU-(?xﵧɕ %KJt\
+Q!hLZ#6b"9s,d7
+=C|)E)nQH#?Hrx1
+1Hˌ![{gSBP<Cxrqrg
+
+/>:@_3O%ʡȲ˂RV*xvuͽ p(6# O>}}!|{R4Wx8b<}7
+~q t>~t
+~tA;Εm:_E0…
+[context_ingest_sha=6b6fc672f0eb7913c0be8f2acd3ea476bce500788f92c2f1c5777119f8f66ac4]
+
+### #knowthis — `CONTEXT_HUB/captures/_processed/#knowthis #cfa #training #app #idea.txt`
+- Captured at: 2026-03-22T08:00:01.826111-04:00
+- Tags: #app #cfa #idea #knowthis #training
+- Content: A quick app idea that we can eventually add to the KnowThis app:
+
+Quick simple slide deck style info cards that we can blast a few times during the week. These will have special
+[context_ingest_sha=92edc7d31be351ee88676e8518e14eed42b7d4e6120f82fb74d92fd91249ebba]
 
 
 ##   
