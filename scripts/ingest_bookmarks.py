@@ -147,7 +147,7 @@ def main():
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2)
 
-    print(f"Imported {len(captures)} bookmarks to RileyFile/RileyShare/captures")
+    print(f"Imported {len(captures)} bookmarks to RileyContext/RileyShare/captures")
 
 if __name__ == '__main__':
     main()
