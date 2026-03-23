@@ -80,9 +80,12 @@ def parse_url_file(path: Path) -> str:
 def maybe_extract_single_url_from_text(path: Path) -> str:
     if path.suffix.lower() != ".txt":
         return ""
-    if path.stat().st_size > 8192:
+    try:
+        if path.stat().st_size > 8192:
+            return ""
+        body = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
         return ""
-    body = path.read_text(encoding="utf-8", errors="ignore")
     lines = [ln.strip() for ln in body.splitlines() if ln.strip()]
     if len(lines) != 1:
         return ""
@@ -224,7 +227,12 @@ def main() -> int:
 
             rel_src = rel_to_root(src, paths.riley_root)
             ftype = file_type_for(src)
-            dedupe_sha, canonical_url = canonical_sha_for(src, ftype)
+            try:
+                dedupe_sha, canonical_url = canonical_sha_for(src, ftype)
+            except OSError as exc:
+                print(f"WARN: skipping {rel_src} — {exc}")
+                skipped_missing += 1
+                continue
 
             target_processed_root = choose_processed_root(src, processed_map, paths.captures_processed)
             target_processed_root.mkdir(parents=True, exist_ok=True)

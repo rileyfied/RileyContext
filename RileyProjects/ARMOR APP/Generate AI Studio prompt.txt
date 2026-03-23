@@ -1,0 +1,343 @@
+Generate AI Studio prompt
+
+
+Below is the ready-to-paste AI Studio prompt for building Armor.
+Use this exactly as-is in Google AI Studio / Gemini / Claude Artifacts.
+
+AI STUDIO MASTER PROMPT — ARMOR APP (MOBILE + WEB)
+Role You are a senior product architect, UX systems designer, and learning-science engineer.
+You are building a mobile-first Bible memorization app with a web reference companion, called Armor.
+This is a build task, not ideation.
+Do not invent content. Do not paraphrase Scripture. Do not change verse text. Do not redesign learning logic.
+
+PROJECT CONTEXT (LOCKED)
+Content
+	•	Translation: ESV
+	•	Verse sets: A–E (canonical, immutable)
+	•	Weekly structure preserved
+	•	Topic taxonomy provided via CSV
+	•	Content is already normalized and locked
+Core Learning Method
+	•	Spaced repetition
+	•	Cloze deletion
+	•	Progressive recall
+	•	Mastery states
+	•	Neutral, non-shame feedback
+	•	Offline-first
+Inspiration Source
+	•	Fighter Verses app (UX logic only)
+	•	Design, layout, and visual system will be entirely new
+
+REQUIRED OUTPUT
+1. Mobile App (Primary)
+Design and specify:
+	•	Screen map
+	•	State transitions
+	•	Core learning loop
+	•	Review loop
+	•	Progression logic
+	•	Error handling
+	•	Offline persistence
+	•	Accessibility
+	•	Calm, focused UX (no dopamine hijack)
+2. Web Reference App (Secondary)
+Read-only companion app:
+	•	Browse by set
+	•	Browse by topic
+	•	Read verses
+	•	Share links
+	•	No progress tracking
+	•	No auth required
+
+ARMOR CORE LOOP (DO NOT CHANGE)
+	1	Open app
+	2	Today’s training auto-loaded
+	3	Learn (full verse)
+	4	Practice (cloze)
+	5	Recall (blank)
+	6	Feedback
+	7	Save state
+	8	Exit
+Weekly:
+	•	New verse unlocks
+	•	Old verses review
+	•	Weak verses surface first
+
+MEMORY ENGINE (REQUIRED)
+Verse states:
+	•	New
+	•	Learning
+	•	Training
+	•	Solid
+	•	Strong
+	•	Review-only
+Rules:
+	•	Promote on success
+	•	Demote gently on failure
+	•	No hard resets
+	•	Time-based scheduling
+	•	Deterministic logic
+	•	Local storage first
+	•	Cloud sync optional later
+
+GAME LAYER (OPTIONAL, MODULAR)
+If included, game must:
+	•	Never block learning
+	•	Never replace recall
+	•	Attach only after learning steps
+	•	Reward effort, not speed
+	•	Be skippable
+	•	Be cosmetic/progress-based
+Allowed examples:
+	•	Armor assembly
+	•	Map progression
+	•	Companion growth
+	•	Visual unlocks
+Disallowed:
+	•	Loot boxes
+	•	Random rewards
+	•	Streak punishment
+	•	Leaderboards
+	•	Timers
+
+DATA SCHEMA (REQUIRED OUTPUT)
+Generate clean schema for:
+	•	Verse
+	•	VerseSegment
+	•	Topic
+	•	UserVerseState
+	•	Session
+	•	ReviewSchedule
+Schema must support:
+	•	Offline-first
+	•	Deterministic scheduling
+	•	Future sync
+	•	Future audio
+	•	Future multiplayer (teacher/parent view)
+
+UX TONE
+	•	Calm
+	•	Serious
+	•	Warm
+	•	Clear
+	•	No gamified pressure
+	•	No guilt language
+	•	No urgency manipulation
+	•	Minimal UI chrome
+	•	Text-first
+	•	Scripture honored
+
+CONSTRAINTS
+	•	Mobile-first
+	•	Works fully offline
+	•	No accounts required to start
+	•	Progress never lost
+	•	No dark patterns
+	•	No ads
+	•	No notifications spam
+	•	Designed for long-term faithfulness, not engagement addiction
+
+OUTPUT FORMAT (MANDATORY)
+Return:
+	1	Screen map
+	2	Interaction flow
+	3	State machine
+	4	Data schema
+	5	Pseudocode for scheduling
+	6	Build notes for engineers
+	7	Risks & mitigations
+	8	What not to build
+
+Begin.
+
+If you want, next I can generate:
+	•	AI Studio system + developer prompt split
+	•	Claude Artifact version
+	•	Cursor-ready build prompt
+	•	Replit/Lovable build prompt
+	•	Figma-to-code spec prompt
+	•	Backend schema prompt
+	•	Offline-first sync algorithm prompt
+Say which one.
+
+
+Branched from Branch · Branch · Armor Workflow Build
+
+Claude Artifact
+
+
+Below is the Claude Artifact–ready prompt for the Armor project.
+This is formatted exactly how Claude works best: single artifact, explicit constraints, build-oriented, long-context safe.
+Copy everything below and paste it into Claude → Create Artifact.
+
+ARMOR APP — MASTER ARTIFACT (BUILD SPEC)
+ROLE
+You are a senior product architect, learning-science engineer, and mobile UX systems designer.
+You are building a mobile-first Bible memorization app with a web reference companion called Armor.
+This is a build artifact, not brainstorming. Assume all discovery is complete. Your job is to produce clean, structured, build-ready outputs.
+
+PROJECT CONTEXT (LOCKED)
+Canonical Content
+	•	Translation: ESV
+	•	Verse sets: A–E (immutable)
+	•	Weekly structure preserved
+	•	Topic taxonomy provided via CSV
+	•	Verse text must never be altered or paraphrased
+Reference Material
+	•	Fighter Verses mobile app (UX logic only)
+	•	Help Guide screenshots = intent map
+	•	Walkthrough screenshots = functional blueprint
+	•	Site scrapes = reference only (not build input)
+Core Learning Method (DO NOT CHANGE)
+	•	Spaced repetition
+	•	Progressive cloze deletion
+	•	Full recall
+	•	Gentle demotion
+	•	Deterministic scheduling
+	•	Offline-first
+	•	Calm, non-gamified tone
+
+PRODUCT DEFINITION
+Mobile App (Primary)
+Purpose:
+	•	Daily Scripture memorization
+	•	Long-term mastery
+	•	Habit without pressure
+	•	Faithfulness over engagement
+Must include:
+	•	Home
+	•	Daily training
+	•	Review
+	•	Recall
+	•	Progress
+	•	Help (contextual)
+	•	Settings
+Must NOT include:
+	•	Ads
+	•	Streak punishment
+	•	Leaderboards
+	•	Social comparison
+	•	Engagement traps
+	•	Notifications spam
+
+Web App (Secondary)
+Read-only reference companion:
+	•	Browse by set
+	•	Browse by topic
+	•	Read verses
+	•	Share links
+	•	No progress
+	•	No auth
+	•	No learning mechanics
+
+CORE LOOP (LOCKED)
+	1	Open app
+	2	Today’s assignment auto-loads
+	3	Learn (full verse)
+	4	Practice (cloze)
+	5	Recall (blank)
+	6	Feedback
+	7	Save state
+	8	Exit
+Weekly:
+	•	New verse unlocks
+	•	Old verses review
+	•	Weak verses surface first
+
+MEMORY ENGINE (REQUIRED)
+Verse States
+	•	New
+	•	Learning
+	•	Training
+	•	Solid
+	•	Strong
+	•	Review-only
+Rules
+	•	Promotion on success
+	•	Gentle demotion on failure
+	•	No resets
+	•	No shame
+	•	Time-based spacing
+	•	Deterministic scheduling
+	•	Local storage first
+	•	Cloud sync optional later
+
+GAME LAYER (OPTIONAL / MODULAR)
+If included, it must:
+	•	Attach after learning
+	•	Never replace recall
+	•	Never block learning
+	•	Be skippable
+	•	Reward effort, not speed
+Allowed:
+	•	Armor assembly
+	•	Visual progress map
+	•	Companion growth
+	•	Cosmetic unlocks
+Disallowed:
+	•	Loot boxes
+	•	Random rewards
+	•	Timers
+	•	Leaderboards
+	•	Penalties
+
+UX TONE
+	•	Calm
+	•	Serious
+	•	Warm
+	•	Minimal
+	•	Text-first
+	•	Scripture-honoring
+	•	No urgency manipulation
+	•	No dopamine hooks
+
+OFFLINE-FIRST REQUIREMENT
+	•	App must work fully offline
+	•	Progress never lost
+	•	Sync conflicts resolved deterministically
+	•	No required login to start
+
+REQUIRED OUTPUTS (IN ORDER)
+You must generate:
+1. Screen Map
+List all screens with purpose and entry conditions.
+2. Interaction Flow
+Describe transitions between states.
+3. State Machine
+Explicit learning state transitions.
+4. Data Schema
+Define:
+	•	Verse
+	•	VerseSegment
+	•	Topic
+	•	UserVerseState
+	•	Session
+	•	ReviewSchedule
+5. Scheduling Pseudocode
+Clear, deterministic algorithm.
+6. Build Notes for Engineers
+Mobile + web.
+7. Risks & Mitigations
+Product, UX, spiritual, technical.
+8. Explicit “Do Not Build” List
+To prevent scope creep.
+
+CONSTRAINTS
+	•	Mobile-first
+	•	Offline-first
+	•	No dark patterns
+	•	No engagement addiction
+	•	No content invention
+	•	No Scripture alteration
+	•	Long-term discipleship focus
+
+OUTPUT RULES
+	•	Use structured sections
+	•	Use clear headings
+	•	Use bullet points
+	•	No filler text
+	•	No marketing language
+	•	No opinions
+	•	No unnecessary explanations
+
+Begin generating the artifact now.

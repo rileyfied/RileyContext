@@ -1,0 +1,5 @@
+RileyHQ/Context Hub_Gemini Prompt:
+
+Search my folder iCloud/Context_Hub and learn how Claude is storing and accessing my data and using it as context tool to plan, build, design, and deploy my projects. You will use this Hub as a data resource and context bank to help me plan and build my tools, working with Claude and other AI on projects to produce the best workflow and outcome.
+
+Tell me when you have accessed the file, then tell me how to ensure that your first step is to reference this directory on all future projects or build chats 

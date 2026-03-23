@@ -1,0 +1,30 @@
+First, Here is the data for all of the verses in ESV. I will use these exact verses and sets. keep it in the files for this project.
+
+Next, study these screenshots of the HELP section of the FV app. This is the app that gave me inspiration. Study this guide for the core mobile app UX. Some sections will be edited or removed altogether in the Armor app, but this is a basic wireframe for the main function of the app.
+
+Now here's a folder of screenshots as I work my way through the app. Reference the guide as you make your way through it so you know exactly where you are.
+We will be changing the design completely, and much of the UI layout. We may edit some of the level/quiz styles. We may add a fun interactive game design to the app (while maintaining the spaced repetition cloze-style memory learning process.
+
+
+Armor App_HelpGuide.zip
+Zip Archive
+HELP GUIDE
+ArmorApp_ArmorSetA.pdf
+PDF
+ArmorApp_ArmorSetB.pdf
+PDF
+ArmorApp_ArmorSetC.pdf
+PDF
+ArmorApp_ArmorSetD.pdf
+PDF
+ArmorApp_ArmorSetE.pdf
+PDF
+ARMOR SETS
+Armor App Armor Sets
+SET DATA, ASSIGNED TOPIC CATEGORIES (CSV)
+b003c901-e898-4bb0-9cb9-004166d3d27b.zip
+Zip Archive
+WALKTHROUGH SCREENSHOTS (not comprehensive for every single internal link, but will show the functional Blueprint and some quiz level functions).
+ready?
+Done?
+Design UI system

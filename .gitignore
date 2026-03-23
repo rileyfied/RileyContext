@@ -2,5 +2,38 @@ logs/
 scripts/.last_run.json
 scripts/.workspace_sync_state.json
 scripts/__pycache__/
-.DS_Store
 __pycache__/
+.DS_Store
+
+# Archives (large, not needed by remote agents)
+_archive_*/
+
+# Processed captures (hundreds of files, not needed on GitHub)
+CONTEXT_HUB/captures/_processed/
+CONTEXT_HUB/captures/_text/
+
+# Runtime state
+.rileyfile/
+
+# Large binaries
+*.mov
+*.mp4
+*.avi
+*.mkv
+*.zip
+*.tar.gz
+*.dmg
+*.wav
+*.m4a
+*.mp3
+*.notebackup
+
+# Large archive folders (chat exports, memory dumps)
+RileyAgents/CLAUDE MEMORY ARCHIVE/
+RileyAgents/ChatGPT MEMORY ARCHIVE/
+
+# Processed captures (may contain large files)
+RileyShare/captures/_processed/
+
+# Descript audio archives
+AI BRIEFS/DESCRIPT/Descript Archive/

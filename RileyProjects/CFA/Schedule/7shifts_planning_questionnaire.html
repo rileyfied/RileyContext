@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>7shifts Project Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#FAFAF8;--surface:#FFFFFF;--surface2:#F3F2EF;
+--text:#1A1A1A;--text2:#6B6B6B;--text3:#9C9C9C;
+--border:#E5E4E0;--accent:#1D9E75;--accent-bg:#E1F5EE;--accent-dark:#0F6E56;
+--coral:#D85A30;--coral-bg:#FAECE7;
+--radius:10px;--radius-sm:6px;
+--font:'DM Sans',system-ui,-apple-system,sans-serif;
+--mono:'DM Mono',monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+.shell{max-width:680px;margin:0 auto;padding:16px 16px 120px}
+.header{padding:24px 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px}
+.header h1{font-size:20px;font-weight:600;letter-spacing:-0.3px;margin-bottom:4px}
+.header p{font-size:13px;color:var(--text2)}
+.progress-wrap{margin-bottom:20px}
+.progress-meta{display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;color:var(--text2);font-family:var(--mono)}
+.progress-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:8px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;white-space:nowrap;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.tab.active{background:var(--text);color:#fff;border-color:var(--text)}
+.tab .count{font-family:var(--mono);font-size:11px;opacity:.6;margin-left:4px}
+.section-header{margin-bottom:20px}
+.section-header h2{font-size:17px;font-weight:600;letter-spacing:-0.2px;margin-bottom:2px}
+.section-header p{font-size:13px;color:var(--text2)}
+.question{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px;transition:border-color .2s}
+.question.answered{border-color:var(--accent)}
+.question .q-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.question .q-num{font-family:var(--mono);font-size:11px;color:var(--text3);flex-shrink:0;padding-top:2px}
+.question .q-text{font-size:14px;font-weight:500;flex:1;line-height:1.5}
+.question .q-status{flex-shrink:0;font-size:11px;font-family:var(--mono);padding:2px 8px;border-radius:var(--radius-sm)}
+.q-status.done{background:var(--accent-bg);color:var(--accent-dark)}
+.q-status.pending{background:var(--surface2);color:var(--text3)}
+textarea{width:100%;min-height:80px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--bg);resize:vertical;line-height:1.5;outline:none;transition:border-color .2s}
+textarea:focus{border-color:var(--accent)}
+textarea::placeholder{color:var(--text3)}
+.btn-row{display:flex;gap:8px;margin-top:4px}
+.btn-choice{padding:8px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.btn-choice.selected-yes{background:var(--accent-bg);border-color:var(--accent);color:var(--accent-dark)}
+.btn-choice.selected-no{background:var(--coral-bg);border-color:var(--coral);color:var(--coral)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border)}
+.nav-btn{padding:10px 24px;border-radius:var(--radius);font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.nav-btn:active{transform:scale(.97)}
+.nav-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-btn.submit{background:var(--text);border-color:var(--text);color:#fff}
+.copy-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--text);color:#fff;padding:12px 24px;border-radius:var(--radius);font-size:14px;font-weight:500;transition:transform .3s ease;z-index:100;white-space:nowrap}
+.copy-toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="header">
+<h1>#7shifts project planner</h1>
+<p>52 questions across 5 phases — answer here, then copy to Claude</p>
+</div>
+<div class="progress-wrap">
+<div class="progress-meta"><span id="pCount">0 of 52</span><span id="pPct">0%</span></div>
+<div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
+</div>
+<div id="tabs" class="tabs"></div>
+<div id="sectionHead" class="section-header"></div>
+<div id="questions"></div>
+<div class="nav" id="nav"></div>
+</div>
+<div class="copy-toast" id="toast">Copied to clipboard</div>
+
+<script>
+const S=[
+{id:"site_access",title:"Phase 0: Site access",sub:"Credentials, permissions, plan tier, integrations.",questions:[
+{id:"q01",text:"Can you confirm your 7shifts login credentials are current and working?",type:"confirm"},
+{id:"q02",text:"Do you have admin-level access in 7shifts, or manager with restricted permissions? What's your role title inside the platform?",type:"open"},
+{id:"q03",text:"How many locations does your 7shifts account manage? Just your CFA store, or multiple?",type:"open"},
+{id:"q04",text:"Are there other managers or admins who also build schedules in 7shifts? Who, and what do they control?",type:"open"},
+{id:"q05",text:"Is your 7shifts on a paid plan? Which tier?",type:"open"},
+{id:"q06",text:"Any third-party integrations currently connected? (POS, payroll, HR, etc.)",type:"open"}
+]},
+{id:"foh_roster",title:"Phase 1: Daily FOH roster",sub:"Your first deliverable — a daily operational snapshot.",questions:[
+{id:"q07",text:"Define 'FOH roster' in your context. Which positions/roles does it include?",type:"open"},
+{id:"q08",text:"What does your ideal daily briefing look like? What info do you need before walking in?",type:"open"},
+{id:"q09",text:"What time does your day start, and when do you need the roster briefing?",type:"open"},
+{id:"q10",text:"What's a 'shift pool issue'? Define it and give examples of what you'd want flagged.",type:"open"},
+{id:"q11",text:"What types of shift requests exist? (Swaps, drops, pickups, time-off, availability changes?) Which matter most in the morning?",type:"open"},
+{id:"q12",text:"When you say 'print the daily schedule,' what exactly gets printed? Single day? Specific roles? What layout?",type:"open"},
+{id:"q13",text:"What are the 7shifts print settings you use? (Paper size, orientation, columns, filters, etc.)",type:"open"},
+{id:"q14",text:"What are the system print settings after that? (Printer, copies, scaling, etc.)",type:"open"},
+{id:"q15",text:"Where does the printed schedule go physically? Wall? Handed to shift leads? Both?",type:"open"},
+{id:"q16",text:"Do you also need a BOH roster, or strictly FOH?",type:"open"}
+]},
+{id:"staff_intel",title:"Phase 2: Staff intelligence",sub:"Learning your people and schedule logic.",questions:[
+{id:"q17",text:"How many FOH team members currently? Approximate breakdown by role/position?",type:"open"},
+{id:"q18",text:"Do you categorize staff by skill level, speed, reliability, or any internal ranking? Describe the system.",type:"open"},
+{id:"q19",text:"What are your hard scheduling constraints? (Minors' hours, max hours, overtime, CFA mandates, labor law, etc.)",type:"open"},
+{id:"q20",text:"What are your soft scheduling preferences? ('Never put X and Y together,' 'always a veteran on drive-thru,' etc.)",type:"open"},
+{id:"q21",text:"What does a 'good schedule' look like to you? Define the outcome you're optimizing for.",type:"open"},
+{id:"q22",text:"What does a 'bad schedule' look like? What patterns cause problems?",type:"open"},
+{id:"q23",text:"Walk through your current schedule-building process step by step. From opening 7shifts to hitting publish.",type:"open"},
+{id:"q24",text:"How far in advance do you publish? What's the cadence? (Weekly? Biweekly?)",type:"open"},
+{id:"q25",text:"What day do you build the schedule, and what day does the schedule week start?",type:"open"},
+{id:"q26",text:"What data do you look at before building? (Sales forecasts, labor targets, events, school schedules, weather, etc.)",type:"open"},
+{id:"q27",text:"What are your peak periods and how do staffing levels change? (Lunch, dinner, Saturday, etc.)",type:"open"},
+{id:"q28",text:"Recurring events or patterns that affect scheduling? (Church rush, catering, local events, school breaks, etc.)",type:"open"},
+{id:"q29",text:"Do you use 7shifts auto-scheduler or templates? If so, how? If not, why?",type:"open"},
+{id:"q30",text:"How strictly do you honor employee availability vs. business need?",type:"open"},
+{id:"q31",text:"How do you handle day-of callouts? What's the escalation process?",type:"open"},
+{id:"q32",text:"Do you track performance metrics that influence scheduling? (Speed, accuracy, feedback, reliability, etc.)",type:"open"},
+{id:"q33",text:"Are there staff files or notes about individual employees I should learn? Where stored?",type:"open"},
+{id:"q34",text:"What's your labor cost target or percentage? How does it constrain the schedule?",type:"open"}
+]},
+{id:"build_schedule",title:"Phase 3: Schedule creation",sub:"The endgame — autonomous schedule building.",questions:[
+{id:"q35",text:"What level of autonomy do you want? Draft for review, or full publish authority?",type:"open"},
+{id:"q36",text:"Tolerance for experimentation? Can I try configurations you haven't used if the math supports it?",type:"open"},
+{id:"q37",text:"How should I handle conflicts between employee preference and business optimization? What's the tiebreaker?",type:"open"},
+{id:"q38",text:"Factor in employee development? (e.g., newer staff on high-volume shifts to build skill)",type:"open"},
+{id:"q39",text:"How should I handle fairness/equity? (Equal weekends, balanced closing shifts, etc.)",type:"open"},
+{id:"q40",text:"What does 'people-first' mean in concrete scheduling terms? Give a scenario where you'd sacrifice efficiency for a person.",type:"open"},
+{id:"q41",text:"CFA-specific operational requirements that affect the schedule? (Position coverage, training shifts, leadership coverage, etc.)",type:"open"},
+{id:"q42",text:"Any franchise or corporate rules that govern scheduling practices?",type:"open"},
+{id:"q43",text:"What happens after the schedule is built? Who reviews it? Feedback loop?",type:"open"},
+{id:"q44",text:"Biggest scheduling pain point right now? The one thing that would change your week if solved?",type:"open"}
+]},
+{id:"technical",title:"Phase 4: Technical setup",sub:"How this runs day-to-day.",questions:[
+{id:"q45",text:"What browser do you use 7shifts in?",type:"open"},
+{id:"q46",text:"Do you use the 7shifts mobile app? For what specifically?",type:"open"},
+{id:"q47",text:"What printer for schedules? (Model, connection type — WiFi, USB, AirPrint?)",type:"open"},
+{id:"q48",text:"Open to browser automation (Claude in Chrome), or advisory-only at first?",type:"open"},
+{id:"q49",text:"Where should I store schedule artifacts, staff notes, analysis? (RileyFile? Google Drive? Elsewhere?)",type:"open"},
+{id:"q50",text:"How should daily roster briefings be delivered? (Chat message, printable doc, notification, other?)",type:"open"},
+{id:"q51",text:"Timeline — when do you need Phase 1 (daily roster) operational?",type:"open"},
+{id:"q52",text:"Anything else about your scheduling world I haven't asked but should know?",type:"open"}
+]}
+];
+
+let answers={};
+let cur=0;
+const totalQ=S.reduce((a,s)=>a+s.questions.length,0);
+
+// Load saved answers
+try{const saved=localStorage.getItem('7s_answers');if(saved)answers=JSON.parse(saved)}catch(e){}
+
+function save(){try{localStorage.setItem('7s_answers',JSON.stringify(answers))}catch(e){}}
+
+function countAnswered(){return Object.values(answers).filter(v=>v&&v.trim()).length}
+
+function render(){
+const answered=countAnswered();
+const pct=Math.round((answered/totalQ)*100);
+document.getElementById('pCount').textContent=answered+' of '+totalQ;
+document.getElementById('pPct').textContent=pct+'%';
+document.getElementById('pBar').style.width=pct+'%';
+
+// Tabs
+let tabsHtml='';
+S.forEach((s,i)=>{
+const sA=s.questions.filter(q=>answers[q.id]&&answers[q.id].trim()).length;
+tabsHtml+='<div class="tab'+(i===cur?' active':'')+'" onclick="go('+i+')">P'+i+'<span class="count">'+sA+'/'+s.questions.length+'</span></div>';
+});
+document.getElementById('tabs').innerHTML=tabsHtml;
+
+// Section head
+const sec=S[cur];
+document.getElementById('sectionHead').innerHTML='<h2>'+sec.title+'</h2><p>'+sec.sub+'</p>';
+
+// Questions
+let qHtml='';
+sec.questions.forEach((q,i)=>{
+const val=answers[q.id]||'';
+const done=val.trim().length>0;
+const globalIdx=S.slice(0,cur).reduce((a,s)=>a+s.questions.length,0)+i+1;
+qHtml+='<div class="question'+(done?' answered':'')+'">';
+qHtml+='<div class="q-head">';
+qHtml+='<span class="q-num">'+globalIdx+'</span>';
+qHtml+='<span class="q-text">'+q.text+'</span>';
+qHtml+='<span class="q-status '+(done?'done':'pending')+'">'+(done?'done':'—')+'</span>';
+qHtml+='</div>';
+if(q.type==='confirm'){
+qHtml+='<div class="btn-row">';
+qHtml+='<div class="btn-choice'+(val==='confirmed'?' selected-yes':'')+'" onclick="ans(\''+q.id+'\',\'confirmed\')">Yes, confirmed</div>';
+qHtml+='<div class="btn-choice'+(val==='needs update'?' selected-no':'')+'" onclick="ans(\''+q.id+'\',\'needs update\')">Needs update</div>';
+qHtml+='</div>';
+}else{
+qHtml+='<textarea id="ta_'+q.id+'" placeholder="Your answer..." oninput="typ(\''+q.id+'\',this.value)">'+val.replace(/</g,'&lt;')+'</textarea>';
+}
+qHtml+='</div>';
+});
+document.getElementById('questions').innerHTML=qHtml;
+
+// Nav
+let navHtml='';
+if(cur>0)navHtml+='<div class="nav-btn" onclick="go('+(cur-1)+')">Previous</div>';
+else navHtml+='<div></div>';
+if(cur<S.length-1)navHtml+='<div class="nav-btn primary" onclick="go('+(cur+1)+')">Next phase</div>';
+else navHtml+='<div class="nav-btn submit" onclick="copyAll()">Copy all answers</div>';
+document.getElementById('nav').innerHTML=navHtml;
+}
+
+function go(i){cur=i;render();window.scrollTo(0,0)}
+function ans(id,val){answers[id]=val;save();render()}
+function typ(id,val){answers[id]=val;save();
+const q=document.querySelector('#ta_'+id);
+if(q)q.closest('.question').classList.toggle('answered',val.trim().length>0);
+const statusEl=q.closest('.question').querySelector('.q-status');
+if(val.trim()){statusEl.className='q-status done';statusEl.textContent='done'}
+else{statusEl.className='q-status pending';statusEl.textContent='—'}
+// Update counts without full re-render
+const answered=countAnswered();
+const pct=Math.round((answered/totalQ)*100);
+document.getElementById('pCount').textContent=answered+' of '+totalQ;
+document.getElementById('pPct').textContent=pct+'%';
+document.getElementById('pBar').style.width=pct+'%';
+}
+
+function copyAll(){
+let out="Here are my answers to the 7shifts planning questionnaire:\n\n";
+S.forEach(s=>{
+out+="## "+s.title+"\n";
+s.questions.forEach((q,i)=>{
+const val=answers[q.id]||'(skipped)';
+out+="Q"+(i+1)+". "+q.text+"\n→ "+val+"\n\n";
+});
+});
+navigator.clipboard.writeText(out).then(()=>{
+const t=document.getElementById('toast');t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),2000);
+}).catch(()=>{
+const ta=document.createElement('textarea');ta.value=out;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+const t=document.getElementById('toast');t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),2000);
+});
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Explainer: The $56K AI Lesson</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .video-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+        
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.3s linear;
+        }
+        
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 24px;
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .control-btn.primary {
+            background: #3b82f6;
+        }
+        
+        .control-btn.primary:hover {
+            background: #2563eb;
+        }
+        
+        .time-display {
+            color: #737373;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            font-family: 'SF Mono', monospace;
+        }
+        
+        /* Slide base */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Avatar section */
+        .avatar-section {
+            position: fixed;
+            bottom: 100px;
+            right: 40px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border: 3px solid rgba(59, 130, 246, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .avatar-icon {
+            font-size: 80px;
+            opacity: 0.9;
+        }
+        
+        .avatar-speaking {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+        }
+        
+        .speaking-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            animation: speaking 0.6s infinite alternate;
+        }
+        
+        .speaking-dot:nth-child(2) { animation-delay: 0.2s; }
+        .speaking-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes speaking {
+            from { transform: scaleY(1); opacity: 0.5; }
+            to { transform: scaleY(2); opacity: 1; }
+        }
+        
+        .paused .speaking-dot {
+            animation-play-state: paused;
+        }
+        
+        /* Typography */
+        .slide-label {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #525252;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .slide-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+        }
+        
+        .big-number {
+            font-size: 12rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 0%, #737373 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: numberPop 0.6s ease-out;
+        }
+        
+        @keyframes numberPop {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .headline {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-align: center;
+            max-width: 900px;
+            letter-spacing: -0.03em;
+        }
+        
+        .subhead {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 700px;
+        }
+        
+        .script-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 800px;
+            text-align: center;
+            color: #d4d4d4;
+        }
+        
+        .script-text .highlight {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(59,130,246,0.2) 0%, rgba(139,92,246,0.2) 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        /* Visual elements */
+        .diagram {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .diagram-box {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 16px;
+            padding: 30px 40px;
+            text-align: center;
+            min-width: 180px;
+        }
+        
+        .diagram-box.bad {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.1);
+        }
+        
+        .diagram-box.good {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+        
+        .diagram-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .diagram-box p {
+            font-size: 0.9rem;
+            color: #737373;
+        }
+        
+        .diagram-arrow {
+            font-size: 2rem;
+            color: #525252;
+        }
+        
+        .wall-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .wall {
+            width: 20px;
+            height: 150px;
+            background: repeating-linear-gradient(
+                0deg,
+                #dc2626 0px,
+                #dc2626 20px,
+                #7f1d1d 20px,
+                #7f1d1d 40px
+            );
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+        }
+        
+        .entity {
+            text-align: center;
+        }
+        
+        .entity-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+        
+        .entity-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        
+        /* Question cards */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+        
+        .question-card {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.4s ease forwards;
+        }
+        
+        .question-card:nth-child(1) { animation-delay: 0.1s; }
+        .question-card:nth-child(2) { animation-delay: 0.2s; }
+        .question-card:nth-child(3) { animation-delay: 0.3s; }
+        .question-card:nth-child(4) { animation-delay: 0.4s; }
+        .question-card:nth-child(5) { animation-delay: 0.5s; }
+        .question-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-number {
+            width: 32px;
+            height: 32px;
+            background: #262626;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+        
+        .question-card h5 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        
+        .question-card p {
+            font-size: 0.85rem;
+            color: #737373;
+        }
+        
+        /* Stats comparison */
+        .stats-compare {
+            display: flex;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        
+        .stat-block {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+        
+        .stat-value.bad { color: #dc2626; }
+        .stat-value.good { color: #22c55e; }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #737373;
+            margin-top: 8px;
+        }
+        
+        .vs {
+            font-size: 1.5rem;
+            color: #525252;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Intro slide special */
+        .intro-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+        }
+        
+        .source-badge {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #737373;
+        }
+        
+        /* Outro */
+        .outro-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .credit-line {
+            font-size: 0.9rem;
+            color: #525252;
+        }
+        
+        /* Section indicator */
+        .section-indicator {
+            position: fixed;
+            top: 40px;
+            right: 60px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        
+        .section-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            transition: all 0.3s;
+        }
+        
+        .section-dot.active {
+            background: #3b82f6;
+            transform: scale(1.3);
+        }
+        
+        .section-dot.completed {
+            background: #525252;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container" id="presentation">
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <!-- Section indicators -->
+        <div class="section-indicator" id="sectionIndicator">
+            <div class="section-dot" data-section="0"></div>
+            <div class="section-dot" data-section="1"></div>
+            <div class="section-dot" data-section="2"></div>
+            <div class="section-dot" data-section="3"></div>
+            <div class="section-dot" data-section="4"></div>
+            <div class="section-dot" data-section="5"></div>
+            <div class="section-dot" data-section="6"></div>
+            <div class="section-dot" data-section="7"></div>
+        </div>
+        
+        <!-- Avatar -->
+        <div class="avatar-section" id="avatar">
+            <div class="avatar-icon">👩‍💼</div>
+            <div class="avatar-speaking" id="speakingIndicator">
+                <div class="speaking-dot"></div>
+                <div class="speaking-dot"></div>
+                <div class="speaking-dot"></div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 0: Title -->
+        <div class="slide active" data-duration="8">
+            <div class="intro-bg"></div>
+            <div class="slide-label">Your Version • Based on Nate B Jones</div>
+            <div class="source-badge">Original: AI News & Strategy Daily</div>
+            <div class="big-number">$56K</div>
+            <h1 class="headline" style="font-size: 2.5rem; margin-top: 20px;">The AI Lesson Every Manager Needs to Hear</h1>
+            <p class="subhead">Why AI companies are deleting software—and what it means for you</p>
+        </div>
+        
+        <!-- SLIDE 1: Hook -->
+        <div class="slide" data-duration="15">
+            <div class="slide-label">The Hook</div>
+            <p class="script-text">
+                <span class="highlight">Fifty-six thousand dollars.</span> That's how much one of the most AI-forward companies in the world was paying for software they just... <span class="highlight">deleted.</span>
+            </p>
+            <p class="script-text" style="margin-top: 30px;">
+                Not replaced. Deleted. And here's the thing—<br>they're <span class="highlight">faster</span> now. Way faster.
+            </p>
+        </div>
+        
+        <!-- SLIDE 2: The Problem Setup -->
+        <div class="slide" data-duration="18">
+            <div class="slide-label">The Problem</div>
+            <h2 class="headline" style="font-size: 2.8rem;">Why AI "Doesn't Work" for Most People</h2>
+            <div class="diagram">
+                <div class="diagram-box">
+                    <h4>Chat Mode</h4>
+                    <p>Ask questions<br>Get answers</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box" style="opacity: 0.4;">
+                    <h4>Agent Mode</h4>
+                    <p>Delegate work<br>AI executes</p>
+                </div>
+            </div>
+            <p class="subhead" style="margin-top: 30px;">Most people are stuck in chat mode because AI can't <em>see</em> their work.</p>
+        </div>
+        
+        <!-- SLIDE 3: Hidden State Concept -->
+        <div class="slide" data-duration="20">
+            <div class="slide-label">The Insight</div>
+            <h2 class="headline" style="font-size: 2.5rem;">Every Click Creates "Hidden State"</h2>
+            <p class="script-text" style="margin-top: 20px;">
+                You click to get to the schedule.<br>
+                You click to approve something.<br>
+                You click to see the inventory.
+            </p>
+            <p class="script-text" style="margin-top: 30px; color: #dc2626;">
+                All that clicking creates information that<br><span class="highlight" style="background: rgba(220,38,38,0.2);">AI can't see or touch.</span>
+            </p>
+        </div>
+        
+        <!-- SLIDE 4: The Wall Visual -->
+        <div class="slide" data-duration="15">
+            <div class="slide-label">The Wall</div>
+            <h2 class="headline" style="font-size: 2.2rem;">Software Layers = Walls Between AI and Work</h2>
+            <div class="wall-visual">
+                <div class="entity">
+                    <div class="entity-icon">🤖</div>
+                    <div class="entity-label">AI Agent</div>
+                </div>
+                <div class="wall"></div>
+                <div class="entity">
+                    <div class="entity-icon">📊</div>
+                    <div class="entity-label">Your Work</div>
+                </div>
+            </div>
+            <p class="subhead">CMSs, dashboards, admin portals—all create barriers.</p>
+        </div>
+        
+        <!-- SLIDE 5: Cursor Case Study -->
+        <div class="slide" data-duration="20">
+            <div class="slide-label">The Proof: Cursor</div>
+            <h2 class="headline" style="font-size: 2.2rem;">What Cursor Did</h2>
+            <div class="stats-compare">
+                <div class="stat-block">
+                    <div class="stat-value bad">Weeks</div>
+                    <div class="stat-label">Expected timeline</div>
+                </div>
+                <div class="vs">→</div>
+                <div class="stat-block">
+                    <div class="stat-value good">3 Days</div>
+                    <div class="stat-label">Actual time</div>
+                </div>
+            </div>
+            <p class="subhead" style="margin-top: 30px;">300+ AI-assisted changes. $260 in AI costs. $56K saved annually.</p>
+        </div>
+        
+        <!-- SLIDE 6: The Six Questions -->
+        <div class="slide" data-duration="25">
+            <div class="slide-label">The Framework</div>
+            <h2 class="headline" style="font-size: 2rem;">6 Questions That Make Any Workflow AI-Ready</h2>
+            <div class="questions-grid">
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <h5>Where's the record?</h5>
+                    <p>System of truth</p>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <h5>What changed?</h5>
+                    <p>Before/after state</p>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <h5>Who approves?</h5>
+                    <p>Defined gate</p>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <h5>Did it work?</h5>
+                    <p>Validation check</p>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <h5>Can we undo it?</h5>
+                    <p>Rollback ability</p>
+                </div>
+                <div class="question-card">
+                    <div class="question-number">6</div>
+                    <h5>Who did what?</h5>
+                    <p>Traceability</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SLIDE 7: Your Action -->
+        <div class="slide" data-duration="20">
+            <div class="slide-label">Your Monday Morning Move</div>
+            <h2 class="headline" style="font-size: 2.5rem;">Pick One Workflow</h2>
+            <p class="script-text" style="margin-top: 20px;">
+                Shift scheduling. Inventory checks. Customer follow-ups.
+            </p>
+            <p class="script-text" style="margin-top: 30px;">
+                Ask yourself: <span class="highlight">Where does the work hide?</span>
+            </p>
+            <p class="script-text" style="margin-top: 20px; color: #a0a0a0;">
+                That hidden state is why your AI stays stuck in chat-thread mode.
+            </p>
+        </div>
+        
+        <!-- SLIDE 8: Outro -->
+        <div class="slide" data-duration="15">
+            <div class="slide-label">The Bottom Line</div>
+            <h2 class="headline" style="font-size: 2.8rem;">From Chat Partner<br>to <span style="color: #3b82f6;">Operator</span></h2>
+            <p class="script-text" style="margin-top: 30px;">
+                You don't need to delete your software.<br>
+                You need to notice where work becomes <span class="highlight">invisible.</span>
+            </p>
+            <div class="outro-cta">
+                <p class="credit-line">Based on analysis by Nate B Jones • AI News & Strategy Daily</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" id="prevBtn">← Prev</button>
+        <button class="control-btn primary" id="playPauseBtn">⏸ Pause</button>
+        <button class="control-btn" id="nextBtn">Next →</button>
+        <div class="time-display">
+            <span id="currentSlide">1</span>/<span id="totalSlides">9</span>
+        </div>
+    </div>
+    
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const sectionDots = document.querySelectorAll('.section-dot');
+        const avatar = document.getElementById('avatar');
+        
+        let currentIndex = 0;
+        let isPlaying = true;
+        let slideTimer = null;
+        let progressInterval = null;
+        let slideProgress = 0;
+        
+        totalSlidesEl.textContent = slides.length;
+        
+        function updateSectionIndicator() {
+            sectionDots.forEach((dot, i) => {
+                dot.classList.remove('active', 'completed');
+                if (i === currentIndex) {
+                    dot.classList.add('active');
+                } else if (i < currentIndex) {
+                    dot.classList.add('completed');
+                }
+            });
+        }
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+            currentSlideEl.textContent = index + 1;
+            updateSectionIndicator();
+            slideProgress = 0;
+        }
+        
+        function startSlideTimer() {
+            if (slideTimer) clearTimeout(slideTimer);
+            if (progressInterval) clearInterval(progressInterval);
+            
+            const duration = parseInt(slides[currentIndex].dataset.duration) * 1000;
+            const startTime = Date.now();
+            
+            progressInterval = setInterval(() => {
+                if (!isPlaying) return;
+                const elapsed = Date.now() - startTime;
+                const totalDuration = getTotalDuration();
+                const beforeCurrent = getDurationBefore(currentIndex);
+                const currentProgress = (beforeCurrent * 1000 + elapsed) / (totalDuration * 1000) * 100;
+                progressBar.style.width = Math.min(currentProgress, 100) + '%';
+            }, 50);
+            
+            slideTimer = setTimeout(() => {
+                if (isPlaying && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    showSlide(currentIndex);
+                    startSlideTimer();
+                } else if (currentIndex >= slides.length - 1) {
+                    isPlaying = false;
+                    playPauseBtn.innerHTML = '↺ Replay';
+                    avatar.classList.add('paused');
+                }
+            }, duration);
+        }
+        
+        function getTotalDuration() {
+            let total = 0;
+            slides.forEach(slide => {
+                total += parseInt(slide.dataset.duration);
+            });
+            return total;
+        }
+        
+        function getDurationBefore(index) {
+            let total = 0;
+            for (let i = 0; i < index; i++) {
+                total += parseInt(slides[i].dataset.duration);
+            }
+            return total;
+        }
+        
+        function togglePlayPause() {
+            if (currentIndex >= slides.length - 1 && !isPlaying) {
+                // Replay
+                currentIndex = 0;
+                showSlide(0);
+                progressBar.style.width = '0%';
+                isPlaying = true;
+                playPauseBtn.innerHTML = '⏸ Pause';
+                avatar.classList.remove('paused');
+                startSlideTimer();
+                return;
+            }
+            
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playPauseBtn.innerHTML = '⏸ Pause';
+                avatar.classList.remove('paused');
+                startSlideTimer();
+            } else {
+                playPauseBtn.innerHTML = '▶ Play';
+                avatar.classList.add('paused');
+                if (slideTimer) clearTimeout(slideTimer);
+                if (progressInterval) clearInterval(progressInterval);
+            }
+        }
+        
+        function goNext() {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                showSlide(currentIndex);
+                if (isPlaying) startSlideTimer();
+            }
+        }
+        
+        function goPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSlide(currentIndex);
+                if (isPlaying) startSlideTimer();
+            }
+        }
+        
+        playPauseBtn.addEventListener('click', togglePlayPause);
+        nextBtn.addEventListener('click', goNext);
+        prevBtn.addEventListener('click', goPrev);
+        
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                togglePlayPause();
+            } else if (e.code === 'ArrowRight') {
+                goNext();
+            } else if (e.code === 'ArrowLeft') {
+                goPrev();
+            }
+        });
+        
+        // Click on section dots
+        sectionDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                showSlide(currentIndex);
+                if (isPlaying) startSlideTimer();
+            });
+        });
+        
+        // Start
+        showSlide(0);
+        startSlideTimer();
+    </script>
+</body>
+</html>

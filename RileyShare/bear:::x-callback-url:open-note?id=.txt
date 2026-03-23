@@ -1,0 +1,1 @@
+bear://x-callback-url/open-note?id=

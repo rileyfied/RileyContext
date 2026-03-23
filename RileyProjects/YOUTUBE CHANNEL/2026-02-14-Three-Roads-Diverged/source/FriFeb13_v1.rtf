@@ -1,0 +1,798 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 .AppleColorEmojiUI;}
+{\colortbl;\red255\green255\blue255;\red229\green229\blue229;\red22\green24\blue24;}
+{\*\expandedcolortbl;;\cssrgb\c91765\c91765\c91765;\cssrgb\c11373\c12157\c12549;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 COLD OPEN\
+Friday, February 13th. Usually that date is all about bad luck, horror movies, maybe you just stay in bed to be safe.\
+\
+But if you were watching the AI wire this past Friday, you know it wasn't about bad luck at all. It was an absolute explosion of news.\
+\
+[PAUSE]\
+\
+OpenAI, Anthropic, and Google DeepMind all dropped massive updates within 24 hours. And here's what you need to understand: they aren't all running in the same direction anymore.\
+\
+By the end of this video, you'll know exactly which AI vendor to use for what\'97and how to avoid getting locked into the wrong one.\
+\
+[B-ROLL: Split-screen logos of OpenAI, Anthropic, Google DeepMind]\
+\
+QUICK MAP\
+Here's what we're covering:\
+\
+OpenAI's new speed play with Codex Heavy Lifter and Spark\
+Anthropic's $30 billion raise and the policy trap you need to watch\
+Google DeepMind's pivot to deep reasoning and what "thinking time" actually means\
+[ON-SCREEN TEXT: Speed \'95 Policy \'95 Reasoning]\
+\
+Let's dive in.\
+\
+SEGMENT 1: OpenAI \'96 The Speed Play\
+[CHAPTER: 01:45 OpenAI's Codex Revolution]\
+\
+OpenAI just released GPT 5.3 Codex, and they're calling it the "heavy lifter." But this isn't just a slightly better Python autocomplete.\
+\
+This is what they call agentic coding.\
+\
+[PAUSE]\
+\
+Here's what that actually means. The old AI coding assistants were stateless. You'd highlight a function, say "fix this," and it would spit out a fix. One and done. No memory. No follow-through.\
+\
+[ON-SCREEN TEXT: OLD WAY = Stateless \'95 No Memory \'95 One-Shot Fixes]\
+\
+The new Codex has a loop. It can plan, execute, see an error, and\'97this is the key\'97correct itself without you having to intervene every single time.\
+\
+[SCREEN RECORD: Show IDE with Codex running a multi-step refactor]\
+\
+So instead of "fix this function," you can say: "Refactor this entire directory, update the documentation to match, and write me a migration script for the database."\
+\
+That's a full afternoon for a human developer. Codex can handle it in one go.\
+\
+[BEAT]\
+\
+But they didn't stop there. They also released Codex Spark\'97the sprinter.\
+\
+If the heavy lifter is your bulldozer, Spark is your 100-meter dash. Ultra-fast, low-latency, designed for real-time coding right inside your IDE.\
+\
+Why do you need both?\
+\
+Because of flow state.\
+\
+[LOWER VOICE]\
+\
+If you're just fixing a quick compile error or writing a unit test, you can't wait 10 seconds for the heavy lifter to think about the philosophical implications of your variable names.\
+\
+[SMILE]\
+\
+You need an answer in milliseconds. Spark handles those in a blink.\
+\
+[ON-SCREEN TEXT: Heavy Lifter = Complex Tasks \'95 Spark = Real-Time Speed]\
+\
+But here's the reality check.\
+\
+[PAUSE]\
+\
+OpenAI is aggressively retiring older models. If you built your app on a specific snapshot from six months ago because it was the only one that understood your weird database schema, you're on a ticking clock.\
+\
+What to do next:\
+\
+Run this test plan. Pick 10 real repositories\'97real scripts you've actually shipped. Then run this sequence on both your current model and the new 5.3 Codex:\
+\
+Bug fix\
+Refactor\
+Add tests\
+Update docs\
+[ON-SCREEN TEXT: Test Sequence: Fix \uc0\u8594  Refactor \u8594  Test \u8594  Document]\
+\
+Measure three things:\
+\
+Time to first correct answer (not just "did it work")\
+Number of tool calls (did it look up docs five times or just once?)\
+Does it know when it's confused? (does it ask for help or just hallucinate?)\
+[SCREEN RECORD: Show test dashboard with these metrics]\
+\
+For Spark, test the interactive stuff: Does it get the type fix right the first time? Does it suggest the right import?\
+\
+Bottom line: Speed requires maintenance. You have to be ready to upgrade constantly.\
+\
+[B-ROLL: Calendar with "Model Deprecation" alerts]\
+\
+SEGMENT 2: Anthropic \'96 The Policy Paradox\
+[CHAPTER: 03:50 Anthropic's $30B Raise & Hidden Risk]\
+\
+Anthropic just announced a Series G funding round: $30 billion raised. That pushes their post-money valuation to $380 billion.\
+\
+That's bigger than the GDP of many countries.\
+\
+[PAUSE]\
+\
+A lot of that money is going into hardware\'97GPUs, infrastructure, frontier research. But there's also a massive enterprise push. They're positioning Claude deep into the coding assistant market, trying to beat OpenAI at the integration game.\
+\
+[B-ROLL: Data center footage, server racks]\
+\
+But here's the fault line.\
+\
+There's escalating scrutiny around defense use and military operations. And this isn't just a philosophical debate for Twitter\'97it has real operational consequences for anyone buying these tools.\
+\
+[BEAT]\
+\
+Let me explain.\
+\
+If you're a mid-size software company using Claude for customer support, you might think, "Why do I care about Anthropic's stance on military use? I'm selling widgets, not missiles."\
+\
+You care because it introduces supplier risk.\
+\
+[ON-SCREEN TEXT: Supplier Risk = Policy Constraints + Public Controversy]\
+\
+Usually when we think of risk, we think: Is the server down? Did they raise the price?\
+\
+Now risk includes policy constraints and public controversy.\
+\
+If the political wind blows a certain way, or if the policy team at the vendor decides to tighten the screws to avoid controversy, your totally harmless use case might get caught in the crossfire.\
+\
+Or worse\'97the vendor might overcorrect.\
+\
+[PAUSE]\
+\
+Here's your procurement checklist:\
+\
+Confirm if the vendor restricts specific use cases at the model policy layer.\
+\
+Does the model deem certain queries "safety critical" and just refuse to answer?\
+Know who signs off when a use case shifts.\
+\
+If your customer support bot suddenly needs to handle a crisis, does the model block it?\
+Ask for audit artifacts.\
+\
+Do you have a retention window for safety refusals?\
+Can we review why the model said no?\
+[SCREEN RECORD: Show API documentation with policy sections highlighted]\
+\
+Bottom line: You're not just buying technology anymore. You're buying into a philosophy. And if that philosophy shifts, your product breaks.\
+\
+[ON-SCREEN TEXT: Policy = Operations]\
+\
+SEGMENT 3: Google DeepMind \'96 The Reasoning Pivot\
+[CHAPTER: 05:40 Google's Deep Think Initiative]\
+\
+While OpenAI is sprinting with Codex and Anthropic is scaling with capital, Google seems to be doing something\'85 *deep*ly different.\
+\
+[SMILE]\
+\
+They're launching Deep Think\'97an initiative around Gemini 3 that's anchored entirely on frontier reasoning, specifically in science and math.\
+\
+Less "write me a poem about my cat."\
+\
+More "solve this unsolved theorem."\
+\
+[ON-SCREEN TEXT: Chat War \uc0\u8594  Reasoning War]\
+\
+They're emphasizing expert-graded evaluation. The goal isn't just generating plausible-sounding text\'97it's solving difficult, multi-step problems correctly.\
+\
+[PAUSE]\
+\
+This is where the market is splitting for real.\
+\
+On one side, you have fast general AI\'97your chat, your customer service, your smart replies.\
+\
+On the other, you have deliberate reasoning AI that actually takes its time to think.\
+\
+[B-ROLL: Split-screen comparison\'97chatbot vs. scientific diagram]\
+\
+And here's the wild part: you're going to start seeing inference time compute controls.\
+\
+Basically, you as the developer will get to control how long the AI thinks before it gives you an answer.\
+\
+[BEAT]\
+\
+So you can say, "Hey, don't rush this one. Take 30 seconds. Burn more compute, but get me the right answer."\
+\
+It's like hiring a consultant versus asking a friend for advice. Sometimes you want the quick take. Sometimes you're willing to pay for the month-long study.\
+\
+[ON-SCREEN TEXT: Quick Take vs. Month-Long Study]\
+\
+Google is betting that the high-value market\'97the really expensive contracts\'97are in that month-long study area. Deep reasoning for pharmaceutical R&D, material science, complex engineering.\
+\
+What to do next:\
+\
+If you have hard, complex problems, go retest your reasoning use cases with these new thinking paradigms. Don't just assume faster is better.\
+\
+[SCREEN RECORD: Show Gemini 3 interface with "thinking time" slider]\
+\
+WATCH LIST (Closing Segment)\
+[CHAPTER: 07:10 What to Monitor Next]\
+\
+Alright, let's step back and look at the whole board.\
+\
+We have:\
+\
+OpenAI pushing the speed of coding agents\
+Anthropic securing massive capital but facing a defense policy paradox\
+Google trying to own the brain of the operation with deep reasoning\
+When you put these three things together, the ecosystem looks expensive\'97and it looks like a trap.\
+\
+[PAUSE]\
+\
+Here's the trap: As these tools get better, as they integrate deeper into your IDE, it becomes incredibly hard to switch.\
+\
+If your entire dev workflow relies on specific tool schemas, specific agent behaviors, and specific thinking patterns from just one vendor, migrating is not just changing an API key.\
+\
+The prompt is the code. And prompts don't port perfectly between models.\
+\
+[ON-SCREEN TEXT: Vendor Lock-In = Prompt Lock-In]\
+\
+Here's how to avoid the wedge:\
+\
+Keep your internal integration layer thin. Don't hard-code your logic to one vendor's specific agent structure. Build an abstraction layer. Treat the AI as a swappable component.\
+\
+[SCREEN RECORD: Show code architecture diagram with abstraction layer]\
+\
+Three things to monitor:\
+\
+OpenAI deprecation schedules \'96 Don't get caught using a ghost model.\
+Anthropic policy updates \'96 Know your escalation path if safety tuning breaks your workflow.\
+Google's thinking tier pricing \'96 Watch how inference time compute gets billed.\
+[ON-SCREEN TEXT: Monitor: Deprecation \'95 Policy \'95 Pricing]\
+\
+CLOSE\
+Here's the final thought I want to leave you with.\
+\
+Policy is now operations.\
+\
+[PAUSE]\
+\
+A change in a vendor's safety policy can break your product just as easily as a server outage. If the model decides your query is unsafe because the definition of "unsafe" shifted overnight, your service goes down. Period.\
+\
+So we have to stop treating policy like legal fine print and start treating it like uptime. It needs monitoring, it needs redundancy, and it needs a disaster recovery plan.\
+\
+[BEAT]\
+\
+Your Monday morning mission:\
+\
+Audit your deprecation exposure with OpenAI.\
+Pull out those Anthropic contracts and check the language on restricted use.\
+Retest your reasoning use cases with Google's new thinking paradigms.\
+Don't just read the headlines. Test the code.\
+\
+Being well-informed isn't just about knowing what happened\'97it's about seeing the patterns before they run you over.\
+\
+[PAUSE]\
+\
+If you're a frontline ops manager dealing with AI vendor chaos, drop a comment below and tell me: What's your biggest workflow headache right now? I read every single one.\
+\
+And if this helped you make sense of the AI arms race, hit subscribe. We're doing this every week.\
+\
+Thanks for watching. Stay curious.\
+\
+[B-ROLL: Fade to end screen with subscribe button]\
+\
+DELIVERABLE 2: TELEPROMPTER CUT\
+AI Showdown: OpenAI, Anthropic & Google Split the Market\
+Friday, February 13th.\
+Usually that date is all about bad luck.\
+Horror movies.\
+Maybe you just stay in bed to be safe.\
+\
+But if you were watching the AI wire this past Friday,\
+you know it wasn't about bad luck at all.\
+It was an absolute explosion of news.\
+\
+OpenAI, Anthropic, and Google DeepMind\
+all dropped massive updates within 24 hours.\
+\
+And here's what you need to understand:\
+they aren't all running in the same direction anymore.\
+\
+By the end of this video,\
+you'll know exactly which AI vendor to use for what\'97\
+and how to avoid getting locked into the wrong one.\
+\
+Here's what we're covering:\
+\
+OpenAI's new speed play with Codex Heavy Lifter and Spark.\
+Anthropic's $30 billion raise\
+and the policy trap you need to watch.\
+Google DeepMind's pivot to deep reasoning\
+and what "thinking time" actually means.\
+\
+Let's dive in.\
+\
+SEGMENT 1: OpenAI \'96 The Speed Play\
+\
+OpenAI just released GPT 5.3 Codex.\
+They're calling it the "heavy lifter."\
+But this isn't just a slightly better Python autocomplete.\
+\
+This is what they call agentic coding.\
+\
+Here's what that actually means.\
+The old AI coding assistants were stateless.\
+You'd highlight a function, say "fix this,"\
+and it would spit out a fix.\
+One and done.\
+No memory.\
+No follow-through.\
+\
+The new Codex has a loop.\
+It can plan, execute, see an error,\
+and\'97this is the key\'97\
+correct itself\
+without you having to intervene every single time.\
+\
+So instead of "fix this function,"\
+you can say:\
+"Refactor this entire directory,\
+update the documentation to match,\
+and write me a migration script for the database."\
+\
+That's a full afternoon for a human developer.\
+Codex can handle it in one go.\
+\
+But they didn't stop there.\
+They also released Codex Spark\'97the sprinter.\
+\
+If the heavy lifter is your bulldozer,\
+Spark is your 100-meter dash.\
+Ultra-fast, low-latency,\
+designed for real-time coding right inside your IDE.\
+\
+Why do you need both?\
+\
+Because of flow state.\
+\
+If you're just fixing a quick compile error\
+or writing a unit test,\
+you can't wait 10 seconds\
+for the heavy lifter to think about\
+the philosophical implications of your variable names.\
+\
+You need an answer in milliseconds.\
+Spark handles those in a blink.\
+\
+But here's the reality check.\
+\
+OpenAI is aggressively retiring older models.\
+If you built your app on a specific snapshot\
+from six months ago\
+because it was the only one\
+that understood your weird database schema,\
+you're on a ticking clock.\
+\
+What to do next:\
+\
+Run this test plan.\
+Pick 10 real repositories\'97\
+real scripts you've actually shipped.\
+Then run this sequence\
+on both your current model\
+and the new 5.3 Codex:\
+\
+Bug fix.\
+Refactor.\
+Add tests.\
+Update docs.\
+\
+Measure three things:\
+\
+Time to first correct answer.\
+Not just "did it work."\
+\
+Number of tool calls.\
+Did it look up docs five times or just once?\
+\
+Does it know when it's confused?\
+Does it ask for help or just hallucinate?\
+\
+For Spark, test the interactive stuff:\
+Does it get the type fix right the first time?\
+Does it suggest the right import?\
+\
+Bottom line:\
+Speed requires maintenance.\
+You have to be ready to upgrade constantly.\
+\
+SEGMENT 2: Anthropic \'96 The Policy Paradox\
+\
+Anthropic just announced a Series G funding round:\
+$30 billion raised.\
+That pushes their post-money valuation\
+to $380 billion.\
+\
+That's bigger than the GDP of many countries.\
+\
+A lot of that money is going into hardware\'97\
+GPUs, infrastructure, frontier research.\
+But there's also a massive enterprise push.\
+They're positioning Claude deep into the coding assistant market,\
+trying to beat OpenAI at the integration game.\
+\
+But here's the fault line.\
+\
+There's escalating scrutiny\
+around defense use and military operations.\
+And this isn't just a philosophical debate for Twitter\'97\
+it has real operational consequences\
+for anyone buying these tools.\
+\
+Let me explain.\
+\
+If you're a mid-size software company\
+using Claude for customer support,\
+you might think,\
+"Why do I care about Anthropic's stance on military use?\
+I'm selling widgets, not missiles."\
+\
+You care because it introduces supplier risk.\
+\
+Usually when we think of risk, we think:\
+Is the server down?\
+Did they raise the price?\
+\
+Now risk includes policy constraints\
+and public controversy.\
+\
+If the political wind blows a certain way,\
+or if the policy team at the vendor\
+decides to tighten the screws to avoid controversy,\
+your totally harmless use case\
+might get caught in the crossfire.\
+\
+Or worse\'97the vendor might overcorrect.\
+\
+Here's your procurement checklist:\
+\
+One.\
+Confirm if the vendor restricts specific use cases\
+at the model policy layer.\
+Does the model deem certain queries "safety critical"\
+and just refuse to answer?\
+\
+Two.\
+Know who signs off when a use case shifts.\
+If your customer support bot\
+suddenly needs to handle a crisis,\
+does the model block it?\
+\
+Three.\
+Ask for audit artifacts.\
+Do you have a retention window for safety refusals?\
+Can we review why the model said no?\
+\
+Bottom line:\
+You're not just buying technology anymore.\
+You're buying into a philosophy.\
+And if that philosophy shifts,\
+your product breaks.\
+\
+SEGMENT 3: Google DeepMind \'96 The Reasoning Pivot\
+\
+While OpenAI is sprinting with Codex\
+and Anthropic is scaling with capital,\
+Google seems to be doing something\'85\
+deeply different.\
+\
+They're launching Deep Think\'97\
+an initiative around Gemini 3\
+that's anchored entirely on frontier reasoning,\
+specifically in science and math.\
+\
+Less "write me a poem about my cat."\
+More "solve this unsolved theorem."\
+\
+They're emphasizing expert-graded evaluation.\
+The goal isn't just generating plausible-sounding text\'97\
+it's solving difficult, multi-step problems\
+correctly.\
+\
+This is where the market is splitting for real.\
+\
+On one side, you have fast general AI\'97\
+your chat, your customer service, your smart replies.\
+\
+On the other, you have deliberate reasoning AI\
+that actually takes its time to think.\
+\
+And here's the wild part:\
+you're going to start seeing\
+inference time compute controls.\
+\
+Basically, you as the developer\
+will get to control how long the AI thinks\
+before it gives you an answer.\
+\
+So you can say,\
+"Hey, don't rush this one.\
+Take 30 seconds.\
+Burn more compute,\
+but get me the right answer."\
+\
+It's like hiring a consultant\
+versus asking a friend for advice.\
+Sometimes you want the quick take.\
+Sometimes you're willing to pay\
+for the month-long study.\
+\
+Google is betting that the high-value market\'97\
+the really expensive contracts\'97\
+are in that month-long study area.\
+Deep reasoning for pharmaceutical R&D,\
+material science,\
+complex engineering.\
+\
+What to do next:\
+\
+If you have hard, complex problems,\
+go retest your reasoning use cases\
+with these new thinking paradigms.\
+Don't just assume faster is better.\
+\
+WATCH LIST\
+\
+Alright, let's step back\
+and look at the whole board.\
+\
+We have:\
+OpenAI pushing the speed of coding agents.\
+Anthropic securing massive capital\
+but facing a defense policy paradox.\
+Google trying to own the brain of the operation\
+with deep reasoning.\
+\
+When you put these three things together,\
+the ecosystem looks expensive\'97\
+and it looks like a trap.\
+\
+Here's the trap:\
+As these tools get better,\
+as they integrate deeper into your IDE,\
+it becomes incredibly hard to switch.\
+\
+If your entire dev workflow relies on\
+specific tool schemas,\
+specific agent behaviors,\
+and specific thinking patterns from just one vendor,\
+migrating is not just changing an API key.\
+\
+The prompt is the code.\
+And prompts don't port perfectly between models.\
+\
+Here's how to avoid the wedge:\
+\
+Keep your internal integration layer thin.\
+Don't hard-code your logic\
+to one vendor's specific agent structure.\
+Build an abstraction layer.\
+Treat the AI as a swappable component.\
+\
+Three things to monitor:\
+\
+One.\
+OpenAI deprecation schedules\'97\
+Don't get caught using a ghost model.\
+\
+Two.\
+Anthropic policy updates\'97\
+Know your escalation path\
+if safety tuning breaks your workflow.\
+\
+Three.\
+Google's thinking tier pricing\'97\
+Watch how inference time compute gets billed.\
+\
+CLOSE\
+\
+Here's the final thought\
+I want to leave you with.\
+\
+Policy is now operations.\
+\
+A change in a vendor's safety policy\
+can break your product\
+just as easily as a server outage.\
+If the model decides your query is unsafe\
+because the definition of "unsafe" shifted overnight,\
+your service goes down.\
+Period.\
+\
+So we have to stop treating policy\
+like legal fine print\
+and start treating it like uptime.\
+It needs monitoring,\
+it needs redundancy,\
+and it needs a disaster recovery plan.\
+\
+Your Monday morning mission:\
+\
+One.\
+Audit your deprecation exposure with OpenAI.\
+\
+Two.\
+Pull out those Anthropic contracts\
+and check the language on restricted use.\
+\
+Three.\
+Retest your reasoning use cases\
+with Google's new thinking paradigms.\
+\
+Don't just read the headlines.\
+Test the code.\
+\
+Being well-informed\
+isn't just about knowing what happened\'97\
+it's about seeing the patterns\
+before they run you over.\
+\
+If you're a frontline ops manager\
+dealing with AI vendor chaos,\
+drop a comment below and tell me:\
+What's your biggest workflow headache right now?\
+I read every single one.\
+\
+And if this helped you make sense of the AI arms race,\
+hit subscribe.\
+We're doing this every week.\
+\
+Thanks for watching.\
+Stay curious.\
+\
+DELIVERABLE 3: CHAPTERS + VISUAL PLAN\
+Chapter Timestamps\
+Time	Chapter Title\
+00:00	Cold Open: Friday the 13th AI Explosion\
+00:45	Quick Map: Speed, Policy, Reasoning\
+01:45	OpenAI's Codex Revolution\
+03:50	Anthropic's $30B Raise & Hidden Risk\
+05:40	Google's Deep Think Initiative\
+07:10	What to Monitor Next\
+08:20	Close & CTA\
+Shot List (A-Roll / B-Roll / Screen-Record)\
+Cold Open (00:00\'9600:45)\
+A-ROLL: Direct to camera, energetic delivery\
+B-ROLL: Split-screen logos of OpenAI, Anthropic, Google DeepMind with animated "explosion" effect\
+ON-SCREEN TEXT: "Friday, February 13th" \uc0\u8594  "3 Giants. 24 Hours. 1 Market Split."\
+Quick Map (00:45\'9601:45)\
+A-ROLL: Direct to camera\
+ON-SCREEN TEXT: Animated bullets:\
+Speed (OpenAI logo)\
+Policy (Anthropic logo)\
+Reasoning (Google logo)\
+Segment 1: OpenAI (01:45\'9603:50)\
+A-ROLL: Direct to camera\
+B-ROLL:\
+Code editor with AI autocomplete in action\
+Split-screen comparison: "Old AI" vs. "New Codex"\
+Animation showing "agentic loop" (plan \uc0\u8594  execute \u8594  error \u8594  correct)\
+SCREEN RECORD:\
+Show Codex running multi-step refactor in VS Code\
+Show Spark handling real-time type fixes\
+Show test dashboard with metrics (time to first correct, tool calls, confusion detection)\
+ON-SCREEN TEXT:\
+"OLD WAY = Stateless \'95 No Memory \'95 One-Shot Fixes"\
+"Heavy Lifter = Complex Tasks \'95 Spark = Real-Time Speed"\
+"Test Sequence: Fix \uc0\u8594  Refactor \u8594  Test \u8594  Document"\
+iPhone/Mac Visual Plan:\
+Record iPhone screen showing Codex mobile app (if available) or Mac screen with IDE integration\
+Segment 2: Anthropic (03:50\'9605:40)\
+A-ROLL: Direct to camera, serious tone\
+B-ROLL:\
+Data center footage, server racks\
+Animation showing "$30B" \uc0\u8594  "$380B valuation"\
+Graphic showing "Supplier Risk" flowchart\
+SCREEN RECORD:\
+Show Anthropic API documentation with policy sections highlighted\
+Show example of safety refusal log\
+ON-SCREEN TEXT:\
+"Supplier Risk = Policy Constraints + Public Controversy"\
+"Policy = Operations"\
+iPhone/Mac Visual Plan:\
+Mac screen showing Claude interface with policy documentation open\
+Segment 3: Google (05:40\'9607:10)\
+A-ROLL: Direct to camera\
+B-ROLL:\
+Split-screen: chatbot interface vs. scientific diagram/theorem\
+Animation showing "thinking time" slider\
+Graphic: "Quick Take vs. Month-Long Study"\
+SCREEN RECORD:\
+Show Gemini 3 interface with "thinking time" control\
+Show example of deep reasoning output (math/science problem)\
+ON-SCREEN TEXT:\
+"Chat War \uc0\u8594  Reasoning War"\
+"Quick Take vs. Month-Long Study"\
+iPhone/Mac Visual Plan:\
+Mac screen showing Gemini interface with inference time controls\
+Watch List (07:10\'9608:20)\
+A-ROLL: Direct to camera\
+B-ROLL:\
+Code architecture diagram showing abstraction layer\
+Calendar with "Model Deprecation" alerts\
+Graphic showing "Vendor Lock-In = Prompt Lock-In"\
+SCREEN RECORD:\
+Show code example of abstraction layer pattern\
+ON-SCREEN TEXT:\
+"Vendor Lock-In = Prompt Lock-In"\
+"Monitor: Deprecation \'95 Policy \'95 Pricing"\
+Close (08:20\'9609:00)\
+A-ROLL: Direct to camera, thoughtful delivery\
+B-ROLL: Fade to end screen with subscribe button and comment prompt\
+ON-SCREEN TEXT: "What's your biggest AI workflow headache?"\
+DELIVERABLE 4: PACKAGING\
+Title Options\
+AI Showdown: OpenAI, Anthropic & Google Just Split the Market (Primary recommendation)\
+The AI Arms Race Explained: Speed vs. Policy vs. Reasoning\
+OpenAI vs. Anthropic vs. Google: Which AI Should You Actually Use?\
+Friday the 13th AI Explosion: What Ops Managers Need to Know\
+AI Vendor Lock-In Is Here (And How to Avoid It)\
+Description Draft\
+Friday, February 13th wasn't unlucky\'97it was the day OpenAI, Anthropic, and Google DeepMind all dropped massive AI updates within 24 hours. And the market just split into three distinct directions.\
+\
+In this video, I break down:\
+\'95 OpenAI's speed play \'96 GPT 5.3 Codex (Heavy Lifter + Spark) and the deprecation trap you need to avoid\
+\'95 Anthropic's $30B raise \'96 Why their defense policy paradox creates real supplier risk for enterprise users\
+\'95 Google's reasoning pivot \'96 Deep Think, Gemini 3, and what "thinking time" means for your workflows\
+\
+Key takeaways for ops managers:\
+
+\f1 \uc0\u9989 
+\f0  How to test new AI models without breaking your production systems\
+
+\f1 \uc0\u9989 
+\f0  The procurement checklist for avoiding policy-based downtime\
+
+\f1 \uc0\u9989 
+\f0  Why vendor lock-in is now "prompt lock-in" (and how to escape it)\
+\
+Your Monday morning mission:\
+\
+Audit your OpenAI deprecation exposure\
+Check your Anthropic contracts for restricted use language\
+Retest reasoning use cases with Google's new thinking paradigms\
+Drop a comment: What's your biggest AI workflow headache right now? I read every single one.\
+\
+Timestamps:\
+00:00 Cold Open: Friday the 13th AI Explosion\
+00:45 Quick Map: Speed, Policy, Reasoning\
+01:45 OpenAI's Codex Revolution\
+03:50 Anthropic's $30B Raise & Hidden Risk\
+05:40 Google's Deep Think Initiative\
+07:10 What to Monitor Next\
+08:20 Close & CTA\
+\
+Resources mentioned:\
+\'95 OpenAI GPT 5.3 Codex documentation\
+\'95 Anthropic Series G announcement\
+\'95 Google DeepMind Deep Think initiative\
+\
+AI #OpenAI #Anthropic #Google #DeepMind #AIWorkflows #OpsManagers #MachineLearning #TechNews #AITools\
+Tags/Keywords\
+AI news\
+OpenAI Codex\
+Anthropic Claude\
+Google DeepMind\
+AI workflows\
+operations managers\
+AI vendor comparison\
+agentic coding\
+AI policy risk\
+AI reasoning models\
+All deliverables complete! You now have:\
+\
+
+\f1 \uc0\u9989 
+\f0  Full camera-read script with stage directions\
+
+\f1 \uc0\u9989 
+\f0  Teleprompter cut with short lines\
+
+\f1 \uc0\u9989 
+\f0  Chapter timestamps + visual shot list\
+
+\f1 \uc0\u9989 
+\f0  5 title options, description, and 10 tags\
+Ready to shoot! 
+\f1 \uc0\u55356 \u57260 
+\f0 \
+\
+}

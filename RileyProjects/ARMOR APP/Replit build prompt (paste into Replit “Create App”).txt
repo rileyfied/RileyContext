@@ -1,0 +1,209 @@
+Replit build prompt (paste into Replit “Create App”)
+
+Build an offline-first mobile-first web app called “Armor” for Scripture memorization (ESV) with spaced repetition + cloze + recall, plus a separate read-only web reference mode.
+
+Product requirements
+
+No content invention. Verse text is canonical ESV sets A–E. 
+
+ArmorApp_ArmorSetA
+
+Offline-first: app must fully function with no network
+
+No login required to start
+
+Progress never lost: local persistence; export/import backup
+
+No dark patterns: no streak punishment, no leaderboards, no loot boxes, no timers
+
+Calm UX: text-first, low chrome, neutral feedback language
+
+Core loop (locked)
+
+Open app
+
+“Today’s Training” auto-loads
+
+Learn (full verse)
+
+Practice (cloze)
+
+Recall (blank / near-blank)
+
+Feedback
+
+Save state
+
+Exit
+
+Screens
+
+Home: Today’s Training, Review Due, Browse Topics, Progress, Settings
+
+Learn: full verse + optional “listen” placeholder
+
+Practice: cloze progression (word → phrase → line) with limited reveal
+
+Recall: user types; self-rate confidence (easy/ok/hard)
+
+Review: mixed queue, weak-first ordering
+
+Progress: per-set, per-topic, mastery counts
+
+Help: “How it works” (short, contextual)
+
+Settings: backup export/import; reset (safe confirmations)
+
+Memory engine
+
+Verse states: New → Learning → Training → Solid → Strong → Review-only
+
+Promotion: successive success increases state
+
+Demotion: failure drops one state (no hard reset)
+
+Scheduling: deterministic intervals (define table), weak-first queue
+
+Data model (minimum)
+
+Verse: id, set_id, week, reference, text, topics[]
+
+UserVerseState: verse_id, state, last_seen, next_due, strength_score, streak
+
+Session: date, verse_ids[], accuracy, duration
+
+Backup: JSON export of all user state + app version
+
+Implementation constraints
+
+Use TypeScript
+
+Use React with a simple router
+
+Use IndexedDB (preferred) or localStorage (fallback) for persistence
+
+Keep logic in a dedicated module (/src/engine/*)
+
+Seed verse data from local JSON files (/src/data/*.json)
+
+Provide a script or utility to import the initial content JSON
+
+Deliverables
+
+Working app with offline persistence
+
+Seeded verse dataset loader
+
+Scheduling engine module + tests
+
+Export/import backup UI and functionality
+
+Read-only “Reference Mode” route (no progress writes)
+
+Lovable build prompt (paste into Lovable)
+
+Create a production-ready web app called “Armor” with an app-shell UI and offline-first local data storage. The app is for Scripture memorization using spaced repetition + cloze + recall, using canonical ESV verse sets A–E. 
+
+ArmorApp_ArmorSetA
+
+App architecture
+
+Frontend: React + TypeScript
+
+Storage: IndexedDB (Dexie or equivalent)
+
+Routing: client-side routes for screens
+
+Data: local JSON seed files loaded on first run into IndexedDB
+
+No authentication required
+
+Add “Export backup” / “Import backup” in Settings
+
+Pages/routes
+
+/ Home
+
+/learn/:verseId
+
+/practice/:verseId
+
+/recall/:verseId
+
+/review
+
+/browse/topics
+
+/browse/sets
+
+/progress
+
+/help
+
+/settings
+
+/reference (read-only browsing; shareable deep links)
+
+Engine rules (locked)
+
+Core loop: Learn → Practice (cloze) → Recall → Feedback → Save
+
+Mastery states: New, Learning, Training, Solid, Strong, Review-only
+
+Promotion/demotion: gentle, no resets
+
+Deterministic scheduling: define interval table by state; weak-first review queue
+
+Cloze generation
+
+Segment verse text into tokens
+
+Cloze modes:
+
+single-word blanks
+
+phrase blanks (2–4 words)
+
+line blanks (full clause)
+
+Reveal: limited “show next” with counter
+
+UX constraints
+
+Text-first, minimal UI chrome
+
+Neutral feedback language
+
+No gamification pressure features
+
+Accessibility: large tap targets, readable type, proper focus states
+
+Output required from Lovable
+
+A complete working app with all routes
+
+Seed data ingestion on first load
+
+Scheduling engine implemented as a module
+
+Review queue generation
+
+Export/import backup
+
+Basic styling system (consistent typography + spacing)
+
+Clear README describing how to add/replace verse JSON data
+
+Seed-data format (give to Replit/Lovable if they ask)
+
+verses.json array:
+
+{ "id": "A-01", "set": "A", "week": 1, "reference": "Deuteronomy 7:9", "text": "...", "topics": ["..."] }
+
+If you want, I can generate:
+
+verses.json + topics.json schema files
+
+Interval table for the deterministic scheduler
+
+Minimal test cases for promotion/demotion + queue ordering

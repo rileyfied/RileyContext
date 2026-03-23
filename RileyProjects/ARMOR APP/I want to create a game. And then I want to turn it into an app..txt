@@ -1,0 +1,261 @@
+I want to create a game. And then I want to turn it into an app.
+
+You are going to help me brainstorm this game and how to put it together.
+
+Instead of my rambling and giving you a rundown on what the game is about in all different sentences and paragraphs and just going on and on with stuff that you don't need to know or you need to know but not yet, I want you to guide this brainstorm and game creation project. You are going to be the developer and I am the one who is creating the idea. 
+
+Pretend this is our first meeting and ask me questions one at a time.
+Player fills in missing words to complete the Bible passage.
+Multiple (player chooses)
+Player can choose persona/level
+The levels will increase in difficulty across the same verse or passage. It will begin with word bank, then letter tiles, then first letter smart assist, then type exact word (minor typos ok), then the final level is voice input. 
+
+There will be 5 levels per input mechanic, where each level shows fewer words from the passage, and the player must input those missing words, until level 5 where all words are blanks. The most advanced level is Voice Input Level 5, where the player must say the entire verse aloud. 
+topic packs and weekly plan/1 month goal-3 month goal-6 month goal-1 year goal
+Perfect run on Voice L5 puts the verse/passage in "Learned" category. Pop Quizzes at random will test player on Learned verses, Voice L5 only. If the player has a perfect run then the verse/passage is moved to "Mastered" category. If player does not have a perfect run on a pop quiz, the learned verse goes into a "Review" category, where the player can play the game at any mechanism or Level, but must complete Voice L1-L5 again to put the verse back in the "Learned" category.
+back to Q6:
+
+daily load is infinite as long as a verse has been learned.
+
+player can choose custom verse or passage using "Search" (cannot input custom text).
+
+Spaced repetition should follow latest research for memorization.
+
+Q7:
+
+lets start with iOS only. yes offline play required, I think, if it's not too difficult 
+
+let's make this for Claude, is that a good idea? Like Claude artifacts?
+
+
+
+
+KJV and ESV
+Life Issues
+
+Fear & Anxiety
+
+Fellowship & Hospitality
+
+Forgiveness
+
+Friendship
+
+Gratitude
+
+Hope
+
+Joy
+
+Knowing God's Will
+
+Life Together
+
+Money
+
+Persecution
+
+Pornography
+
+Pride & Humility
+
+Retirement
+
+Risk
+
+Sexual Purity
+
+Speech
+
+Spiritual Warfare
+
+Suffering
+
+Suicide
+
+Waiting
+
+Wisdom
+
+Work & Vocation
+
+Spiritual Growth
+
+The Bible
+
+Bible Memory
+
+Bible Reading
+
+Christian Hedonism
+
+Devotional Life
+
+Fasting
+
+Giving
+
+Identity in Christ
+
+Killing Sin
+
+Life of Worship
+
+Prayer
+
+Pursuit of Holiness
+
+Sanctification & Growth
+Anger
+Courage & Boldness
+Death & Dying
+Encouragement
+Fear & Anxiety
+Forgiveness
+Hope
+Joy
+Persecution
+Pride & Humility
+Speech
+Spiritual Warfare
+Suffering
+Waiting
+Wisdom
+Work & Vocation
+FighterVersesSetB.pdf
+PDF
+FighterVersesSetE.pdf
+PDF
+FighterVersesSetA.pdf
+PDF
+FighterVersesSetC.pdf
+PDF
+FighterVersesSetD.pdf
+PDF
+use these verses
+multi verse capped at 40-50 words, 
+autochunk long passages at publisher boundaries, 
+normalize to full verse, 
+pull text from translation use attached text for ESV,
+ignore letter case include punctuation in all levels and all text (player does not have to insert punctuation, it is already there), 
+quote marks em dashes verse numbers shown in game play and player does not have to include these, 
+exact-word only, 
+proper nouns and divine names not counted but auto-caps should be on (ie "lord" will show as Lord or LORD depending on translation)
+no scoring, just level increase
+require 100% correct, hints block advancement
+require perfect run L5, no hints L5
+fail retry same level until pass
+Correction: cannot jump straight to voice on a new verse, must go through all mechanics in order tp move on. BUT once a verse has been learned, player can review in any order.
+
+HOME SCREEN TOP ROW:
+Change "Continue" to "Play"
+
+3 top-row tiles are Play, Review, Settings
+Player choice: prompt a modal 
+show all 3 buttons
+no default selection
+show badge count
+pop quiz length is one previously learned passage or verse
+1 verse/week goal
+unlimited
+1 year plan
+off by default
+all days equal
+what does this mean 
+Levenshtein distance per word ≤1 / ≤2 / adaptive by word length?
+adaptive by word length yes
+
+explain WER
+exact match
+ignore gaps
+allow common homophones
+ref + translation 
+mechanic ladder
+fixed words + blanks inline
+hint, Reveal first letter, skip (it will not advance to the next blank unless player gives correct word or chooses "skip" for that word). after all blanks have been tried, "Check" will appear and user can tap it to reveal the correct answers which will be colored red.
+after check only
+off by default
+match system
+no
+*when all words are filled correctly, a "Submit" button appears
+
+Default ESV
+C
+reference & keyword
+reference only
+Multi-select with "Add to plan"
+tap to start/stop
+instant start
+minimal
+evaluate at end
+whole line autoslice
+allow infinite restarts
+translation, manage packs, pop quiz toggle, data export
+optional
+free
+single profile
+both
+Learned & mastered
+one verse/passage, L5 only, allow restart yes
+offer one retry before moving tomorrow review
+strip all
+treat as spaces
+hyphen optional
+exact
+normalize both ways
+remove
+all non-voice*
+unlimited
+yes both count
+force immediate retry but won't advance (must replay for perfect)
+
+*clarification: the First-Letter Assist mechanic means the player types the first letter and the app completes the blank
+
+WORD BANK
+3x
+from same pack same part of speech
+match verse case
+yes shuffle
+
+LETTER TILES
+per blank letters only
+show exact counts
+snap to blank
+yes backspace/undo
+
+FIRST LETTER ASSIST
+only one word should fit each blank, no need to require second letter if two different blanks start with "a" just advance to the next blank after user types "a"
+auto-advance yes
+
+TYPE
+advance yes
+space confirms word but will not advance unless word is correct
+only after check
+
+*Clarification: the relative size of the blanks should match the size of the word. for example: 
+wisdom  _________
+grace     _______
+the         ____
+at           ___
+a            __
+
+follow the weekly plan
+all
+next due
+none
+send to review/mark learned/reset to new
+open ladder picker
+
+minimal modern: elegant sans/serif mix, subdued gradients, generous whitespace, gentle animations
+Romans 12:1-2 -- ESV
+change the word Cap to 100
+yes
+Armor
+keep last attempt for replay
+all
+always allow switch freely
+always show full catalog
+voice always available
+no injected commentary
+
+write a prompt for Claude artifacts to build this game exactly as we have written it

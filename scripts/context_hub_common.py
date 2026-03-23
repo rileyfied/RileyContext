@@ -273,8 +273,8 @@ def resolve_paths(
     repo_root = Path(__file__).resolve().parents[1]
     icloud_root = Path(f"/Users/{user}/Library/Mobile Documents/com~apple~CloudDocs")
 
-    # Default root: Google Drive (canonical source of truth for all platforms)
-    gdrive_root = Path(f"/Users/{user}/Library/CloudStorage/GoogleDrive-grahamedelweiss@gmail.com/My Drive/RileyContext")
+    # Default root: local dev folder (canonical source of truth)
+    local_root = Path(f"/Users/{user}/dev/RileyContext")
 
     if riley_root is not None:
         selected_root = Path(riley_root).expanduser().resolve()
@@ -282,8 +282,8 @@ def resolve_paths(
         override = os.environ.get("RILEYFILE_ROOT", "").strip()
         if override:
             selected_root = Path(override).expanduser().resolve()
-        elif gdrive_root.exists():
-            selected_root = gdrive_root.resolve()
+        elif local_root.exists():
+            selected_root = local_root.resolve()
         else:
             selected_root = repo_root.resolve()
 

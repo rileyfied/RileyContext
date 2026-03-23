@@ -1,0 +1,3 @@
+I want to create an AI that agent/artifact that specializes in interrogation with specialized decision tree/logic tree/search tree skills so that it can either write the code for, or write an AI prompt that will result in, very specific Artifacts.
+
+#artifacts #agent #skills #askme

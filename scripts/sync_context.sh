@@ -112,8 +112,8 @@ PY
 COMMON_ARGS=(--rileyfile-root "$RILEY_ROOT" --runtime-root "$RUNTIME_ROOT")
 echo "runtime_root=$RUNTIME_ROOT"
 
-# Phone captures now go directly to Google Drive CONTEXT_HUB/captures/inbox/ via Shortcuts.
-# No iCloud pull needed.
+# Phone captures go to local CONTEXT_HUB/captures/inbox/ (canonical root: ~/dev/RileyContext).
+# No cloud sync needed — local-first pipeline.
 
 if [[ "$FULL_INGEST_COMPLETED" != "1" ]]; then
   echo "run_mode=full_baseline"
@@ -146,29 +146,18 @@ else
   fi
 fi
 
-# --- mirror RILEY_CONTEXT.md to GitHub repo ---
-GIT_MIRROR="$HOME/dev/rileyfile"
-if [[ -d "$GIT_MIRROR/.git" && -f "$RILEY_ROOT/RILEY_CONTEXT.md" ]]; then
-  # Only copy if source and dest are different paths
-  REAL_SRC="$(cd "$(dirname "$RILEY_ROOT/RILEY_CONTEXT.md")" && pwd)/RILEY_CONTEXT.md"
-  REAL_DST="$(cd "$(dirname "$GIT_MIRROR/RILEY_CONTEXT.md")" && pwd)/RILEY_CONTEXT.md"
-  if [[ "$REAL_SRC" != "$REAL_DST" ]]; then
-    cp -f "$RILEY_ROOT/RILEY_CONTEXT.md" "$GIT_MIRROR/RILEY_CONTEXT.md"
-    echo "git_mirror_copy=done"
-  fi
-fi
-
+# --- commit & push RILEY_CONTEXT.md to GitHub ---
 if [[ "${SYNC_CONTEXT_SKIP_GIT:-0}" == "1" ]]; then
   echo "Skipping git commit/push (SYNC_CONTEXT_SKIP_GIT=1)"
   exit 0
 fi
 
-if [[ ! -d "$GIT_MIRROR/.git" ]]; then
-  echo "No git mirror at $GIT_MIRROR, skipping commit/push"
+if [[ ! -d "$RILEY_ROOT/.git" ]]; then
+  echo "No git repo at $RILEY_ROOT, skipping commit/push"
   exit 0
 fi
 
-cd "$GIT_MIRROR"
+cd "$RILEY_ROOT"
 
 git add RILEY_CONTEXT.md
 if git diff --cached --quiet -- RILEY_CONTEXT.md; then

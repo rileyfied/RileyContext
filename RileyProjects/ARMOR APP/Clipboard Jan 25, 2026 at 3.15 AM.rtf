@@ -1,0 +1,473 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling1\cocoaplatform1{\fonttbl\f0\fnil\fcharset0 .SFUI-Semibold;\f1\fnil\fcharset0 .SFUI-Regular;\f2\fswiss\fcharset0 Helvetica;
+\f3\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
+{\colortbl;\red255\green255\blue255;\red17\green17\blue17;}
+{\*\expandedcolortbl;;\cssrgb\c6700\c6700\c6700;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 Armor App UI System v1
+\f1\b0\fs42 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Product rules (non-negotiables)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b One-handed
+\f1\b0  primary flows (thumb zone targets)\
+	\'95	
+\f0\b Verse-first
+\f1\b0  hierarchy: reference \uc0\u8594  text \u8594  interaction\
+	\'95	
+\f0\b Fast resume
+\f1\b0 : the app opens to \'93Continue\'94\
+	\'95	
+\f0\b Offline-first
+\f1\b0  for downloaded sets\
+	\'95	
+\f0\b Set structure aligns to \'93Week N \uc0\u8594  Verse(s)\'94 mapping
+\f1\b0   
+\f2\fs24 \cf0 
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 1) Foundations
+\f1\b0\fs42 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Color tokens (semantic, not \'93pretty\'94)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Background
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 bg/primary
+\f1  (dark)\
+	\'95	
+\f3 bg/surface-1
+\f1  (cards)\
+	\'95	
+\f3 bg/surface-2
+\f1  (raised / modal)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Text
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 text/primary
+\f1 \
+	\'95	
+\f3 text/secondary
+\f1 \
+	\'95	
+\f3 text/tertiary
+\f1  (metadata)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Brand accents
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 accent/steel
+\f1  (UI chrome)\
+	\'95	
+\f3 accent/gold
+\f1  (progress, mastery, \'93armor\'94 motif)\
+	\'95	
+\f3 accent/crimson
+\f1  (streak/highlight only)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b System
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 state/success
+\f1 , 
+\f3 state/warn
+\f1 , 
+\f3 state/error
+\f1 , 
+\f3 state/info
+\f1 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Accessibility rule
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	All interactive text and icons must pass contrast against their surface.\
+	\'95	Do not encode meaning by color alone (always pair with icon + label).\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Typography
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Families
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 display
+\f1  (titles / branding)\
+	\'95	
+\f3 text
+\f1  (reading verses, body)\
+	\'95	
+\f3 mono
+\f1  (optional: references, IDs, debug)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Scale (mobile)
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 T1
+\f1  Screen Title\
+	\'95	
+\f3 T2
+\f1  Section Title\
+	\'95	
+\f3 B1
+\f1  Body (verse reading)\
+	\'95	
+\f3 B2
+\f1  Body Secondary\
+	\'95	
+\f3 C1
+\f1  Caption/Meta (reference, set/week labels)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Verse formatting rules
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Reference line in 
+\f3 C1
+\f1  (e.g., \'93Week 1 \'b7 Deuteronomy 7:9\'94)  
+\f2\fs24 \cf0 
+\f1\fs42 \cf2 \
+	\'95	Verse text in 
+\f3 B1
+\f1  with generous line height\
+	\'95	Optional emphasis only via weight/italic; avoid color emphasis inside scripture text\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Spacing + layout tokens
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	8-pt grid\
+	\'95	Touch targets: 44x44 minimum\
+	\'95	Card padding: 16\'9620\
+	\'95	Section spacing: 24\'9632\
+	\'95	Bottom actions pinned for one-handed use\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Motion
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	150\'96250ms standard transitions\
+	\'95	No motion that interrupts recall (no bouncing, no surprise reveals during typing)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 2) Core components (library)
+\f1\b0\fs42 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Navigation
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b Bottom bar
+\f1\b0  (4\'965 tabs)\
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Home\
+	\'95	Practice\
+	\'95	Sets\
+	\'95	Progress\
+	\'95	More (Settings/Help)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f0\b In-flow header
+\f1\b0 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Back + Title\
+	\'95	Secondary action (e.g., \'93Audio\'94, \'93Download\'94, \'93Notes\'94)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Cards
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 SetCard
+\f1 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Set name (A/B/C/D/E), topic tag(s), download status\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 WeekCard
+\f1 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Week number, reference, completion state\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 SessionCard
+\f1 \
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	\'93Continue\'94 + next due items\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Buttons
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 PrimaryButton
+\f1  (single per screen)\
+	\'95	
+\f3 SecondaryButton
+\f1 \
+	\'95	
+\f3 TertiaryButton
+\f1  (text-only)\
+	\'95	
+\f3 IconButton
+\f1 \
+	\'95	States: default / pressed / disabled / loading\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Inputs (practice)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 ClozeField
+\f1  (fill-in blank)\
+	\'95	
+\f3 AnswerField
+\f1  (free recall)\
+	\'95	
+\f3 HintChip
+\f1  (reveal next word, reveal first letter, show reference)\
+	\'95	
+\f3 RevealPanel
+\f1  (shows correct answer after submit)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Progress indicators
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 MasteryRing
+\f1  (per verse)\
+	\'95	
+\f3 StreakPill
+\f1 \
+	\'95	
+\f3 WeeklyBar
+\f1  (Week 1\'9610 etc.)\
+	\'95	
+\f3 DueBadge
+\f1  (count)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Feedback
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 Toast
+\f1  (non-blocking)\
+	\'95	
+\f3 Dialog
+\f1  (rare; destructive actions only)\
+	\'95	
+\f3 InlineError
+\f1  (under input)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 3) Screen templates (wireframe-level)
+\f1\b0\fs42 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Home (Resume)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Header: Greeting + Streak\
+	\'95	Primary: 
+\f0\b Continue
+\f1\b0  (next due)\
+	\'95	\'93Due Today\'94 list\
+	\'95	\'93This Week\'94 (current Week card)\
+	\'95	Quick actions: Download Set, Start New Set, Review Missed\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Sets (Library)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Tabs/filters: Downloaded / All / By topic\
+	\'95	Set cards (A\'96E)\
+	\'95	Each set opens to Weeks list (Week 1\'85N)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Week Detail
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Week header: Week # + passage reference (from set definition)  
+\f2\fs24 \cf0 
+\f1\fs42 \cf2 \
+	\'95	Verse text block (read-only)\
+	\'95	Practice modes:\
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Cloze\
+	\'95	Free recall\
+	\'95	Mixed review\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Controls: Audio, Notes, Bookmark, Share (optional)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Practice Session (Core loop)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Top: reference + session progress (e.g., 3/10)\
+	\'95	Middle: prompt area\
+	\'95	Input + submit\
+	\'95	After submit:\
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Correct/incorrect state\
+	\'95	\'93Show answer\'94 (if incorrect)\
+	\'95	Next\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 Progress
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Set-level completion\
+	\'95	Mastery distribution (new/learning/mastered)\
+	\'95	Streak + consistency\
+	\'95	History (by day)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf2 More / Settings
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Downloads\
+	\'95	Notifications\
+	\'95	Text size\
+	\'95	Practice preferences (hints, strictness)\
+	\'95	Data export/import\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 4) Design tokens (implementation-ready naming)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 color.*
+\f1  (semantic)\
+	\'95	
+\f3 type.*
+\f1  (T1/T2/B1/B2/C1)\
+	\'95	
+\f3 space.*
+\f1  (4,8,12,16,24,32)\
+	\'95	
+\f3 radius.*
+\f1  (8,12,16)\
+	\'95	
+\f3 shadow.*
+\f1  (0,1,2)\
+	\'95	
+\f3 motion.*
+\f1  (fast/standard/slow)\
+	\'95	
+\f3 component.*
+\f1  (button heights, input padding, nav height)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 5) Data-model alignment (UI implications)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Entity mapping\
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f3 Set
+\f1  \uc0\u8594  
+\f3 Week
+\f1  \uc0\u8594  
+\f3 VerseItem
+\f1  (one or multiple verses)\
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	UI labels must match the set docs\'92 \'93Week N\'94 structure  
+\f2\fs24 \cf0 
+\f1\fs42 \cf2 \
+	\'95	If a Week contains multiple verses, the practice UI must support:\
+\pard\tqr\tx500\tx660\li660\fi-660\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	segmented prompts (Verse A / Verse B)\
+	\'95	unified mastery score (optional) or per-verse mastery\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs42 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl250\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs52 \cf2 6) Next build step (to keep momentum)
+\f1\b0\fs42 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl250\slmult1\sb240\partightenfactor0
+\cf2 	\'95	I can generate a 
+\f0\b component checklist
+\f1\b0  (Figma-style inventory) + 
+\f0\b screen-by-screen layout spec
+\f1\b0  (Home, Sets, Week, Practice, Progress) using this system.}

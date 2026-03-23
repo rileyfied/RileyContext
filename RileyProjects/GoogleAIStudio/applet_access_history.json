@@ -1,0 +1,169 @@
+{
+  "applets": [{
+    "lastAccessTime": "2026-02-14T08:08:05.134178Z",
+    "firstAccessTime": "2025-12-03T04:42:07.999103Z",
+    "source": {
+      "drive": {
+        "resourceId": "1_3BdJPkuC0DdzWf2xK_5HpkHBfLECyrI",
+        "revisionId": "0BwGVE8mbj1dqK1VuTHF4SmJCZDVrYXFoYmZJVkk5VlZuZDZNPQ"
+      }
+    },
+    "name": "ARMOR v1",
+    "description": "A scripture memory app using progressive mechanics and spaced repetition.",
+    "pinned": true
+  }, {
+    "lastAccessTime": "2026-01-31T09:50:18.519444Z",
+    "firstAccessTime": "2026-01-27T18:28:47.956412Z",
+    "source": {
+      "drive": {
+        "resourceId": "1PTcRirF8YkWadPbul25ye81FG3VxO5TB",
+        "revisionId": "0BwGVE8mbj1dqaU92Y2NoUEt6SHhWNngrQ3dBL0RQTGs4K1hRPQ"
+      }
+    },
+    "name": "Interactive Pop-Up Training",
+    "description": "Upload training documents, pdfs, photos, diagrams, videos, screenshots, workflows, or any training material to transform it into interactive games and pop-up quizzes."
+  }, {
+    "lastAccessTime": "2026-01-29T20:20:00.130705Z",
+    "firstAccessTime": "2025-10-09T23:36:50.352495Z",
+    "source": {
+      "drive": {
+        "resourceId": "1hv9_m_kNIFXl9oMgJCgKyIVRXB03aMX3",
+        "revisionId": "0BwGVE8mbj1dqY3lNK3Z2MjYvTXMyUjZhQ2w3bVVQakZ2WEZzPQ"
+      }
+    },
+    "name": "AI Family Portrait Generator",
+    "description": "Upload photos of two people, describe a scene, and specify children to generate a new family portrait using their faces."
+  }, {
+    "lastAccessTime": "2026-01-27T19:48:39.187607Z",
+    "firstAccessTime": "2026-01-27T17:42:14.539492Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "wallpaper"
+      }
+    },
+    "name": "4K Wallpapers",
+    "description": "A next-generation AI wallpaper creator using Gemini 3 Pro. Generate stunning 2K and 4K backgrounds with a polished, professional interface."
+  }, {
+    "lastAccessTime": "2026-01-27T17:45:00.434866Z",
+    "firstAccessTime": "2026-01-27T17:45:00.434866Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "bring_any_idea_to_life"
+      }
+    },
+    "name": "Bring Any Idea to Life",
+    "description": "Upload an image of a board game, floor layout, or anything you can think of to turn it into an interactive experience."
+  }, {
+    "lastAccessTime": "2026-01-27T17:31:06.478931Z",
+    "firstAccessTime": "2025-12-28T03:15:35.470991Z",
+    "source": {
+      "drive": {
+        "resourceId": "1OgqWAD1AcTRpNYXFZXJNYFmqxSQKQ0_w",
+        "revisionId": "0BwGVE8mbj1dqVE13YVJFamtlNStQeFA5Z0dCQU53bEZoVjZvPQ"
+      }
+    },
+    "name": "Armor",
+    "description": "A scripture memory and review application using spaced repetition."
+  }, {
+    "lastAccessTime": "2026-01-01T14:27:20.260168Z",
+    "firstAccessTime": "2025-12-28T02:44:34.949101Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "action_replay"
+      }
+    },
+    "name": "Action Replay",
+    "description": "Compare Gemini 3 Flash generation speeds against other models."
+  }, {
+    "lastAccessTime": "2025-12-28T03:36:54.865811Z",
+    "firstAccessTime": "2025-12-28T03:36:54.865811Z",
+    "source": {
+      "drive": {
+        "resourceId": "1f5t1abRuLXE1AG_ecdhwQg-qlzW-m8xe",
+        "revisionId": "0BwGVE8mbj1dqaUlGSk5NemhzTlhkWFZCb1I3dDBUa0h2OGZNPQ"
+      }
+    },
+    "name": "Armor",
+    "description": "A mobile-first memory retention application designed to build mental resilience through the internalization of wisdom, poetry, and quotes. Features spaced repetition, interactive practice modes, and progress tracking."
+  }, {
+    "lastAccessTime": "2025-12-25T09:22:13.138809Z",
+    "firstAccessTime": "2025-12-25T08:55:56.475295Z",
+    "source": {
+      "drive": {
+        "resourceId": "15rFVwaOLoOAL0Hc4LBVSFA80Vgq5FEZg",
+        "revisionId": "0BwGVE8mbj1dqMHZsbmxLZW82UEx5aHpJTkl4VGMwTENYd1VzPQ"
+      }
+    },
+    "name": "MustWatch Social",
+    "description": "A comprehensive social tracking platform for Movies, TV Shows, and Books, featuring real-time streaming availability and AI-powered recommendations."
+  }, {
+    "lastAccessTime": "2025-12-21T02:43:12.020041Z",
+    "firstAccessTime": "2025-12-21T02:43:12.020041Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "flash_ui"
+      }
+    },
+    "name": "Flash UI",
+    "description": "Put Gemini 3 Flash\u0027s creativity and coding abilities to the test. Rapidly generate UI, explore variations, and export code."
+  }, {
+    "lastAccessTime": "2025-12-04T07:14:47.580179Z",
+    "firstAccessTime": "2025-07-03T07:16:47.566335Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "video-to-learning-app"
+      }
+    },
+    "name": "Video to Learning App",
+    "description": "Instantly convert any YouTube video into an interactive learning app, coded by Gemini."
+  }, {
+    "lastAccessTime": "2025-10-12T19:48:35.179186Z",
+    "firstAccessTime": "2025-10-12T19:48:35.179186Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "genai_sdk_generate_content_streaming"
+      }
+    },
+    "name": "Streaming",
+    "description": "Stream responses containing both images and text"
+  }, {
+    "lastAccessTime": "2025-10-09T23:26:34.844785Z",
+    "firstAccessTime": "2025-10-09T23:22:21.791323Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "past_forward"
+      }
+    },
+    "name": "Past Forward",
+    "description": "Upload your photo and travel through time! This app uses AI to generate polaroid-style images of you reimagined in the iconic styles of different decades."
+  }, {
+    "lastAccessTime": "2025-09-27T02:48:35.784363Z",
+    "firstAccessTime": "2025-09-27T02:48:35.784363Z",
+    "source": {
+      "sourceType": "BUNDLED",
+      "bundled": {
+        "id": "get_started_image_out"
+      }
+    },
+    "name": "Get Started with Gemini 2.5 Flash Image",
+    "description": "Discover how to use the Gemini 2.5 image model (aka nano banana) using the Gemini JS SDK in an interactive way. No need to create an API key or set up your environment."
+  }, {
+    "lastAccessTime": "2025-07-03T07:14:24.415712Z",
+    "firstAccessTime": "2025-07-03T07:14:24.415712Z",
+    "source": {
+      "drive": {
+        "resourceId": "1CP6KLzdR3P7L6xRhwFIYlgNsmATNU3kJ",
+        "revisionId": "0BwGVE8mbj1dqaU5SQnovMlhzZWc0dnB1anAxUjh6VkxhZndzPQ"
+      }
+    },
+    "name": "Gemini OS",
+    "description": "Simulate a computer with a UI that is generated dynamically from user interactions."
+  }]
+}

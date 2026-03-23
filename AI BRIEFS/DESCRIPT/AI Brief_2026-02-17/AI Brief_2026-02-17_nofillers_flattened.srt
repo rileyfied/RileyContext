@@ -1,0 +1,1304 @@
+1
+00:00:00,180 --> 00:00:01,680
+Welcome back to the Deep Dive.
+
+2
+00:00:01,680 --> 00:00:05,610
+So it is Wednesday, February 18th, 2026.
+
+3
+00:00:05,730 --> 00:00:09,720
+And I have to be honest looking at
+the stack of research and  industry
+
+4
+00:00:09,720 --> 00:00:13,410
+notes we have on the table today,
+the vibe has definitely shifted.
+
+5
+00:00:16,290 --> 00:00:18,240
+You can just feel it in
+the industry right now.
+
+6
+00:00:18,270 --> 00:00:20,125
+think back to even a year ago.
+
+7
+00:00:20,920 --> 00:00:23,890
+2024. The whole conversation
+was just pure horsepower.
+
+8
+00:00:23,890 --> 00:00:25,120
+It was a drag race.
+
+9
+00:00:25,630 --> 00:00:27,460
+Which model has the highest iq?
+
+10
+00:00:27,970 --> 00:00:29,230
+Who can pass this exam?
+
+11
+00:00:29,230 --> 00:00:31,360
+Who can write the funniest
+poem about a toaster?
+
+12
+00:00:31,360 --> 00:00:33,040
+It was all about the magic tricks.
+
+13
+00:00:33,250 --> 00:00:34,209
+The magic trick era.
+
+14
+00:00:34,209 --> 00:00:36,760
+We were all just,  dazzled that
+the computer could talk back.
+
+15
+00:00:37,599 --> 00:00:41,889
+But going through these sources for
+today, from open AI's deprecation notices
+
+16
+00:00:41,889 --> 00:00:46,280
+to,  the new Google Chrome architecture,
+it feels like the party's over.
+
+17
+00:00:46,610 --> 00:00:47,330
+The music stop.
+
+18
+00:00:47,370 --> 00:00:49,559
+The lights came on and now
+everyone's realizing they
+
+19
+00:00:49,559 --> 00:00:50,640
+have to actually go to work.
+
+20
+00:00:52,139 --> 00:00:53,760
+We are seeing the industry grow up.
+
+21
+00:00:53,970 --> 00:00:55,680
+We're definitively moving away from that.
+
+22
+00:00:55,680 --> 00:00:57,330
+Look how smart this chat bot is.
+
+23
+00:00:58,110 --> 00:01:00,720
+And entering what the sources
+are calling the era of systems
+
+24
+00:01:00,720 --> 00:01:02,580
+that act, systems that act.
+
+25
+00:01:03,000 --> 00:01:06,090
+it sounds a lot drier than artificial
+general intelligence or super
+
+26
+00:01:06,090 --> 00:01:10,530
+intelligence, but I get the sense
+it's infinitely more consequential for
+
+27
+00:01:10,530 --> 00:01:12,180
+the actual people listening to this.
+
+28
+00:01:13,290 --> 00:01:14,970
+we aren't just chatting with bots anymore.
+
+29
+00:01:14,970 --> 00:01:19,290
+We're starting to manage agents
+that do real tangible work.
+
+30
+00:01:19,590 --> 00:01:23,400
+And that introduces a whole new
+set of headaches and opportunities.
+
+31
+00:01:23,820 --> 00:01:27,150
+Around trust, governance and
+just,  keeping the lights on.
+
+32
+00:01:27,785 --> 00:01:31,385
+So our mission today is to cut through
+the noise of all these updates and there
+
+33
+00:01:31,385 --> 00:01:34,985
+are a lot of 'em, and really look at
+the structural changes because if you're
+
+34
+00:01:34,985 --> 00:01:38,195
+listening to this, you're probably trying
+to figure out not just which model to
+
+35
+00:01:38,195 --> 00:01:41,275
+use, but how to build a workflow that
+doesn't just,  fall apart in a month.
+
+36
+00:01:42,415 --> 00:01:43,975
+Reliability over novelty.
+
+37
+00:01:44,185 --> 00:01:46,405
+That's really the theme of 2026.
+
+38
+00:01:49,735 --> 00:01:52,135
+So we have four main stories
+that all weave together.
+
+39
+00:01:52,555 --> 00:01:54,925
+First we have to talk about
+the backend reality check.
+
+40
+00:01:55,640 --> 00:01:57,800
+Open AI killing off their darlings,
+
+41
+00:01:58,310 --> 00:02:01,970
+Retiring models that were cutting
+edge just a year ago, and what that
+
+42
+00:02:01,970 --> 00:02:05,380
+signals about,  migration planning,
+which sounds boring, but is actually
+
+43
+00:02:05,380 --> 00:02:07,120
+terrifying if you run a business on it.
+
+44
+00:02:08,139 --> 00:02:09,470
+Then we're looking at the front end.
+
+45
+00:02:10,255 --> 00:02:15,235
+Google turning chrome into what they're
+calling an agent's playground, and that
+
+46
+00:02:15,235 --> 00:02:18,115
+is a massive shift in how we use the web.
+
+47
+00:02:19,375 --> 00:02:21,805
+The browser hasn't really
+changed in 20 years.
+
+48
+00:02:21,805 --> 00:02:22,885
+It's about to change a lot.
+
+49
+00:02:23,635 --> 00:02:27,505
+Third, we're going to Mars,
+metaphorically with Anthropic to look
+
+50
+00:02:27,505 --> 00:02:30,715
+at agents in high stakes environments
+where,  oops isn't an option.
+
+51
+00:02:31,225 --> 00:02:34,645
+And finally, we need to have a serious
+conversation about our own brains.
+
+52
+00:02:35,094 --> 00:02:37,825
+The psychology of this thing
+called the interface fallacy.
+
+53
+00:02:43,404 --> 00:02:46,915
+It's about why when machines start
+acting for us, we tend to trust them
+
+54
+00:02:46,915 --> 00:02:49,045
+a little too much and how to stop.
+
+55
+00:02:50,844 --> 00:02:52,975
+The great retirement, the end of an era.
+
+56
+00:02:57,279 --> 00:02:59,559
+February 13th, 2026.
+
+57
+00:03:00,549 --> 00:03:01,359
+Just last Friday.
+
+58
+00:03:02,140 --> 00:03:06,939
+OpenAI officially deprecated, which is
+just the polite engineering word for,
+
+59
+00:03:06,939 --> 00:03:11,470
+killed a bunch of models, including
+what used to be the heavy hitter, GPT-4.
+
+60
+00:03:12,189 --> 00:03:16,200
+If you were building on top of that
+specific snapshot, and you,  didn't read
+
+61
+00:03:16,200 --> 00:03:17,880
+your email, you had a very bad weekend.
+
+62
+00:03:20,130 --> 00:03:22,380
+In tech, we're always
+obsessed with the new thing.
+
+63
+00:03:22,500 --> 00:03:26,580
+But usually the old thing just kind
+of hangs around, You can still run
+
+64
+00:03:26,580 --> 00:03:28,080
+Windows XP if you really want to.
+
+65
+00:03:31,170 --> 00:03:33,690
+This is the strongest signal
+yet that we are moving into a
+
+66
+00:03:33,690 --> 00:03:36,090
+professional enterprise era of ai.
+
+67
+00:03:36,810 --> 00:03:39,930
+It's about technical debt and
+the need for standardization.
+
+68
+00:03:40,890 --> 00:03:44,430
+OpenAI is basically saying we
+are not a research lab just
+
+69
+00:03:44,430 --> 00:03:45,630
+running experiments anymore.
+
+70
+00:03:45,630 --> 00:03:46,830
+We are infrastructure.
+
+71
+00:03:48,465 --> 00:03:50,895
+You don't get to choose 1990s voltage.
+
+72
+00:03:50,895 --> 00:03:53,565
+You just get the standard because
+that's what makes the grid stable.
+
+73
+00:03:54,765 --> 00:03:59,115
+But think about what that means for the
+user if you are running a business or
+
+74
+00:03:59,115 --> 00:04:01,665
+even just a complex personal workflow.
+
+75
+00:04:02,595 --> 00:04:04,845
+Say a script that summarizes your emails.
+
+76
+00:04:05,295 --> 00:04:09,255
+If that script calls a specific
+model, version API, and that
+
+77
+00:04:09,255 --> 00:04:13,035
+version just vanishes my script
+breaks, my email doesn't get sorted.
+
+78
+00:04:13,035 --> 00:04:16,905
+I miss a meeting, and suddenly
+AI isn't a magical helper.
+
+79
+00:04:16,905 --> 00:04:19,605
+It's a liability, and you blame the tool.
+
+80
+00:04:20,275 --> 00:04:23,395
+This news is forcing the industry
+to get good at migration planning.
+
+81
+00:04:27,325 --> 00:04:30,835
+the sources highlight that this
+retirement forces users to deal with
+
+82
+00:04:30,835 --> 00:04:32,955
+versioning and  fallback strategies.
+
+83
+00:04:33,255 --> 00:04:36,795
+When you move from models to
+systems, you need reproducibility.
+
+84
+00:04:37,035 --> 00:04:38,385
+If you run a prop today.
+
+85
+00:04:38,615 --> 00:04:40,085
+You need to know it will work tomorrow.
+
+86
+00:04:44,775 --> 00:04:46,005
+these things are probabilistic.
+
+87
+00:04:46,005 --> 00:04:49,875
+They're guessing if I switch from GPT-4
+oh to the new model, even if a new
+
+88
+00:04:49,875 --> 00:04:53,805
+model is smarter, it might handle my
+specific prompt completely differently.
+
+89
+00:04:56,655 --> 00:04:58,905
+That's why the great
+retirement is such a big story.
+
+90
+00:04:59,234 --> 00:05:03,945
+It's forcing developers and power
+users to stop hard coding their lives
+
+91
+00:05:04,305 --> 00:05:06,885
+to one specific model personality.
+
+92
+00:05:07,365 --> 00:05:11,205
+You have to build systems that
+are robust enough to handle
+
+93
+00:05:11,205 --> 00:05:12,555
+the engine being swapped out.
+
+94
+00:05:18,284 --> 00:05:21,465
+Making sure the pipes don't burst
+when the water pressure changes.
+
+95
+00:05:23,174 --> 00:05:25,094
+You update your OS for security.
+
+96
+00:05:25,289 --> 00:05:28,919
+Even if it moves the settings
+menu open, AI is forcing that
+
+97
+00:05:28,919 --> 00:05:30,510
+same discipline on AI users.
+
+98
+00:05:30,690 --> 00:05:33,240
+It's painful but necessary.
+
+99
+00:05:42,555 --> 00:05:45,885
+Exploration, then consolidation, and
+we are firmly in consolidation mode.
+
+100
+00:05:46,365 --> 00:05:48,705
+the backend is getting more
+rigid, more disciplined.
+
+101
+00:05:53,085 --> 00:05:55,965
+while OpenAI is tidying up,
+Google seems to be doing something
+
+102
+00:05:55,965 --> 00:05:57,525
+pretty wild with the browser.
+
+103
+00:05:57,765 --> 00:05:59,085
+This is the Gemini update.
+
+104
+00:05:59,655 --> 00:06:03,885
+Specifically the integration with
+Chrome and what they call computer
+
+105
+00:06:03,885 --> 00:06:06,615
+use capabilities, computer use,
+
+106
+00:06:07,965 --> 00:06:12,734
+It's delightfully literal, not Cyber
+Nav or something, just computer use.
+
+107
+00:06:14,445 --> 00:06:16,005
+think about what it implies.
+
+108
+00:06:16,424 --> 00:06:20,174
+Until now, the browser was a
+window for you to look at the web.
+
+109
+00:06:20,520 --> 00:06:21,600
+You type, you click.
+
+110
+00:06:21,900 --> 00:06:26,730
+It's a passive tool, with these
+Gemini updates, the browser is
+
+111
+00:06:26,730 --> 00:06:28,770
+becoming the agent interface.
+
+112
+00:06:34,110 --> 00:06:36,540
+instead of the AI just
+giving you a list of links.
+
+113
+00:06:36,880 --> 00:06:38,830
+It has permission to
+interact with the dom.
+
+114
+00:06:39,250 --> 00:06:40,720
+The actual structure of the webpage.
+
+115
+00:06:42,550 --> 00:06:43,720
+It can see the buttons.
+
+116
+00:06:43,750 --> 00:06:46,270
+It can distinguish
+between Submit and cancel.
+
+117
+00:06:51,670 --> 00:06:56,410
+book me a flight to Denver under $400 and
+it doesn't just give me a link to Expedia.
+
+118
+00:06:56,800 --> 00:07:00,040
+it goes to Expedia, puts in
+the dates, filters by price and
+
+119
+00:07:00,040 --> 00:07:01,120
+gets to the checkout screen.
+
+120
+00:07:02,530 --> 00:07:04,720
+the AI is using the browser for you.
+
+121
+00:07:05,115 --> 00:07:08,895
+And this is where that aha
+moment happens in the sources.
+
+122
+00:07:09,135 --> 00:07:13,545
+If the browser is the agent's
+playground, transparency becomes
+
+123
+00:07:13,545 --> 00:07:14,835
+the most critical feature.
+
+124
+00:07:15,825 --> 00:07:18,435
+if I'm just chatting, the
+worst it can do is lie to me.
+
+125
+00:07:19,065 --> 00:07:23,145
+But if it's using the computer,
+the stakes are way different.
+
+126
+00:07:24,015 --> 00:07:27,645
+The attack surface changes, is it
+buying a non-refundable ticket?
+
+127
+00:07:27,765 --> 00:07:31,185
+Is it clicking agree on terms of
+service I haven't read, or is it
+
+128
+00:07:31,185 --> 00:07:35,010
+downloading a file that contains malware
+because it didn't recognize the URL.
+
+129
+00:07:40,830 --> 00:07:43,859
+the source material emphasizes
+that the UI is designed so you
+
+130
+00:07:43,859 --> 00:07:45,510
+can see the ghost in the machine.
+
+131
+00:07:46,260 --> 00:07:48,659
+It highlights the element,
+it's about to click.
+
+132
+00:07:48,719 --> 00:07:49,679
+It shows you the text.
+
+133
+00:07:49,679 --> 00:07:51,599
+It's about to type before it hits enter.
+
+134
+00:07:52,049 --> 00:07:54,299
+It's not a black box or
+it's trying not to be.
+
+135
+00:07:55,919 --> 00:08:00,060
+more like watching a junior
+employee drive your computer while
+
+136
+00:08:00,060 --> 00:08:01,500
+you stand over their shoulder.
+
+137
+00:08:01,650 --> 00:08:03,120
+Delegate and supervise.
+
+138
+00:08:03,675 --> 00:08:05,085
+That is the new workflow.
+
+139
+00:08:05,355 --> 00:08:07,305
+You aren't the operator,
+you're the manager.
+
+140
+00:08:07,665 --> 00:08:11,925
+And just like with a new human employee,
+you need to see the work to trust it.
+
+141
+00:08:12,405 --> 00:08:14,594
+You don't just say, fix
+the accounts and walk away.
+
+142
+00:08:20,955 --> 00:08:24,825
+You need less dexterity and more judgment,
+which brings us to our third story.
+
+143
+00:08:25,140 --> 00:08:28,560
+Because supervising a flight booking
+is one thing, but what if that
+
+144
+00:08:28,560 --> 00:08:31,289
+employee is managing a Mars Rover?
+
+145
+00:08:31,799 --> 00:08:33,390
+This is the Anthropic story.
+
+146
+00:08:34,710 --> 00:08:38,850
+Anthropic rolling out enterprise
+ready Agentic plugins.
+
+147
+00:08:41,355 --> 00:08:44,054
+then they drop the example Claude on Mars.
+
+148
+00:08:44,085 --> 00:08:45,255
+It's a catchy headline.
+
+149
+00:08:51,765 --> 00:08:55,574
+they're using a high fidelity
+Mars simulation to demonstrate
+
+150
+00:08:55,574 --> 00:08:57,225
+real world control loops.
+
+151
+00:08:57,605 --> 00:08:59,975
+And the reason they chose
+Mars is fascinating.
+
+152
+00:09:00,245 --> 00:09:02,765
+It's not just a PR stunt,
+it's a physics problem.
+
+153
+00:09:05,615 --> 00:09:09,485
+You're communicating with Mars,
+there's a massive time delay anywhere
+
+154
+00:09:09,485 --> 00:09:13,564
+from four to 24 minutes one way, so
+you can't joystick it in real time.
+
+155
+00:09:13,564 --> 00:09:14,615
+You send a command.
+
+156
+00:09:14,665 --> 00:09:17,064
+Wait 20 minutes and hope it
+didn't drive into a crater,
+
+157
+00:09:17,454 --> 00:09:19,285
+So you need an agent with true autonomy.
+
+158
+00:09:19,285 --> 00:09:22,314
+You have to say, go to that rock
+and analyze it, and the agent has to
+
+159
+00:09:22,314 --> 00:09:23,545
+figure out how to get there safely.
+
+160
+00:09:23,545 --> 00:09:25,735
+It's a high stakes, high
+latency environment.
+
+161
+00:09:34,105 --> 00:09:35,964
+The key word here is traceability.
+
+162
+00:09:36,745 --> 00:09:39,055
+The sources highlight
+that in these systems.
+
+163
+00:09:39,324 --> 00:09:42,954
+Safety isn't just about, don't say
+bad words, it's about the audit trail.
+
+164
+00:09:43,815 --> 00:09:47,145
+You need to be able to trace exactly
+why the agent made a decision.
+
+165
+00:09:47,235 --> 00:09:47,955
+It's the show.
+
+166
+00:09:47,955 --> 00:09:49,665
+Your math requirement from high school.
+
+167
+00:09:50,955 --> 00:09:54,945
+If the rover detours left, the
+system needs to log detected
+
+168
+00:09:54,945 --> 00:09:59,175
+loose, gravel at coordinates xy
+calculated 40% risk of slippage.
+
+169
+00:09:59,535 --> 00:10:00,255
+Rerouting.
+
+170
+00:10:00,855 --> 00:10:03,585
+So it's not just the action,
+it's the logic behind the
+
+171
+00:10:03,585 --> 00:10:05,115
+action that has to be exposed.
+
+172
+00:10:05,325 --> 00:10:07,845
+And that connects right back to
+the Crohn's story, doesn't it?
+
+173
+00:10:08,460 --> 00:10:12,120
+Whether it's browsing the web or
+driving on Mars, the theme is the same.
+
+174
+00:10:12,420 --> 00:10:15,900
+You need strict loops of observation
+and you need to be able to audit
+
+175
+00:10:15,900 --> 00:10:17,340
+the thought process of the machine.
+
+176
+00:10:17,580 --> 00:10:19,199
+It really feels like a massive shift.
+
+177
+00:10:19,199 --> 00:10:22,650
+We used to worry about hallucinations,
+the AI making up facts.
+
+178
+00:10:23,160 --> 00:10:27,120
+Now we have to worry about the AI actually
+doing things based on those made up facts.
+
+179
+00:10:29,280 --> 00:10:32,069
+A hallucination in a chat window is funny.
+
+180
+00:10:32,819 --> 00:10:35,550
+A hallucination in a command
+line is a catastrophe.
+
+181
+00:10:36,345 --> 00:10:39,765
+If the agent hallucinates a file
+as garbage and deletes it, that's
+
+182
+00:10:39,765 --> 00:10:43,654
+real damage, which brings us to the
+part of the deep dive that,  always
+
+183
+00:10:43,654 --> 00:10:44,884
+makes me a little uncomfortable.
+
+184
+00:10:45,124 --> 00:10:46,384
+The wetware problem.
+
+185
+00:10:46,879 --> 00:10:49,999
+Us, the psychology of it all,
+because even if we build the best
+
+186
+00:10:49,999 --> 00:10:53,509
+audit trails in the world, the
+problem might not be the machine.
+
+187
+00:10:53,509 --> 00:10:55,429
+It might be the person
+watching the screen.
+
+188
+00:10:55,579 --> 00:10:59,689
+We have this source here on the
+psychology of AI in action, and it
+
+189
+00:10:59,689 --> 00:11:02,779
+introduces a concept I think everyone
+needs to burn into their brain
+
+190
+00:11:03,199 --> 00:11:05,419
+interface fallacy, interface, fallacy.
+
+191
+00:11:06,619 --> 00:11:07,849
+It's a cousin of overtrust.
+
+192
+00:11:08,779 --> 00:11:13,429
+Basically, when an agent acts confidently,
+when it moves, the mouse smoothly, clicks
+
+193
+00:11:13,459 --> 00:11:15,289
+instantly, and flashes a green task.
+
+194
+00:11:15,289 --> 00:11:16,009
+Complete check mark.
+
+195
+00:11:17,224 --> 00:11:18,689
+Our brains are wired to believe it.
+
+196
+00:11:19,310 --> 00:11:21,800
+We conflate confidence with competence.
+
+197
+00:11:22,759 --> 00:11:26,509
+We assume that because the interface looks
+professional, the outcome must be correct.
+
+198
+00:11:29,930 --> 00:11:34,670
+If I ask an AI to summarize a long
+PDF and it spits out a beautiful
+
+199
+00:11:34,670 --> 00:11:36,229
+bulleted list in three seconds,
+
+200
+00:11:36,769 --> 00:11:40,069
+I don't go back and read the original
+50 pages to check, and that's a
+
+201
+00:11:40,069 --> 00:11:42,259
+calibration failure in the chatbot era.
+
+202
+00:11:42,439 --> 00:11:44,689
+A calibration failure
+meant you got a wrong fact.
+
+203
+00:11:44,689 --> 00:11:45,229
+You look silly.
+
+204
+00:11:45,779 --> 00:11:48,599
+In the agent era, a calibration
+failure means you might accidentally
+
+205
+00:11:48,599 --> 00:11:52,259
+delete a database because you just
+click approve without looking.
+
+206
+00:11:52,529 --> 00:11:56,459
+The source mentions that friction is
+actually a feature here, not a bug,
+
+207
+00:11:56,939 --> 00:12:00,719
+which is surprising because for 20 years
+the whole goal was reduce friction.
+
+208
+00:12:00,810 --> 00:12:04,319
+But now we're saying maybe we
+need two clicks, maybe three.
+
+209
+00:12:04,729 --> 00:12:06,469
+The source outlines specific remedies.
+
+210
+00:12:06,589 --> 00:12:07,849
+One is confirmation prompts.
+
+211
+00:12:08,119 --> 00:12:10,849
+When the stakes are high, you want
+the system to ask, are you sure?
+
+212
+00:12:11,089 --> 00:12:12,679
+It forces the shrack into the loop.
+
+213
+00:12:12,919 --> 00:12:15,379
+It's like a speed bump for
+your brain wakes you up.
+
+214
+00:12:16,459 --> 00:12:18,679
+And the second remedy
+is even more critical.
+
+215
+00:12:19,279 --> 00:12:20,419
+Reversible steps.
+
+216
+00:12:20,719 --> 00:12:22,939
+An undo button for the real world.
+
+217
+00:12:23,449 --> 00:12:27,560
+If an AI takes an action, you
+need the ability to roll it back.
+
+218
+00:12:28,009 --> 00:12:30,139
+If it books a flight, can you unbook it?
+
+219
+00:12:30,439 --> 00:12:33,889
+If it archives a file, is it
+in a trash bin or gone forever?
+
+220
+00:12:33,949 --> 00:12:37,669
+That seems so obvious, but I bet a lot
+of developers are not building that in.
+
+221
+00:12:37,669 --> 00:12:39,529
+They're just focused on the happy path.
+
+222
+00:12:39,559 --> 00:12:41,569
+They aren't building it
+in because it's hard.
+
+223
+00:12:41,929 --> 00:12:45,949
+But that's why Nate b Jones, one of
+the analysts in our stack notes that
+
+224
+00:12:45,949 --> 00:12:49,189
+the psychology changes fundamentally
+when the software has agency.
+
+225
+00:12:49,429 --> 00:12:52,459
+His point is when software
+is a tool, you wield it.
+
+226
+00:12:52,789 --> 00:12:54,424
+When software is an agent, you manage it.
+
+227
+00:12:55,384 --> 00:12:57,034
+And Most of us are terrible managers.
+
+228
+00:13:05,224 --> 00:13:07,834
+It's a skillset we all
+have to learn and fast.
+
+229
+00:13:08,074 --> 00:13:11,044
+The ability to spot check, to
+audit, to know when to step in,
+
+230
+00:13:11,284 --> 00:13:12,874
+that's the new digital literacy.
+
+231
+00:13:12,964 --> 00:13:15,754
+Speaking of learning fast,
+let's do a lightning round.
+
+232
+00:13:15,754 --> 00:13:17,854
+We've got some quick
+reads from the C-Suite.
+
+233
+00:13:20,254 --> 00:13:24,224
+First up, Sam Altman, humans who
+use AI will replace those who don't.
+
+234
+00:13:26,974 --> 00:13:28,444
+The translation is upskill.
+
+235
+00:13:28,444 --> 00:13:31,234
+Immediately he's saying, this
+isn't a fad, it's a filter.
+
+236
+00:13:31,685 --> 00:13:35,675
+If you aren't integrating these agentic
+workflows, not just chatting but
+
+237
+00:13:35,675 --> 00:13:38,404
+building, you are becoming obsolete.
+
+238
+00:13:40,819 --> 00:13:42,319
+Sundar Phai from Google.
+
+239
+00:13:42,409 --> 00:13:46,339
+More tests are on the way that
+signal scale and volatility.
+
+240
+00:13:46,519 --> 00:13:48,619
+It means we are still in
+the experimental phase.
+
+241
+00:13:48,799 --> 00:13:49,909
+Don't get too comfortable.
+
+242
+00:13:50,299 --> 00:13:53,989
+Google is gonna keep running AB tests
+on us and changing the environment.
+
+243
+00:13:54,289 --> 00:13:58,339
+Expect turbulence, so don't rate the user
+manual and permanent marker just yet.
+
+244
+00:14:00,349 --> 00:14:02,089
+Satya Nadella at Microsoft.
+
+245
+00:14:02,089 --> 00:14:02,779
+He had a short one.
+
+246
+00:14:02,779 --> 00:14:03,739
+Just two words.
+
+247
+00:14:03,949 --> 00:14:04,639
+No slop.
+
+248
+00:14:06,379 --> 00:14:08,869
+Slop is the new frame for responsible use.
+
+249
+00:14:09,409 --> 00:14:11,869
+For a long time AI output was messy.
+
+250
+00:14:12,469 --> 00:14:15,349
+Fun, but messy hallucinations,
+generic answers.
+
+251
+00:14:15,589 --> 00:14:16,309
+That's slop.
+
+252
+00:14:16,429 --> 00:14:19,279
+The junk food of information,
+Nadella is saying.
+
+253
+00:14:19,279 --> 00:14:23,359
+For professional adoption, we need
+precision, high signal, low noise.
+
+254
+00:14:23,779 --> 00:14:27,949
+If an agent is doing work, it needs
+to be accurate, concise, and clean.
+
+255
+00:14:28,069 --> 00:14:29,659
+It's a call for quality control.
+
+256
+00:14:30,050 --> 00:14:30,889
+No slop.
+
+257
+00:14:34,999 --> 00:14:36,769
+Automation multiplies your output.
+
+258
+00:14:37,249 --> 00:14:40,670
+If your output is slop, you're just
+scamming the world at light speed.
+
+259
+00:14:41,149 --> 00:14:45,410
+We've covered a lot of ground from
+open ai retiring models to Mars rovers.
+
+260
+00:14:45,844 --> 00:14:49,654
+If someone listening is walking into a
+meeting right now, what are the three big
+
+261
+00:14:49,654 --> 00:14:51,334
+things they need to put on the whiteboard?
+
+262
+00:14:52,534 --> 00:14:54,094
+architecture over model names.
+
+263
+00:14:54,305 --> 00:14:57,185
+Don't fall in love with GBT four oh
+because it might be gone next week.
+
+264
+00:14:57,634 --> 00:15:01,864
+Design your workflows to be modular,
+Build the system, not just the prompt.
+
+265
+00:15:02,134 --> 00:15:04,084
+Treat the model like
+a replaceable battery.
+
+266
+00:15:05,224 --> 00:15:07,804
+Second, the browser is
+the new battleground.
+
+267
+00:15:07,864 --> 00:15:09,064
+Watch what happens with Chrome.
+
+268
+00:15:09,064 --> 00:15:10,534
+That's where adoption is accelerating.
+
+269
+00:15:10,834 --> 00:15:14,314
+If you're building a web app, you need to
+be thinking, can an agent read my site?
+
+270
+00:15:15,574 --> 00:15:16,924
+It's not just SEO anymore.
+
+271
+00:15:16,924 --> 00:15:19,744
+It's agent optimization and the third.
+
+272
+00:15:19,984 --> 00:15:21,274
+Trust is the product.
+
+273
+00:15:21,484 --> 00:15:23,884
+It all comes down to
+governance and transparency.
+
+274
+00:15:24,214 --> 00:15:27,484
+You need to know when to trust
+the system, and more importantly,
+
+275
+00:15:27,544 --> 00:15:29,074
+when to demand an audit trail.
+
+276
+00:15:29,404 --> 00:15:32,914
+If you can't trace the decision,
+you shouldn't deploy the agent.
+
+277
+00:15:35,044 --> 00:15:38,884
+It feels like we are leaving the toy
+phase and entering the tool phase,
+
+278
+00:15:39,004 --> 00:15:41,674
+and tools require safety specs.
+
+279
+00:15:41,794 --> 00:15:41,974
+They do.
+
+280
+00:15:42,555 --> 00:15:43,904
+We have to be the adults in the room.
+
+281
+00:15:43,904 --> 00:15:46,364
+Now I wanna leave everyone with
+that final thought from set.
+
+282
+00:15:46,364 --> 00:15:46,935
+You Nadella.
+
+283
+00:15:48,614 --> 00:15:52,305
+As we start handing over our browsers
+and our workflows to these agents, the
+
+284
+00:15:52,305 --> 00:15:56,504
+question is, are we building systems that
+actually reduce the slop in our lives,
+
+285
+00:15:56,925 --> 00:16:00,824
+or are we just building machines that can
+generate slop faster than we ever could?
+
+286
+00:16:00,829 --> 00:16:01,180
+That is.
+

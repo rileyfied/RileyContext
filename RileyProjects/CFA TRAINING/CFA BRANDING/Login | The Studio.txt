@@ -1,0 +1,17 @@
+Welcome to The Studio
+
+[ ](/en)
+
+[ __ SSO Login ](/en/_/login?login.redirectlogin=/en/learn/new-learn/introduction&login.provider=cfa&action.loginRemote=)
+
+For new RMD access, please contact your Operator to get access through TMUA (Team Member User Administration). AMDs please ask your Lead Operator to grant you access through RVAC (Restaurant Vendor Access Control).
+
+[Licensee Partners & Agencies](https://cfaprod.service-now.com/servicegateway?id=cfastaff_sc_cat_item&sys_id=d85039d7db66df44bd489c16db96191d)
+
+[Support Center Contractors](https://cfaprod.service-now.com/servicegateway?id=cfastaff_sc_cat_item&sys_id=d85039d7db66df44bd489c16db96191d)
+
+[ Help & Support ](/en/help)
+
+[ Contact Us ](https://cfaprod.service-now.com/cfahelp)
+
+© 2026 Chick-fil-A, Inc. All rights reserved. 

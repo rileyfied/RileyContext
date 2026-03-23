@@ -1,17 +1,22 @@
 # RileyFile
 
-GitHub mirror for Riley's canonical context system.
+Canonical knowledge base for all agents.
 
-## Architecture
+## Canonical file
 
-- **Canonical root**: Google Drive `My Drive/RileyContext/`
-- **This repo**: Git mirror serving `RILEY_CONTEXT.md` via raw URL for agents without Google Drive access (ChatGPT, Gemini)
-- **Pipeline scripts**: `scripts/` — git-tracked, executed by launchd
-- **Runtime state**: `~/.rileyfile/runtime/` (sqlite, locks — local only)
+- `RILEY_CONTEXT.md` is the only source of truth.
+- All agents read from that file.
+- Only Codex appends/merges daily updates and pushes.
 
-## How it works
+## Daily update command
 
-1. `sync_context.sh` runs the pipeline (index, ingest, digest, promotions, merge)
-2. Pipeline reads/writes to Google Drive `RileyContext/`
-3. Updated `RILEY_CONTEXT.md` is copied here and pushed to GitHub
-4. Agents fetch: `https://raw.githubusercontent.com/rileyfied/rileyfile/main/RILEY_CONTEXT.md`
+```bash
+./scripts/eod_append.sh path/to/drop.md [SOURCE]
+```
+
+`SOURCE` defaults to `UNKNOWN`.
+
+## Notes
+
+- Daily entries append under `## DAILY LOG` in `RILEY_CONTEXT.md`.
+- Legacy/duplicate workflows are quarantined in `/_deprecated/`.

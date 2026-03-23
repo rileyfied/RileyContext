@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chick-fil-A Local Items - Modifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e51636 0%, #c41230 100%);
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .nav-tab {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .nav-tab.active {
+            background: #fff;
+            color: #e51636;
+            font-weight: 600;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+        
+        .main-container {
+            display: flex;
+            height: calc(100vh - 52px);
+        }
+        
+        /* Category Sidebar */
+        .category-sidebar {
+            width: 130px;
+            background: #252547;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            overflow-y: auto;
+        }
+        
+        .category-btn {
+            padding: 14px 8px;
+            background: #363660;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .category-btn:hover {
+            background: #4a4a7a;
+        }
+        
+        .category-btn.active {
+            background: #e51636;
+            box-shadow: 0 2px 8px rgba(229,22,54,0.4);
+        }
+        
+        .category-divider {
+            height: 1px;
+            background: #444477;
+            margin: 6px 0;
+        }
+        
+        /* Items Grid */
+        .items-section {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+        }
+        
+        .section-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e51636;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: rgba(229,22,54,0.1);
+            border-radius: 6px;
+            border-left: 3px solid #e51636;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+        
+        .item-btn {
+            aspect-ratio: 1.1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            transition: all 0.15s;
+            font-size: 10px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .item-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .item-btn:active {
+            transform: scale(0.97);
+        }
+        
+        /* Color coding - NO/REMOVE items */
+        .item-btn.remove { 
+            background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%); 
+            color: #fff; 
+        }
+        
+        /* ADD/EXTRA items */
+        .item-btn.add { 
+            background: linear-gradient(145deg, #27ae60 0%, #1e8449 100%); 
+            color: #fff; 
+        }
+        
+        /* LITE/EASY items */
+        .item-btn.lite { 
+            background: linear-gradient(145deg, #f39c12 0%, #d68910 100%); 
+            color: #fff; 
+        }
+        
+        /* SIDE/ON SIDE items */
+        .item-btn.side { 
+            background: linear-gradient(145deg, #3498db 0%, #2874a6 100%); 
+            color: #fff; 
+        }
+        
+        /* ALLERGY items */
+        .item-btn.allergy { 
+            background: linear-gradient(145deg, #9b59b6 0%, #7d3c98 100%); 
+            color: #fff; 
+        }
+        
+        /* SUBSTITUTE items */
+        .item-btn.sub { 
+            background: linear-gradient(145deg, #1abc9c 0%, #148f77 100%); 
+            color: #fff; 
+        }
+        
+        /* PREP/COOKING items */
+        .item-btn.prep { 
+            background: linear-gradient(145deg, #e91e63 0%, #c2185b 100%); 
+            color: #fff; 
+        }
+        
+        /* DRINK mods */
+        .item-btn.drink { 
+            background: linear-gradient(145deg, #00bcd4 0%, #0097a7 100%); 
+            color: #fff; 
+        }
+        
+        /* SAUCE items */
+        .item-btn.sauce { 
+            background: linear-gradient(145deg, #ff5722 0%, #e64a19 100%); 
+            color: #fff; 
+        }
+        
+        /* MISC items */
+        .item-btn.misc { 
+            background: linear-gradient(145deg, #607d8b 0%, #455a64 100%); 
+            color: #fff; 
+        }
+        
+        /* Order Panel */
+        .order-panel {
+            width: 300px;
+            background: #1e1e3f;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #333366;
+        }
+        
+        .order-header {
+            padding: 12px 16px;
+            background: #252550;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333366;
+        }
+        
+        .order-header h3 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .order-number {
+            background: #e51636;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .selected-item-banner {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            padding: 12px 16px;
+            text-align: center;
+        }
+        
+        .selected-item-banner h4 {
+            font-size: 11px;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        
+        .selected-item-banner .item-name {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .order-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+        }
+        
+        .order-item {
+            background: #2a2a55;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .order-item.selected {
+            border: 2px solid #2ecc71;
+            background: #1a3a2a;
+        }
+        
+        .order-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .order-item-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .order-item-price {
+            font-size: 13px;
+            color: #4ade80;
+        }
+        
+        .order-item-mods {
+            font-size: 11px;
+            color: #999;
+            margin-top: 6px;
+        }
+        
+        .order-item-mod {
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 2px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+        
+        .order-item-mod.remove {
+            background: rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+        }
+        
+        .order-item-mod.add {
+            background: rgba(39, 174, 96, 0.3);
+            color: #2ecc71;
+        }
+        
+        .order-item-mod.lite {
+            background: rgba(243, 156, 18, 0.3);
+            color: #f39c12;
+        }
+        
+        .order-item-mod.allergy {
+            background: rgba(155, 89, 182, 0.3);
+            color: #9b59b6;
+        }
+        
+        .order-totals {
+            padding: 16px;
+            background: #252550;
+            border-top: 1px solid #333366;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .total-row.grand {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4ade80;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #444477;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px;
+            background: #1a1a35;
+        }
+        
+        .action-btn {
+            padding: 14px 8px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .action-btn.primary {
+            background: #e51636;
+            color: #fff;
+            grid-column: span 2;
+        }
+        
+        .action-btn.secondary {
+            background: #363660;
+            color: #fff;
+        }
+        
+        .action-btn:hover {
+            filter: brightness(1.1);
+        }
+        
+        /* Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 12px;
+            background: #1a1a35;
+            border-bottom: 1px solid #333;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 9px;
+            color: #888;
+        }
+        
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+        }
+        
+        .legend-dot.remove { background: #e74c3c; }
+        .legend-dot.add { background: #27ae60; }
+        .legend-dot.lite { background: #f39c12; }
+        .legend-dot.side { background: #3498db; }
+        .legend-dot.allergy { background: #9b59b6; }
+        .legend-dot.sub { background: #1abc9c; }
+        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a35;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #444477;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">Chick-fil-A®</div>
+            <nav class="nav-tabs">
+                <div class="nav-tab">Entrées</div>
+                <div class="nav-tab">Sides</div>
+                <div class="nav-tab">Treats</div>
+                <div class="nav-tab">Drinks</div>
+                <div class="nav-tab active">Local Items</div>
+            </nav>
+        </div>
+        <div class="header-right">
+            <span>Lane 3</span>
+            <span>10:47 AM</span>
+            <span>Taylor M.</span>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <!-- Category Sidebar -->
+        <aside class="category-sidebar">
+            <button class="category-btn active">All Mods</button>
+            <div class="category-divider"></div>
+            <button class="category-btn">No / Remove</button>
+            <button class="category-btn">Add / Extra</button>
+            <button class="category-btn">Lite / Easy</button>
+            <button class="category-btn">On Side</button>
+            <div class="category-divider"></div>
+            <button class="category-btn">Allergy</button>
+            <button class="category-btn">Substitute</button>
+            <div class="category-divider"></div>
+            <button class="category-btn">Sandwich</button>
+            <button class="category-btn">Salad</button>
+            <button class="category-btn">Sides</button>
+            <button class="category-btn">Drinks</button>
+            <button class="category-btn">Sauces</button>
+            <div class="category-divider"></div>
+            <button class="category-btn">Prep / Cook</button>
+            <button class="category-btn">Misc</button>
+        </aside>
+        
+        <!-- Items Grid Section -->
+        <main class="items-section">
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item"><div class="legend-dot remove"></div>NO/REMOVE</div>
+                <div class="legend-item"><div class="legend-dot add"></div>ADD/EXTRA</div>
+                <div class="legend-item"><div class="legend-dot lite"></div>LITE/EASY</div>
+                <div class="legend-item"><div class="legend-dot side"></div>ON SIDE</div>
+                <div class="legend-item"><div class="legend-dot allergy"></div>ALLERGY</div>
+                <div class="legend-item"><div class="legend-dot sub"></div>SUBSTITUTE</div>
+            </div>
+            
+            <!-- NO / REMOVE -->
+            <h2 class="section-header">🚫 No / Remove</h2>
+            <div class="items-grid">
+                <button class="item-btn remove">No<br>Pickles</button>
+                <button class="item-btn remove">No<br>Butter</button>
+                <button class="item-btn remove">No<br>Lettuce</button>
+                <button class="item-btn remove">No<br>Tomato</button>
+                <button class="item-btn remove">No<br>Cheese</button>
+                <button class="item-btn remove">No<br>Bacon</button>
+                <button class="item-btn remove">No<br>Bun</button>
+                <button class="item-btn remove">No<br>Onion</button>
+                <button class="item-btn remove">No<br>Sauce</button>
+                <button class="item-btn remove">No<br>Mayo</button>
+                <button class="item-btn remove">No<br>Pepper Jack</button>
+                <button class="item-btn remove">No<br>Croutons</button>
+                <button class="item-btn remove">No<br>Crispy Bell Pep</button>
+                <button class="item-btn remove">No<br>Corn</button>
+                <button class="item-btn remove">No<br>Beans</button>
+                <button class="item-btn remove">No<br>Tortilla Strips</button>
+                <button class="item-btn remove">No<br>Cabbage Blend</button>
+                <button class="item-btn remove">No<br>Carrots</button>
+                <button class="item-btn remove">No<br>Fruit</button>
+                <button class="item-btn remove">No<br>Granola</button>
+                <button class="item-btn remove">No<br>Egg</button>
+                <button class="item-btn remove">No<br>Nuts</button>
+                <button class="item-btn remove">No<br>Cherries</button>
+                <button class="item-btn remove">No<br>Whipped Cream</button>
+                <button class="item-btn remove">No<br>Ice</button>
+            </div>
+            
+            <!-- ADD / EXTRA -->
+            <h2 class="section-header">➕ Add / Extra</h2>
+            <div class="items-grid">
+                <button class="item-btn add">Extra<br>Pickles</button>
+                <button class="item-btn add">Extra<br>Butter</button>
+                <button class="item-btn add">Extra<br>Lettuce</button>
+                <button class="item-btn add">Extra<br>Tomato</button>
+                <button class="item-btn add">Extra<br>Cheese</button>
+                <button class="item-btn add">Add<br>Bacon</button>
+                <button class="item-btn add">Add<br>Cheese</button>
+                <button class="item-btn add">Extra<br>Sauce</button>
+                <button class="item-btn add">Extra<br>Mayo</button>
+                <button class="item-btn add">Add<br>Pepper Jack</button>
+                <button class="item-btn add">Extra<br>Croutons</button>
+                <button class="item-btn add">Add<br>Avocado Lime</button>
+                <button class="item-btn add">Extra<br>Dressing</button>
+                <button class="item-btn add">Add<br>Egg</button>
+                <button class="item-btn add">Extra<br>Nuggets</button>
+                <button class="item-btn add">Extra<br>Chicken</button>
+                <button class="item-btn add">Add<br>Honey</button>
+                <button class="item-btn add">Extra<br>Ice</button>
+                <button class="item-btn add">Extra<br>Whip</button>
+                <button class="item-btn add">Extra<br>Cherries</button>
+            </div>
+            
+            <!-- LITE / EASY -->
+            <h2 class="section-header">〰️ Lite / Easy</h2>
+            <div class="items-grid">
+                <button class="item-btn lite">Lite<br>Pickles</button>
+                <button class="item-btn lite">Lite<br>Butter</button>
+                <button class="item-btn lite">Lite<br>Lettuce</button>
+                <button class="item-btn lite">Lite<br>Tomato</button>
+                <button class="item-btn lite">Lite<br>Cheese</button>
+                <button class="item-btn lite">Lite<br>Sauce</button>
+                <button class="item-btn lite">Lite<br>Mayo</button>
+                <button class="item-btn lite">Lite<br>Dressing</button>
+                <button class="item-btn lite">Lite<br>Ice</button>
+                <button class="item-btn lite">Easy<br>Honey Butter</button>
+                <button class="item-btn lite">Lite<br>Whip</button>
+                <button class="item-btn lite">Lite<br>Syrup</button>
+            </div>
+            
+            <!-- ON SIDE -->
+            <h2 class="section-header">📦 On Side</h2>
+            <div class="items-grid">
+                <button class="item-btn side">Pickles<br>On Side</button>
+                <button class="item-btn side">Lettuce<br>On Side</button>
+                <button class="item-btn side">Tomato<br>On Side</button>
+                <button class="item-btn side">Cheese<br>On Side</button>
+                <button class="item-btn side">Sauce<br>On Side</button>
+                <button class="item-btn side">Dressing<br>On Side</button>
+                <button class="item-btn side">Bacon<br>On Side</button>
+                <button class="item-btn side">Onion<br>On Side</button>
+                <button class="item-btn side">Mayo<br>On Side</button>
+                <button class="item-btn side">Croutons<br>On Side</button>
+                <button class="item-btn side">Fruit<br>On Side</button>
+                <button class="item-btn side">Granola<br>On Side</button>
+            </div>
+            
+            <!-- ALLERGY -->
+            <h2 class="section-header">⚠️ Allergy Alert</h2>
+            <div class="items-grid">
+                <button class="item-btn allergy">PEANUT<br>ALLERGY</button>
+                <button class="item-btn allergy">TREE NUT<br>ALLERGY</button>
+                <button class="item-btn allergy">DAIRY<br>ALLERGY</button>
+                <button class="item-btn allergy">EGG<br>ALLERGY</button>
+                <button class="item-btn allergy">WHEAT<br>ALLERGY</button>
+                <button class="item-btn allergy">GLUTEN<br>FREE</button>
+                <button class="item-btn allergy">SOY<br>ALLERGY</button>
+                <button class="item-btn allergy">SESAME<br>ALLERGY</button>
+                <button class="item-btn allergy">FISH<br>ALLERGY</button>
+                <button class="item-btn allergy">SHELLFISH<br>ALLERGY</button>
+                <button class="item-btn allergy">ALLERGY<br>ALERT</button>
+                <button class="item-btn allergy">CELIAC<br>PROTOCOL</button>
+            </div>
+            
+            <!-- SUBSTITUTES -->
+            <h2 class="section-header">🔄 Substitutes</h2>
+            <div class="items-grid">
+                <button class="item-btn sub">Sub<br>GF Bun</button>
+                <button class="item-btn sub">Sub<br>Lettuce Wrap</button>
+                <button class="item-btn sub">Sub<br>Grilled</button>
+                <button class="item-btn sub">Sub<br>Spicy</button>
+                <button class="item-btn sub">Sub<br>Multigrain</button>
+                <button class="item-btn sub">Sub<br>No Bun</button>
+                <button class="item-btn sub">Sub<br>Side Salad</button>
+                <button class="item-btn sub">Sub<br>Fruit Cup</button>
+                <button class="item-btn sub">Sub<br>Kale Crunch</button>
+                <button class="item-btn sub">Sub<br>Mac & Cheese</button>
+                <button class="item-btn sub">Sub<br>Soup</button>
+                <button class="item-btn sub">Sub<br>Superfood</button>
+            </div>
+            
+            <!-- SANDWICH SPECIFIC -->
+            <h2 class="section-header">🥪 Sandwich Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn prep">Cut<br>In Half</button>
+                <button class="item-btn prep">Toasted<br>Bun</button>
+                <button class="item-btn prep">Untoasted<br>Bun</button>
+                <button class="item-btn prep">Well Done<br>Chicken</button>
+                <button class="item-btn prep">Double<br>Chicken</button>
+                <button class="item-btn remove">Plain<br>(Nothing)</button>
+                <button class="item-btn misc">Separate<br>Bun</button>
+                <button class="item-btn prep">Fresh<br>Filet</button>
+            </div>
+            
+            <!-- SALAD SPECIFIC -->
+            <h2 class="section-header">🥗 Salad Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn remove">No<br>Chicken</button>
+                <button class="item-btn sub">Sub<br>Grilled</button>
+                <button class="item-btn sub">Sub<br>Spicy</button>
+                <button class="item-btn add">Extra<br>Chicken</button>
+                <button class="item-btn add">Double<br>Chicken</button>
+                <button class="item-btn remove">No<br>Dressing</button>
+                <button class="item-btn side">Dressing<br>On Side</button>
+                <button class="item-btn remove">No<br>Toppings</button>
+                <button class="item-btn prep">Chopped<br>Chicken</button>
+            </div>
+            
+            <!-- SIDES SPECIFIC -->
+            <h2 class="section-header">🍟 Sides Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn prep">Well Done<br>Fries</button>
+                <button class="item-btn prep">Fresh<br>Fries</button>
+                <button class="item-btn remove">No<br>Salt</button>
+                <button class="item-btn lite">Lite<br>Salt</button>
+                <button class="item-btn add">Extra<br>Salt</button>
+                <button class="item-btn remove">No<br>Ketchup</button>
+                <button class="item-btn add">Extra<br>Ketchup</button>
+                <button class="item-btn remove">No<br>Fruit Mix</button>
+                <button class="item-btn sub">Sub<br>Strawberries</button>
+                <button class="item-btn sub">Sub<br>Blueberries</button>
+                <button class="item-btn remove">No<br>Apples</button>
+                <button class="item-btn remove">No<br>Mandarin</button>
+            </div>
+            
+            <!-- DRINKS -->
+            <h2 class="section-header">🥤 Drink Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn drink">No<br>Ice</button>
+                <button class="item-btn drink">Lite<br>Ice</button>
+                <button class="item-btn drink">Extra<br>Ice</button>
+                <button class="item-btn drink">Half<br>Sweet</button>
+                <button class="item-btn drink">Half<br>Lemonade</button>
+                <button class="item-btn drink">Unsweetened<br>Only</button>
+                <button class="item-btn drink">Sweet<br>Only</button>
+                <button class="item-btn drink">No<br>Whip</button>
+                <button class="item-btn drink">Extra<br>Whip</button>
+                <button class="item-btn drink">No<br>Cherry</button>
+                <button class="item-btn drink">Extra<br>Cherry</button>
+                <button class="item-btn drink">No<br>Straw</button>
+                <button class="item-btn drink">Add<br>Flavor Shot</button>
+                <button class="item-btn drink">Diet<br>Lemonade</button>
+                <button class="item-btn drink">Sunjoy<br>Sweet</button>
+                <button class="item-btn drink">Sunjoy<br>Unsweet</button>
+            </div>
+            
+            <!-- SAUCE MODS -->
+            <h2 class="section-header">🫙 Sauce Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn sauce">Extra<br>CFA Sauce</button>
+                <button class="item-btn sauce">Extra<br>Polynesian</button>
+                <button class="item-btn sauce">Extra<br>BBQ</button>
+                <button class="item-btn sauce">Extra<br>Honey Mustard</button>
+                <button class="item-btn sauce">Extra<br>Ranch</button>
+                <button class="item-btn sauce">Extra<br>Buffalo</button>
+                <button class="item-btn sauce">Extra<br>Sriracha</button>
+                <button class="item-btn sauce">Extra<br>Honey</button>
+                <button class="item-btn sauce">No<br>Sauce</button>
+                <button class="item-btn sauce">Sauce<br>On Side</button>
+                <button class="item-btn sauce">Double<br>Sauce</button>
+                <button class="item-btn sauce">2x<br>Each Sauce</button>
+            </div>
+            
+            <!-- BREAKFAST MODS -->
+            <h2 class="section-header">🌅 Breakfast Mods</h2>
+            <div class="items-grid">
+                <button class="item-btn remove">No<br>Egg</button>
+                <button class="item-btn add">Add<br>Egg</button>
+                <button class="item-btn add">Extra<br>Egg</button>
+                <button class="item-btn remove">No<br>Cheese</button>
+                <button class="item-btn add">Extra<br>Cheese</button>
+                <button class="item-btn remove">No<br>Honey Butter</button>
+                <button class="item-btn lite">Lite<br>Honey Butter</button>
+                <button class="item-btn add">Extra<br>Honey Butter</button>
+                <button class="item-btn remove">No<br>Sausage</button>
+                <button class="item-btn remove">No<br>Bacon</button>
+                <button class="item-btn add">Add<br>Bacon</button>
+                <button class="item-btn sub">Sub<br>Biscuit</button>
+                <button class="item-btn sub">Sub<br>Bagel</button>
+                <button class="item-btn sub">Sub<br>English Muffin</button>
+                <button class="item-btn prep">Toasted<br>Biscuit</button>
+                <button class="item-btn remove">No<br>Jelly</button>
+            </div>
+            
+            <!-- MISC -->
+            <h2 class="section-header">📝 Miscellaneous</h2>
+            <div class="items-grid">
+                <button class="item-btn misc">Special<br>Request</button>
+                <button class="item-btn misc">See<br>Note</button>
+                <button class="item-btn misc">Ask<br>Manager</button>
+                <button class="item-btn misc">Separate<br>Bag</button>
+                <button class="item-btn misc">Label<br>Order</button>
+                <button class="item-btn misc">Hold<br>In Window</button>
+                <button class="item-btn misc">Rush<br>Order</button>
+                <button class="item-btn misc">Delivery<br>Order</button>
+                <button class="item-btn prep">Extra<br>Napkins</button>
+                <button class="item-btn prep">No<br>Utensils</button>
+                <button class="item-btn prep">Kid's<br>Portion</button>
+                <button class="item-btn misc">Mobile<br>Order</button>
+            </div>
+        </main>
+        
+        <!-- Order Panel -->
+        <aside class="order-panel">
+            <div class="order-header">
+                <h3>Current Order</h3>
+                <span class="order-number">#2847</span>
+            </div>
+            
+            <div class="selected-item-banner">
+                <h4>MODIFYING:</h4>
+                <div class="item-name">Spicy Deluxe Sandwich</div>
+            </div>
+            
+            <div class="order-items">
+                <div class="order-item selected">
+                    <div class="order-item-header">
+                        <span class="order-item-name">Spicy Deluxe Sandwich</span>
+                        <span class="order-item-price">$6.29</span>
+                    </div>
+                    <div class="order-item-mods">
+                        <span class="order-item-mod remove">NO PICKLES</span>
+                        <span class="order-item-mod add">EXTRA CHEESE</span>
+                        <span class="order-item-mod lite">LITE MAYO</span>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-item-header">
+                        <span class="order-item-name">Medium Waffle Fries</span>
+                        <span class="order-item-price">$2.59</span>
+                    </div>
+                    <div class="order-item-mods">
+                        <span class="order-item-mod add">WELL DONE</span>
+                        <span class="order-item-mod remove">NO SALT</span>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-item-header">
+                        <span class="order-item-name">Large Lemonade</span>
+                        <span class="order-item-price">$2.89</span>
+                    </div>
+                    <div class="order-item-mods">
+                        <span class="order-item-mod lite">LITE ICE</span>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-item-header">
+                        <span class="order-item-name">8ct Nuggets</span>
+                        <span class="order-item-price">$5.89</span>
+                    </div>
+                    <div class="order-item-mods">
+                        <span class="order-item-mod allergy">⚠️ PEANUT ALLERGY</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-totals">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span>$17.66</span>
+                </div>
+                <div class="total-row">
+                    <span>Tax</span>
+                    <span>$1.24</span>
+                </div>
+                <div class="total-row grand">
+                    <span>Total</span>
+                    <span>$18.90</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn secondary">Clear Mods</button>
+                <button class="action-btn secondary">Back</button>
+                <button class="action-btn primary">Done ✓</button>
+            </div>
+        </aside>
+    </div>
+    
+    <script>
+        // Category button functionality
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Item button click - simulates adding mod
+        document.querySelectorAll('.item-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+                
+                // Visual feedback
+                const text = this.innerText.replace('\n', ' ');
+                console.log('Added mod:', text);
+            });
+        });
+        
+        // Order item selection
+        document.querySelectorAll('.order-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.order-item').forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Update banner
+                const name = this.querySelector('.order-item-name').textContent;
+                document.querySelector('.selected-item-banner .item-name').textContent = name;
+            });
+        });
+    </script>
+</body>
+</html>

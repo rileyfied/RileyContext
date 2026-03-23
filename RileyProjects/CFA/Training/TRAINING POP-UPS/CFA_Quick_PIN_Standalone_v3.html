@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CFA Quick PIN (Standalone)</title>
+<style>
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#FFFFFF;color:#111}
+header{position:sticky;top:0;background:#DD0033;color:#fff;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,.1);z-index:10}
+h1{margin:0;font-size:20px;letter-spacing:.3px}
+main{padding:16px;max-width:720px;margin:0 auto}
+#search{width:100%;padding:14px 16px;border:2px solid #EEEDEB;border-radius:12px;font-size:18px;outline:none;transition:.15s;border-color:#EEEDEB}
+#search:focus{border-color:#DD0033;box-shadow:0 0 0 3px rgba(221,0,51,.15)}
+#status{margin:10px 2px;font-size:13px;color:#5B6770}
+#results{list-style:none;margin:8px 0 80px 0;padding:0}
+.result{display:flex;align-items:center;justify-content:space-between;padding:14px 14px;border:1px solid #EEEDEB;border-radius:12px;margin:10px 0;gap:12px}
+.name{font-weight:600}
+.sub{font-size:12px;color:#5B6770;margin-top:4px}
+.pin{font-variant-numeric:tabular-nums;font-weight:700}
+.copyBtn{border:0;border-radius:10px;padding:8px 10px;background:#004F71;color:#fff;font-size:13px}
+.copyBtn:active{transform:scale(.98)}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#004F71;color:#fff;padding:10px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s}
+#toast.show{opacity:1}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+</style>
+<header><h1>CFA Quick PIN</h1></header>
+<main>
+  <label class="visually-hidden" for="search">Search by first name</label>
+  <input id="search" type="text" inputmode="text" placeholder="Type first name… e.g., Em" autocomplete="off" autofocus>
+  <div id="status" aria-live="polite"></div>
+  <ul id="results" aria-label="Search results"></ul>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const EMPLOYEES = [
+{"first":"Aaron","last":"Hubbard","group":"Team Member","signInPin":"772943"},
+{"first":"Abdiel","last":"Estrada","group":"Team Member","signInPin":"986362"},
+{"first":"Abigail","last":"Levine","group":"Cashier","signInPin":"364629"},
+{"first":"Addison","last":"Jones","group":"Cashier","signInPin":"518124"},
+{"first":"Aiden","last":"Novak","group":"Team Member","signInPin":"297543"},
+{"first":"Alex","last":"Paulo","group":"Cashier","signInPin":"849173"},
+{"first":"Alexis","last":"Chetta","group":"Cashier","signInPin":"712041"},
+{"first":"Alexis","last":"Gillmore","group":"Cashier","signInPin":"350447"},
+{"first":"Allison","last":"Brookshire","group":"Cashier","signInPin":"433451"},
+{"first":"Amelia","last":"Fedorowicz","group":"Cashier","signInPin":"208586"},
+{"first":"Andrea","last":"Nelson","group":"Cashier","signInPin":"359956"},
+{"first":"Andrew","last":"Snell","group":"Cashier","signInPin":"184885"},
+{"first":"Angelina","last":"Wilhite","group":"Cashier","signInPin":"677702"},
+{"first":"Asher","last":"Geedey","group":"Team Member","signInPin":"386550"},
+{"first":"Ashlyn","last":"Sears","group":"Cashier","signInPin":"110153"},
+{"first":"Aubrie","last":"Rymer","group":"Cashier","signInPin":"430411"},
+{"first":"Auvionna","last":"Carlyle","group":"Cashier","signInPin":"505176"},
+{"first":"Ayden","last":"Sanders","group":"Cashier","signInPin":"758277"},
+{"first":"Brooklyn","last":"Jenkins","group":"Cashier","signInPin":"348219"},
+{"first":"Brooklynn","last":"Syfrett","group":"Cashier","signInPin":"380574"},
+{"first":"Caleb","last":"Richeson","group":"Cashier","signInPin":"174488"},
+{"first":"Callee","last":"Williamson","group":"Cashier","signInPin":"149508"},
+{"first":"Cameron","last":"Clark","group":"Cashier","signInPin":"875214"},
+{"first":"Carol","last":"Selby","group":"Manager","signInPin":"951994"},
+{"first":"Cayden","last":"Hiott","group":"Team Member","signInPin":"168202"},
+{"first":"Charlotte","last":"Schuerer","group":"Cashier","signInPin":"908742"},
+{"first":"Chloe","last":"Morgan","group":"Manager","signInPin":"870352"},
+{"first":"Christopher","last":"Alvarez Calix","group":"Team Member","signInPin":"533748"},
+{"first":"Clayton","last":"Hubbard","group":"Team Member","signInPin":"186191"},
+{"first":"Cody","last":"Applegate","group":"Team Member","signInPin":"104715"},
+{"first":"David (Bennett)","last":"Margiotta","group":"Manager","signInPin":"580427"},
+{"first":"Dayani","last":"Perez","group":"Cashier","signInPin":"975489"},
+{"first":"De'Mia","last":"Collins","group":"Manager","signInPin":"660602"},
+{"first":"De'nasia","last":"Andrews","group":"Cashier","signInPin":"962433"},
+{"first":"Demontay","last":"Lewis","group":"Team Member","signInPin":"840223"},
+{"first":"Destin","last":"Ford","group":"Team Member","signInPin":"672141"},
+{"first":"Destiny","last":"Bryant","group":"Manager","signInPin":"739316"},
+{"first":"Elisa","last":"Reedinger","group":"Cashier","signInPin":"420267"},
+{"first":"Ember","last":"Michaels","group":"Manager","signInPin":"905100"},
+{"first":"Emma","last":"Ramsey","group":"Cashier","signInPin":"488010"},
+{"first":"Ethan","last":"Vanslyke","group":"Cashier","signInPin":"290962"},
+{"first":"Evaleasia","last":"Ortiz","group":"Cashier","signInPin":"325305"},
+{"first":"Evencia","last":"Hoog","group":"Cashier","signInPin":"745926"},
+{"first":"Gabriel","last":"Gonzalez","group":"Team Member","signInPin":"229699"},
+{"first":"Gavin","last":"Niehoff","group":"Manager","signInPin":"550060"},
+{"first":"Gwyndolynn","last":"Brown","group":"Cashier","signInPin":"629261"},
+{"first":"Hannah","last":"Pearson","group":"Cashier","signInPin":"944066"},
+{"first":"Harmony","last":"Endos","group":"Cashier","signInPin":"786523"},
+{"first":"Holtin","last":"Whittington","group":"Team Member","signInPin":"687503"},
+{"first":"Ian","last":"Johnson","group":"Manager","signInPin":"274237"},
+{"first":"Iona","last":"Jones","group":"Cashier","signInPin":"177467"},
+{"first":"Isabella","last":"Cavanaugh","group":"Cashier","signInPin":"742287"},
+{"first":"Isabella","last":"Stubbs","group":"Cashier","signInPin":"730354"},
+{"first":"Jack","last":"Miller","group":"Team Member","signInPin":"745031"},
+{"first":"Jaclynn","last":"Dixon","group":"Cashier","signInPin":"534673"},
+{"first":"Jaina","last":"Hart-Wynn","group":"Manager","signInPin":"472883"},
+{"first":"James","last":"Darville","group":"Team Member","signInPin":"603981"},
+{"first":"James (Logan)","last":"Miller","group":"Cashier","signInPin":"150193"},
+{"first":"Jamie","last":"Turner","group":"Cashier","signInPin":"385029"},
+{"first":"Jazmyn","last":"Jasso","group":"Cashier","signInPin":"877107"},
+{"first":"Jenna","last":"Biss","group":"Cashier","signInPin":"562196"},
+{"first":"Jeremiah","last":"Falls","group":"Team Member","signInPin":"725876"},
+{"first":"Jessica","last":"Bradley","group":"Cashier","signInPin":"723328"},
+{"first":"Jessica","last":"Gerard","group":"Cashier","signInPin":"849277"},
+{"first":"Johntaivis (JT)","last":"Galvin","group":"Cashier","signInPin":"725430"},
+{"first":"Jonquaijah","last":"Cowell","group":"Team Member","signInPin":"608096"},
+{"first":"Joseph","last":"Ochoa","group":"Team Member","signInPin":"154756"},
+{"first":"Joshua","last":"Aldrich","group":"Team Member","signInPin":"576444"},
+{"first":"Joshua","last":"Clark","group":"Team Member","signInPin":"187718"},
+{"first":"Jude","last":"Domajnko","group":"Manager","signInPin":"298324"},
+{"first":"Justin","last":"Metzger","group":"Team Member","signInPin":"397257"},
+{"first":"Justin","last":"Rodriguez","group":"Team Member","signInPin":"956448"},
+{"first":"Katelyn","last":"Fackler","group":"Cashier","signInPin":"596534"},
+{"first":"Katelyn","last":"Walker","group":"Cashier","signInPin":"287540"},
+{"first":"Katlyn","last":"New","group":"Team Member","signInPin":"987222"},
+{"first":"Keira","last":"Peltier","group":"Cashier","signInPin":"870847"},
+{"first":"Kevin","last":"Cano","group":"Team Member","signInPin":"756286"},
+{"first":"Kevin","last":"Galdamez","group":"Team Member","signInPin":"107041"},
+{"first":"Kyleigh","last":"Clark","group":"Cashier","signInPin":"160963"},
+{"first":"La'Miracle","last":"Montanez","group":"Cashier","signInPin":"440981"},
+{"first":"Landon","last":"Walker","group":"Team Member","signInPin":"867605"},
+{"first":"Lauren","last":"Green","group":"Cashier","signInPin":"704231"},
+{"first":"Leonightus (Leo)","last":"Stowe","group":"Team Member","signInPin":"612177"},
+{"first":"Letitia","last":"Domajnko","group":"Cashier","signInPin":"300837"},
+{"first":"Logan","last":"Stubbs","group":"Cashier","signInPin":"757281"},
+{"first":"Logan","last":"Webb","group":"Team Member","signInPin":"413290"},
+{"first":"Louis","last":"Helms","group":"Cashier","signInPin":"662050"},
+{"first":"Lukas","last":"Delgado","group":"Cashier","signInPin":"730317"},
+{"first":"Maddie","last":"Tonhauser","group":"Cashier","signInPin":"660302"},
+{"first":"Madelyn","last":"Gray","group":"Cashier","signInPin":"518570"},
+{"first":"Makenna","last":"McFadden","group":"Cashier","signInPin":"320980"},
+{"first":"MaLia","last":"Parga","group":"Cashier","signInPin":"855836"},
+{"first":"Malanis","last":"Sosa","group":"Cashier","signInPin":"626909"},
+{"first":"Margaret","last":"Christian","group":"Cashier","signInPin":"917096"},
+{"first":"Maria","last":"Calix Salinas","group":"Team Member","signInPin":"271187"},
+{"first":"Mason","last":"Vanslyke","group":"Cashier","signInPin":"279374"},
+{"first":"Matthan","last":"Shepherd","group":"Cashier","signInPin":"818648"},
+{"first":"Matthew","last":"Wu","group":"Team Member","signInPin":"687231"},
+{"first":"Melanie","last":"Davis","group":"Cashier","signInPin":"994265"},
+{"first":"Mia","last":"Waters","group":"Cashier","signInPin":"112974"},
+{"first":"Michelle","last":"Sears","group":"Manager","signInPin":"347974"},
+{"first":"Mikaela","last":"Mathis","group":"Cashier","signInPin":"808707"},
+{"first":"Myles","last":"Deloche","group":"Manager","signInPin":"800837"},
+{"first":"Nabil","last":"Joshi","group":"Cashier","signInPin":"121204"},
+{"first":"Naomi","last":"Williams","group":"Cashier","signInPin":"838518"},
+{"first":"Natalie","last":"Bennett","group":"Cashier","signInPin":"579583"},
+{"first":"Nathaniel","last":"Barnes","group":"Team Member","signInPin":"547969"},
+{"first":"Nicholas","last":"Morgan","group":"Cashier","signInPin":"776410"},
+{"first":"Noah","last":"Bernard","group":"Team Member","signInPin":"796273"},
+{"first":"Noah","last":"Peterson","group":"Cashier","signInPin":"717121"},
+{"first":"Orit","last":"Kassahun","group":"Cashier","signInPin":"825867"},
+{"first":"Payton","last":"Dennis","group":"Cashier","signInPin":"375485"},
+{"first":"Remington","last":"DeRoche","group":"Cashier","signInPin":"484465"},
+{"first":"Riley","last":"Colley","group":"Manager","signInPin":"811508"},
+{"first":"Roberto","last":"Sanchez","group":"Cashier","signInPin":"225919"},
+{"first":"Ronald","last":"Mobley","group":"Team Member","signInPin":"365616"},
+{"first":"Ronald (Ron)","last":"Bove II","group":"Cashier","signInPin":"277137"},
+{"first":"Ryan","last":"McNally","group":"Manager","signInPin":"398776"},
+{"first":"Ryleigh","last":"Drake","group":"Cashier","signInPin":"196435"},
+{"first":"Sakhia","last":"Harris","group":"Cashier","signInPin":"118276"},
+{"first":"Samantha","last":"Bullock","group":"Cashier","signInPin":"210280"},
+{"first":"Sara","last":"Peterson","group":"Team Member","signInPin":"445028"},
+{"first":"Savannah","last":"Ogletree","group":"Manager","signInPin":"499337"},
+{"first":"Scarlett","last":"Abreu-Rivera","group":"Team Member","signInPin":"224933"},
+{"first":"Seth","last":"Reed","group":"Manager","signInPin":"773675"},
+{"first":"Shelby","last":"Tatum","group":"Cashier","signInPin":"234505"},
+{"first":"Silsa","last":"Pinzon","group":"Team Member","signInPin":"504460"},
+{"first":"Sophia","last":"Zwirecki","group":"Cashier","signInPin":"889134"},
+{"first":"Starmiaya","last":"Harris","group":"Cashier","signInPin":"324465"},
+{"first":"Tatiana","last":"Santiago","group":"Cashier","signInPin":"120629"},
+{"first":"Tessie","last":"Margiotta","group":"Cashier","signInPin":"457846"},
+{"first":"Thomas","last":"Barone","group":"Manager","signInPin":"215747"},
+{"first":"Ting Yao (Tim)","last":"Chen","group":"Manager","signInPin":"936624"},
+{"first":"Willow","last":"Cowan","group":"Team Member","signInPin":"598438"},
+{"first":"William","last":"Cruz","group":"Team Member","signInPin":"804163"},
+{"first":"William","last":"Fedorowicz","group":"Team Member","signInPin":"603120"},
+{"first":"Winjang (Adam)","last":"Loeak","group":"Team Member","signInPin":"407515"}
+];
+const key = s => (s||"").normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9']/g,'').toLowerCase();
+const input = document.getElementById('search');
+const list = document.getElementById('results');
+const status = document.getElementById('status');
+const toast = document.getElementById('toast');
+
+function render(items){
+  list.innerHTML='';
+  if(!items.length){ status.textContent=''; return; }
+  status.textContent = `${items.length} match${items.length===1?'':'es'}`;
+  for(const r of items){
+    const li=document.createElement('li'); li.className='result';
+    const left=document.createElement('div');
+    const nm=document.createElement('div'); nm.className='name'; nm.textContent=`${r.first} ${r.last}`;
+    const sub=document.createElement('div'); sub.className='sub'; sub.textContent=r.group;
+    left.append(nm,sub);
+    const right=document.createElement('div'); right.style.display='flex'; right.style.alignItems='center'; right.style.gap='12px';
+    const pin=document.createElement('div'); pin.className='pin'; pin.textContent=r.signInPin;
+    const btn=document.createElement('button'); btn.className='copyBtn'; btn.textContent='Copy';
+    btn.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(r.signInPin); showToast('PIN copied'); }catch(e){ showToast('Copy failed'); } });
+    right.append(pin,btn);
+    li.append(left,right);
+    list.append(li);
+  }
+}
+
+function showToast(msg){
+  toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 1200);
+}
+
+const DATA = EMPLOYEES.map(r=>{ return {...r, firstKey:key(r.first)}; }).sort((a,b)=>{
+  const fa=a.first.toLowerCase(), fb=b.first.toLowerCase();
+  if(fa<fb) return -1; if(fa>fb) return 1; return a.last.toLowerCase().localeCompare(b.last.toLowerCase());
+});
+
+function search(q){
+  const k=key(q);
+  if(!k){ list.innerHTML=''; status.textContent=''; return; }
+  render(DATA.filter(r=>r.firstKey.startsWith(k)));
+}
+
+input.addEventListener('input', e=>search(e.target.value));
+</script>
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Analyzer & Repurpose Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #737373;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            background: #262626;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .info-card h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #525252;
+            margin-bottom: 8px;
+        }
+        
+        .info-card p {
+            font-size: 1rem;
+            color: #e5e5e5;
+        }
+        
+        .info-card .value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #262626;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px 4px 4px 0;
+            color: #a0a0a0;
+        }
+        
+        .key-point {
+            display: flex;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid #262626;
+        }
+        
+        .key-point:last-child {
+            border-bottom: none;
+        }
+        
+        .key-point-icon {
+            width: 24px;
+            height: 24px;
+            background: #1f1f1f;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #737373;
+        }
+        
+        .key-point-content h5 {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        
+        .key-point-content p {
+            color: #737373;
+            font-size: 0.95rem;
+        }
+        
+        .outline-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .outline-time {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85rem;
+            color: #525252;
+            min-width: 50px;
+        }
+        
+        .outline-content h5 {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        
+        .outline-content p {
+            color: #737373;
+            font-size: 0.9rem;
+        }
+        
+        .script-block {
+            background: #1a1a1a;
+            border-left: 3px solid #404040;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 16px;
+        }
+        
+        .script-block.hook {
+            border-left-color: #dc2626;
+        }
+        
+        .script-block.problem {
+            border-left-color: #f59e0b;
+        }
+        
+        .script-block.insight {
+            border-left-color: #22c55e;
+        }
+        
+        .script-block.proof {
+            border-left-color: #3b82f6;
+        }
+        
+        .script-block.action {
+            border-left-color: #8b5cf6;
+        }
+        
+        .script-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #525252;
+            margin-bottom: 8px;
+        }
+        
+        .script-text {
+            font-size: 1.05rem;
+            color: #e5e5e5;
+            line-height: 1.7;
+        }
+        
+        .avatar-note {
+            background: #1f1f1f;
+            border: 1px dashed #333;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #737373;
+        }
+        
+        .avatar-note strong {
+            color: #a0a0a0;
+        }
+        
+        .relevance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid #1e3a5f;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #60a5fa;
+        }
+        
+        .creator-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .creator-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .creator-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        
+        .creator-info .handle {
+            color: #525252;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        
+        .creator-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #525252;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .differentiation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .diff-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 16px;
+        }
+        
+        .diff-card h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #525252;
+            margin-bottom: 8px;
+        }
+        
+        .diff-card p {
+            color: #e5e5e5;
+            font-size: 0.95rem;
+        }
+        
+        .your-angle {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
+            border: 1px solid #1e3a5f;
+        }
+        
+        .summary-text {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            line-height: 1.8;
+        }
+        
+        .summary-text strong {
+            color: #fff;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #1f1f1f;
+        }
+        
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #166534;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            color: #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Analysis & Repurpose Blueprint</h1>
+            <p class="subtitle">Research → Summary → Your Version</p>
+        </header>
+
+        <!-- SECTION 1: VIDEO OVERVIEW -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Source Video Overview</h2>
+            </div>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="info-card" style="margin-bottom: 16px;">
+                        <h4>Title</h4>
+                        <p style="font-size: 1.1rem; font-weight: 500; color: #fff;">Why AI-Native Companies Are Deleting Software You're Still Paying For (The $56K Lesson)</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Core Thesis</h4>
+                        <p>Organizations pay a hidden "abstraction tax" on GUI-based tools. When teams become technically fluent in work primitives, they can delete expensive software layers and let AI agents operate directly on code/artifacts.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="grid-2" style="margin-bottom: 16px;">
+                        <div class="info-card">
+                            <h4>Views</h4>
+                            <p class="value">31K</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Duration</h4>
+                            <p class="value">23:22</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h4>Published</h4>
+                        <p class="value">Dec 14, 2025</p>
+                        <p style="color: #525252; font-size: 0.9rem; margin-top: 4px;">~6 weeks old</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #525252; margin-bottom: 12px;">Topic Tags</h4>
+                <span class="tag">AI Agents</span>
+                <span class="tag">Enterprise AI</span>
+                <span class="tag">Cursor</span>
+                <span class="tag">Work Primitives</span>
+                <span class="tag">CMS Deletion</span>
+                <span class="tag">Technical Fluency</span>
+                <span class="tag">Code-First Culture</span>
+            </div>
+        </div>
+
+        <!-- SECTION 2: CREATOR RESEARCH -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Creator Research</h2>
+            </div>
+            
+            <div class="creator-card">
+                <div class="creator-avatar">👤</div>
+                <div class="creator-info">
+                    <h3>Nate B Jones</h3>
+                    <p class="handle">@natebjones • AI News & Strategy Daily</p>
+                    <p style="color: #737373; font-size: 0.95rem;">Former Head of Product at Amazon Prime Video. AI-first product strategist. Founder experience. Seattle-based. Daily AI briefings across YouTube, TikTok, and Substack.</p>
+                    <div class="creator-stats">
+                        <div class="stat">
+                            <div class="stat-value">138K</div>
+                            <div class="stat-label">YouTube Subs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">250K+</div>
+                            <div class="stat-label">TikTok Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">Daily</div>
+                            <div class="stat-label">Upload Cadence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px;">
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #525252; margin-bottom: 12px;">Content Style Analysis</h4>
+                <div class="grid-2">
+                    <div class="info-card">
+                        <h4>Tone</h4>
+                        <p>Executive briefing style. Analytical, strategic, no-hype. Speaks to leaders making decisions.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Format</h4>
+                        <p>Talking head with Lego background. Long-form analysis (15-25 min). Links to deeper Substack essays.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Audience</h4>
+                        <p>Enterprise leaders, product managers, technical decision-makers, AI-curious executives.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Differentiator</h4>
+                        <p>Case study driven. References real companies (Cursor, Anthropic, OpenAI). Frameworks over tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: 2026 RELEVANCE -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">2026 Context & Relevance</h2>
+            </div>
+            
+            <div class="relevance-badge" style="margin-bottom: 20px;">
+                <span>📈</span> High relevance — this topic is accelerating
+            </div>
+            
+            <p class="summary-text">
+                This video hits at the exact moment enterprises are asking <strong>"why aren't our AI investments delivering?"</strong> The answer Nate proposes—that GUI-based tools create walls between agents and work—is becoming the dominant explanation in AI implementation circles. As <strong>agentic AI</strong> moves from lab demos to enterprise deployment in 2026, the question of what infrastructure enables (or blocks) agents becomes urgent. The "$56K lesson" from Cursor's CMS deletion is a concrete, memorable proof point that will only gain relevance as more companies face similar decisions.
+            </p>
+            
+            <div style="margin-top: 24px;">
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #525252; margin-bottom: 12px;">Why This Matters Now</h4>
+                <div class="key-point">
+                    <div class="key-point-icon">→</div>
+                    <div class="key-point-content">
+                        <h5>Agent deployment is stalling everywhere</h5>
+                        <p>Most orgs have chatbots, few have agents that actually execute. This video explains why.</p>
+                    </div>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-icon">→</div>
+                    <div class="key-point-content">
+                        <h5>SaaS spending under scrutiny</h5>
+                        <p>CFOs asking hard questions about tool sprawl. The "$56K on a CMS" framing lands.</p>
+                    </div>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-icon">→</div>
+                    <div class="key-point-content">
+                        <h5>"AI-native" is the new benchmark</h5>
+                        <p>Companies like Cursor, Anthropic, OpenAI are setting expectations that legacy orgs feel pressure to match.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: VIDEO OUTLINE -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Original Video Structure</h2>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">0:00</div>
+                <div class="outline-content">
+                    <h5>Hook: The Enterprise Agent Problem</h5>
+                    <p>Most enterprise agents are "sophisticated amnesiacs"—capable models without domain memory, goals, or operating procedures. Memory alone doesn't unlock leverage.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">1:15</div>
+                <div class="outline-content">
+                    <h5>The Hidden Tax of Abstractions</h5>
+                    <p>GUI workflows create opaque states. Work hides behind clicks, permissions, draft modes. Introduces the "wall between agent and work" concept.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">2:39</div>
+                <div class="outline-content">
+                    <h5>Case Study: Cursor's CMS Deletion</h5>
+                    <p>Lee Robinson migrated cursor.com from CMS back to raw code/markdown. Expected weeks, finished in 3 days. $260 in tokens, 300+ agent PRs. The $56K saved.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">5:03</div>
+                <div class="outline-content">
+                    <h5>Why Agents Hate GUIs</h5>
+                    <p>Agents thrive where work is visible and editable. CMSs introduce identity fragmentation, operational drag, preview complexity, hidden dependencies.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">8:16</div>
+                <div class="outline-content">
+                    <h5>Cursor's Cultural Advantage</h5>
+                    <p>"Designers are developers." Technical fluency as default posture, not a department. Dog-fooding culture. The "fuzz" pre-ship ritual.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">11:17</div>
+                <div class="outline-content">
+                    <h5>The Deeper Thesis: Code Wins</h5>
+                    <p>"Code wins" isn't an engineering slogan—it's a strategic law. Work expressed in code-like form gets fast-tracked to agents because all AI investment flows there.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">14:00</div>
+                <div class="outline-content">
+                    <h5>Work Primitives Framework</h5>
+                    <p>System of record, before/after state, approval gates, checks, rollback, traceability. These are coding questions that business stakeholders already ask.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">19:00</div>
+                <div class="outline-content">
+                    <h5>Training Implications</h5>
+                    <p>Enterprise AI training must become "code concept training for non-engineers." Not Python—mental models of state, artifacts, checks, rollback.</p>
+                </div>
+            </div>
+            
+            <div class="outline-item">
+                <div class="outline-time">22:34</div>
+                <div class="outline-content">
+                    <h5>Closing: Primitive Fluency = Competitive Advantage</h5>
+                    <p>Agent strategy is a literacy decision, not procurement. Winners understand primitives well enough to delete sacred workflows.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: KEY INSIGHTS -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Key Insights to Extract</h2>
+            </div>
+            
+            <div class="key-point">
+                <div class="key-point-icon">💡</div>
+                <div class="key-point-content">
+                    <h5>The Abstraction Tax</h5>
+                    <p>Every GUI layer you add between humans and code is now a tax you pay when you want agents to operate. CMSs, dashboards, admin portals—all expensive when agents arrive.</p>
+                </div>
+            </div>
+            
+            <div class="key-point">
+                <div class="key-point-icon">💡</div>
+                <div class="key-point-content">
+                    <h5>Artifacts Over UI State</h5>
+                    <p>Work that lives in "hidden UI state" is invisible to agents. Work that lives in artifacts (files, code, markdown) can be seen, reviewed, and undone by both humans and agents.</p>
+                </div>
+            </div>
+            
+            <div class="key-point">
+                <div class="key-point-icon">💡</div>
+                <div class="key-point-content">
+                    <h5>Primitive Fluency</h5>
+                    <p>Non-technical people don't need to write code. They need to understand: state, artifacts, change records, checks, rollback, traceability. That's enough to direct agents.</p>
+                </div>
+            </div>
+            
+            <div class="key-point">
+                <div class="key-point-icon">💡</div>
+                <div class="key-point-content">
+                    <h5>Simple Wins in the Age of AI</h5>
+                    <p>Simpler substrates beat complex GUIs when AI changes fast. The more layers between you and the work, the harder it is to swap approaches.</p>
+                </div>
+            </div>
+            
+            <div class="key-point">
+                <div class="key-point-icon">💡</div>
+                <div class="key-point-content">
+                    <h5>Agents Stuck as Drafting Assistants</h5>
+                    <p>If your workforce stays GUI-native, agents remain advisors. If you teach artifact-native thinking, agents become operators and collaborators.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: YOUR VERSION BLUEPRINT -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2 class="section-title">Your Version Blueprint</h2>
+            </div>
+            
+            <div class="differentiation-grid">
+                <div class="diff-card">
+                    <h5>Nate's Approach</h5>
+                    <p>Executive briefing for enterprise leaders. Case study analysis. 23+ minutes. Dense strategic framework.</p>
+                </div>
+                <div class="diff-card your-angle">
+                    <h5>Your Angle</h5>
+                    <p>Frontline manager translation. "What this means for your team Monday morning." Actionable, embodied, real-world ops focus.</p>
+                </div>
+                <div class="diff-card">
+                    <h5>His Audience</h5>
+                    <p>Enterprise execs, product leaders, technical decision-makers.</p>
+                </div>
+                <div class="diff-card your-angle">
+                    <h5>Your Audience</h5>
+                    <p>Operational managers who manage people, not spreadsheets. Hands-on, in-person, real-time problem solvers.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #525252; margin-bottom: 16px;">Your Video Structure (Target: 8-10 min)</h4>
+                
+                <div class="outline-item">
+                    <div class="outline-time">0:00</div>
+                    <div class="outline-content">
+                        <h5>Hook: The $56K Question</h5>
+                        <p>Open with the shock number. "An AI company just deleted software they were paying $56,000 for. Here's why that matters to everyone who isn't a coder."</p>
+                    </div>
+                </div>
+                
+                <div class="outline-item">
+                    <div class="outline-time">0:45</div>
+                    <div class="outline-content">
+                        <h5>The Problem: Why AI Tools Stall</h5>
+                        <p>Most people use AI like a chat thread. But AI agents can DO work—if you set them up right. The problem? Most of our tools hide the work from AI.</p>
+                    </div>
+                </div>
+                
+                <div class="outline-item">
+                    <div class="outline-time">2:00</div>
+                    <div class="outline-content">
+                        <h5>The "Clicky Software" Problem (Simplified)</h5>
+                        <p>Every time you click through screens to do your job, you're creating "hidden state" that AI can't see. Translate with operational examples: scheduling systems, inventory tools, approval workflows.</p>
+                    </div>
+                </div>
+                
+                <div class="outline-item">
+                    <div class="outline-time">4:00</div>
+                    <div class="outline-content">
+                        <h5>What Cursor Did (And What It Means)</h5>
+                        <p>Simple explanation of the CMS deletion. Focus on the outcome: work became visible, AI could operate directly, 3 days instead of weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="outline-item">
+                    <div class="outline-time">5:30</div>
+                    <div class="outline-content">
+                        <h5>The 6 Questions That Make AI Work</h5>
+                        <p>Translate "work primitives" into questions any manager can ask: Where's the record? Can we see what changed? Who approved it? How do we prove it worked? Can we undo it? Who did what and why?</p>
+                    </div>
+                </div>
+                
+                <div class="outline-item">
+                    <div class="outline-time">7:30</div>
+                    <div class="outline-content">
+                        <h5>Your Monday Morning Action</h5>
+                        <p>Pick one workflow. Map where the work "hides." Ask if AI could see it. That's the start of going from chat-thread AI to systems-and-automation AI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: YOUR SCRIPT -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <h2 class="section-title">Your Script (Female Avatar Voice)</h2>
+            </div>
+            
+            <p style="color: #737373; font-size: 0.9rem; margin-bottom: 24px;">Optimized for AI avatar delivery. Conversational, direct, visual cues noted.</p>
+            
+            <div class="script-block hook">
+                <div class="script-label">HOOK (0:00-0:45)</div>
+                <div class="script-text">
+                    Fifty-six thousand dollars. That's how much one of the most AI-forward companies in the world was paying for software they just... deleted. Not replaced. Deleted. And here's the thing—they're faster now. Way faster. If you've ever wondered why your AI tools feel like glorified chat windows while other people seem to be automating entire workflows... this is why. And no, you don't need to become a coder to fix it.
+                </div>
+                <div class="avatar-note"><strong>Avatar direction:</strong> Direct eye contact. Slight lean in on "deleted." Hand gesture on "fifty-six thousand."</div>
+            </div>
+            
+            <div class="script-block problem">
+                <div class="script-label">THE PROBLEM (0:45-2:00)</div>
+                <div class="script-text">
+                    Let me tell you what's actually happening when AI "doesn't work" for most people. You're using AI like a conversation partner. You ask questions, it answers. That's fine. But AI agents—the kind that can actually do work for you—they need to see the work. And most of our business tools? They hide the work behind clicks. You click to get to the schedule. You click to approve something. You click to see the inventory. All that clicking creates what nerds call "hidden state"—basically, information that exists somewhere inside the software but isn't visible or editable in a way AI can touch.
+                </div>
+                <div class="avatar-note"><strong>Avatar direction:</strong> Casual tone. Slight head shake on "that's fine." Counting gesture on the "click" examples.</div>
+            </div>
+            
+            <div class="script-block insight">
+                <div class="script-label">THE INSIGHT (2:00-4:00)</div>
+                <div class="script-text">
+                    Here's what the AI-native companies figured out: every layer of software you put between people and the actual work... is a tax. It used to be worth paying because those layers made things easier for humans. But now? Those same layers are walls that keep AI out. The company I mentioned—Cursor—they were using a content management system. Standard stuff. Marketing team could update the website without bothering engineers. Sounds smart, right? Except when they wanted AI agents to help update content, the agents couldn't get in. The work was locked behind login screens, permission systems, draft modes, preview buttons. So they deleted the whole thing. Moved back to simple files that anyone—human or AI—could read and edit directly.
+                </div>
+                <div class="avatar-note"><strong>Avatar direction:</strong> Build energy through this section. Palms-up gesture on "sounds smart, right?" Definitive hand drop on "deleted the whole thing."</div>
+            </div>
+            
+            <div class="script-block proof">
+                <div class="script-label">THE PROOF (4:00-5:30)</div>
+                <div class="script-text">
+                    The result? A job they thought would take weeks... done in three days. Three hundred AI-assisted changes. Two hundred sixty dollars in AI costs. Fifty-six thousand saved on software they no longer needed. But here's the part that matters for you: it's not about coding. It's about understanding six questions that make any workflow AI-ready. One: Where's the record of this work? Two: Can we see exactly what changed? Three: Who needs to approve it? Four: How do we prove it worked? Five: Can we undo it if something goes wrong? Six: Can we trace who did what, and why? If your workflows have clear answers to those questions, AI can participate. If those answers are buried in software you have to click through to find... you're paying the abstraction tax.
+                </div>
+                <div class="avatar-note"><strong>Avatar direction:</strong> Numbers on screen as overlay during the six questions. Steady, teaching pace. Slight pause between each question.</div>
+            </div>
+            
+            <div class="script-block action">
+                <div class="script-label">THE ACTION (5:30-7:30)</div>
+                <div class="script-text">
+                    So here's your Monday morning move. Pick one workflow your team does repeatedly. Maybe it's shift scheduling. Maybe it's inventory checks. Maybe it's customer follow-ups. Now ask yourself: where does the work hide? Is it trapped in a dashboard only certain people can access? Is it scattered across three different tools? Is the "source of truth" actually in someone's head? That hidden state is why your AI stays stuck in chat-thread mode. The companies winning at AI aren't necessarily more technical—they're more honest about where work actually lives. And they're willing to simplify until AI can see it. You don't need to delete your software. You need to start noticing where work becomes invisible. That's the first step from using AI as a conversation partner... to using it as an operator. I'm Riley. This is what AI-native actually looks like for people who work with their hands, not just their keyboards.
+                </div>
+                <div class="avatar-note"><strong>Avatar direction:</strong> Warmer, encouraging tone for the action steps. Direct camera address on the sign-off. Brief pause before "I'm Riley."</div>
+            </div>
+        </div>
+
+        <!-- SECTION 8: PRODUCTION CHECKLIST -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <h2 class="section-title">Production Checklist</h2>
+            </div>
+            
+            <ul class="checklist">
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>Avatar Tool:</strong> Select female avatar with professional-casual appearance. Natural gestures enabled. Eye contact on key phrases.
+                    </div>
+                </li>
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>B-Roll Needs:</strong> Screenshot of Cursor website, simple animation showing "hidden state" concept, the six questions as text overlay, before/after workflow diagram.
+                    </div>
+                </li>
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>Thumbnail Concept:</strong> "$56K" large text, red "DELETED" stamp, subhead "The software trap no one talks about"
+                    </div>
+                </li>
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>Title Options:</strong> "Why AI Companies Are Deleting Software (And What It Means For You)" / "The $56K AI Lesson Every Manager Needs to Hear" / "Your Software Is Blocking AI (Here's The Fix)"
+                    </div>
+                </li>
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>Credit Original:</strong> "Based on analysis by Nate B Jones—link in description" + link to original video
+                    </div>
+                </li>
+                <li>
+                    <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div>
+                        <strong>CTA:</strong> "Subscribe if you want AI that actually works, not just talks." + link to your systems/automation content.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

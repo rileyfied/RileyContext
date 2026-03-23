@@ -1,0 +1,144 @@
+{
+  "name": "RileyContext",
+  "version": "5.0.0",
+  "description": "Riley's canonical context system — local-first, git-pushed to GitHub",
+  "created": "2026-01-23",
+  "updated": "2026-03-22",
+
+  "context_url": "https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md",
+
+  "paths": {
+    "root": "~/dev/RileyContext",
+    "root_local_laptop": "/Users/rileycolleyFW/dev/RileyContext",
+    "root_local_desktop": "/Users/rileycashpro/dev/RileyContext",
+    "projects": "RileyContext/RileyProjects",
+    "agents": "RileyContext/RileyAgents",
+    "agent_configs": "RileyContext/AgentConfigs",
+    "captures_inbox": "RileyContext/CONTEXT_HUB/captures/inbox",
+    "captures_processed": "RileyContext/CONTEXT_HUB/captures/_processed",
+    "scripts": "RileyContext/scripts",
+    "icloud_inbox": "iCloud Drive/_move-to-dev"
+  },
+
+  "known_projects": [
+    {
+      "id": "youtube",
+      "name": "YouTube Channel",
+      "priority": 1,
+      "hashtags": ["#youtube", "#video", "#ai", "#tutorial"],
+      "path": "RileyProjects/YOUTUBE CHANNEL",
+      "status": "active — Video #1 ready to film"
+    },
+    {
+      "id": "7shifts",
+      "name": "7shifts Scheduling",
+      "priority": 2,
+      "hashtags": ["#7shifts", "#schedule", "#cfa"],
+      "path": "RileyProjects/CFA/Schedule",
+      "status": "active — brain dumps captured, automation in progress"
+    },
+    {
+      "id": "armor",
+      "name": "Armor App",
+      "priority": 3,
+      "hashtags": ["#armor", "#scripture", "#bible", "#fighterverses"],
+      "path": "RileyProjects/ARMOR APP",
+      "status": "active — blueprint ready, data sets A-E ready"
+    },
+    {
+      "id": "carspotter",
+      "name": "Car Spotter Training Arcade",
+      "priority": 4,
+      "hashtags": ["#carspotter", "#cfa", "#training"],
+      "path": "RileyProjects/CFA/Training",
+      "status": "design phase"
+    },
+    {
+      "id": "aibrief",
+      "name": "Daily AI Audio Brief",
+      "priority": 5,
+      "hashtags": ["#aibrief", "#audio", "#news"],
+      "path": "AI BRIEFS",
+      "status": "active — ongoing production"
+    },
+    {
+      "id": "piano",
+      "name": "Piano / HarmonyHelper",
+      "priority": 6,
+      "hashtags": ["#harmony", "#piano", "#music"],
+      "path": "RileyProjects/Piano",
+      "status": "learning + app queued"
+    },
+    {
+      "id": "conductor",
+      "name": "AI Operations Monitor",
+      "priority": 7,
+      "hashtags": ["#conductor", "#monitor", "#agents"],
+      "path": "RileyProjects",
+      "status": "spec complete — next build"
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard App (RileyHQ)",
+      "priority": 8,
+      "hashtags": ["#dashboard", "#productivity"],
+      "path": "RileyProjects",
+      "status": "design discovery"
+    },
+    {
+      "id": "virtualmanager",
+      "name": "Virtual Restaurant Manager",
+      "priority": 9,
+      "hashtags": ["#virtualmanager", "#visor", "#cfa"],
+      "path": "RileyProjects/CFA",
+      "status": "concept — long-term vision"
+    }
+  ],
+
+  "ai_team": {
+    "claude_code": {
+      "role": "Lead Engineer",
+      "interface": "Claude Code CLI (laptop + desktop)",
+      "session_start": "reads CLAUDE.md + MEMORY.md locally, works directly in ~/dev/RileyContext/",
+      "specialties": ["builds", "file ops", "pipeline", "architecture", "terminal", "git"]
+    },
+    "claude_ai": {
+      "role": "Lead Architect / Strategist",
+      "interface": "Claude.ai web + iOS app (Dispatch/Cowork)",
+      "session_start": "reads RILEY_CONTEXT.md via GitHub raw URL or local Desktop Commander",
+      "specialties": ["planning", "strategy", "long-form thinking", "project design"]
+    },
+    "chatgpt": {
+      "role": "Ideation Partner",
+      "interface": "ChatGPT web/app",
+      "session_start": "fetches RILEY_CONTEXT.md from GitHub raw URL via /context command",
+      "handshake_file": "AgentConfigs/CHATGPT.md",
+      "specialties": ["brainstorming", "long-form content", "AI briefs", "scripts"]
+    },
+    "gemini": {
+      "role": "Google Integration + Research",
+      "interface": "Gemini web/app, AI Studio, Gems",
+      "session_start": "fetches RILEY_CONTEXT.md from GitHub raw URL via /context command",
+      "handshake_file": "AgentConfigs/GEMINI.md",
+      "specialties": ["Google ecosystem", "search", "research", "YouTube analytics"]
+    },
+    "sider": {
+      "role": "Multi-Model Hub",
+      "interface": "Browser extension (Plus)",
+      "session_start": "reads Wisebase — Riley Context Hub collection",
+      "handshake_file": "AgentConfigs/SIDER.md",
+      "specialties": ["browser queries", "web research", "PDF analysis", "model comparison"]
+    }
+  },
+
+  "sync": {
+    "canonical_root": "~/dev/RileyContext",
+    "github_repo": "https://github.com/rileyfied/RileyContext",
+    "raw_context_url": "https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md",
+    "auto_sync": true,
+    "sync_method": "Pipeline runs locally in ~/dev/RileyContext. After each run, git commit + push to GitHub.",
+    "ios_capture": "iCloud _move-to-dev folder -> pipeline scans and moves to local inbox",
+    "launchd_plist": "com.rileyfile.sync_context",
+    "schedule": "8:00 AM and 10:00 PM daily"
+  }
+}

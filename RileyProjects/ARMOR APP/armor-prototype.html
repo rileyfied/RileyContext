@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armor App Prototype</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #E8E4DB 0%, #D4CFC2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #root { width: 100%; display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const SAMPLE_VERSES = [
+      { id: '1-01', reference: 'Deuteronomy 7:9', text: 'Know therefore that the LORD your God is God, the faithful God who keeps covenant and steadfast love with those who love him and keep his commandments, to a thousand generations.', topic: 'Faithfulness (of God)', state: 'new' },
+      { id: '1-07', reference: 'Psalm 62:5-8', text: 'For God alone, O my soul, wait in silence, for my hope is from him. He only is my rock and my salvation, my fortress; I shall not be shaken. On God rests my salvation and my glory; my mighty rock, my refuge is God. Trust in him at all times, O people; pour out your heart before him; God is a refuge for us.', topic: 'Trusting God', state: 'daily' },
+      { id: '1-08', reference: 'Romans 8:1', text: 'There is therefore now no condemnation for those who are in Christ Jesus.', topic: 'Work of Christ', state: 'weekly' },
+      { id: '1-33', reference: 'Matthew 11:28-30', text: 'Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls. For my yoke is easy, and my burden is light.', topic: 'Depending on Christ', state: 'monthly' },
+      { id: '1-43', reference: 'Proverbs 3:5-6', text: 'Trust in the LORD with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.', topic: 'Trusting God', state: 'ongoing' },
+    ];
+
+    const colors = {
+      primary: { 50: '#F7F5F0', 100: '#EDE8DC', 500: '#8C7C4A', 600: '#705F32', 700: '#54461F' },
+      neutral: { 50: '#FAFAF8', 100: '#F5F4F1', 200: '#ECEAE4', 300: '#D8D5CC', 800: '#2E2B23' },
+      state: { new: '#B5B0A3', learning: '#6B8CB5', daily: '#7D9A6B', weekly: '#5A8B7A', monthly: '#5A7D8B', ongoing: '#5A6B5A' },
+      text: { primary: '#2E2B23', secondary: '#6E6959', tertiary: '#918B7A', scripture: '#171610' },
+      semantic: { success: '#5A6B5A', error: '#8B5A5A' }
+    };
+
+    const stateLabels = { new: 'New', learning: 'Learning', daily: 'Daily', weekly: 'Weekly', monthly: 'Monthly', ongoing: 'Mastered' };
+
+    const generateCloze = (text, level) => {
+      const interval = 6 - level;
+      return text.split(/\s+/).map((word, i) => ({ text: word, isBlank: level === 5 || (i + 1) % interval === 0, revealed: false, index: i }));
+    };
+
+    const generateFirstLetter = (text) => {
+      return text.split(/\s+/).map((word, i) => {
+        const cleanWord = word.replace(/^[^a-zA-Z]+/, '');
+        const firstLetter = cleanWord.charAt(0).toLowerCase();
+        return { text: word, firstLetter, revealed: false, typed: '', correct: null, index: i };
+      });
+    };
+
+    const Badge = ({ state }) => (
+      <span style={{ background: colors.state[state], color: '#fff', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 600, textTransform: 'uppercase' }}>{stateLabels[state]}</span>
+    );
+
+    const Button = ({ children, onClick, primary, disabled, style }) => (
+      <button onClick={onClick} disabled={disabled} style={{ padding: primary ? '14px 28px' : '12px 20px', borderRadius: 10, border: primary ? 'none' : `1.5px solid ${colors.neutral[300]}`, background: disabled ? colors.neutral[300] : primary ? colors.primary[600] : colors.neutral[50], color: primary ? '#fff' : colors.text.primary, fontSize: 15, fontWeight: 600, cursor: disabled ? 'not-allowed' : 'pointer', transition: 'all 0.2s', ...style }}>{children}</button>
+    );
+
+    const QuizStyleSelector = ({ selected, onSelect }) => {
+      const styles = [
+        { id: 'tap', name: 'Tap to Reveal', desc: 'Tap blanks to show words', icon: '👆' },
+        { id: 'firstLetter', name: 'First Letter', desc: 'Type first letter of each word', icon: '⌨️' },
+        { id: 'recall', name: 'Full Recall', desc: 'Recite from memory', icon: '🧠' },
+      ];
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {styles.map(s => (
+            <div key={s.id} onClick={() => onSelect(s.id)} style={{ display: 'flex', alignItems: 'center', padding: 14, background: selected === s.id ? colors.primary[50] : colors.neutral[100], borderRadius: 10, border: `2px solid ${selected === s.id ? colors.primary[500] : 'transparent'}`, cursor: 'pointer' }}>
+              <span style={{ fontSize: 24, marginRight: 14 }}>{s.icon}</span>
+              <div style={{ flex: 1 }}>
+                <p style={{ fontSize: 15, fontWeight: 600, margin: 0, color: selected === s.id ? colors.primary[700] : colors.text.primary }}>{s.name}</p>
+                <p style={{ fontSize: 12, color: colors.text.tertiary, margin: '2px 0 0' }}>{s.desc}</p>
+              </div>
+              <div style={{ width: 20, height: 20, borderRadius: 10, border: `2px solid ${selected === s.id ? colors.primary[600] : colors.neutral[300]}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {selected === s.id && <div style={{ width: 10, height: 10, borderRadius: 5, background: colors.primary[600] }} />}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    };
+
+    const HomeScreen = ({ onNavigate, currentVerse, reviewCount }) => (
+      <div style={{ padding: 24, overflowY: 'auto', flex: 1 }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <h1 style={{ fontFamily: 'Georgia, serif', fontSize: 32, color: colors.primary[600], letterSpacing: 6, margin: 0 }}>ARMOR</h1>
+          <p style={{ fontSize: 13, color: colors.text.tertiary, letterSpacing: 2, marginTop: 4 }}>SCRIPTURE MEMORIZATION</p>
+        </div>
+        <div onClick={() => onNavigate('learn', currentVerse)} style={{ background: colors.neutral[100], borderRadius: 16, padding: 24, marginBottom: 20, cursor: 'pointer', boxShadow: '0 2px 8px rgba(46,43,35,0.08)' }}>
+          <p style={{ fontSize: 11, fontWeight: 600, color: colors.primary[500], letterSpacing: 2, marginBottom: 8 }}>THIS WEEK'S VERSE</p>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 22, color: colors.text.primary, margin: '0 0 12px' }}>{currentVerse.reference}</h2>
+          <p style={{ fontFamily: 'Georgia, serif', fontSize: 17, lineHeight: 1.7, color: colors.text.scripture, margin: 0 }}>{currentVerse.text.substring(0, 150)}...</p>
+          <p style={{ fontSize: 14, color: colors.primary[500], textAlign: 'center', marginTop: 16, paddingTop: 16, borderTop: `1px solid ${colors.neutral[200]}` }}>Tap to begin learning</p>
+        </div>
+        {reviewCount > 0 ? (
+          <div onClick={() => onNavigate('review')} style={{ display: 'flex', alignItems: 'center', background: colors.state.daily, borderRadius: 12, padding: 16, marginBottom: 24, cursor: 'pointer' }}>
+            <div style={{ width: 48, height: 48, borderRadius: 24, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 16 }}>
+              <span style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{reviewCount}</span>
+            </div>
+            <div>
+              <p style={{ fontSize: 16, fontWeight: 600, color: '#fff', margin: 0 }}>{reviewCount} Verse{reviewCount > 1 ? 's' : ''} ready for review</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', margin: '2px 0 0' }}>Tap to review</p>
+            </div>
+          </div>
+        ) : (
+          <div style={{ background: colors.neutral[200], borderRadius: 12, padding: 20, marginBottom: 24, textAlign: 'center' }}>
+            <p style={{ fontSize: 16, fontWeight: 500, color: colors.text.secondary, margin: 0 }}>No Reviews Due</p>
+            <p style={{ fontSize: 13, color: colors.text.tertiary, margin: '4px 0 0' }}>Great work! Check back tomorrow.</p>
+          </div>
+        )}
+        <p style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600, color: colors.text.primary, marginBottom: 16 }}>Explore</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+          {[{ title: 'Browse', sub: '260 verses' }, { title: 'Topics', sub: '39 categories' }, { title: 'Progress', sub: 'Your journey' }].map(item => (
+            <div key={item.title} style={{ background: colors.neutral[100], borderRadius: 12, padding: 16, textAlign: 'center', cursor: 'pointer' }}>
+              <p style={{ fontSize: 14, fontWeight: 600, color: colors.text.primary, margin: 0 }}>{item.title}</p>
+              <p style={{ fontSize: 11, color: colors.text.tertiary, margin: '6px 0 0' }}>{item.sub}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+
+    const LearnScreen = ({ verse, onNavigate, onBack }) => {
+      const [quizStyle, setQuizStyle] = useState('tap');
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: `1px solid ${colors.neutral[200]}` }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', color: colors.primary[600], fontSize: 16, cursor: 'pointer' }}>← Back</button>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600 }}>Learn</span>
+            <div style={{ width: 60 }} />
+          </div>
+          <div style={{ flex: 1, padding: 24, overflowY: 'auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+              <Badge state={verse.state} />
+              <span style={{ fontSize: 13, color: colors.text.tertiary }}>{verse.topic}</span>
+            </div>
+            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 26, color: colors.text.primary, margin: '0 0 20px' }}>{verse.reference}</h2>
+            <div style={{ background: colors.neutral[100], borderRadius: 16, padding: 24, marginBottom: 24 }}>
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: 20, lineHeight: 1.8, color: colors.text.scripture, margin: 0 }}>{verse.text}</p>
+            </div>
+            <p style={{ fontFamily: 'Georgia, serif', fontSize: 16, fontWeight: 600, marginBottom: 12 }}>Choose Practice Style</p>
+            <QuizStyleSelector selected={quizStyle} onSelect={setQuizStyle} />
+          </div>
+          <div style={{ padding: 20, borderTop: `1px solid ${colors.neutral[200]}` }}>
+            <Button primary onClick={() => onNavigate(quizStyle === 'recall' ? 'recall' : quizStyle === 'firstLetter' ? 'firstLetter' : 'practice', verse)} style={{ width: '100%' }}>
+              Continue to Practice
+            </Button>
+          </div>
+        </div>
+      );
+    };
+
+    const PracticeScreen = ({ verse, onNavigate, onBack }) => {
+      const [level, setLevel] = useState(3);
+      const [cloze, setCloze] = useState(() => generateCloze(verse.text, 3));
+      const totalBlanks = cloze.filter(w => w.isBlank).length;
+      const revealed = cloze.filter(w => w.isBlank && w.revealed).length;
+      const allRevealed = revealed === totalBlanks;
+      
+      const revealWord = (idx) => setCloze(prev => prev.map((w, i) => i === idx ? { ...w, revealed: true } : w));
+      const revealAll = () => setCloze(prev => prev.map(w => ({ ...w, revealed: true })));
+      const reset = () => setCloze(generateCloze(verse.text, level));
+      const changeLevel = (l) => { setLevel(l); setCloze(generateCloze(verse.text, l)); };
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: `1px solid ${colors.neutral[200]}` }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', color: colors.primary[600], fontSize: 16, cursor: 'pointer' }}>← Back</button>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600 }}>Tap to Reveal</span>
+            <div style={{ width: 60 }} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', background: colors.neutral[100] }}>
+            <div>
+              <p style={{ fontSize: 14, fontWeight: 600, margin: 0 }}>Level {level}</p>
+              <p style={{ fontSize: 12, color: colors.text.tertiary, margin: '2px 0 0' }}>{['20%', '25%', '33%', '50%', '100%'][level-1]} blanked</p>
+            </div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {[1,2,3,4,5].map(l => (
+                <button key={l} onClick={() => changeLevel(l)} style={{ width: 32, height: 32, borderRadius: 6, border: level === l ? `2px solid ${colors.primary[500]}` : `1px solid ${colors.neutral[300]}`, background: level === l ? colors.primary[50] : colors.neutral[50], color: level === l ? colors.primary[700] : colors.text.secondary, fontWeight: 600, cursor: 'pointer' }}>{l}</button>
+              ))}
+            </div>
+          </div>
+          <div style={{ padding: '16px 20px', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: 'Georgia, serif', fontSize: 20, margin: 0 }}>{verse.reference}</h3>
+            <p style={{ fontSize: 13, color: colors.text.tertiary, margin: '4px 0 0' }}>{revealed} / {totalBlanks} revealed</p>
+          </div>
+          <div style={{ flex: 1, padding: '0 20px 20px', overflowY: 'auto' }}>
+            <div style={{ background: colors.neutral[100], borderRadius: 16, padding: 24 }}>
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: 19, lineHeight: 2, margin: 0 }}>
+                {cloze.map((word, i) => (
+                  <span key={i}>
+                    {word.isBlank && !word.revealed ? (
+                      <span onClick={() => revealWord(i)} style={{ display: 'inline-block', background: colors.primary[100], borderRadius: 4, padding: '2px 6px', minWidth: 40, textAlign: 'center', cursor: 'pointer', color: colors.primary[500], fontFamily: 'monospace' }}>{'_'.repeat(Math.min(word.text.length, 6))}</span>
+                    ) : (
+                      <span style={{ color: word.isBlank && word.revealed ? colors.state.daily : colors.text.scripture, fontWeight: word.isBlank && word.revealed ? 600 : 400 }}>{word.text}</span>
+                    )}{' '}
+                  </span>
+                ))}
+              </p>
+            </div>
+            <p style={{ fontSize: 13, color: colors.text.tertiary, textAlign: 'center', marginTop: 16, fontStyle: 'italic' }}>{allRevealed ? 'All words revealed!' : 'Tap blanks to reveal'}</p>
+          </div>
+          <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 12, borderTop: `1px solid ${colors.neutral[200]}` }}>
+            {!allRevealed ? <Button onClick={revealAll}>Reveal All</Button> : <Button onClick={reset}>Try Again</Button>}
+            <Button primary disabled={!allRevealed} onClick={() => onNavigate('recall', verse)}>Continue to Recall</Button>
+          </div>
+        </div>
+      );
+    };
+
+    const FirstLetterScreen = ({ verse, onNavigate, onBack }) => {
+      const [words, setWords] = useState(() => generateFirstLetter(verse.text));
+      const [currentIndex, setCurrentIndex] = useState(0);
+      
+      const totalWords = words.length;
+      const correctCount = words.filter(w => w.correct === true).length;
+      const attemptedCount = words.filter(w => w.correct !== null).length;
+      const allComplete = attemptedCount === totalWords;
+      const allCorrect = correctCount === totalWords;
+      
+      const handleKeyPress = (e) => {
+        if (allComplete) return;
+        const typed = e.key.toLowerCase();
+        if (typed.length !== 1 || !/[a-z]/.test(typed)) return;
+        
+        const currentWord = words[currentIndex];
+        const isCorrect = typed === currentWord.firstLetter;
+        
+        setWords(prev => prev.map((w, i) => 
+          i === currentIndex ? { ...w, revealed: true, typed, correct: isCorrect } : w
+        ));
+        
+        if (currentIndex < totalWords - 1) {
+          setCurrentIndex(currentIndex + 1);
+        }
+      };
+      
+      const reset = () => {
+        setWords(generateFirstLetter(verse.text));
+        setCurrentIndex(0);
+      };
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: `1px solid ${colors.neutral[200]}` }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', color: colors.primary[600], fontSize: 16, cursor: 'pointer' }}>← Back</button>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600 }}>First Letter</span>
+            <div style={{ width: 60 }} />
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', background: colors.neutral[100] }}>
+            <div>
+              <p style={{ fontSize: 14, fontWeight: 600, margin: 0 }}>Type the first letter</p>
+              <p style={{ fontSize: 12, color: colors.text.tertiary, margin: '2px 0 0' }}>of each word to reveal</p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: 14, fontWeight: 600, margin: 0, color: colors.state.daily }}>{correctCount} / {totalWords}</p>
+              <p style={{ fontSize: 12, color: colors.text.tertiary, margin: '2px 0 0' }}>correct</p>
+            </div>
+          </div>
+          
+          <div style={{ padding: '16px 20px', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: 'Georgia, serif', fontSize: 20, margin: 0 }}>{verse.reference}</h3>
+          </div>
+          
+          <div style={{ flex: 1, padding: '0 20px 20px', overflowY: 'auto' }}>
+            <div style={{ background: colors.neutral[100], borderRadius: 16, padding: 24 }}>
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: 18, lineHeight: 2.2, margin: 0 }}>
+                {words.map((word, i) => {
+                  const isCurrent = i === currentIndex && !allComplete;
+                  const bgColor = word.correct === true ? colors.semantic.success + '20' : 
+                                 word.correct === false ? colors.semantic.error + '20' : 
+                                 isCurrent ? colors.primary[100] : 'transparent';
+                  const textColor = word.correct === true ? colors.semantic.success :
+                                   word.correct === false ? colors.semantic.error :
+                                   word.revealed ? colors.text.scripture : colors.primary[500];
+                  const borderColor = isCurrent ? colors.primary[500] : 'transparent';
+                  
+                  return (
+                    <span key={i}>
+                      {word.revealed ? (
+                        <span style={{ background: bgColor, color: textColor, padding: '2px 4px', borderRadius: 4, fontWeight: word.correct !== null ? 600 : 400 }}>{word.text}</span>
+                      ) : (
+                        <span style={{ display: 'inline-block', background: bgColor, border: `2px solid ${borderColor}`, borderRadius: 4, padding: '2px 6px', minWidth: 30 }}>
+                          <span style={{ fontWeight: 700, color: colors.primary[600] }}>{word.firstLetter.toUpperCase()}</span>
+                          <span style={{ color: colors.primary[400] }}>{'_'.repeat(Math.max(word.text.replace(/[^a-zA-Z]/g, '').length - 1, 1))}</span>
+                        </span>
+                      )}{' '}
+                    </span>
+                  );
+                })}
+              </p>
+            </div>
+            
+            {!allComplete && (
+              <div style={{ marginTop: 20, textAlign: 'center' }}>
+                <p style={{ fontSize: 14, color: colors.text.tertiary, marginBottom: 12 }}>
+                  Type: <strong style={{ color: colors.primary[600], fontSize: 18 }}>{words[currentIndex]?.firstLetter.toUpperCase()}</strong> for "{words[currentIndex]?.text.replace(/[^a-zA-Z]/g, '')}"
+                </p>
+                <input
+                  type="text"
+                  onKeyDown={handleKeyPress}
+                  autoFocus
+                  style={{ width: 60, height: 60, fontSize: 32, fontWeight: 700, textAlign: 'center', textTransform: 'uppercase', border: `3px solid ${colors.primary[500]}`, borderRadius: 12, outline: 'none', color: colors.primary[700], background: colors.primary[50] }}
+                  maxLength={1}
+                />
+                <p style={{ fontSize: 12, color: colors.text.tertiary, marginTop: 8 }}>Press any letter key</p>
+              </div>
+            )}
+            
+            {allComplete && (
+              <div style={{ marginTop: 20, textAlign: 'center', padding: 20, background: allCorrect ? colors.semantic.success + '10' : colors.semantic.error + '10', borderRadius: 12 }}>
+                <p style={{ fontSize: 18, fontWeight: 600, color: allCorrect ? colors.semantic.success : colors.text.primary, margin: 0 }}>
+                  {allCorrect ? '🎉 Perfect!' : `${correctCount} of ${totalWords} correct`}
+                </p>
+              </div>
+            )}
+          </div>
+          
+          <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 12, borderTop: `1px solid ${colors.neutral[200]}` }}>
+            {allComplete && <Button onClick={reset}>Try Again</Button>}
+            <Button primary disabled={!allComplete} onClick={() => onNavigate('feedback', { verse, success: allCorrect || correctCount >= totalWords * 0.8 })}>
+              {allComplete ? 'Continue' : 'Complete to Continue'}
+            </Button>
+          </div>
+        </div>
+      );
+    };
+
+    const RecallScreen = ({ verse, onNavigate, onBack }) => {
+      const [showAnswer, setShowAnswer] = useState(false);
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: `1px solid ${colors.neutral[200]}` }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', color: colors.primary[600], fontSize: 16, cursor: 'pointer' }}>← Back</button>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600 }}>Full Recall</span>
+            <div style={{ width: 60 }} />
+          </div>
+          <div style={{ flex: 1, padding: 24, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 28, textAlign: 'center', margin: '0 0 32px' }}>{verse.reference}</h2>
+            {!showAnswer ? (
+              <div style={{ background: colors.neutral[100], borderRadius: 16, padding: 32, textAlign: 'center' }}>
+                <p style={{ fontSize: 18, color: colors.text.tertiary, margin: 0 }}>Recite the verse from memory</p>
+                <p style={{ fontSize: 14, color: colors.text.tertiary, margin: '12px 0 0', fontStyle: 'italic' }}>Tap below when ready to check</p>
+              </div>
+            ) : (
+              <div style={{ background: colors.neutral[100], borderRadius: 16, padding: 24 }}>
+                <p style={{ fontFamily: 'Georgia, serif', fontSize: 19, lineHeight: 1.8, margin: 0 }}>{verse.text}</p>
+              </div>
+            )}
+          </div>
+          <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 12, borderTop: `1px solid ${colors.neutral[200]}` }}>
+            {!showAnswer ? (
+              <Button primary onClick={() => setShowAnswer(true)}>Show Answer</Button>
+            ) : (
+              <>
+                <p style={{ fontSize: 15, fontWeight: 600, textAlign: 'center', margin: '0 0 8px' }}>How did you do?</p>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <Button onClick={() => onNavigate('feedback', { verse, success: false })} style={{ flex: 1, background: colors.neutral[200] }}>Missed It</Button>
+                  <Button primary onClick={() => onNavigate('feedback', { verse, success: true })} style={{ flex: 1 }}>Got It!</Button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    const FeedbackScreen = ({ verse, success, onNavigate }) => (
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center', alignItems: 'center', padding: 32 }}>
+        <div style={{ width: 80, height: 80, borderRadius: 40, background: success ? colors.state.ongoing : colors.state.learning, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
+          <span style={{ fontSize: 40, color: '#fff' }}>{success ? '✓' : '↻'}</span>
+        </div>
+        <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 26, margin: '0 0 8px' }}>{success ? 'Well Done!' : 'Keep Practicing'}</h2>
+        <p style={{ fontSize: 16, color: colors.text.secondary, margin: '0 0 8px' }}>{verse.reference}</p>
+        <p style={{ fontSize: 14, color: colors.text.tertiary, textAlign: 'center', margin: '0 0 32px' }}>{success ? 'Review scheduled for tomorrow' : 'This verse will appear again soon'}</p>
+        <Button primary onClick={() => onNavigate('home')}>Return Home</Button>
+      </div>
+    );
+
+    const ReviewQueueScreen = ({ verses, onNavigate, onBack }) => {
+      const dueVerses = verses.filter(v => ['daily', 'weekly', 'monthly', 'ongoing'].includes(v.state));
+      const [selected, setSelected] = useState(new Set(dueVerses.map(v => v.id)));
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: `1px solid ${colors.neutral[200]}` }}>
+            <button onClick={onBack} style={{ background: 'none', border: 'none', color: colors.primary[600], fontSize: 16, cursor: 'pointer' }}>← Back</button>
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600 }}>Review Queue</span>
+            <div style={{ width: 60 }} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', background: colors.neutral[100] }}>
+            <span style={{ fontSize: 14, color: colors.text.secondary }}>{selected.size} of {dueVerses.length} selected</span>
+            <div style={{ display: 'flex', gap: 16 }}>
+              <button onClick={() => setSelected(new Set(dueVerses.map(v => v.id)))} style={{ background: 'none', border: 'none', color: colors.primary[600], fontWeight: 600, cursor: 'pointer' }}>All</button>
+              <button onClick={() => setSelected(new Set())} style={{ background: 'none', border: 'none', color: colors.primary[600], fontWeight: 600, cursor: 'pointer' }}>None</button>
+            </div>
+          </div>
+          <div style={{ flex: 1, padding: 16, overflowY: 'auto' }}>
+            {dueVerses.map(v => (
+              <div key={v.id} onClick={() => setSelected(prev => { const n = new Set(prev); n.has(v.id) ? n.delete(v.id) : n.add(v.id); return n; })} style={{ display: 'flex', alignItems: 'center', background: selected.has(v.id) ? colors.primary[50] : colors.neutral[100], borderRadius: 12, padding: 16, marginBottom: 8, border: `2px solid ${selected.has(v.id) ? colors.primary[500] : 'transparent'}`, cursor: 'pointer' }}>
+                <div style={{ width: 24, height: 24, borderRadius: 6, border: `2px solid ${selected.has(v.id) ? colors.primary[600] : colors.neutral[300]}`, background: selected.has(v.id) ? colors.primary[600] : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 14 }}>
+                  {selected.has(v.id) && <span style={{ color: '#fff', fontWeight: 700 }}>✓</span>}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontFamily: 'Georgia, serif', fontSize: 16, fontWeight: 600, margin: '0 0 6px' }}>{v.reference}</p>
+                  <Badge state={v.state} />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ padding: 20, borderTop: `1px solid ${colors.neutral[200]}` }}>
+            <Button primary disabled={selected.size === 0} onClick={() => onNavigate('learn', dueVerses.find(v => selected.has(v.id)))} style={{ width: '100%' }}>Start Review ({selected.size})</Button>
+          </div>
+        </div>
+      );
+    };
+
+    function ArmorPrototype() {
+      const [screen, setScreen] = useState('home');
+      const [currentVerse, setCurrentVerse] = useState(SAMPLE_VERSES[0]);
+      const [feedbackData, setFeedbackData] = useState(null);
+      
+      const navigate = (to, data) => {
+        if (to === 'feedback') { setFeedbackData(data); setScreen('feedback'); }
+        else if (data) { setCurrentVerse(data); setScreen(to); }
+        else setScreen(to);
+      };
+      
+      const reviewCount = SAMPLE_VERSES.filter(v => ['daily', 'weekly', 'monthly', 'ongoing'].includes(v.state)).length;
+      
+      return (
+        <div style={{ width: '100%', maxWidth: 400, height: 750, background: colors.neutral[50], borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ height: 44, background: colors.neutral[800], display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span style={{ color: '#fff', fontSize: 12, fontWeight: 600 }}>ARMOR APP PROTOTYPE</span>
+          </div>
+          <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+            {screen === 'home' && <HomeScreen onNavigate={navigate} currentVerse={currentVerse} reviewCount={reviewCount} />}
+            {screen === 'learn' && <LearnScreen verse={currentVerse} onNavigate={navigate} onBack={() => navigate('home')} />}
+            {screen === 'practice' && <PracticeScreen verse={currentVerse} onNavigate={navigate} onBack={() => navigate('learn', currentVerse)} />}
+            {screen === 'firstLetter' && <FirstLetterScreen verse={currentVerse} onNavigate={navigate} onBack={() => navigate('learn', currentVerse)} />}
+            {screen === 'recall' && <RecallScreen verse={currentVerse} onNavigate={navigate} onBack={() => navigate('learn', currentVerse)} />}
+            {screen === 'feedback' && feedbackData && <FeedbackScreen verse={feedbackData.verse} success={feedbackData.success} onNavigate={navigate} />}
+            {screen === 'review' && <ReviewQueueScreen verses={SAMPLE_VERSES} onNavigate={navigate} onBack={() => navigate('home')} />}
+          </div>
+          <div style={{ padding: 8, background: colors.neutral[100], textAlign: 'center', borderTop: `1px solid ${colors.neutral[200]}`, flexShrink: 0 }}>
+            <span style={{ fontSize: 11, color: colors.text.tertiary }}>Interactive prototype • 3 quiz styles</span>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<ArmorPrototype />);
+  </script>
+</body>
+</html>

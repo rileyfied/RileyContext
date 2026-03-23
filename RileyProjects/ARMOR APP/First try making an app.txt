@@ -1,0 +1,1425 @@
+Skip to content
+Chat history
+
+
+
+
+You said:
+I have some edits and changes for you. I will paste them all below and you can organize your followup questions as you see fit.
+
+EDITS:
+
+HOME SCREEN LAYOUT:
+- App will open to Home Screen that will show the most recent verse that the user has been learning. For example:
+
+Week 1 • Ephesians 6:11-12
+“Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places.”
+Ephesians 6:11-12
+
+- If player’s previous attempt resulted in a Learned verse (player completed all levels), the earliest new verse in the current pack will be shown. (For example, if a player skipped Week 2 in the pack or chose another verse to learn, the Home Screen will default back to Week 2 when a new verse is introduced. If the player started Week 2 but only completed through Word Bank L4, the Home Screen will default back to Week 2 when a new verse is introduced and the player will be able to pick up at Word Bank L5).
+
+HOME SCREEN TILES:	
+- Under the verse will be a big button that says “Memorize” which will take user to the Gameplay ladder page (defined below)
+- a Hamburger Menu will show at the top right of the Home Screen (defined below)
+
+GAMEPLAY LADDER PAGE:
+- The mechanics will be in a dropdown menu, as will the Levels once inside the mechanic screen. The choices are grayed out if the user has not yet completed previous mechanics/levels, but all will be visible when opening the dropdown menu on the respective screen.
+- User will be able to pick up where he left off on any verse mechanic and level.
+- User may replay any mechanic/level that has been previously completed
+
+HOME SCREEN HAMBURGER MENU:
+
+	- My Armor: Learning/Learned/Mastered/Review; all verses clickable and reveal Home Screen layout with verse. Learning=any verses partially completed, at least Word Bank L1 complete; Learned=completed thru Voice L5, awaiting 2 spaced pop quizzes; Mastered=no errors on 2 spaced repetition “random” Pop Quizzes (Fill in the Blanks L5 Pop Quiz and Voice L5 Pop Quiz); Review=failed pop quiz verses, successful completion moves verse back to “Learned”
+
+	- Full Armor Sets: expandable/collapsable list of all sets (Armor Set 1, Armor Set 2, Armor Set 3, 4, 5). Click for dropdown list of all weekly verses in set (Example: Week 1 - Ephesians 6:11, Week 2 - Ephesians 6:12-13, Week 3 - Ephesians 6:14-15, Week 4 - Ephesians 6:16-17, etc). All weeks/verses that user has learned or partially learned (at least one level completed) will be a different visited state color. Clicking on any week/verse will lead to the Home Screen layout with that verse. User can then click the Memorize button as previously defined.
+
+	- Armor by Topic: Topic categories and the weeks/verses that fall under each topic. These are clickable and follow the same pattern as the weekly verses in the Full Armor Sets section, including visited state color rules defined above.
+
+	- Custom Armor (KJV only unless user pays for ESV download?): Search entire Bible by Book, chapter, and verse. Click verse or verses to highlight (select) text. Click again to remove highlight (deselect). Long press selection to reveal menu options: Add to Custom Armor, Copy, Share.
+
+	- Settings:
+	Translation: ESV by default, option to toggle on KJV which toggles off ESV automatically and vice versa)
+	Export PDF: Export list of verses by set in PDF format
+	Cloud Sync: (v2 feature, paid option)
+	About: about the app & copyright info?
+ChatGPT said:
+Awesome—these edits are clear and give us a strong spine for v1. I’ve folded them into the working spec. Below are concise confirmations plus targeted follow-ups where choices affect UX, data, and implementation.
+
+Quick confirmations (lock these if correct)
+Home screen
+
+Shows the most recent active verse unless the last attempt finished a verse; then it surfaces the earliest new verse in the current pack (e.g., returns to Week 2 if skipped or unfinished).
+
+Big Memorize button goes to the Gameplay Ladder for that verse.
+
+Hamburger menu at top right.
+
+Gameplay Ladder
+
+Mechanics and Levels are in dropdowns; all visible, but gated (grayed) until prerequisites are completed.
+
+Users can resume mid-mechanic/level and freely replay any completed step.
+
+Progress states
+
+Learning: ≥ Word Bank L1 completed.
+
+Learned: Completed through Voice L5, awaiting two spaced pop quizzes.
+
+Mastered: 0 errors on both spaced pop quizzes (Fill-in L5 Pop Quiz and Voice L5 Pop Quiz).
+
+Review: Failed pop-quiz verses; once passed, verse returns to Learned.
+
+Menu
+
+My Armor (four buckets with clickable lists).
+
+Full Armor Sets (expand/collapse sets → weeks/verses; visited color for any with ≥1 level done).
+
+Armor by Topic (same behavior as Full Sets).
+
+Custom Armor (KJV free; ESV unlock?): search → tap to select/deselect text → long-press: Add to Custom Armor / Copy / Share.
+
+Settings: Translation toggle (ESV default ↔ KJV), Export PDF (by set), Cloud Sync v2 (paid), About.
+
+Follow-up questions (organized)
+A) Home Screen logic & edge cases
+Active verse tie-breakers: If the user opened two different verses today (both unfinished), which one is “most recent”—last opened timestamp or last progressed timestamp?
+
+Pack context: When you say “earliest new verse in the current pack,” how do we define current? The last pack the user opened? Or a user-selectable “active pack” setting?
+
+Empty state: First-time user with no progress—what should the Home show? (Option: “Start Pack 1 • Week 1 (Eph 6:11–12)” with a short explainer.)
+
+B) Mechanics, levels, and gating
+Mechanics list (final): Please confirm the full ordered list of mechanics (e.g., Word Bank L1–L5 → Fill-in L1–L5 → Voice L1–L5). If different, list exact names & counts so we wire the ladder correctly.
+
+Gating rules: Is progress strictly linear across mechanics (finish all Word Bank levels before Fill-in unlocks, etc.) or can users switch mechanics at the same level tier?
+
+Replay scoring: When replaying a completed level, do we keep the best score only, average, or keep a history?
+
+C) Pop quizzes (spaced repetition)
+Spacing schedule: What intervals do you want for the two pop quizzes (e.g., 48 hours and 7 days after “Learned”)?
+
+Delivery: Are pop quizzes in-app only (badge on Home + queue in menu), or should we also send push notifications later (future)?
+
+Failure criteria: What qualifies as “failed” on each pop quiz—any mistake, or mistakes above a threshold (e.g., ≤2 errors still passes)?
+
+Reset logic: If a verse fails and moves to Review, once passed, do we restart the two-quiz sequence or just return to Learned awaiting only the remaining quizzes?
+
+D) Visited state & colors
+Visited color: Do you have a color system in mind for (a) untouched, (b) visited/partially learned, (c) learned, (d) mastered? Provide HEX values or let me propose an accessible palette.
+
+Topic view parity: Confirm that the same visited coloring rules apply in Armor by Topic.
+
+E) Custom Armor (KJV free, ESV paid?)
+Monetization: Is the plan KJV free across the app and ESV behind a one-time purchase (or subscription)? If one-time, what price tier?
+
+Search UX: Should search support multi-verse ranges (e.g., “John 3:16–18”) and phrase search?
+
+Selection granularity: Can users select across multiple non-contiguous verses in one action, or only contiguous ranges?
+
+Add to Custom Armor flow: After “Add to Custom Armor,” do we prompt to (a) add to an existing custom set or (b) create new set? Should we allow multiple sets?
+
+Copy/Share format: Default to plain text with reference at the end? Any markdown preference?
+
+F) Settings & exports
+Translation toggle + progress: If a user switches translations mid-stream, do we preserve progress per translation per verse (recommended), or share progress between translations (risk: text differs)?
+
+Export PDF: “Export list of verses by set”—would you like verse text included or just references? (I suggest both options.) Any preferred page size (Letter vs A4) and layout?
+
+About page: Provide final copy and any copyright/licensing specifics you want shown.
+
+G) Data model & state
+Progress thresholds: Confirm that “Learning” begins at Word Bank L1 completion. Do we show “Not started” for truly untouched verses?
+
+Granular stats: Do you want to track accuracy %, time-to-complete, hints used, and recordings count per level for future coaching?
+
+Reset progress: Should users be able to reset a verse to Not Started (per verse; per translation)?
+
+Cloud Sync v2: Which platforms to support (iCloud, Sign in with Apple, email/password)? Any preference for anonymous first, account optional later?
+
+H) Accessibility & platform
+Voice levels: Are we capturing audio on-device only, or do you want optional cloud evaluation later? Any policy for storing/retaining voice clips?
+
+Offline behavior: Should verses and progress be fully usable offline (with sync later)?
+
+Minimum OS targets: iOS first? (If yes, iOS 16+?) Android later?
+
+I) Navigation & microcopy
+Hamburger content on all screens: Should the hamburger be global? Do we also include a bottom tab bar or keep it single-FAB (Memorize) + menu?
+
+Labels & helpers: Provide preferred wording (e.g., “Memorize,” “Resume,” “Retry,” “Pop Quiz”), or let me draft first-pass copy?
+
+Implementation notes (for your awareness)
+We’ll maintain per-verse, per-translation progress records to avoid mismatches when switching ESV/KJV.
+
+The “grayed but visible” dropdown ladder implies a simple state machine with unlock conditions; I’ll codify this once you confirm the mechanic order.
+
+Spaced repetition will be scheduled from the timestamp of ‘Learned’ with a small scheduler that adds quizzes to a queue and surfaces them on Home/Menu.
+
+Visited coloring will read from progress state (≥ any level completed).
+
+Export PDF can be generated on-device; cloud sync can store export presets in v2.
+
+If you answer the 29 questions above (even briefly), I’ll lock the spec and move straight into a tappable prototype of: Home → Memorize (Ladder) → Menu → My Armor / Full Sets / Topics → Custom Armor → Settings → Export.
+
+You said:
+1. last opened, as long as user has completed M1L1 for that verse. Opened but no learning progress? treat it as unopened
+2. Active pack setting
+3. Option: "Start Armor Set 1 • Week 1"
+4. These are not exact names, we need to come up with the exact names — Word Bank L1-L5 → Word Scramble L1-L5 → Type First Letter in blanks App completes word L1-L5 → Type full word in blanks L1-L5 → Recite verse out loud L1-L5 (audible recording plays and user must say missing word when recording pauses)
+5. Strictly linear
+6. There is no scoring, only no error completion. Once user passes a level, that level is unlocked forever even if user decides to go back and practice again.
+7. 3 days and 7 days, then again at 14 days and 30 days
+8. In-app only
+9. Any mistake
+10. Once reviewed verse is passed, treat it like a newly learned verse (reset quizzes). Depending on timing, this may eventually result in multiple pop quiz prompts for varying learned verses occurring on the same day or in the same session. That’s ok. 
+11. You can propose an accessible pallet for now.
+12. Yes, same visiting rules apply
+13. KJV free, I want to make ESV free also, but not if I’m going out of pocket for a license. is a license expensive?
+14. User will click on book, chapter, verse (tiles? Like in a flight or hotel booking app where you click dates?) the verse will show in the chapter (whole chapter will show but the chosen verse will be the focus and be automatically highlighted). User can click more verses above and below, or un-highlight and re-highlight altogether by clicking verse inline.
+15. Only contiguous
+16. Allow multiple sets. Prompt add to existing set or create new set. also include option to add from inside a custom set list by clicking plus sign (like a playlist)
+17. Default to plain text
+18. Preserve progress
+19. both Verse text and references. Letter size, portrait mode. See previously attached pdfs for layout and format.
+20. For now just use place holder text like Armor v1.0 copyright 2025 or whatever
+21. Yes learning begins at word bank L1 completion. Do not show “Not Started”
+22. Yes
+23. Yes, with confirmation prompt “Erase verse Progress?” Cancel/Erase
+24. Yes all 3: iCloud, Sign in with Apple, email/password. Account optional later is fine
+25. On device only I guess, but no storing except for initial in-app playback.
+26. Yes offline
+27. iOS 16+ first, Android later
+28. Global: What do you think? No bottom tab I don’t think, but tap top of screen returns to top
+29. You draft, but I like those
+
+ask me followup questions if you have any
+ChatGPT said:
+
+Thought for 7s
+Perfect—this gives us enough to lock a bunch of behaviors and tighten the spec. I’ve baked in all 29 answers and only added questions where we still have choices to make or where an answer creates a downstream decision.
+
+Locked-in updates (based on your answers)
+Home screen chooser: Use “last opened” verse only if M1L1 is completed for that verse; otherwise ignore it.
+
+Active pack: User-selectable “Active Armor Set.”
+
+First-time empty state: “Start Armor Set 1 • Week 1.”
+
+Mechanics + levels (strictly linear):
+
+Word Bank L1–L5 → 2) Word Scramble L1–L5 → 3) Type 1st Letter (auto-complete word) L1–L5 → 4) Type Full Word L1–L5 → 5) Recite Out Loud L1–L5 (recording pauses; user supplies missing word).
+
+No scoring; pass = zero errors; once passed, it stays unlocked. Replay allowed.
+
+Spaced pop quizzes: at 3, 7, 14, 30 days after “Learned”; in-app only; any mistake = fail.
+
+If failed → Review; once passed, reset full quiz schedule (treat as newly learned).
+
+Multiple quizzes can stack on the same day/session—allowed.
+
+Visited coloring rules apply in Full Sets and Armor by Topic; visited = ≥ any level completed.
+
+Custom Armor: KJV free; ESV available if licensing allows; contiguous selections only; add to existing set or create new; can also add from inside a set (playlist-style + button); default plain-text for Copy/Share.
+
+Settings: translation toggle preserves per-translation progress; Export PDF includes verse text + reference, Letter/portrait, same layout style as your previous PDFs; About = placeholder for now.
+
+Progress model: “Learning” begins at Word Bank L1; don’t show “Not started.”
+
+Stats tracked: accuracy, time-to-complete, hints used, recordings count (for future coaching/UI).
+
+Reset progress: allowed (per verse, per translation) with Erase? Cancel/Erase prompt.
+
+Cloud & platform: iOS first (iOS 16+), offline-first; Cloud Sync v2 with iCloud / Sign in with Apple / Email+Password; on-device audio only, no retention beyond immediate playback (for Voice levels).
+
+Navigation: Hamburger is global; no bottom tab bar. Tapping top of screen scrolls to top.
+
+Microcopy: I’ll draft final labels/phrases.
+
+ESV licensing: quick reality check & options
+KJV is generally public domain in the U.S., so we’re safe to ship it for free. 
+
+ESV is copyrighted by Crossway. Their ESV API is free for non-commercial use (web/app), but commercial apps need permission/licensing from Crossway. Costs aren’t publicly listed and depend on use; you apply via Crossway’s permissions process. 
+
+Practical plan:
+
+Beta/Private testing: Use ESV via the API under non-commercial terms while we test flows. 
+
+Public release: Contact Crossway for a commercial license (we’ll detail use: caching scope, offline access, number of verses exposed, monetization, etc.). 
+
+If budget is tight at launch, we can:
+
+Ship KJV fully offline;
+
+Offer ESV as “online only” via API for signed-in beta users until license is approved; or
+
+Soft-gate ESV behind a free toggle that only activates after license approval.
+
+Proposed accessible palette (v1)
+WCAG-friendly with calm contrast, designed to play nicely with both light and dark surfaces:
+
+Primary: Indigo 600 — #4F46E5 (buttons like Memorize, focus state)
+
+Primary Hover: Indigo 700 — #4338CA
+
+Visited/Progress: Teal 600 — #059669 (used for “visited/partially learned”)
+
+Learned: Blue 600 — #2563EB
+
+Mastered: Emerald 600 — #059669 (alt: keep Teal for visited and use Emerald for Mastered to distinguish)
+
+Error: Rose 600 — #E11D48
+
+Warning (Review bucket highlight): Amber 600 — #D97706
+
+Text (on light): Slate 800 — #1F2937
+
+Subtext/Meta: Slate 500 — #6B7280
+
+Background (light): #FFFFFF; Card: #F8FAFC
+
+Divider: #E5E7EB
+
+If you like this, I’ll freeze tokens for each state and generate a tiny design-system sheet (8dp spacing scale, radii, elevations).
+
+Draft microcopy (first pass)
+Buttons: Memorize · Resume · Retry · Continue · Start Week 1 · Add to Set · Create New Set · Export PDF · Switch to KJV/ESV · Erase
+
+Empty states:
+
+Home (first use): “Start Armor Set 1 • Week 1”
+
+My Armor → Learning: “You haven’t started a verse yet. Begin with Week 1.”
+
+Pop Quiz queue: “No quizzes today. Keep building your Armor.”
+
+Toasts/alerts:
+
+Pass level: “Level cleared—nice work.”
+
+Fail level: “Let’s try that again.”
+
+Enter Review: “We’ll strengthen this verse. It’s in Review.”
+
+Erase confirm: “Erase verse progress? This cannot be undone.”
+
+Pop quiz banners:
+
+“Pop Quiz due: [Eph 6:11–12] · Fill-in L5”
+
+“Pop Quiz due: [Eph 6:11–12] · Voice L5”
+
+Small design clarifications (just a few)
+Mechanic names (final): Are you happy with these exact labels for UI?
+
+Word Bank → Word Scramble → Type 1st Letter → Type Full Word → Recite Out Loud
+(I’ll use “L1–L5” badges under each.)
+
+Home header: Preference for the big verse block?
+
+A) 3-line layout: Week • Ref (eyebrow) → Verse text → Reference (footer), plus Memorize primary button
+
+B) Card style with a subtle “progress bar” under the reference
+
+Pop quiz presentation:
+
+Show as a stacked list on Home (top card) with “Start” actions, or push the user directly into the first due quiz upon tapping the banner?
+
+Visited vs Learned vs Mastered colors:
+
+Option A (distinct): Visited Teal, Learned Blue, Mastered Emerald.
+
+Option B (two-tone): Visited/Learned both Blue variants; Mastered Emerald.
+
+Custom Armor selection UI:
+
+Calendar-style verse tiles per chapter (grid), or simple scrolling list with verse numbers as tappable chips inline with text? (You hinted “like date pickers”—I can mock both; grid is faster to skim, inline chips keep focus in the text.)
+
+Global hamburger content order:
+
+Suggest: My Armor · Full Armor Sets · Armor by Topic · Custom Armor · Settings · About.
+Okay to ship like this?
+
+Next steps I’ll take once you reply
+Freeze palette + state colors and mechanic labels.
+
+Draft information architecture and wireframes for:
+
+Home (verse card + quiz queue)
+
+Gameplay Ladder (dropdown mechanics + levels; gated states)
+
+Pop Quiz flow (Fill-in L5 + Voice L5)
+
+Menu screens (My Armor, Sets, Topics)
+
+Custom Armor (chapter view, selection, add-to-set)
+
+Settings + Export PDF (Letter/portrait; matches your past PDFs)
+
+Add a simple state machine spec for gating & the spaced-quiz scheduler.
+
+If you answer the 6 clarifications above (bullets are fine), I’ll lock the IA and move into a tappable prototype pass.
+
+You said:
+1. yes
+2. B
+3. stacked list with start options
+4. option B
+5. calendar style
+6. yes
+ChatGPT said:
+Locked in.
+
+Below is the final round of precision follow-ups (short, targeted) so I can freeze the IA and move directly into wireframes and prototype structure.
+
+Confirmed from your last message
+Mechanic labels: yes
+
+Home header style: B (card style with subtle progress bar)
+
+Pop quizzes: stacked list with Start buttons on Home
+
+Colors: Option B (Visited/Learned = blue variants, Mastered = emerald)
+
+Verse selection UI: calendar-style tiles
+
+Hamburger menu order: yes
+
+All integrated.
+
+Final micro-clarifications (just 5)
+These affect specific UI components or logic and need your direction before I freeze the system.
+
+1. Progress bar on Home verse card
+Do you want the bar to reflect:
+A) Mechanic completion % (25 mechanics total → percent completed)
+or
+B) Current mechanic block only (e.g., “Word Scramble 3 of 5 completed”)?
+or
+C) Simplified 5-segment bar, one segment per mechanic family (Word Bank, Scramble, Type-1st-Letter, Type-Full-Word, Recite)?
+
+2. Word Scramble exact behavior
+Two possible UX patterns:
+A) Scramble each word of the verse, user taps in correct order
+B) Scramble entire verse into a pool, user taps each word sequentially
+Which one?
+
+3. Type 1st Letter mechanic
+Two versions exist in memory apps:
+A) User types the first letter → system fills the full word immediately (your spec)
+B) User types first letter → system shows several possible completions → user selects the correct one
+Stick with your original (A), or the guided-choice version (B)?
+
+4. Recite Out Loud mechanic — missing-word behavior
+Two options for the voice-pause pattern:
+A) Always pause on the same predetermined missing words (one per level, increasing difficulty)
+B) Pause on randomly chosen missing words from a curated difficulty pool
+Which should we implement?
+
+5. Full Armor Sets — week naming convention
+Your spec shows:
+
+Week 1 – Ephesians 6:11
+
+Week 2 – Ephesians 6:12–13
+
+Week 3 – Ephesians 6:14–15
+
+etc.
+
+Do you want the week labels to be fixed exactly like this (“Week 1,” “Week 2,” etc.) or would you rather:
+A) Allow custom naming (e.g., “The Belt of Truth,” “The Breastplate of Righteousness”)
+B) Keep strict Week 1–X naming per set
+
+Reply with 1–5 and I’ll lock the entire system and move straight to wireframes/prototype structure.
+
+You said:
+C
+B
+A
+ChatGPT said:
+I need two more answers to lock the system. Only #4 and #5 remain.
+
+Here are the remaining questions exactly as needed:
+
+4. Recite Out Loud mechanic — missing-word behavior
+A) Same predetermined missing
+
+You said:
+4. B
+5. B
+ChatGPT said:
+Locked.
+
+All system behaviors, mechanics, and navigation logic are now fully defined. Here is the final frozen state for the two remaining items you just answered:
+
+4. Recite Out Loud = Random missing-word pauses
+Each level selects missing words from a curated difficulty pool
+
+No repetition pattern; randomized per attempt
+
+Pass = zero errors
+
+5. Full Armor Sets = Strict Week 1–X naming
+No custom naming in v1
+
+Each Armor Set uses “Week # – Reference” consistently
+
+Everything in your full spec is now unambiguous.
+
+Next step
+I will now build the complete information architecture and wireframe-level prototype structure for:
+
+Home Screen
+
+Pop Quiz queue
+
+Gameplay Ladder (mechanics + levels gating)
+
+All 5 mechanics
+
+Hamburger → My Armor / Sets / Topics / Custom Armor / Settings / About
+
+Verse selection (calendar-style chapter grid)
+
+Custom Set creation & management
+
+Export PDF workflow
+
+Translation toggle
+
+Reset progress
+
+Active Armor Set selection
+
+Full spaced repetition scheduler logic
+
+If you have anything else to adjust before I begin wireframing, give it now. Otherwise I proceed.
+
+You said:
+proceed
+ChatGPT said:
+Below is the full frozen Information Architecture + Wireframe Blueprint for Armor v1. This defines every screen, every state, every navigation path, and every mechanic in a clean, builder-ready format. This is the document you will hand to Claude Artifact, Google Studio, or any dev to generate tappable prototypes.
+
+No embellishment. No personality. Only structure, clarity, and forward progression.
+
+ARMOR v1 — INFORMATION ARCHITECTURE & WIREFRAME BLUEPRINT
+1. APP-LEVEL NAVIGATION
+Global elements
+Hamburger Menu (top-right, visible on all screens)
+
+Tap status bar to scroll to top
+
+Swipe back (iOS) enabled where appropriate
+
+No bottom tab bar
+
+Navigation model
+Home is the root screen
+
+All screens accessible via Hamburger Menu
+
+Deep screens (Gameplay Ladder, Mechanics, Levels) have back arrows to previous screens
+
+Custom Armor flows have their own internal navigation
+
+2. HOME SCREEN
+Header
+Active Armor Set name (e.g., “Armor Set 1”)
+
+Dropdown to switch Active Armor Set
+
+Main Card: Active Verse
+Eyebrow: Week X • <Reference>
+
+Verse text (full)
+
+Footer reference (<Book> <Chapter>:<Verse(s)>)
+
+Progress bar: 5-segment bar
+
+Segment per mechanic: Word Bank / Word Scramble / Type 1st Letter / Type Full Word / Recite Out Loud
+
+Filled = mechanic family fully complete (L1–L5)
+
+Current mechanic partially complete = segment pulsing or partial fill
+
+Primary Action
+Memorize (goes to Gameplay Ladder for this verse)
+
+Secondary Block: Pop Quizzes
+Shown only if quizzes are due today.
+
+Card titled “Pop Quizzes Due”, containing a stacked list:
+
+Each row:
+
+Verse reference
+
+Mechanic label: “Fill-in L5 Pop Quiz” or “Voice L5 Pop Quiz”
+
+Start button
+
+If none: small text “No quizzes due today.”
+
+3. GAMEPLAY LADDER (for the active verse)
+Layout
+Header: <Reference> + back arrow to Home
+
+Subtitle: <Book Chapter:Verse(s)>
+
+Progress bar (same as Home but interactive tooltip on tap)
+
+Mechanics dropdown (always visible, always fully expanded in wireframes):
+
+Mechanics listed vertically:
+
+Word Bank
+
+L1, L2, L3, L4, L5
+
+Word Scramble
+
+L1–L5
+
+Type First Letter
+
+L1–L5
+
+Type Full Word
+
+L1–L5
+
+Recite Out Loud
+
+L1–L5
+
+Gating Rules
+Mechanics strictly linear
+
+A mechanic’s L1 is locked until the previous mechanic’s L5 is passed
+
+Within a mechanic, L(N) is locked until L(N–1) passed
+
+Locked = visible but greyed
+
+Passed = blue checkmark
+
+Current = highlighted blue
+
+Replay = tapping any completed level reopens it (no change to progress)
+
+4. MECHANIC WIREFRAMES (5 MECHANICS)
+4.1 WORD BANK (L1–L5)
+Screen layout
+Header: Word Bank L#
+
+Verse text with missing words replaced by blank chips
+
+Word bank panel at bottom with draggable/selectable words
+
+Behavior
+User taps or drags words into blanks
+
+Immediate success/failure per blank
+
+Zero errors required to pass
+
+On pass → “Level cleared—Continue”
+
+On any error → “Try again”
+
+L1–L5 progression pattern
+Increasing number of missing words
+
+Increasing difficulty (longer words, key theological terms)
+
+4.2 WORD SCRAMBLE (L1–L5)
+Pattern chosen: Scramble entire verse into a pool
+Screen layout
+Header: Word Scramble L#
+
+Large empty canvas showing the verse as empty slots
+
+Bottom grid: scrambled word tiles
+
+User taps tiles in correct order
+
+Behavior
+Wrong tap = immediate fail
+
+Zero errors required
+
+Difficulty escalates by increasing total scrambled words
+
+4.3 TYPE FIRST LETTER (SYSTEM AUTO-FILLS WORD)
+Screen layout
+Header: Type First Letter L#
+
+Verse line-by-line
+
+Each missing word appears as a blank
+
+Keyboard present
+
+Behavior
+User types the first letter
+
+App completes the entire word automatically
+
+Wrong first letter = immediate fail
+
+Zero errors required
+
+Difficulty scaling
+More blanks per level
+
+Harder words blanked at higher levels
+
+4.4 TYPE FULL WORD
+Layout
+Header: Type Full Word L#
+
+Verse text with blanks
+
+Keyboard present
+
+Behavior
+User types each full missing word
+
+Autocorrect disabled
+
+Any typo = fail
+
+Pass on zero errors
+
+Difficulty increases by number of missing words
+
+4.5 RECITE OUT LOUD
+Pattern chosen: Random missing-word pauses
+Layout
+Header: Recite Out Loud L#
+
+Verse text shown normally
+
+Audio playback with waveform
+
+Playback automatically pauses on random missing words
+
+Large microphone button appears during pauses
+
+Behavior
+User says the missing word
+
+App listens on-device only (no upload)
+
+App compares speech-to-text result to expected word
+
+Any mismatch = fail
+
+Zero errors = pass
+
+Difficulty
+More pauses per level
+
+Harder words chosen randomly from curated difficulty pool
+
+5. POP QUIZ FLOWS
+5.1 FILL-IN L5 POP QUIZ
+Same interface as Type Full Word, but:
+
+All blanks appear at once
+
+No hints
+
+Zero errors required
+
+Once passed → mark Pop Quiz # (3d / 7d / 14d / 30d) as completed
+
+5.2 VOICE L5 POP QUIZ
+Same as Recite Out Loud L5, but:
+
+Randomized pauses across entire verse
+
+No retries mid-quiz
+
+Zero errors required
+
+Passing completes the scheduled quiz slot
+
+6. HAMBURGER MENU
+Order:
+
+My Armor
+
+Full Armor Sets
+
+Armor by Topic
+
+Custom Armor
+
+Settings
+
+About
+
+7. MY ARMOR
+Four sections:
+
+1. Learning
+Verses where ≥ Word Bank L1 is complete
+
+Show: reference, small progress bar (5 segments), last-opened timestamp
+
+Tap → Home Screen for that verse
+
+2. Learned
+Completed through Voice L5
+
+Awaiting pop quizzes
+
+Tap → Home Screen for that verse
+
+3. Mastered
+All four pop quizzes passed (3d, 7d, 14d, 30d)
+
+Tap → Home Screen
+
+4. Review
+Verses that failed a pop quiz
+
+Passing review sends verse back to Learned and resets quiz schedule
+
+Visited states use blue variants; Mastered uses emerald.
+
+8. FULL ARMOR SETS
+Screen
+List of all Armor Sets (expand/collapse)
+
+Inside each set: Week # – Reference
+
+Visited = blue variant
+
+Unvisited = default slate color
+
+Tap → Home Screen for that verse
+
+Active Armor Set
+Controlled from dropdown on Home
+
+Determines which verse is shown by default
+
+9. ARMOR BY TOPIC
+Layout
+List of topics (e.g., Faith, Salvation, Protection, Obedience)
+
+Tap to expand
+
+Inside: list of verses (same rules as Full Armor Sets)
+
+Colors = visited rules
+
+10. CUSTOM ARMOR
+10.1 Bible Search
+Flow:
+
+Choose Book (list)
+
+Choose Chapter (list or grid)
+
+Chapter view loads with calendar-style tiles:
+
+Tile = verse number
+
+Selecting a tile highlights the inline text below and expands the verse text
+
+Users can select contiguous verses only (expands automatically)
+
+Long-press menu
+Add to Custom Set
+
+Copy
+
+Share
+
+10.2 Add to Custom Set
+Modal offering:
+
+Add to existing set (list of sets)
+
+Create new set (name input)
+
+Custom sets behave like playlists.
+
+11. SETTINGS
+Translation
+Toggle: KJV ↔ ESV
+
+Switching preserves separate progress per translation
+
+ESV availability depends on licensing
+
+Export PDF
+“Export Armor Set as PDF”
+
+Letter, portrait
+
+Includes verse reference + verse text
+
+Layout/style mirrors your previously uploaded PDFs
+
+Cloud Sync (Coming in v2)
+Disabled toggle
+
+Explanatory text
+
+Future: iCloud / Apple / Email-password
+
+Reset Progress (per verse)
+Shows list of verses
+
+Tap → alert: “Erase verse progress?” (Cancel/Erase)
+
+12. ABOUT
+Placeholder text:
+
+“Armor v1.0”
+
+“Copyright 2025”
+
+Link to privacy policy (future)
+
+Link to Crossway attribution if ESV used
+
+13. DATA & LOGIC BLUEPRINT
+Progress State per translation per verse
+learning_status: locked / learning / learned / mastered / review
+
+mechanic_progress: record L1–L5 for each mechanic
+
+quiz_schedule: timestamps for 3d, 7d, 14d, 30d
+
+quiz_results: pass/fail with timestamp
+
+stats: accuracy %, time, hints, recordings count
+
+Spaced Repetition Scheduler
+Triggered on learned_at timestamp
+
+Generates 4 quiz slots
+
+Home screen detects quizzes due <= today
+
+Pop Quiz completion updates state
+
+Fail → Review bucket
+
+Pass Review → reset schedule as if newly learned
+
+Rules
+Zero errors required for all passes
+
+Replay never affects progress
+
+Random selection for Recite Out Loud missing-word moments
+
+14. OFFLINE MODEL
+KJV available offline
+
+ESV available online-only (unless license allows local storage)
+
+All progress stored locally + sync later
+
+Mechanics entirely offline
+
+Audio processing on-device only
+
+15. PLATFORM
+iOS 16+
+
+Android planned later
+
+Gesture support standard
+
+Haptics optional
+
+NEXT STEP
+If you want, I’ll now generate high-fidelity wireframes for every screen—perfect for Claude Artifact or Google Studio.
+Just say:
+“Proceed to wireframes.”
+
+You said:
+proceed to wireframes
+ChatGPT said:
+Below are full, text-based wireframes for every major screen in Armor v1. They are formatted as clean, developer-friendly blueprints suitable for immediate use inside Claude Artifact or Google Studio to create tappable prototypes.
+
+No visuals. No opinions. No filler. Only structural wireframes.
+
+1. HOME SCREEN — WIREFRAME
+-----------------------------------------------------
+|  Header                                           |
+|  ------------------------------------------------ |
+|  <Active Armor Set ▼>                ☰ (Hamburger) |
+-----------------------------------------------------
+
+[ Verse Card ]
+-----------------------------------------------------
+| Week X • <Reference>                              |
+|                                                   |
+| “<Full verse text...>                             |
+|   <...continued...>”                              |
+|                                                   |
+| <Book Chapter:Verse(s)>                           |
+|                                                   |
+| [□□□□□]  (5-segment progress bar)                 |
+-----------------------------------------------------
+
+[ Primary Button ]
+-----------------------------------------------------
+|                MEMORIZE                           |
+-----------------------------------------------------
+
+[ Pop Quiz Section (if quizzes due) ]
+-----------------------------------------------------
+| Pop Quizzes Due                                   |
+|---------------------------------------------------|
+| <Reference>                 Fill-in L5  [Start]    |
+| <Reference>                 Voice L5    [Start]    |
+-----------------------------------------------------
+
+(If none)  "No quizzes due today."
+2. GAMEPLAY LADDER — WIREFRAME
+-----------------------------------------------------
+|  < Back           <Reference>          ☰          |
+-----------------------------------------------------
+| <Book Chapter:Verse(s)>                              |
+|                                                     |
+| [□□□□□] Progress bar (interactive tooltip)         |
+-----------------------------------------------------
+
+MECHANICS (always visible):
+
+1. Word Bank
+   L1  [Locked/Active/Passed]
+   L2
+   L3
+   L4
+   L5
+
+2. Word Scramble
+   L1
+   L2
+   L3
+   L4
+   L5
+
+3. Type First Letter
+   L1
+   L2
+   L3
+   L4
+   L5
+
+4. Type Full Word
+   L1
+   L2
+   L3
+   L4
+   L5
+
+5. Recite Out Loud
+   L1
+   L2
+   L3
+   L4
+   L5
+Locked = greyed
+Active = highlighted
+Passed = blue checkmark
+Tapping a passed level opens a replay.
+
+3. WORD BANK (L1–L5) — WIREFRAME
+-----------------------------------------------------
+| < Back          Word Bank L#          ☰           |
+-----------------------------------------------------
+
+[Verse Area]
+“The ____ of God, that you may be able to ____ ...”
+
+Blanks show as underlined slots or chips.
+
+[Word Bank Panel]
+-----------------------------------------------------
+|  word1   word2   word3   word4   word5            |
+|  word6   word7   word8   word9   word10           |
+-----------------------------------------------------
+
+[Feedback]
+"Correct" / "Try again"
+
+[Continue / Retry button appears only after fail/pass]
+4. WORD SCRAMBLE — WIREFRAME
+-----------------------------------------------------
+| < Back        Word Scramble L#         ☰          |
+-----------------------------------------------------
+
+[Verse Target Layout]
+-----------------------------------------------------
+|  ____  ____  ____  ____  ____  ____  ...          |
+-----------------------------------------------------
+
+[Scrambled Word Pool]
+-----------------------------------------------------
+|  faith   whole   put   armor   devil   stand ...  |
+|  wrestle  flesh  schemes  against   ...           |
+-----------------------------------------------------
+
+On tap sequence:
+- Correct → next slot fills
+- Incorrect → fail modal
+5. TYPE FIRST LETTER — WIREFRAME
+-----------------------------------------------------
+| < Back        Type First Letter L#      ☰         |
+-----------------------------------------------------
+
+[Verse Area]
+“Put on the _____ armor of ____.”
+
+Blanks appear as underlined slots.
+
+User types → app completes whole word.
+
+Keyboard at bottom.
+
+Error → modal: “Try again”
+Pass → modal: “Continue”
+6. TYPE FULL WORD — WIREFRAME
+-----------------------------------------------------
+| < Back        Type Full Word L#        ☰          |
+-----------------------------------------------------
+
+[Verse Area]
+“For we do not wrestle against ____ and ____ ...”
+
+Blanks appear as underscores.
+
+Full keyboard.
+
+Wrong letter = fail.
+
+Pass = zero errors.
+7. RECITE OUT LOUD — WIREFRAME
+-----------------------------------------------------
+| < Back       Recite Out Loud L#        ☰          |
+-----------------------------------------------------
+
+[Verse Display – full text]
+
+[Audio Player]
+-----------------------------------------------------
+|  ▶︎◼︎   waveform visualization                   |
+-----------------------------------------------------
+
+At random missing-word intervals:
+- Playback pauses
+- Microphone button expands
+
+[ Mic Button ]
+   • User speaks missing word
+   • STT compares on-device
+   • Failure → modal
+   • Success → playback resumes
+
+End → pass modal
+8. POP QUIZ — FILL-IN L5 — WIREFRAME
+-----------------------------------------------------
+| < Back       Pop Quiz – Fill-in L5      ☰        |
+-----------------------------------------------------
+
+[Verse with many blanks]
+“All ____ of God, that you may be able to ____ ...”
+
+Keyboard visible.
+
+No hints.
+
+Any error = fail.
+Pass = mark quiz complete.
+9. POP QUIZ — VOICE L5 — WIREFRAME
+-----------------------------------------------------
+| < Back       Pop Quiz – Voice L5        ☰         |
+-----------------------------------------------------
+
+[Full verse on screen]
+
+[Audio player with waveform]
+
+Random pauses on missing words.
+
+Mic button required during pauses.
+
+Zero errors required.
+10. MY ARMOR — WIREFRAME
+-----------------------------------------------------
+| < Back                 My Armor          ☰         |
+-----------------------------------------------------
+
+SECTION: Learning
+-----------------------------------------------------
+| <Reference>     [□□□□□]   Last opened Xh ago      |
+-----------------------------------------------------
+
+SECTION: Learned
+-----------------------------------------------------
+| <Reference>     Awaiting Pop Quizzes              |
+-----------------------------------------------------
+
+SECTION: Mastered
+-----------------------------------------------------
+| <Reference>     [ Emerald badge ]                 |
+-----------------------------------------------------
+
+SECTION: Review
+-----------------------------------------------------
+| <Reference>     Needs review                      |
+-----------------------------------------------------
+Tap any item → Home screen for that verse.
+
+11. FULL ARMOR SETS — WIREFRAME
+-----------------------------------------------------
+| < Back            Full Armor Sets        ☰        |
+-----------------------------------------------------
+
+Armor Set 1  (expanded)
+-----------------------------------------------------
+| Week 1 – Ephesians 6:11          [visited color]  |
+| Week 2 – Ephesians 6:12–13       [default/visited]|
+| Week 3 – Ephesians 6:14–15       ...              |
+-----------------------------------------------------
+
+Armor Set 2  (collapsed)
+[▼ expand]
+Tap week → Home screen for that verse.
+
+12. ARMOR BY TOPIC — WIREFRAME
+-----------------------------------------------------
+| < Back             Armor by Topic        ☰        |
+-----------------------------------------------------
+
+Faith  (expanded)
+-----------------------------------------------------
+| Eph 6:16       [visited color]                     |
+| Heb 11:1       [default color]                     |
+-----------------------------------------------------
+
+Salvation  (collapsed)
+Protection  (collapsed)
+Obedience   (collapsed)
+Tap verse → Home screen.
+
+13. CUSTOM ARMOR — WIREFRAMES
+13.1 BOOK LIST
+-----------------------------------------------------
+| < Back               Custom Armor        ☰         |
+-----------------------------------------------------
+
+Genesis
+Exodus
+Leviticus
+...
+Revelation
+13.2 CHAPTER LIST
+-----------------------------------------------------
+| < Back                 <Book>            ☰         |
+-----------------------------------------------------
+
+Chapters:
+[ 1 ] [ 2 ] [ 3 ] [ 4 ] ... [ 50 ]
+13.3 VERSE SELECTION — CALENDAR STYLE
+-----------------------------------------------------
+| < Back                <Book> <Chapter>   ☰        |
+-----------------------------------------------------
+
+[Verse Tile Grid]
+-----------------------------------------------------
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10             |
+| 11|12 |13 |14 |15 |16 |17 |18 |19 |20             |
+...                                                  |
+-----------------------------------------------------
+
+Selected tiles highlight.
+
+Below grid: auto-scrolling text block:
+-----------------------------------------------------
+Verse 1: “In the beginning ...”
+Verse 2: “And the earth was ...”
+Verse 3: “And God said ...”
+(Selected verses highlighted inline)
+-----------------------------------------------------
+Long-press highlighted area → menu:
+
+Add to Custom Set
+
+Copy
+
+Share
+
+13.4 ADD TO CUSTOM SET — WIREFRAME
+-----------------------------------------------------
+|   Add to Custom Armor                             |
+-----------------------------------------------------
+
+Add to existing:
+- Set 1
+- Set 2
+- Set 3
+
+Create new set:
+[ Text field ]
+[ Create ]
+14. SETTINGS — WIREFRAME
+-----------------------------------------------------
+| < Back                 Settings           ☰        |
+-----------------------------------------------------
+
+Translation
+-----------------------------------------------------
+|  ESV   ( )                                      |
+|  KJV   (•)                                      |
+-----------------------------------------------------
+
+Export PDF
+-----------------------------------------------------
+|  Export Armor Set as PDF                        |
+-----------------------------------------------------
+
+Cloud Sync (Coming v2)
+-----------------------------------------------------
+|  Disabled – sign-in options coming soon         |
+-----------------------------------------------------
+
+Reset Progress
+-----------------------------------------------------
+|  <Verse>          [Erase]                       |
+|  <Verse>          [Erase]                       |
+-----------------------------------------------------
+
+About
+-----------------------------------------------------
+| Armor v1.0 • Copyright 2025                     |
+-----------------------------------------------------
+15. ABOUT — WIREFRAME
+-----------------------------------------------------
+| < Back                   About          ☰         |
+-----------------------------------------------------
+
+Armor v1.0  
+Copyright 2025  
+<links added later>
+16. ERROR STATES / MODALS
+Fail Modal
+-----------------------------------------------------
+| Incorrect.                                         |
+| [Retry]                                            |
+-----------------------------------------------------
+Pass Modal
+-----------------------------------------------------
+| Level cleared.                                     |
+| [Continue]                                         |
+-----------------------------------------------------
+Erase Confirmation
+-----------------------------------------------------
+| Erase verse progress?                              |
+| This cannot be undone.                             |
+| [Cancel]     [Erase]                               |
+-----------------------------------------------------
+NEXT
+If you want, I will now output:
+
+A) A complete “Developer Handoff Pack”
+
+Component list
+
+State machine diagram
+
+Navigation tree
+
+API endpoints needed
+
+Data models (JSON schema)
+
+File structure for a mobile app project
+
+Pseudo-code for each mechanic
+
+or
+
+B) A Claude Artifact–ready HTML/CSS prototype scaffold for direct live preview
+
+or
+
+C) Both
+
+Tell me which direction you want.
+
+You said:
+Which Claude model is currently best for this project 
+ChatGPT said:
+For building your app prototype and doing heavy-lift tasks (UI layout, data model spec, code scaffolding), the best Claude model right now is Claude Opus 4.5. 
+
+Why Opus 4.5
+Highest reasoning, coding, and long-context capacity — important for handling your full app spec, data model logic, state machine, and multi-screen flows. 
+
+Better at complex, multi-step workflows and consistent formatting (HTML/CSS skeletons, JSON schema, navigation trees). 
+
+Supports larger “context window” so the full spec (all screens + states + logic) stays within its working memory. 
+
+When you might use lighter Claude versions
+For quick edits, short content, or simple copy-writing: a lighter model like Claude Sonnet or Claude Haiku offers speed and lower cost — useful for small tasks (UI labels, brief copy, iterative tweaks) rather than full architecture work. 
+
+If you agree — I’ll begin generating a full Claude-Opus-4.5–ready prototype scaffold (HTML/CSS + JSON data model + navigation config + state-management outline).
+
+You said:
+It’s $20/month
+ChatGPT said:
+Understood.
+
+Here is the clear, direct answer based strictly on what you need for Armor v1:
+
+If you stay at $20/month, the best Claude model for this project is:
+Claude Sonnet 3.5
+(Or whatever the current “Sonnet” tier is inside your $20 plan.)
+
+Why Sonnet is the correct choice for you right now
+It is the highest-capability model available on the $20 tier.
+
+It can generate, render, and preview Claude Artifacts — which you need to prototype Armor’s screens.
+
+It handles HTML/CSS/JS prototypes reliably.
+
+It can manage larger prompts and multi-screen flows better than Haiku.
+
+When you would need Opus
+Only if:
+
+You want the largest context window for massive documents in one shot,
+
+or very demanding algorithmic reasoning,
+
+or extremely large, multi-file artifacts.
+
+You don’t need that yet. Your project is UX/UI + structured logic + prototype screens, which Sonnet handles fine.
+
+Bottom line
+Your current $20/mo plan → use Claude Sonnet.
+
+It will build fast prototypes and handle all your Armor screens without issue.
+
+If you want, I can output the Claude Sonnet–ready Artifact scaffold now.
+
+
+
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info.
