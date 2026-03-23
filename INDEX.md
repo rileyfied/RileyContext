@@ -1,5 +1,5 @@
 # RileyContext Index
-Last updated: 2026-03-16
+Last updated: 2026-03-23
 
 ## Root Files
 | File | Purpose |
@@ -53,7 +53,7 @@ All active and queued projects.
 Pipeline scripts and configuration.
 - sync_context.sh — main pipeline runner
 - config.json — project definitions, paths, AI team, sync settings
-- CONTEXT_SYNC_SETUP.md — how /context works across all AI tools
+- CaptureApp.applescript — macOS quick capture app
 - Python scripts for ingest, indexing, digests, promotions
 
 ## Active Hashtags

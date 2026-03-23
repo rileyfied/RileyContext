@@ -147,7 +147,7 @@ def main() -> int:
             lines.append("- No new captures today.")
         lines.append("")
 
-        lines.append("## Changed Files Elsewhere in RileyFile")
+        lines.append("## Changed Files Elsewhere in RileyContext")
         if by_folder:
             for folder in sorted(by_folder.keys()):
                 lines.append(f"### {folder}")

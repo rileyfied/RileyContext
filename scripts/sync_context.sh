@@ -112,8 +112,32 @@ PY
 COMMON_ARGS=(--rileyfile-root "$RILEY_ROOT" --runtime-root "$RUNTIME_ROOT")
 echo "runtime_root=$RUNTIME_ROOT"
 
-# Phone captures go to local CONTEXT_HUB/captures/inbox/ (canonical root: ~/dev/RileyContext).
-# No cloud sync needed — local-first pipeline.
+# --- pull files from iCloud drop folder into local inbox ---
+LOCAL_INBOX="$RILEY_ROOT/CONTEXT_HUB/captures/inbox"
+
+# Pull from iCloud drop folder
+ICLOUD_DROP="$HOME/Library/Mobile Documents/com~apple~CloudDocs/_move-to-dev_icloud"
+if [[ -d "$ICLOUD_DROP" ]]; then
+  find "$ICLOUD_DROP" -maxdepth 1 -type f ! -name '.DS_Store' ! -name '.*' 2>/dev/null | while read -r f; do
+    fname="$(basename "$f")"
+    mv "$f" "$LOCAL_INBOX/$fname" 2>/dev/null && echo "icloud_pull: $fname"
+  done
+  echo "icloud_drop=scanned"
+else
+  echo "icloud_drop=not_found"
+fi
+
+# Pull from Google Drive drop folder
+GDRIVE_DROP="$HOME/Library/CloudStorage/GoogleDrive-grahamedelweiss@gmail.com/My Drive/move-to-dev_google-drive"
+if [[ -d "$GDRIVE_DROP" ]]; then
+  find "$GDRIVE_DROP" -maxdepth 1 -type f ! -name '.DS_Store' ! -name '.*' ! -name '*.gdoc' ! -name '*.gsheet' ! -name '*.gslides' 2>/dev/null | while read -r f; do
+    fname="$(basename "$f")"
+    mv "$f" "$LOCAL_INBOX/$fname" 2>/dev/null && echo "gdrive_pull: $fname"
+  done
+  echo "gdrive_drop=scanned"
+else
+  echo "gdrive_drop=not_found"
+fi
 
 if [[ "$FULL_INGEST_COMPLETED" != "1" ]]; then
   echo "run_mode=full_baseline"

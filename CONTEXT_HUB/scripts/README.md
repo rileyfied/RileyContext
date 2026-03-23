@@ -9,4 +9,4 @@ Canonical executables live in repo `scripts/`:
 - `scripts/merge_promotions.py`
 - `scripts/sync_context.sh`
 
-This folder is reserved for Context Hub script packaging inside RileyFile.
+This folder is reserved for Context Hub script packaging inside RileyContext.

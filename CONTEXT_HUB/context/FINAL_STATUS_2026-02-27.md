@@ -1,5 +1,7 @@
 # FINAL STATUS — 2026-02-27
 
+> **OUTDATED (2026-03-22):** This doc references iCloud paths and the old "RileyFile" naming. The canonical root is now `~/dev/RileyContext/` (local, not cloud-synced). GitHub repo renamed to `rileyfied/RileyContext`. See README_ingest.md for current docs.
+
 ## Scope Completed
 Context Hub v3 was updated and validated to run against iCloud RileyFile root with:
 - dual-inbox ingest (`CONTEXT_HUB/captures/inbox` + `RileyShare/captures/inbox`)
