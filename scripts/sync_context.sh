@@ -170,6 +170,16 @@ else
   fi
 fi
 
+# --- auto-stamp config.json updated date ---
+python3 - <<'PY'
+import json, pathlib, datetime
+cfg = pathlib.Path(__file__).parent / "config.json"
+if cfg.exists():
+    data = json.loads(cfg.read_text(encoding="utf-8"))
+    data["updated"] = datetime.date.today().isoformat()
+    cfg.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+PY
+
 # --- commit & push RILEY_CONTEXT.md to GitHub ---
 if [[ "${SYNC_CONTEXT_SKIP_GIT:-0}" == "1" ]]; then
   echo "Skipping git commit/push (SYNC_CONTEXT_SKIP_GIT=1)"
@@ -183,8 +193,8 @@ fi
 
 cd "$RILEY_ROOT"
 
-git add RILEY_CONTEXT.md
-if git diff --cached --quiet -- RILEY_CONTEXT.md; then
+git add RILEY_CONTEXT.md scripts/config.json
+if git diff --cached --quiet -- RILEY_CONTEXT.md scripts/config.json; then
   echo "No git changes to commit"
   exit 0
 fi

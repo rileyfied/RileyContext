@@ -56,9 +56,16 @@ Before building ANY Armor App component:
 
 ---
 
+## SLASH COMMANDS
+
+| Command | Action |
+|---------|--------|
+| /RileyContext | Confirm your Wisebase "Riley Context Hub" is selected. If context feels stale, notify Riley to refresh it. |
+| /context | Alias for /RileyContext |
+
 ## CONTEXT UPDATE
 
-Sider can't fetch URLs. When Riley's context changes significantly, he or Claude will update the Wisebase notes. If your context feels stale, ask Riley to refresh it.
+Sider can't fetch URLs directly. When Riley says /RileyContext, confirm your Wisebase "Riley Context Hub" is active. If stale, ask Riley to refresh it — Claude Code pushes updates to GitHub and Riley can re-sync Wisebase manually.
 
 Canonical context file (for reference):
 https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md
