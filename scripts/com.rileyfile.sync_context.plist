@@ -8,7 +8,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/rileycolleyFW/dev/rileyfile/scripts/sync_context.sh</string>
+    <string>/Users/rileycolleyFW/dev/RileyContext/scripts/sync_context.sh</string>
   </array>
 
   <key>StartCalendarInterval</key>
@@ -28,7 +28,7 @@
   </array>
 
   <key>WorkingDirectory</key>
-  <string>/Users/rileycolleyFW/dev/rileyfile</string>
+  <string>/Users/rileycolleyFW/dev/RileyContext</string>
 
   <key>RunAtLoad</key>
   <false/>
