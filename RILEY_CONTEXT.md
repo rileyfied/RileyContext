@@ -334,6 +334,29 @@ Q!hLZ#6b"9s,d7
 Quick simple slide deck style info cards that we can blast a few times during the week. These will have special
 [context_ingest_sha=92edc7d31be351ee88676e8518e14eed42b7d4e6120f82fb74d92fd91249ebba]
 
+### **1\. The "Conversational Audio" W…
+[context_ingest_sha=2a7cd6009c77d2f72049f7e69a8596733e05361a56e5c94f34aae5ed4db91e05]
+
+### #audio — `CONTEXT_HUB/captures/_processed/HarmonyApp_code_google.md`
+- Captured at: 2026-03-22T22:48:39.229682-04:00
+- Tags: #audio
+- Content: import os  
+import shutil  
+from pathlib import Path  
+from fastapi import FastAPI, File, UploadFile, HTTPException  
+from fastapi.responses import FileResponse  
+from fastapi.middleware.cors import CORSMiddleware  
+from spleeter.separator import Separator
+
+\# \--- CONFIGURATION \---  
+\# This is where we receive uploads and store the split files  
+UPLOAD\_DIR \= Path("uploads")  
+OUTPUT\_DIR \= Path("separated\_audio")
+
+\# Create these folders if they don't exist  
+UPLOAD\_DIR.mkdir(exist\_ok=T…
+[context_ingest_sha=7cfa0f9c316ee3362ef4ce3ce221ceae716a24a630fc69c2bf6ce18d7d31aff6]
+
 
 ##   
 ## Philippians 2:5–11  
