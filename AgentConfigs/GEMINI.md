@@ -1,5 +1,5 @@
 # GEMINI.md — Gemini Agent Handshake
-Last updated: 2026-03-16
+Last updated: 2026-03-23
 
 > Fetch context: https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md
 > Role: Google Integration + Research on Riley's AI team.

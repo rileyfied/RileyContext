@@ -1,5 +1,5 @@
 # SIDER.md — Sider Agent Handshake
-Last updated: 2026-03-16
+Last updated: 2026-03-23
 
 > Wisebase: "Riley Context Hub" collection
 > Role: Multi-Model Hub on Riley's AI team.
