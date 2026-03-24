@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-03-23
+## Last Updated: 2026-03-24
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -178,3 +178,26 @@ Minimal > Feature-rich. Speed > Perfection. Context > Structure. Cross-platform 
 - YouTube Video #1 script and production plan complete
 - Armor App blueprint and data sets ready
 - iOS capture shortcut live
+
+## PROJECT CONTEXT PROMOTIONS
+
+### #7shifts — `CONTEXT_HUB/captures/_processed/#7shifts #schedule #Departments.txt`
+- Captured at: 2026-03-24T15:54:39.249029-04:00
+- Tags: #7shifts #departments #schedule
+- Content: 7shifts calls front of house (FOH) the “service” department and back of house (BOH) the “kitchen” department. I will be using all of these terms interchangeably.
+
+I will list the employee and whether they belong in the service or kitchen department. Memorize these so you can group them and work on the schedule later
+
+A-K FIRST NAME:
+Aaron Hubbard kitchen
+Abdiel Estrada kitchen
+Adam kitchen
+Addi service
+Aiden Novak kitchen
+Alanah service
+Alex Paulo service
+Alexis service
+Allison service
+Amelia se…
+[context_ingest_sha=3cad90cb06a2e2ff2e798231e5d3f8362f07448f0d55d1072c507b6c18875174]
+
