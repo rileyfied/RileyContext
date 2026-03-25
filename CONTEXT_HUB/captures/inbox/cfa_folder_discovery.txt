@@ -1,0 +1,41 @@
+CFA iCloud Folder Discovery — Full Audit
+Date: 2026-03-24
+
+## Summary
+1,837 files in ~/Library/Mobile Documents/com~apple~CloudDocs/CFA/
+Full discovery pass completed. Categorized as Merritt Island-specific vs. corporate/templates/external.
+
+## Merritt Island-Specific Files
+- FOH EMPLOYEE ROSTER_06.14.2025.csv (77 FOH staff)
+- CFAMI_EmployeeList__06-14-25.csv (full employee list)
+- Employee POS codes_numbers.csv (129 employees)
+- CFAMI_Sidework_AM_PM_Simple.pdf (opening/closing by position)
+- CFAMI_Sidework_System_v2.pdf (extended procedures)
+- Station Sidework Cards 2025.pdf (station-specific tasks)
+- CFAMI_Proficiency_Styled_latest.pdf (skill matrix)
+- CFAMI_Proficiency_Matrix_2025-09-05.numbers (master tracker)
+- FOH CORE COMPETENCY.pdf/.csv (competency tracking)
+- CFAMI_Incident Report.pdf (Oct 2025)
+- Daily plans, closing checklists, time block assignments in DAILY PLAN/
+- Mentorship program (MS.txt — Week 1 structure)
+- STATION TEAMS.docx (team assignments)
+- Setup_Sheet_Numbers.numbers (opening setup)
+
+## Game-Ready Assets
+- CAR LOGOS/ — 45 individual brand PNGs + cheat sheet composites (A-L, M-Z)
+- Food Allergens at CFA.txt — complete allergen protocol
+- POS_Quiz.pdf — existing POS training quiz
+- MENU/ — category PDFs (Breakfast, Hot Entrees, Salads, Sides, Beverages, Desserts)
+
+## External/Template (not Merritt Island)
+- SYSTEMS EXAMPLES/ — FFG restaurant (different chain), 62 files
+- BRAND STANDARDS/ — corporate CFA visual identity, 88 files
+- TRAINING WEBSITE archives — two duplicate www.discovercfa.com downloads (1,045 files total)
+- POS/ — generic POS user guides from corporate
+- CFA Operational Standards/Requirements Guides (380MB PDFs — corporate)
+- RESTAURANT FINANCIAL FORMULAS.pdf (The Restaurant Boss — external)
+
+## Notable Gaps
+- No Core Values poster/document found
+- No lemonade recipe (may be in 380MB operational guide PDFs)
+- No explicit Excellence definition document
