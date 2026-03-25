@@ -201,3 +201,21 @@ Allison service
 Amelia se…
 [context_ingest_sha=3cad90cb06a2e2ff2e798231e5d3f8362f07448f0d55d1072c507b6c18875174]
 
+### #armor — `CONTEXT_HUB/captures/_processed/rsvp_verse_app_idea.txt`
+- Captured at: 2026-03-24T22:00:06.832081-04:00
+- Tags: #armor #bible #scripture #video #youtube
+- Content: RSVP speed reading verse app idea — words revealed one at a time, accelerating pace, anchor/current word highlighted in red (like viral speed reading videos). Designed for scripture memorization. Also want a YouTube channel where every Bible verse gets its own video in this format — user clicks verse, it plays with sound. Armor App adjacent but could be standalone. Strong YouTube channel concept. #armor #scripture #youtube #video
+[context_ingest_sha=877b0735bc2051573fcc9f58e16419c1d7fdfbefdb2ceb2839217757dcfb95e6]
+
+### #cfa — `CONTEXT_HUB/captures/_processed/cfa_training_arcade_concept.txt`
+- Captured at: 2026-03-24T22:00:06.831189-04:00
+- Tags: #arcade #carspotter #cfa #training
+- Content: CFA Merritt Island Training Arcade App — standalone HTML app, arcade/quiz game collection for the CFA team. All games in one place. Inspired by every popular beautiful quiz/game app that has existed.
+
+Game ideas so far:
+- Priority Tap: tap tasks in correct priority order (e.g. clean in place, greet guest, stock, change paper towels, wash hands)
+- Core Values Order: put the 7 CFA core values in correct order
+- Lemonade Recipe: how do you make lemonade step by step
+- Ring It In: how do you ring in…
+[context_ingest_sha=898d5d3f6ac73c82b9a28807f3d721e8f1dd0756c6ac057cdbb8e59cb58d8d21]
+
