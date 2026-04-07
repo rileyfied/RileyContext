@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-03-25
+## Last Updated: 2026-04-07
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -154,6 +154,10 @@ Minimal > Feature-rich. Speed > Perfection. Context > Structure. Cross-platform 
 ---
 
 ## ACTIVITY LOG
+
+### 2026-04-07
+- **Block "From Hierarchy to Intelligence" article captured**: Block replacing middle management with AI as the coordination layer. Directly relevant to YouTube channel thesis ("You're Using AI Wrong" / frontline manager tooling) and middle-management AI tooling work. URL: https://block.xyz/inside/from-hierarchy-to-intelligence #youtube #context
+- **CFA training PDFs moved**: Cleaning Cards and Food Safety resources moved from iCloud drop folder to `RileyProjects/CFA/Training/`.
 
 ### 2026-03-23
 - **Local-first migration complete**: Canonical root moved from Google Drive to `~/dev/RileyContext/` (local, not cloud-synced). Eliminates file locking errors from cloud sync daemons.
