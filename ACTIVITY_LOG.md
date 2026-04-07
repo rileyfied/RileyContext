@@ -51,3 +51,8 @@
   - Context: New sessions now auto-read ACTIVITY_LOG.md and scan RileyNotes drop folder before doing anything. Ensures continuity across all Claude surfaces.
   - Status: completed
   - Tags: #productivity #context
+
+- **4:30pm DISPATCH** -- New RileyNotes capture: Creative Media Studio app concept
+  - Context: Major new project idea. App that interrogates user to understand their creative vision (taste, style, references), then uses all available AI tools (Adobe, Seedance, HeyGen, ElevenLabs, Descript, etc) to produce the final creative media. Examples: faceless YouTube videos, t-shirt designs, TikTok videos, birthday cards, avatar scenes. Tagged #Claude #Prompt #Ingest #Context #BuildIt #App.
+  - Status: active
+  - Tags: #buildit #app #creative #new-project
