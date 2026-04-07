@@ -27,7 +27,7 @@ Local: `~/dev/RileyContext/` (this IS the git repo)
 - Pipeline commits and pushes directly from this folder
 
 ### Devices
-- MacBook (rileycolleyFW) — laptop, primary Claude Code machine
+- MacBook (rileycolleyFW) — laptop, PRIMARY machine. Riley refers to this as "laptop," "desktop," "computer," or "home computer." Default assumption unless iMac is explicitly named.
 - iMac Pro (rileycashpro) — desktop, 64GB RAM, 8-core Xeon. Secondary Claude Code machine.
 - iPhone — captures, Claude.ai iOS, ChatGPT, Gemini
 - Deep Apple ecosystem user. Comfortable with Terminal despite identifying as non-coder.

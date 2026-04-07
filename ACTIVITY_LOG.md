@@ -2,20 +2,20 @@
 
 ## 2026-04-07 -- Monday
 
-- **1:00pm DISPATCH** -- Loaded and synced RileyFile context from GitHub
+- **1:00pm DISPATCH** -- Loaded and synced RileyContext context from GitHub
   - Context: Pulled RILEY_CONTEXT.md (v4, dated 2026-03-25). Built 5 auto-memory files for Cowork persistence.
   - Status: completed
-  - Tags: #rileyfile #context
+  - Tags: #context
 
-- **1:15pm DISPATCH** -- Investigated RileyFile pipeline on iMac
+- **1:15pm DISPATCH** -- Investigated context pipeline on iMac
   - Context: Found canonical at ~/dev/RileyContext/ (Google Drive). Pipeline crashed with Errno 11 file locking. State.json missing.
   - Status: completed
-  - Tags: #rileyfile #pipeline
+  - Tags: #context #pipeline
 
-- **1:30pm DISPATCH** -- Architecture review for RileyFile pipeline fix
+- **1:30pm DISPATCH** -- Architecture review for context pipeline fix
   - Context: Recommended Option A: local canonical + GitHub distribution. Eliminates cloud sync locking. Riley reviewing.
   - Status: waiting
-  - Tags: #rileyfile #pipeline
+  - Tags: #context #pipeline
 
 - **2:00pm DISPATCH** -- Analyzed 7shifts employee availability PDF
   - Context: 132 employees mapped. Wednesday worst-staffed. 14 likely minors. 8 fully flexible. Need CFA ops knowledge training.
