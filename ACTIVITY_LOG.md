@@ -1,6 +1,6 @@
 # Activity Log
 
-## 2026-04-07 Monday
+## 2026-04-07 -- Monday
 
 - **1:00pm DISPATCH** -- Loaded and synced RileyFile context from GitHub
   - Context: Pulled RILEY_CONTEXT.md (v4, dated 2026-03-25). Built 5 auto-memory files for Cowork persistence.
@@ -27,7 +27,27 @@
   - Status: active
   - Tags: #cfa #schedule #7shifts
 
-- **3:00pm DISPATCH** -- Built activity-tracker skill
-  - Context: New skill for persistent action item tracking across all sessions/agents. Auto-logs, recalls on demand, syncs to GitHub. Installed on iMac.
+- **3:00pm DISPATCH** -- Built and installed activity-tracker skill
+  - Context: Skill installed on iMac at ~/.claude/skills/activity-tracker/. Auto-logs actions, recalls on demand, syncs to GitHub. Includes RileyNotes capture ingestion (Behavior 4). Seeded and pushed.
+  - Status: completed
+  - Tags: #productivity #context
+
+- **3:30pm DISPATCH** -- Ingested 2 RileyNotes captures from iCloud drop folder
+  - Context: (1) Block From Hierarchy to Intelligence article -- AI replacing middle management, maps to YouTube thesis. (2) LLM Knowledge Base workflow -- blueprint for wiki-style knowledge compilation. Both moved to CONTEXT_HUB/captures/inbox/.
+  - Status: completed
+  - Tags: #context #ingest
+
+- **3:45pm DISPATCH** -- Moved CFA training PDFs and updated RILEY_CONTEXT.md
+  - Context: Cleaning Cards and Food Safety PDFs moved to CFA/Training/. Block article referenced in context with #youtube #context tags. Committed and pushed.
+  - Status: completed
+  - Tags: #cfa #context
+
+- **4:00pm DISPATCH** -- Scoping knowledge-base-compiler skill
+  - Context: Riley wants searchable data warehouse built from all files. Not parallel to pipeline -- its the knowledge layer the pipeline feeds into. Obsidian-style .md wiki compiled and maintained by LLM.
   - Status: active
+  - Tags: #productivity #context #buildit
+
+- **4:15pm DISPATCH** -- Added auto-context-on-session-start to CLAUDE.md
+  - Context: New sessions now auto-read ACTIVITY_LOG.md and scan RileyNotes drop folder before doing anything. Ensures continuity across all Claude surfaces.
+  - Status: completed
   - Tags: #productivity #context
