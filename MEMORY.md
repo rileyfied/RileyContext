@@ -96,3 +96,6 @@ Local: `~/dev/RileyContext/` (this IS the git repo)
 - Local dev folder is the hub. Cloud sync is only for iOS capture bridge, never for canonical storage.
 - "Text > Brain" — if you want to remember something, write it to a file. Mental notes don't survive sessions.
 - Don't move files without reading them first. Verify they're current and relevant before taking action.
+- Before adding, logging, patching, or documenting anything — ask "does the system already handle this?" If yes, use it or fix it. If no, build it right so it handles the class of problem, not just this instance. Gap-filling with output is friction accumulation, not progress.
+- Use critical thinking and a design-thinking lens on everything — not just architecture. Always examine outside the box before acting.
+- The failure mode to avoid: manual patches that look like solutions. Every workaround is a future inconsistency.
