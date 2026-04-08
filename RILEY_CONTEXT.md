@@ -254,6 +254,33 @@ Game ideas so far:
 - Content: CFA Merritt Island Arcade App — Project Kickoff Capture
 Date: 2026-03-24
 
+### #claude — `CONTEXT_HUB/captures/_processed/#Claude #Prompt #Ingest #Context #BuildIt #App.txt`
+- Captured at: 2026-04-07T21:04:12.055146-04:00
+- Tags: #app #buildit #claude #context #ingest #prompt #youtube
+- Content: I want an app that makes any creative media or creative design project that i can describe or think of. This app will ask the User questions to narrow down exactly what the final creative design project or media or product should look like, sound like, act like, PRODUCE, cause, make, create, or any other action or purpose it should invoke. It should help the User create any kind of creative media including video, graphic design, vector design, printed design, color, social media post, filtered p…
+[context_ingest_sha=172e2718a298e8b031c9329b6a539e5c69ae716633d9300ec84a9acb9cf062e0]
+
+### #claude — `CONTEXT_HUB/captures/_processed/#claude #article #ingest #context.txt`
+- Captured at: 2026-04-07T21:04:12.057790-04:00
+- Tags: #article #claude #context #ingest
+- Content: At Sequoia, we see that speed is the best predictor of start-up success. Most companies are focused on AI as a productivity enhancer. Few are focused on the potential of AI to change how we work together. Block is showing what it looks like to fundamentally rethink organization design, ultimately harnessing AI to increase speed as a compounding competitive advantage.
+Two thousand years before the first corporate org chart, the Roman Army solved a problem that every large organization still faces…
+[context_ingest_sha=df4056ccdf761b9ecf2a8217d737672bb243bc6d52e382752ad4e5d67bb0b062]
+
+### #ingest — `CONTEXT_HUB/captures/_processed/#ingest #claude #skill.txt`
+- Captured at: 2026-04-07T21:04:12.058803-04:00
+- Tags: #aibrief #claude #ingest #skill
+- Content: Claude: read and analyze this then create skills for it and tell me what you created  and how to use it
+
+LLM Knowledge Bases
+
+Something I'm finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. In this way, a large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images). The latest LLMs are quite good at it. So:
+
+Data ingest:
+I index source docum…
+[context_ingest_sha=b04da490f8368cf29ddda24f2350a9bb449e8c6094ec1f404f06f39f339ad1c8]
+
+
 ## Concept
 Collection of arcade-style training games and pop-up quizzes for CFA Merritt Island team.
 Standalone HTML app. Timer countdowns, arcade vibes, beautiful UI.
