@@ -156,8 +156,16 @@ Minimal > Feature-rich. Speed > Perfection. Context > Structure. Cross-platform 
 ## ACTIVITY LOG
 
 ### 2026-04-07
-- **Block "From Hierarchy to Intelligence" article captured**: Block replacing middle management with AI as the coordination layer. Directly relevant to YouTube channel thesis ("You're Using AI Wrong" / frontline manager tooling) and middle-management AI tooling work. URL: https://block.xyz/inside/from-hierarchy-to-intelligence #youtube #context
-- **CFA training PDFs moved**: Cleaning Cards and Food Safety resources moved from iCloud drop folder to `RileyProjects/CFA/Training/`.
+- **Context pipeline sync**: Pulled RILEY_CONTEXT.md v4. Diagnosed context pipeline crash on laptop (Errno 11 file locking, missing state.json). Architecture decision pending: Option A = local canonical + GitHub distribution. #context #pipeline
+- **7shifts scheduling work**: Analyzed 132-employee availability PDF. Wednesday worst-staffed. 14 likely minors. 8 fully flexible. Built 4-tier CFA schedule AI training plan with 52-question questionnaire. #cfa #schedule #7shifts
+- **activity-tracker skill built and installed**: Auto-logs dispatches to ACTIVITY_LOG.md, recalls on demand, syncs to GitHub. Includes RileyNotes drop folder ingestion. #productivity #context
+- **RileyNotes ingested**: (1) Block "From Hierarchy to Intelligence" — AI replacing middle management, maps to YouTube thesis. (2) LLM Knowledge Base workflow — wiki-style knowledge compilation blueprint. Both processed to CONTEXT_HUB/captures/inbox/. #context #ingest
+- **Block article captured**: URL: https://block.xyz/inside/from-hierarchy-to-intelligence #youtube #context
+- **CFA training PDFs moved**: Cleaning Cards and Food Safety resources moved from iCloud drop folder to `RileyProjects/CFA/Training/`. #cfa
+- **knowledge-base-compiler skill scoped**: Obsidian-style .md wiki compiled and maintained by LLM. The knowledge layer the pipeline feeds into. #productivity #context #buildit
+- **auto-context-on-session-start added to CLAUDE.md**: New sessions now auto-read ACTIVITY_LOG.md and scan RileyNotes drop folder before starting work. #productivity #context
+- **Creative Media Studio app captured**: New project. App that interrogates user's creative vision (taste, style, references) then uses all available AI tools (Adobe, Seedance, HeyGen, ElevenLabs, Descript, etc.) to produce final creative media. Examples: faceless YouTube videos, t-shirt designs, TikTok videos, birthday cards, avatar scenes. #buildit #app #creative
+- **Stale naming purged**: All references to old repo/pipeline naming removed from ACTIVITY_LOG.md and MEMORY.md. MacBook correctly documented as primary machine. #context
 
 ### 2026-03-23
 - **Local-first migration complete**: Canonical root moved from Google Drive to `~/dev/RileyContext/` (local, not cloud-synced). Eliminates file locking errors from cloud sync daemons.
