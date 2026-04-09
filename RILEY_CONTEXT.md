@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-08
+## Last Updated: 2026-04-09
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -285,6 +285,40 @@ I index source docum…
 - Tags: #app #buildit #claude #context #ingest #prompt #youtube
 - Content: I want an app that makes any creative media or creative design project that i can describe or think of. This app will ask the User questions to narrow down exactly what the final creative design project or media or product should look like, sound like, act like, PRODUCE, cause, make, create, or any other action or purpose it should invoke. It should help the User create any kind of creative media including video, graphic design, vector design, printed design, color, social media post, filtered p…
 [context_ingest_sha=32b0560e7580474593cc8b5ca2214751ca080016478277601f42ce3bdea68b1f]
+
+### #cfa — `CONTEXT_HUB/captures/_processed/Leader Quiz 2.pdf`
+- Captured at: 2026-04-09T08:00:02.864418-04:00
+- Tags: #1 #2 #4 #cfa #virtualmanager
+- Content: %PDF-1.7
+%
+1 0 obj
+<</Type/Catalog/Pages 2 0 R/Lang(en) /StructTreeRoot 19 0 R/MarkInfo<</Marked true>>/Metadata 156 0 R/ViewerPreferences 157 0 R>>
+endobj
+2 0 obj
+<</Type/Pages/Count 2/Kids[ 3 0 R 16 0 R] >>
+endobj
+3 0 obj
+<</Type/Page/Parent 2 0 R/Resources<</Font<</F1 5 0 R/F2 9 0 R/F3 11 0 R>>/ExtGState<</GS7 7 0 R/GS8 8 0 R>>/ProcSet[/PDF/Text/ImageB/ImageC/ImageI] >>/MediaBox[ 0 0 612 792] /Contents 4 0 R/Group<</Type/Group/S/Transparency/CS/DeviceRGB>>/Tabs/S/StructParents 0>>
+endobj
+4 0…
+[context_ingest_sha=efd5afc17af00e1c315af3df0a7ec688567c516a8cbb836f15d9b0b804cc8d41]
+
+### #producerai — `CONTEXT_HUB/captures/_processed/#ProducerAI #Suno #ArmorApp #ArmorSongs #Scripture #Bible.txt`
+- Captured at: 2026-04-09T08:00:02.081407-04:00
+- Tags: #armor #armorapp #armorsongs #bible #producerai #scripture #suno
+- Content: Producer.ai “flow” instructions for Armor project:
+________________
+
+/suno
+
+Generate a short Lyric-driven memorization song.
+
+NOTES ON LYRICS:
+-Sing only the provided lyrics in the exact format I give it to you.
+-Do not add any extra words, ad libs, commentary, or paraphrasing.
+-if you get pushback from the generation model on the specific lyrics I give you, change a small thing in style settings and try again.
+-if you get recurring pushback, try singing the first Line as “la la la…” or “da da d…
+[context_ingest_sha=6b9048d28da0c25bca7d18ce069858e24e96a9170ebed70c7e654dce40bf45d9]
 
 
 ## Concept
