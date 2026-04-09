@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-07
+## Last Updated: 2026-04-08
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)

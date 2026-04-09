@@ -56,3 +56,36 @@
   - Context: Major new project idea. App that interrogates user to understand their creative vision (taste, style, references), then uses all available AI tools (Adobe, Seedance, HeyGen, ElevenLabs, Descript, etc) to produce the final creative media. Examples: faceless YouTube videos, t-shirt designs, TikTok videos, birthday cards, avatar scenes. Tagged #Claude #Prompt #Ingest #Context #BuildIt #App.
   - Status: active
   - Tags: #buildit #app #creative #new-project
+
+
+## 2026-04-08 — 7shifts Knowledge Base Build (Cowork session)
+#cfa #7shifts #context #schedule
+
+Built comprehensive 7shifts knowledge base for CFA account via Chrome MCP + direct API calls to `/api/v2/*` endpoints. Logged into `app.7shifts.com` (Riley logged in manually, then handed off).
+
+**Data captured:**
+- Account: Chick-fil-A, Works Plan, location 57515 (Merritt Island, FL), company_id 46891
+- Riley's user_id: 9237492, permission_template 27109, user_type 2 (Manager/employer), primary role Director
+- 2 departments: Service (77195), Kitchen (77196). 9 Service roles including Director, TL, TM-Day/Flex/Night, Hospitality, Marketing, Training, Meeting
+- 139 total active employees, 95 with Service Dept roles
+- All 95 Service employees' availability fetched (93 have availability set; Riley + Sara Peterson do not)
+- Service Mar '26 template (id 681115): 205 shifts, 1,179.8 hrs/week, 200 open / 5 pre-assigned (Michelle Sears Mon–Fri 06:00–13:00 TM-Day)
+- Daily distribution: Mon/Thu 34 shifts, Tue/Wed 33, Fri 37 (heaviest), Sat 34 (later close 23:00)
+- Role weekly totals: TMN 74, TMD 71, TL 24, TMF 18, H 13, Director 5
+- No Sunday shifts (CFA closed)
+- Template has zero projected sales and zero labor targets populated
+- Director shifts are single 13:00–20:00 Mon–Fri only — no Sat director, no morning/evening overlap
+- 43 shifts flagged `close: true`, zero flagged `open: true`
+
+**Deliverable:**
+`/Users/rileycolleyFW/Library/Application Support/Claude/local-agent-mode-sessions/6794d830-9211-4824-8c66-7a930aac96dd/0fcb78dc-7f43-4f3b-ab49-18ced6c2f56d/local_b2cf9e41-a70a-41b1-aba8-b5f7a82388f3/outputs/7shifts_knowledge_base.md` — full markdown knowledge base covering account identity, permissions, nav map, org structure, 95-person roster with availability tables by role, priority personnel lists (openers, closers, full-flex), complete Mar '26 template analysis with daily breakdowns, sample Monday build, improvement notes, raw endpoints for future sessions, and quick reference card.
+
+**Observations for Riley's review:**
+- Only Michelle Sears is pre-locked in the template. Every other week requires full drag-assign.
+- Labor targets are blank — template carries no guard rails for OT/labor cost.
+- 10 Service employees have no primary role marked — cleanup opportunity in Employees area.
+- Director coverage may have a Sat gap worth questioning.
+- Hospitality is lightly staffed (13/week) — expansion point if needed.
+
+**Also today:**
+- Delivered cleaned-up user preferences rewrite → `/Users/rileycolleyFW/Library/Application Support/Claude/local-agent-mode-sessions/6794d830-9211-4824-8c66-7a930aac96dd/0fcb78dc-7f43-4f3b-ab49-18ced6c2f56d/local_b2cf9e41-a70a-41b1-aba8-b5f7a82388f3/outputs/riley_user_preferences.md`. Killed all stale "RileyFile" aliases, added session-start auto-context instruction (iCloud + Google Drive drop folder scan), MacBook-primary device rule, context transparency clause, auto-log directive, operating principle, Google Drive scan.
