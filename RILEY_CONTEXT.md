@@ -320,6 +320,26 @@ NOTES ON LYRICS:
 -if you get recurring pushback, try singing the first Line as “la la la…” or “da da d…
 [context_ingest_sha=6b9048d28da0c25bca7d18ce069858e24e96a9170ebed70c7e654dce40bf45d9]
 
+### #claude — `CONTEXT_HUB/captures/_processed/#Claude #Inbox.txt`
+- Captured at: 2026-04-09T22:12:44.129284-04:00
+- Tags: #claude #inbox
+- Content: Remind me to build a tool tomorrow that will scan paper photos for me and attach a name on the front of the picture for my dad so he can more easily remember who the person is in the picture. I want to upload it to his digital frame and I don’t have a lot of time. He has boxes and boxes of photos create this task build the skill find the photos and make me an app where it is easy for me to give you these photos with just a snap of my phone and you will take care of the rest
+[context_ingest_sha=ab88fe8b0f3ec959edbe897f1fe19e8b2e744b6ad335d2c56e2213f7a2dcd629]
+
+### #claude — `CONTEXT_HUB/captures/_processed/#claude #ingest #append.txt`
+- Captured at: 2026-04-09T22:12:44.129939-04:00
+- Tags: #append #claude #ingest
+- Content: Append this text to the most recent drop .txt file:
+
+```Put these instructions in front of every image prompt you write, before you write anything else: "Magnum opus, best quality, highly professional, unwavering depth in alignment, lighting that adds allure, sharp/crisp and deep focus digital colored line drawing:" Create a !!!2D!!! illustration in a (Thematically original portmanteau art optimization style name): (Improvised description of the art optimization style). Key functions include des…
+[context_ingest_sha=ff1a3ba7ccda7c75282a0f4d1c9f1ca61f8f5bd9848e532d872666c2285eb785]
+
+### #idea — `CONTEXT_HUB/captures/_processed/#idea #skill #claude #ingest #context #buildit.txt`
+- Captured at: 2026-04-09T22:12:44.130420-04:00
+- Tags: #buildit #claude #context #idea #ingest #skill
+- Content: I found this text file on my phone. It sounds like a great prompt/skill. I think the goal is for the agent to analyze a given source image or video or design element or artwork etc? Maybe even music, and then create a prompt for another AI that explains what the user wants to generate? Not sure. Read this text file and add it to the BuildIt list and activity log for pending builds and projects.
+[context_ingest_sha=3c7d0a98f3fe661fc308232576a21bc4ea37a43b87f293f5c1d6ea3179d2f52f]
+
 
 ## Concept
 Collection of arcade-style training games and pop-up quizzes for CFA Merritt Island team.
