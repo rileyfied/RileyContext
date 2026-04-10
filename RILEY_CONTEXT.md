@@ -356,6 +356,17 @@ Another video about building the ultimate wiki-style personal knowledge base
 Already talked about this the other day but let’s add this to your task list
 [context_ingest_sha=065b4d4645d3aa0ce88aac2477cc46964185632408b31033bed3dcc97e43b14c]
 
+### #buildit — `CONTEXT_HUB/captures/_processed/#BuildIt #Project #recall #FireCrawl #Scrape #Bible.txt`
+- Captured at: 2026-04-10T05:44:52.502635-04:00
+- Tags: #armor #bible #buildit #firecrawl #project #recall #recalled #scrape
+- Content: I just remembered when we created the fire crawl Skills because I wanted to create a full Bible knowledge database and found a website that had hundreds of links and information that I wanted to use as the knowledge base. Where were we on that? Remind me the next time I ask you for a list of recalled projects.
+
+NEW RULE FOR YOU:
+Treat any file that includes the tag #recall this way—
+-read the dropped text or file & ingest to context (usual pipeline)
+-deep dive your chats, memory, projects, conte…
+[context_ingest_sha=8a4ab79e1a5848d979d37f66f87dda66ac9d147107246c124fa20a6ba331ff67]
+
 
 ## Concept
 Collection of arcade-style training games and pop-up quizzes for CFA Merritt Island team.
