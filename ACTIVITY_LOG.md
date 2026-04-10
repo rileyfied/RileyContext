@@ -98,3 +98,22 @@ Built comprehensive 7shifts knowledge base for CFA account via Chrome MCP + dire
   - Captures: #claude #ingest #buildit #idea (VRub1w-APTc, wiki-style KB video), #ingest #claude #buildit #context (sboNwYmH3AY, follow-up to prior discussion — add to task list)
   - Status: completed
   - Tags: #context #ingest #buildit
+
+- **5:44am CLAUDE CODE** -- /context-sync run. Ingested 1 new iCloud capture (#BuildIt #Project #recall #FireCrawl #Scrape #Bible). Pipeline failed twice on too-long filename in `_processed/` and `_archive_google-drive_2026-03-22/.../inbox/` (the rambling "lets work on my schedule project..." capture); renamed both to `lets_work_on_my_schedule_project_7shifts_template.txt` and re-ran. Pipeline succeeded: 4619 indexed, 1 ingested, 1 promoted. Commit `7d5b2c2` pushed; live URL verified fresh.
+  - **NEW RULE absorbed:** any capture tagged `#recall` triggers a deep dive across chats/memory/projects/files, activity log update, and a #recall section the next time Riley asks "what were we working on." After update, the project is reclassified from #recalled to current.
+  - Status: completed
+  - Tags: #context #ingest #recall #pipeline-fix
+
+### #recall — Bible Knowledge Database (Firecrawl origin project)
+- **Why Firecrawl skills exist:** Riley built the firecrawl-* skill suite specifically to scrape Christianity.com and assemble a full Bible knowledge database.
+- **Status:** Scrape phase complete; game/integration phase paused.
+- **Crawled data (Mar 24, 2026)** at `~/.firecrawl/christianity/`:
+  - `trivia.json` — 52 entries / 357KB (Jeopardy, fill-in-the-blank, quotes, timeline, geography)
+  - `wiki.json` — 100 entries / 1.3MB (encyclopedic Bible content, theology, people, places)
+  - `christianity_urls.json` — 573KB (5,000+ mapped URLs)
+  - `christianity_homepage.md`
+- **Game scaffold:** `~/dev/RileyContext/CONTEXT_HUB/captures/_processed/BibleGameNight.html` (1,288 lines, working game UI). Modes drafted: Jeopardy, Millionaire, Bible Blitz, Sword Drill, True/False, Fill-in-the-Verse, Head-to-Head Trivia.
+- **Related tool:** `~/dev/RileyContext/RileyProjects/bible-lookup.html` — standalone ESV scripture search.
+- **Last touched:** 2026-03-25.
+- **Next step to revive:** parse trivia.json + wiki.json into structured question bank → wire into BibleGameNight.html → ship game-mode selector + multi-player setup.
+- **Reclassified:** now an active current project (no longer #recalled).
