@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-09
+## Last Updated: 2026-04-10
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -339,6 +339,22 @@ NOTES ON LYRICS:
 - Tags: #buildit #claude #context #idea #ingest #skill
 - Content: I found this text file on my phone. It sounds like a great prompt/skill. I think the goal is for the agent to analyze a given source image or video or design element or artwork etc? Maybe even music, and then create a prompt for another AI that explains what the user wants to generate? Not sure. Read this text file and add it to the BuildIt list and activity log for pending builds and projects.
 [context_ingest_sha=3c7d0a98f3fe661fc308232576a21bc4ea37a43b87f293f5c1d6ea3179d2f52f]
+
+### #claude — `CONTEXT_HUB/captures/_processed/#claude #ingest #buildit #idea.txt`
+- Captured at: 2026-04-10T04:06:55.135842-04:00
+- Tags: #buildit #claude #idea #ingest #video #youtube
+- Content: https://youtu.be/VRub1w-APTc?si=hw0EeSA1IQBLURX7
+
+Another video about building the ultimate wiki-style personal knowledge base
+[context_ingest_sha=a38846f0aade32d59a297c217ea3e0c193a15c76b79400882643fc20a18dbdcd]
+
+### #ingest — `CONTEXT_HUB/captures/_processed/#ingest #claude #buildit #context.txt`
+- Captured at: 2026-04-10T04:06:55.136836-04:00
+- Tags: #buildit #claude #context #ingest #video #youtube
+- Content: https://youtu.be/sboNwYmH3AY?si=Ng37Kk5uBw_ysFZU
+
+Already talked about this the other day but let’s add this to your task list
+[context_ingest_sha=065b4d4645d3aa0ce88aac2477cc46964185632408b31033bed3dcc97e43b14c]
 
 
 ## Concept

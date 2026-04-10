@@ -89,3 +89,12 @@ Built comprehensive 7shifts knowledge base for CFA account via Chrome MCP + dire
 
 **Also today:**
 - Delivered cleaned-up user preferences rewrite → `/Users/rileycolleyFW/Library/Application Support/Claude/local-agent-mode-sessions/6794d830-9211-4824-8c66-7a930aac96dd/0fcb78dc-7f43-4f3b-ab49-18ced6c2f56d/local_b2cf9e41-a70a-41b1-aba8-b5f7a82388f3/outputs/riley_user_preferences.md`. Killed all stale "RileyFile" aliases, added session-start auto-context instruction (iCloud + Google Drive drop folder scan), MacBook-primary device rule, context transparency clause, auto-log directive, operating principle, Google Drive scan.
+
+
+## 2026-04-10 — Context sync (Cowork session)
+#context #ingest
+
+- **4:05am COWORK** -- /context-sync run. Ingested 2 new iCloud captures (both YouTube links re: personal knowledge base / wiki-style LLM workflow). Ran ingest_captures → build_digest → build_promotions → merge_promotions. 2 new entries promoted into RILEY_CONTEXT.md.
+  - Captures: #claude #ingest #buildit #idea (VRub1w-APTc, wiki-style KB video), #ingest #claude #buildit #context (sboNwYmH3AY, follow-up to prior discussion — add to task list)
+  - Status: completed
+  - Tags: #context #ingest #buildit
