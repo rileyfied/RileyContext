@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-10
+## Last Updated: 2026-04-11
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -366,6 +366,36 @@ Treat any file that includes the tag #recall this way—
 -read the dropped text or file & ingest to context (usual pipeline)
 -deep dive your chats, memory, projects, conte…
 [context_ingest_sha=8a4ab79e1a5848d979d37f66f87dda66ac9d147107246c124fa20a6ba331ff67]
+
+### #youtube — `CONTEXT_HUB/captures/_processed/#youtube #ai #quote.txt`
+- Captured at: 2026-04-11T08:00:01.364921-04:00
+- Tags: #ai #quote #youtube
+- Content: Having the right format doesn’t necessarily give you the best results. You can have the best church, the best books, you can homeschool your kids, teach them scripture, set boundaries, use discipline.
+
+But God is the one. Without God it’s system failure.
+
+The stack was secure, the foundation is strong.
+
+But God is the only failsafe. The first and the last command.
+
+(Whatever that’s called in programming speak)
+
+Basically you can build a great system all day, but good systems don’t always bear go…
+[context_ingest_sha=c75d481e40cbf8adc1089d111e424ffde1771b76f5f87b160979bac9b4cc82cd]
+
+### #youtube — `CONTEXT_HUB/captures/_processed/GEMOJI_training.txt`
+- Captured at: 2026-04-11T08:00:01.369972-04:00
+- Tags: #youtube
+- Content: Gemini
+
+Conversation with Gemini:
+
+
+
+You said
+
+Please read the following thread in its entirety. I heard grok was very good at image generation, so I asked it to recreate (essentially "clone" my original 2D Bitmoji. I have about 300 downloaded images of the Bitmoji. Grok made it sound like it would be easy. But it did not produce images, it just produced links to the x.ai website and called the links "png's" ...not sure what that's all about. But this has to be possible somewhere. So can u do th…
+[context_ingest_sha=29216cbf6d0c6fd5fa51ad57784dc324fe3581801618f7225b64d62f7fad9a28]
 
 
 ## Concept
