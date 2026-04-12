@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-11
+## Last Updated: 2026-04-12
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -396,6 +396,14 @@ You said
 
 Please read the following thread in its entirety. I heard grok was very good at image generation, so I asked it to recreate (essentially "clone" my original 2D Bitmoji. I have about 300 downloaded images of the Bitmoji. Grok made it sound like it would be easy. But it did not produce images, it just produced links to the x.ai website and called the links "png's" ...not sure what that's all about. But this has to be possible somewhere. So can u do th…
 [context_ingest_sha=29216cbf6d0c6fd5fa51ad57784dc324fe3581801618f7225b64d62f7fad9a28]
+
+### #suno — `CONTEXT_HUB/captures/_processed/#Suno #ArmorSongs #ArmorApp #Prompt #YouTube.txt`
+- Captured at: 2026-04-12T08:00:06.254655-04:00
+- Tags: #armorapp #armorsongs #prompt #suno #youtube
+- Content: This prompt made a really fun song! Deuteronomy 7:9 
+
+Simple Up Front Melody, Clear Diction And Lyrics. Piano And Male Vocal. Simple Vibe, Minimal Production. Mid-To-Upbeat, Play Along/Sing Along Style, Lyric-Driven
+[context_ingest_sha=da19fecc18eb71ea817434acd7b26749ebe24a768d8b5eefcec4b85b006306b6]
 
 
 ## Concept
