@@ -117,3 +117,22 @@ Built comprehensive 7shifts knowledge base for CFA account via Chrome MCP + dire
 - **Last touched:** 2026-03-25.
 - **Next step to revive:** parse trivia.json + wiki.json into structured question bank → wire into BibleGameNight.html → ship game-mode selector + multi-player setup.
 - **Reclassified:** now an active current project (no longer #recalled).
+
+
+## 2026-04-13 — Higgsfield pricing analysis + Cowork fix (Claude Code session)
+#video #youtube #tools #cowork #fix
+
+- **CLAUDE CODE** -- Analyzed Higgsfield AI pricing structure for Riley's AI video production goals. Scraped full pricing page via Playwright. Evaluated Starter/Plus/Ultra/Business tiers against 3 active video projects: RileyAI (personal AI clone), Behold (faceless Gospel YouTube channel), Armor App song videos.
+  - Recommended: Plus monthly at $34 first month / $49 renewal. Unlimited Kling 3.0 on annual only — monthly Plus is nerfed (Seedance 2.0 access only, no unlimited burst). Still best value for testing the workflow.
+  - Compared vs CapCut, OpenArt (Riley tried, bad), direct Seedance access on fal/Replicate, rolling own in Premiere.
+  - Supplemental tools recommended: ElevenLabs for voice cloning ($22/mo), HeyGen only if Kling lipsync insufficient.
+  - Status: completed
+  - Tags: #video #youtube #tools #behold #rileyai
+
+- **CLAUDE CODE** -- Fixed Cowork RPC mount error. Root cause: `.claude/skills` was a symlink → `~/dev/RileyContext/skills`. Cowork's sandboxed VM (virtiofs) can't follow symlinks to host paths outside its mount. Replaced symlink with real directory copy at both `.claude/skills` and the session-level skills path. Cowork sessions now boot cleanly.
+  - Tradeoff: skills in `.claude/skills/` and `~/dev/RileyContext/skills/` are now two separate copies — edits in one don't auto-propagate. Sync hook deferred.
+  - Status: completed
+  - Tags: #cowork #fix #skills
+
+- **3 empty iCloud captures found** (RileyLink 2026-04-12 16:54, 16:55, 16:55-2). All 0 bytes. Skipped — nothing to ingest.
+  - Tags: #context #ingest
