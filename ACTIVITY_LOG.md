@@ -136,3 +136,11 @@ Built comprehensive 7shifts knowledge base for CFA account via Chrome MCP + dire
 
 - **3 empty iCloud captures found** (RileyLink 2026-04-12 16:54, 16:55, 16:55-2). All 0 bytes. Skipped — nothing to ingest.
   - Tags: #context #ingest
+
+
+## 2026-04-15 — CFA Schedule Draft Analysis (April 20-26)
+- Wrote comprehensive draft analysis to Schedule/draft_analysis_2026-04-20.md (269 lines)
+- Covers: current state audit, 7 critical issues identified, proposed changes, open shift assignments, minor labor law audit, 10 questions for Riley
+- Key findings: Miracle Montanez under-16 at 27h (VIOLATION, limit 15h), Chloe Morgan Sat TIME OFF conflict, Wed/Thu AM have no TL, Kersh Peterson missing from schedule entirely, 23 open shifts need assignment
+- Proposed ideal schedule ready for Riley review before making any 7shifts changes
+- Previous session: ingested April 14 availability PDF, confirmed departures (Ron Bove, De nasia Andrews, Ayden Winterberg), analyzed full 7shifts draft via Chrome MCP
