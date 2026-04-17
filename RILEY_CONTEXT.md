@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-15
+## Last Updated: 2026-04-17
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -404,6 +404,21 @@ Please read the following thread in its entirety. I heard grok was very good at 
 
 Simple Up Front Melody, Clear Diction And Lyrics. Piano And Male Vocal. Simple Vibe, Minimal Production. Mid-To-Upbeat, Play Along/Sing Along Style, Lyric-Driven
 [context_ingest_sha=da19fecc18eb71ea817434acd7b26749ebe24a768d8b5eefcec4b85b006306b6]
+
+### #aibrief — `CONTEXT_HUB/captures/_processed/AI_filmmaking_project_handoff.md`
+- Captured at: 2026-04-17T08:00:04.618868-04:00
+- Tags: #aibrief
+- Content: # AI Filmmaking Language Book / Phrasebook — Project Handoff
+
+## Project Goal
+Build a high-value reference for AI filmmaking and AI video production that helps a serious user:
+- know what they want visually
+- know how to describe it to AI tools
+- save time during prompting and iteration
+- understand cinematic language, shot language, editing language, lighting, composition, staging, and style
+- translate abstract ideas into concrete AI prompt language
+- work across storyboard images, text-to-vid…
+[context_ingest_sha=22346c40dade884dd6fcbcf34fa3591b0a110f4c7d0f84b927e6796d042c3f0e]
 
 
 ## Concept
