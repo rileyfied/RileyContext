@@ -24,7 +24,7 @@ Deprecated Systems:
 ---
 
 # RILEY_CONTEXT.md
-## Last Updated: 2026-04-17
+## Last Updated: 2026-04-24
 
 > **Purpose**: Context reference for Riley's projects, preferences, and active work. Read by all AI agents.
 > **Canonical**: `~/dev/RileyContext/RILEY_CONTEXT.md` (local)
@@ -409,6 +409,29 @@ Simple Up Front Melody, Clear Diction And Lyrics. Piano And Male Vocal. Simple V
 - Captured at: 2026-04-17T08:00:04.618868-04:00
 - Tags: #aibrief
 - Content: # AI Filmmaking Language Book / Phrasebook — Project Handoff
+
+### Post Format & Structure
+
+Riley's Facebook posts span a range of formats, but the dominant mode is the **energy-burst one-liner** — a punchy, exclamatory status update that reads like…
+[context_ingest_sha=8cb2b9c1944f7ddad28809df8a9fc0f307be99bde3cc4c12248bcbad585b669a]
+
+### #productivity — `CONTEXT_HUB/captures/_processed/riley_voice_profile.md`
+- Captured at: 2026-04-24T22:00:06.149351-04:00
+- Tags: #productivity
+- Content: # Riley Colley — Authentic Voice & Personality Profile
+
+**Source material:** iPhone text message exports (2009–2012)
+**Conversations analyzed:** Messages with Kourtney Smith (~40 pages), Messages with Ninja (~10 pages)
+**Files pending analysis (FUSE read blocked):** Kourtney Smith (2), Beebe, Adam Browder
+**Purpose:** Brand voice guide for social media, captions, casual content — written in Riley's real voice
+
+---
+
+## 1. THE CORE VOICE IN ONE PARAGRAPH
+
+Riley texts like a high-energy event coord…
+[context_ingest_sha=b67af31338e6e882c47d4244d4aa9253011432ee632f686cd40ad5f50e40113c]
+
 
 ## Project Goal
 Build a high-value reference for AI filmmaking and AI video production that helps a serious user:
