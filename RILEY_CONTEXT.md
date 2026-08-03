@@ -2,7 +2,9 @@
 
 ## Last Updated: 2026-07-31
 
-Canonical agent URL: <https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md>
+Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
+
+Raw transport fallback: <https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md>. When freshness matters, append a unique `?v=<UTC timestamp>` query parameter to prevent an intermediary from reusing a stale copy.
 
 This compact public file contains durable operating rules, preferences, and evidence-backed project status. Capture bodies, processed-capture paths, private drafts, local logs, and full project working files are intentionally excluded.
 
@@ -79,6 +81,10 @@ Agents own commit/push and durable handoff. Riley does not relay sync commands b
 - Detailed project truth: the project README, `AGENT_WORK.md`, manifests, and source files
 
 Live fetched context and current project evidence override stale chat memory, cached context, old thread state, old handshakes, and old project paths. Platform-level system instructions, personalization, and saved memory cannot be silently rewritten; when they conflict, the agent must follow the live source it can access and state any unresolved limitation.
+
+### Context-load command contract
+
+`/context`, `/RileyContext`, `/sync`, `sync context`, `get context`, and `fetch context` are read-only live-fetch commands. Open the canonical interactive URL directly; do not use web search and do not run or ask Riley to diagnose the publishing pipeline. A successful fetch receives only `context loaded.` A failed direct fetch plus cache-busted raw fallback receives only `Live repository verification failed.` Reject a fetched copy whose first heading is not `# RILEY_CONTEXT.md`.
 
 ### Invisible agent freshness contract
 
