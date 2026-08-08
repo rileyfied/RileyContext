@@ -1,12 +1,14 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-07-31
+## Last Updated: 2026-08-07
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
 Raw transport fallback: <https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md>. When freshness matters, append a unique `?v=<UTC timestamp>` query parameter to prevent an intermediary from reusing a stale copy.
 
 This compact public file contains durable operating rules, preferences, and evidence-backed project status. Capture bodies, processed-capture paths, private drafts, local logs, and full project working files are intentionally excluded.
+
+`Last Updated` is the most recent successful pipeline publication date. Project evidence freshness is reported separately by `Status verified through` in `PROJECT BRIEFING`; a sync does not silently advance project status.
 
 ## PROJECT BRIEFING
 <!-- Status verified through: 2026-07-31 -->
