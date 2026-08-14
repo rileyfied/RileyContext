@@ -11,16 +11,16 @@ This compact public file contains durable operating rules, preferences, and evid
 `Last Updated` is the most recent successful pipeline publication date. Project evidence freshness is reported separately by `Status verified through` in `PROJECT BRIEFING`; a sync does not silently advance project status.
 
 ## PROJECT BRIEFING
-<!-- Status verified through: 2026-07-31 -->
+<!-- Status verified through: 2026-08-14 -->
 <!-- Generated from CONTEXT_HUB/context/project_status.json. A pipeline run alone never advances this date. -->
 
 ### Evidence-Backed Project Status
-1. **AI YouTube Channel** — #youtube #video #ai
+1. **The Riley File** — #rileyfile #youtube #video #ai #shorts
    - Phase: Active production
-   - Last verified action: The channel moved to full production; NotebookLM Shorts Batch 1 and the ChatGPT Voice + Remote recording package are prepared.
-   - Next: Continue agent-owned production after Riley recordings arrive; do not reopen parked drafts automatically.
-   - Blockers: Current recording packages await Riley footage or overdubs.
-   - Verified: 2026-07-31 from `RileyProjects/YOUTUBE_AI/README.md`, `RileyProjects/YOUTUBE_AI/AGENT_WORK.md`
+   - Last verified action: The channel moved to full production; long-form work uses RF_LONG and SHOW + TELL is its RF_SNT short-form series, with pilot scripts and strategy preserved in RileyProjects/SHOWTELL.
+   - Next: Continue agent-owned production after Riley recordings arrive; develop SHOW + TELL only through its existing proof-first series contract, not as a separate channel.
+   - Blockers: Current recording packages and SHOW + TELL pilots await Riley footage or overdubs; pilot analytics do not yet exist.
+   - Verified: 2026-08-14 from `RileyProjects/YOUTUBE_AI/README.md`, `RileyProjects/YOUTUBE_AI/AGENT_WORK.md`, `RileyProjects/SHOWTELL/README.md`, `RileyProjects/SHOWTELL/SERIES_ARCHITECTURE.md`, `RileyProjects/SHOWTELL/AGENT_WORK.md`
 2. **Daily AI Brief** — #aibrief #youtube #teleprompter
    - Phase: Active manual-NotebookLM production
    - Last verified action: The evidence-backed workflow remains research packet, manual NotebookLM audio return, transcription, fact-check, and final one-speaker teleprompter copy.
@@ -45,19 +45,13 @@ This compact public file contains durable operating rules, preferences, and evid
    - Next: Keep production disabled until real-iPhone review and explicit approval.
    - Blockers: Real-iPhone verification and approval remain outstanding.
    - Verified: 2026-07-15 from `RileyProjects/ARMOR APP/README.md`, `RileyProjects/ARMOR APP/AGENT_WORK.md`
-6. **Show & Tell** — #showandtell #shorts #youtube
-   - Phase: Pilot week ready
-   - Last verified action: Strategy, three pilot production lanes, scripts, and the verified report are present in the canonical project folder.
-   - Next: After pilot videos are published, capture 24-hour, 48-hour, and 7-day metrics before locking the permanent format.
-   - Blockers: Pilot footage and publication are not yet recorded in the project ledger.
-   - Verified: 2026-07-17 from `RileyProjects/SHOWTELL/README.md`, `RileyProjects/SHOWTELL/AGENT_WORK.md`
-7. **Workouts 2026** — #workouts #mobile #netlify
+6. **Workouts 2026** — #workouts #mobile #netlify
    - Phase: Live; back burner
    - Last verified action: The four-tab read-only workout reference remains the documented live product.
    - Next: No proactive Riley action; keep future changes minimal and reference-first until the project is reactivated.
    - Blockers: None documented.
    - Verified: 2026-07-29 from `RileyProjects/Workouts_2026/README.md`
-8. **38 Edelweiss Way** — #edelweiss #website #property
+7. **38 Edelweiss Way** — #edelweiss #website #property
    - Phase: Unknown — no project README or AGENT_WORK status source exists
    - Last verified action: Unknown; the prior public briefing deadline is stale and is not carried forward as current status.
    - Next: The next filesystem-capable agent to resume this project must reconcile the existing handoff and variants, then create one evidence-backed README or ledger entry.
