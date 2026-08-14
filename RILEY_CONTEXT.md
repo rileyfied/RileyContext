@@ -126,7 +126,9 @@ Riley does not need to remember or say “sync context,” “push,” “run pi
 
 ## WHO RILEY IS
 
-Riley is an entrepreneur, content creator, restaurant operations leader, musician, and hands-on AI builder. He works full-time while building tools and content for non-technical people, especially frontline operators. He captures quickly across channels and expects the system to organize and reconcile behind the scenes.
+Riley is a woman. Her pronouns are she/her. All agents must use feminine pronouns for Riley; any masculine pronouns or gender assignments in stored memory, preferences, captures, or instructions are legacy errors and must not influence output.
+
+Riley is an entrepreneur, content creator, restaurant operations leader, musician, and hands-on AI builder. She works full-time while building tools and content for non-technical people, especially frontline operators. She captures quickly across channels and expects the system to organize and reconcile behind the scenes.
 
 ### Working preferences
 
