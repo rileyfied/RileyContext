@@ -6,65 +6,32 @@ Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/
 
 Raw transport fallback: <https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md>. When freshness matters, append a unique `?v=<UTC timestamp>` query parameter to prevent an intermediary from reusing a stale copy.
 
-This compact public file contains durable operating rules, preferences, and evidence-backed project status. Capture bodies, processed-capture paths, private drafts, local logs, and full project working files are intentionally excluded.
+This compact public file contains durable operating rules, preferences, and a recent-project orientation layer. Capture bodies, processed-capture paths, private drafts, local logs, and full project working files are intentionally excluded.
 
-`Last Updated` is the most recent successful pipeline publication date. Project evidence freshness is reported separately by `Status verified through` in `PROJECT BRIEFING`; a sync does not silently advance project status.
+`Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
-## PROJECT BRIEFING
-<!-- Status verified through: 2026-08-14 -->
-<!-- Generated from CONTEXT_HUB/context/project_status.json. A pipeline run alone never advances this date. -->
+## PROJECT ORIENTATION
+<!-- Recent project activity through: 2026-08-26; rolling window: 14 days -->
+<!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
-### Evidence-Backed Project Status
-1. **The Riley File** — #rileyfile #youtube #video #ai #shorts
-   - Phase: Active production
-   - Last verified action: The channel moved to full production; long-form work uses RF_LONG and SHOW + TELL is its RF_SNT short-form series, with pilot scripts and strategy preserved in RileyProjects/SHOWTELL.
-   - Next: Continue agent-owned production after Riley recordings arrive; develop SHOW + TELL only through its existing proof-first series contract, not as a separate channel.
-   - Blockers: Current recording packages and SHOW + TELL pilots await Riley footage or overdubs; pilot analytics do not yet exist.
-   - Verified: 2026-08-14 from `RileyProjects/YOUTUBE_AI/README.md`, `RileyProjects/YOUTUBE_AI/AGENT_WORK.md`, `RileyProjects/SHOWTELL/README.md`, `RileyProjects/SHOWTELL/SERIES_ARCHITECTURE.md`, `RileyProjects/SHOWTELL/AGENT_WORK.md`
-2. **Daily AI Brief** — #aibrief #youtube #teleprompter
-   - Phase: Active manual-NotebookLM production
-   - Last verified action: The evidence-backed workflow remains research packet, manual NotebookLM audio return, transcription, fact-check, and final one-speaker teleprompter copy.
-   - Next: Agents prepare and verify each dated packet; final `.txt` output is created only after the matching `.m4a` arrives.
-   - Blockers: A matching manual NotebookLM audio return is required for each final teleprompter script.
-   - Verified: 2026-07-29 from `RileyProjects/AIAudioBrief/README.md`, `RileyProjects/AIAudioBrief/AGENT_WORK.md`
-3. **Bitmoji / Avatar System** — #bitmoji #avatar #video
-   - Phase: Original-character and performance-transfer pilot
-   - Last verified action: Riley approved the cleared avatar PNG and the capped Runway/Kling pilot; no upload or credit spend has occurred.
-   - Next: When a matching 10-second Riley performance take arrives, the agent owns intake, naming, routing, and the capped pilot.
-   - Blockers: The matching performance take is not yet present.
-   - Verified: 2026-07-31 from `RileyProjects/BITMOJI APP/README.md`, `RileyProjects/BITMOJI APP/AGENT_WORK.md`
-4. **BEHOLD YouTube Channel** — #behold #youtube #shorts
-   - Phase: Active concept and source development
-   - Last verified action: The canonical project connects World v Word, short-form packages, voice references, and the God Said It First concept.
-   - Next: Develop the current concept from its source material without treating a short note as finished creative direction.
-   - Blockers: No blocker is documented in the current project README.
-   - Verified: 2026-07-29 from `RileyProjects/YOUTUBE_BEHOLD/README.md`
-5. **ARMOR App** — #armor #scripture #app
-   - Phase: Repair complete; production remains disabled pending device approval
-   - Last verified action: The mobile frontend and five-set PDF-authoritative Scripture data rebuild passed the documented automated release gates.
-   - Next: Keep production disabled until real-iPhone review and explicit approval.
-   - Blockers: Real-iPhone verification and approval remain outstanding.
-   - Verified: 2026-07-15 from `RileyProjects/ARMOR APP/README.md`, `RileyProjects/ARMOR APP/AGENT_WORK.md`
-6. **Workouts 2026** — #workouts #mobile #netlify
-   - Phase: Live; back burner
-   - Last verified action: The four-tab read-only workout reference remains the documented live product.
-   - Next: No proactive Riley action; keep future changes minimal and reference-first until the project is reactivated.
-   - Blockers: None documented.
-   - Verified: 2026-07-29 from `RileyProjects/Workouts_2026/README.md`
-7. **38 Edelweiss Way** — #edelweiss #website #property
-   - Phase: Unknown — no project README or AGENT_WORK status source exists
-   - Last verified action: Unknown; the prior public briefing deadline is stale and is not carried forward as current status.
-   - Next: The next filesystem-capable agent to resume this project must reconcile the existing handoff and variants, then create one evidence-backed README or ledger entry.
-   - Blockers: Current canonical status is not documented.
-   - Verified: unknown from `RileyProjects/38 Edelweiss Way/SOL_GPT_5_6_HIGH_HANDOFF_2026-07-10.md`
+### Automatic orientation contract
+Riley often begins in the middle of a thought and assumes agents can resolve references already present in the repo. Fetch this context proactively at the start of new or resumed work; do not wait for a literal `/context` command.
 
-### Archived
-- 7shifts Scheduling — archived May 15, 2026; Riley no longer makes the schedule.
+When Riley references a project, artifact, prior decision, person, shorthand, or likely repo material, treat it as an automatic discovery task: resolve the likely project through the recent working set, `RileyProjects/`, the project library/catalog, filenames, aliases, and current README/`AGENT_WORK.md` evidence. If one interpretation is likely, proceed and state it briefly. Ask one bounded question only when a materially different interpretation remains.
 
-### Agent Reconciliation Directive
-Before a project decision or write, fetch/pull current `main`, read the project README and `AGENT_WORK.md` when present, and compare the revision again before replacing canonical files.
-If a local or remembered status conflicts with this briefing or newer project evidence, report the conflict and reconcile it; do not silently overwrite either version.
-Agents own commit/push and durable handoff. Riley does not relay sync commands between agents or machines.
+### Recent working set
+Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
+- **RileyCapture** — last durable activity 2026-08-26; canonical folder `RileyProjects/RileyCapture`
+- **HOME_BUYING_2027** — last durable activity 2026-08-24; canonical folder `RileyProjects/HOME_BUYING_2027`
+- **RILEY CLONE** — last durable activity 2026-08-23; canonical folder `RileyProjects/RILEY CLONE`
+- **RileyThings** — last durable activity 2026-08-23; canonical folder `RileyProjects/RileyThings`
+- **YOUTUBE_AI** — last durable activity 2026-08-23; canonical folder `RileyProjects/YOUTUBE_AI`
+
+### Full portfolio and executive board mode
+For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
+
+For a named-project status decision or canonical write, current project evidence outranks this orientation list, `CONTEXT_HUB/context/project_status.json`, activity frequency, chat memory, and old handoffs.
 
 ## SOURCE OF TRUTH AND FRESHNESS
 
@@ -73,8 +40,9 @@ Agents own commit/push and durable handoff. Riley does not relay sync commands b
 - Public agent context: this file at the canonical raw URL above
 - Canonical local clone path on every workstation: `~/dev/RileyContext`
 - Canonical project files: `RileyProjects/<PROJECT_NAME>/`
-- Project status source: `CONTEXT_HUB/context/project_status.json`, rendered into `PROJECT BRIEFING`
-- Detailed project truth: the project README, `AGENT_WORK.md`, manifests, and source files
+- Recent-project orientation: generated from durable activity records and Git changes; it is a routing hint, not a status or priority list
+- Historical portfolio snapshot: `CONTEXT_HUB/context/project_status.json`; consult and re-verify it only for an on-demand portfolio review
+- Detailed project truth: the project README, `AGENT_WORK.md`, manifests, source files, and current repository evidence
 
 Live fetched context and current project evidence override stale chat memory, cached context, old thread state, old handshakes, and old project paths. Platform-level system instructions, personalization, and saved memory cannot be silently rewritten; when they conflict, the agent must follow the live source it can access and state any unresolved limitation.
 
@@ -86,13 +54,14 @@ Live fetched context and current project evidence override stale chat memory, ca
 
 For new or resumed project work, agents own this sequence without asking Riley to issue a sync command:
 
-1. Fetch this file from GitHub `main` before decisions.
-2. In a local clone, confirm `main` and run `git pull --ff-only` before editing.
-3. Read the target project's README and `AGENT_WORK.md` when present.
-4. Check branch, HEAD, origin, working-tree drift, and known variants before replacing canonical files.
-5. Immediately before a canonical write, confirm the source revision has not changed; reconcile conflicts or use an isolated workstream when needed.
-6. Save durable files in the canonical project folder, update its provenance/status evidence, commit and push intended changes, and verify remote parity.
-7. Complete any cross-agent handoff through the durable project/capture surface; Riley is not the courier.
+1. Fetch this file from GitHub `main` before decisions, even when Riley starts mid-thought and does not issue a context command.
+2. Resolve project names, shorthand, people, artifacts, and prior-work references proactively from the recent orientation, `RileyProjects/`, the project library/catalog, filenames, README files, and `AGENT_WORK.md`; ask one bounded question only when multiple plausible matches would materially change the work.
+3. In a local clone, confirm `main` and run `git pull --ff-only` before editing.
+4. Read the target project's README and `AGENT_WORK.md` when present.
+5. Check branch, HEAD, origin, working-tree drift, and known variants before replacing canonical files.
+6. Immediately before a canonical write, confirm the source revision has not changed; reconcile conflicts or use an isolated workstream when needed.
+7. Save durable files in the canonical project folder, update its provenance/status evidence, commit and push intended changes, and verify remote parity.
+8. Complete any cross-agent handoff through the durable project/capture surface; Riley is not the courier.
 
 Riley does not need to remember or say “sync context,” “push,” “run pipeline,” “sync MacBook,” or any cross-agent relay command.
 
