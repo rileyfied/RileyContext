@@ -11,7 +11,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-08-26; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-08-29; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -21,6 +21,8 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
+- **RileyDaily** — last durable activity 2026-08-29; canonical folder `RileyProjects/RileyDaily`
 - **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
 - **RileyCapture** — last durable activity 2026-08-26; canonical folder `RileyProjects/RileyCapture`
 - **HOME_BUYING_2027** — last durable activity 2026-08-24; canonical folder `RileyProjects/HOME_BUYING_2027`
