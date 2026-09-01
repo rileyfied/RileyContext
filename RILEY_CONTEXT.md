@@ -23,9 +23,9 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
 - **RILEY CLONE** — last durable activity 2026-09-01; canonical folder `RileyProjects/RILEY CLONE`
 - **RileyClone** — last durable activity 2026-09-01; canonical folder `RileyProjects/RileyClone`
+- **RileyDaily** — last durable activity 2026-09-01; canonical folder `RileyProjects/RileyDaily`
 - **AIAudioBrief** — last durable activity 2026-08-31; canonical folder `RileyProjects/AIAudioBrief`
 - **HOME_BUYING_2027** — last durable activity 2026-08-31; canonical folder `RileyProjects/HOME_BUYING_2027`
-- **RileyDaily** — last durable activity 2026-08-31; canonical folder `RileyProjects/RileyDaily`
 - **YOUTUBE_AI** — last durable activity 2026-08-31; canonical folder `RileyProjects/YOUTUBE_AI`
 - **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
 - **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
