@@ -21,14 +21,15 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **AIAudioBrief** — last durable activity 2026-08-31; canonical folder `RileyProjects/AIAudioBrief`
 - **RileyDaily** — last durable activity 2026-08-31; canonical folder `RileyProjects/RileyDaily`
+- **YOUTUBE_AI** — last durable activity 2026-08-31; canonical folder `RileyProjects/YOUTUBE_AI`
 - **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
 - **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
 - **RileyCapture** — last durable activity 2026-08-26; canonical folder `RileyProjects/RileyCapture`
 - **HOME_BUYING_2027** — last durable activity 2026-08-24; canonical folder `RileyProjects/HOME_BUYING_2027`
 - **RILEY CLONE** — last durable activity 2026-08-23; canonical folder `RileyProjects/RILEY CLONE`
 - **RileyThings** — last durable activity 2026-08-23; canonical folder `RileyProjects/RileyThings`
-- **YOUTUBE_AI** — last durable activity 2026-08-23; canonical folder `RileyProjects/YOUTUBE_AI`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
