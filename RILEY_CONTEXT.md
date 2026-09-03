@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-02
+## Last Updated: 2026-09-03
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -108,6 +108,8 @@ Riley is an entrepreneur, content creator, restaurant operations leader, musicia
 - Hashtags may aid capture, but Riley does not maintain a tagging or filing system.
 - Preserve raw material in CAPTURE mode; synthesize a structured deliverable in BUILD mode.
 - Do not surface `#sidebar` or `#askme` items unless Riley explicitly asks for them.
+- Riley does not process large text walls, buried bullet points, or batches of questions, decisions, and Riley-owned actions well. For decision-heavy work, present exactly one visible question, decision, or next action at a time; do not append a multi-item Riley action list.
+- Prefer native clickable multiple-choice controls with a freeform option when the interface supports them. If controls are unavailable, show one short numbered choice set and accept free text. Preserve the unshown queue and stopping point; agents may batch their own work but must not batch Riley's decisions.
 
 ### System design requirements
 
