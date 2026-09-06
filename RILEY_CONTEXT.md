@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-03
+## Last Updated: 2026-09-06
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -11,7 +11,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-09-03; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-09-05; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -21,18 +21,19 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **Live Rush Check** — last durable activity 2026-09-05; canonical folder `RileyProjects/Live Rush Check`
+- **AIAudioBrief** — last durable activity 2026-09-04; canonical folder `RileyProjects/AIAudioBrief`
+- **RileyDaily** — last durable activity 2026-09-04; canonical folder `RileyProjects/RileyDaily`
+- **SHOWTELL** — last durable activity 2026-09-04; canonical folder `RileyProjects/SHOWTELL`
+- **YOUTUBE_AI** — last durable activity 2026-09-04; canonical folder `RileyProjects/YOUTUBE_AI`
 - **RileyApps** — last durable activity 2026-09-03; canonical folder `RileyProjects/RileyApps`
-- **RileyDaily** — last durable activity 2026-09-03; canonical folder `RileyProjects/RileyDaily`
-- **AIAudioBrief** — last durable activity 2026-09-02; canonical folder `RileyProjects/AIAudioBrief`
 - **RILEY CLONE** — last durable activity 2026-09-02; canonical folder `RileyProjects/RILEY CLONE`
 - **TikTok Creator Network Video Playbook** — last durable activity 2026-09-02; canonical folder `RileyProjects/TikTok Creator Network Video Playbook`
-- **YOUTUBE_AI** — last durable activity 2026-09-02; canonical folder `RileyProjects/YOUTUBE_AI`
 - **RileyClone** — last durable activity 2026-09-01; canonical folder `RileyProjects/RileyClone`
 - **HOME_BUYING_2027** — last durable activity 2026-08-31; canonical folder `RileyProjects/HOME_BUYING_2027`
 - **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
 - **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
 - **RileyCapture** — last durable activity 2026-08-26; canonical folder `RileyProjects/RileyCapture`
-- **RileyThings** — last durable activity 2026-08-23; canonical folder `RileyProjects/RileyThings`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
