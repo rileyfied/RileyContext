@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-08
+## Last Updated: 2026-09-09
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -33,8 +33,6 @@ Projects with durable activity in the last 14 days are listed as routing hints. 
 - **RileyClone** — last durable activity 2026-09-01; canonical folder `RileyProjects/RileyClone`
 - **HOME_BUYING_2027** — last durable activity 2026-08-31; canonical folder `RileyProjects/HOME_BUYING_2027`
 - **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
-- **ReLens-Video-Mastery-Course** — last durable activity 2026-08-26; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
-- **RileyCapture** — last durable activity 2026-08-26; canonical folder `RileyProjects/RileyCapture`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
