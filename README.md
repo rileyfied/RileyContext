@@ -2,7 +2,6 @@
 
 This repository intentionally publishes only the compact, privacy-screened context used by Riley's agents.
 
-- **Agent interaction instructions: `AGENTS.md` — read this first.**
 - Canonical file: `RILEY_CONTEXT.md`
 - ChatGPT and browser agents: open <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md> directly; do not web-search for it.
 - Raw transport URL: <https://raw.githubusercontent.com/rileyfied/RileyContext/main/RILEY_CONTEXT.md>. Intermediaries may cache this address; append a unique `?v=<UTC timestamp>` query when freshness matters.
