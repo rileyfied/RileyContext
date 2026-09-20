@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-11
+## Last Updated: 2026-09-20
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -11,7 +11,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-09-11; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-09-14; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -21,21 +21,14 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **SHOWTELL** — last durable activity 2026-09-14; canonical folder `RileyProjects/SHOWTELL`
 - **AIAudioBrief** — last durable activity 2026-09-11; canonical folder `RileyProjects/AIAudioBrief`
 - **CinematographySimulator** — last durable activity 2026-09-11; canonical folder `RileyProjects/CinematographySimulator`
 - **CodeVerter** — last durable activity 2026-09-11; canonical folder `RileyProjects/CodeVerter`
+- **RileyCapture** — last durable activity 2026-09-11; canonical folder `RileyProjects/RileyCapture`
+- **RileyDaily** — last durable activity 2026-09-11; canonical folder `RileyProjects/RileyDaily`
 - **YOUTUBE_AI** — last durable activity 2026-09-11; canonical folder `RileyProjects/YOUTUBE_AI`
 - **YOUTUBE_BEHOLD** — last durable activity 2026-09-11; canonical folder `RileyProjects/YOUTUBE_BEHOLD`
-- **ARMOR APP** — last durable activity 2026-09-06; canonical folder `RileyProjects/ARMOR APP`
-- **Live Rush Check** — last durable activity 2026-09-05; canonical folder `RileyProjects/Live Rush Check`
-- **RileyDaily** — last durable activity 2026-09-04; canonical folder `RileyProjects/RileyDaily`
-- **SHOWTELL** — last durable activity 2026-09-04; canonical folder `RileyProjects/SHOWTELL`
-- **RileyApps** — last durable activity 2026-09-03; canonical folder `RileyProjects/RileyApps`
-- **RILEY CLONE** — last durable activity 2026-09-02; canonical folder `RileyProjects/RILEY CLONE`
-- **TikTok Creator Network Video Playbook** — last durable activity 2026-09-02; canonical folder `RileyProjects/TikTok Creator Network Video Playbook`
-- **RileyClone** — last durable activity 2026-09-01; canonical folder `RileyProjects/RileyClone`
-- **HOME_BUYING_2027** — last durable activity 2026-08-31; canonical folder `RileyProjects/HOME_BUYING_2027`
-- **CFA** — last durable activity 2026-08-29; canonical folder `RileyProjects/CFA`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
@@ -158,4 +151,31 @@ Parallel agent work must use `AGENT_WORK.md` when variants, machines, cloud apps
 
 Only explicit, privacy-screened durable facts appear here. Captures, source paths, and private drafts remain local.
 
-- No durable context updates.
+### Capture 92D84541B6Fc
+
+# Agent Delta | 2026-09-14
+
+- Actor: GPT-5.6 Sol / ChatGPT
+- Project: SHOWTELL
+- Live context checked: 2026-09-14
+
+## Change
+- Reconciled Riley's September 11–14 iOS 27 / hidden-iPhone SHOWTELL planning thread into the canonical private project.
+- Added `RileyProjects/SHOWTELL/IOS27_SHOWTELL_MASTER_IDEA_BANK.md` as the canonical comprehensive idea inventory.
+- Updated the SHOWTELL README and AGENT_WORK so relevant agents load that inventory before generic brainstorming.
+- Current selected-concept workflow: **Try it yourself → Why viewers care → Show this on camera → Possible hook → Done**.
+- The inventory is an idea bank, not a blanket availability guarantee; verify relevant features against current Apple documentation and Riley's installed iOS build before publishing claims.
+
+## Routing
+- Next owner: all agents
+- Needs Riley: no
+- For SHOWTELL requests involving iPhone, iOS 27, hidden iPhone tricks, launch-week ideas, or adjacent concepts, fetch current SHOWTELL project evidence and use the canonical master idea bank.
+
+[context_promotion_id=capture-92d84541b6fc]
+[context_ingest_sha=92d84541b6fca71b7afbc327387bf443ec99dd05276b39110687d5bf9f89e445]
+### Capture 821397Bd6Fe5
+
+Quick Pick is Riley's top interaction preference when consequential ambiguity would materially change scope, sequence, format, or outcome. Ask only questions that change the response; frame choices around what Riley wants, prefers, or wants to happen next. Keep one small decision surface at a time, using native clickable controls when supported and a Something else free-text choice. Use selections to narrow the next output instead of echoing the questionnaire. Prefer progressive disclosure and the smallest useful next chunk unless Riley requests a full dump. Do not use Quick Pick when the request is already clear enough to answer directly. Riley may explicitly request it by saying Quick Pick. Agents own context checks and handoffs; Riley does not repeat, relay, or file these instructions.
+
+[context_promotion_id=capture-821397bd6fe5]
+[context_ingest_sha=821397bd6fe582f83ad776451c5bc87d77db2e7f2c3864f1851df14d5d9f8cfa]
