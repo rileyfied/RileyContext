@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-23
+## Last Updated: 2026-09-24
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -22,13 +22,8 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
 - **SHOWTELL** — last durable activity 2026-09-14; canonical folder `RileyProjects/SHOWTELL`
-- **AIAudioBrief** — last durable activity 2026-09-11; canonical folder `RileyProjects/AIAudioBrief`
-- **CinematographySimulator** — last durable activity 2026-09-11; canonical folder `RileyProjects/CinematographySimulator`
-- **CodeVerter** — last durable activity 2026-09-11; canonical folder `RileyProjects/CodeVerter`
 - **RileyCapture** — last durable activity 2026-09-11; canonical folder `RileyProjects/RileyCapture`
 - **RileyDaily** — last durable activity 2026-09-11; canonical folder `RileyProjects/RileyDaily`
-- **YOUTUBE_AI** — last durable activity 2026-09-11; canonical folder `RileyProjects/YOUTUBE_AI`
-- **YOUTUBE_BEHOLD** — last durable activity 2026-09-11; canonical folder `RileyProjects/YOUTUBE_BEHOLD`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
