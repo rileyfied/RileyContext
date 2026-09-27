@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-26
+## Last Updated: 2026-09-27
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -11,7 +11,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-09-14; rolling window: 14 days -->
+<!-- Recent project activity through: none found; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -21,7 +21,7 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
-- **SHOWTELL** — last durable activity 2026-09-14; canonical folder `RileyProjects/SHOWTELL`
+- No recent canonical project activity found; resolve the current reference from the full project library.
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
