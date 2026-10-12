@@ -1,6 +1,20 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-09-27
+## Last Updated: 2026-10-12
+
+## EMERGENCY STOP-WORK DIRECTIVE — ACTIVE
+
+Issued by Riley: 2026-10-11 (America/New_York). Reaffirmed for agent distribution: 2026-10-12.
+
+- Stop all existing GPT Chat, Work, Voice, Codex, and other agent tasks, scheduled work, and automations for Riley. This hold is account-wide, not limited to ElevenLabs.
+- Stop all ElevenLabs generation, cloning, transcription, agent execution, and other production work immediately. Do not switch providers to continue paused work.
+- Do not initiate purchases, paid usage, upgrades, renewals, or new charges through OpenAI or connected apps. Prior task approvals, unattended permissions, and approval-setting levels do not authorize spending during this hold.
+- Only Riley's explicit new, task-specific authorization permits a bounded exception. The currently authorized exception is distributing and recording this stop-work notice and pausing accessible work. Refund investigation, support contact, and dispute submissions await separate approval.
+- Do not resume work automatically when money is returned, a subscription is cancelled, or an old task wakes. Riley must explicitly decide whether and what to resume.
+- Preserve existing files and evidence. Do not delete projects, recordings, logs, or credentials as part of stopping work.
+- A notice in GitHub is a durable instruction, not proof that a running session received it or that billing is frozen. Report verified pauses and acknowledge any unavailable controls honestly.
+
+This directive overrides older project schedules, delegation defaults, and autonomous-work instructions until Riley explicitly changes it.
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
@@ -8,7 +22,7 @@ Raw transport fallback: <https://raw.githubusercontent.com/rileyfied/RileyContex
 
 This compact public file contains durable operating rules, preferences, and a recent-project orientation layer. Capture bodies, processed-capture paths, private drafts, local logs, and full project working files are intentionally excluded.
 
-`Last Updated` is the most recent successful pipeline publication date. It does not certify every project's status; current project evidence must be read from the relevant project folder.
+`Last Updated` is the most recent successful publication date, including an explicitly authorized emergency directive update. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
 <!-- Recent project activity through: none found; rolling window: 14 days -->
