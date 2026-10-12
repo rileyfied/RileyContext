@@ -2,19 +2,14 @@
 
 ## Last Updated: 2026-10-12
 
-## EMERGENCY STOP-WORK DIRECTIVE — ACTIVE
+## REGULAR WORK DIRECTIVE — RESUMED
 
-Issued by Riley: 2026-10-11 (America/New_York). Reaffirmed for agent distribution: 2026-10-12.
+Issued by Riley: 2026-10-12 (America/New_York).
 
-- Stop all existing GPT Chat, Work, Voice, Codex, and other agent tasks, scheduled work, and automations for Riley. This hold is account-wide, not limited to ElevenLabs.
-- Stop all ElevenLabs generation, cloning, transcription, agent execution, and other production work immediately. Do not switch providers to continue paused work.
-- Do not initiate purchases, paid usage, upgrades, renewals, or new charges through OpenAI or connected apps. Prior task approvals, unattended permissions, and approval-setting levels do not authorize spending during this hold.
-- Only Riley's explicit new, task-specific authorization permits a bounded exception. Riley approved the ElevenLabs dispute plan on 2026-10-12 in the owning ChatGPT Work thread. That owner may review evidence, prepare and follow up the existing ElevenLabs refund request, and prepare a card-dispute fallback without paid usage. A card-dispute submission still requires Riley's specific approval. Other agents remain paused except for recording/acknowledging the hold, pausing accessible work, or supplying existing evidence when explicitly requested by the authorized dispute owner. No production task or spending authorization is restored.
-- Do not resume work automatically when money is returned, a subscription is cancelled, or an old task wakes. Riley must explicitly decide whether and what to resume.
-- Preserve existing files and evidence. Do not delete projects, recordings, logs, or credentials as part of stopping work.
-- A notice in GitHub is a durable instruction, not proof that a running session received it or that billing is frozen. Report verified pauses and acknowledge any unavailable controls honestly.
-
-This directive overrides older project schedules, delegation defaults, and autonomous-work instructions until Riley explicitly changes it.
+- Resume regularly scheduled automations under their existing prompts and schedules.
+- Resume regular agent tasks and normal thread behavior as Riley prompts work.
+- This explicit instruction supersedes the account-wide emergency stop-work directive issued on 2026-10-11 and reaffirmed on 2026-10-12. Normal task authorization rules apply again.
+- The ElevenLabs refund request has been sent; Riley is waiting for their response. Preserve the existing dispute evidence. The existing ChatGPT Work thread remains the dispute owner.
 
 Canonical interactive URL: <https://github.com/rileyfied/RileyContext/blob/main/RILEY_CONTEXT.md>
 
