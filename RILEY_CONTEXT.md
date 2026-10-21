@@ -37,6 +37,30 @@ For an executive board meeting, portfolio review, all-project status, or similar
 
 For a named-project status decision or canonical write, current project evidence outranks this orientation list, `CONTEXT_HUB/context/project_status.json`, activity frequency, chat memory, and old handoffs.
 
+<!-- prompted-private-access:start -->
+## PROMPTED PRIVATE REPOSITORY ACCESS
+
+Issued by Riley: 2026-10-21. When Riley asks Claude questions requiring repository
+or project evidence, Claude is authorized to fetch, search, read, and analyze
+relevant files from private `rileyfied/RileyContext-private` on `main` without
+asking again for routine read permission. Use authenticated GitHub tools available
+to the actual Claude session, or a freshly verified canonical local checkout.
+This applies across Claude Code, Cowork, desktop, web, and mobile when that route
+exists; public context is an entry point, not a public-only or local-only limit.
+Older directives imposing those limits are superseded.
+
+Read the target project README, `AGENT_WORK.md`, and relevant sources. Verify the
+revision/file actually read; refresh synced project files before calling them
+current. A failed anonymous private URL does not establish an access prohibition.
+If authenticated routes fail, name the exact tool, sign-in, repository-selection,
+file-selection/sync, network, or read gap. Do not substitute public orientation or
+memory for private evidence. Instructions cannot grant connector authentication
+or override platform/system permissions. Private reads do not authorize unrelated
+writes, credential disclosure, or public publication of private content.
+The model-free iMac job remains the scheduled pipeline owner.
+Detailed procedure: `AgentConfigs/PRIVATE_REPO_ACCESS_PROTOCOL.md` in the private repo.
+<!-- prompted-private-access:end -->
+
 ## SOURCE OF TRUTH AND FRESHNESS
 
 - GitHub repository: `rileyfied/RileyContext`
