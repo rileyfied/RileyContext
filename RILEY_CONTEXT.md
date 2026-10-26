@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-10-25
+## Last Updated: 2026-10-26
 
 ## REGULAR WORK DIRECTIVE — RESUMED
 
@@ -20,7 +20,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful publication date, including an explicitly authorized emergency directive update. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-10-22; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-10-26; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -30,8 +30,19 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
-- **YOUTUBE_AI** — last durable activity 2026-10-22; canonical folder `RileyProjects/YOUTUBE_AI`
-- **ARMOR APP** — last durable activity 2026-10-17; canonical folder `RileyProjects/ARMOR APP`
+- **38 Edelweiss Way** — last durable activity 2026-10-26; canonical folder `RileyProjects/38 Edelweiss Way`
+- **AIAudioBrief** — last durable activity 2026-10-26; canonical folder `RileyProjects/AIAudioBrief`
+- **ARMOR APP** — last durable activity 2026-10-26; canonical folder `RileyProjects/ARMOR APP`
+- **ArmorSongs** — last durable activity 2026-10-26; canonical folder `RileyProjects/ArmorSongs`
+- **CinematographySimulator** — last durable activity 2026-10-26; canonical folder `RileyProjects/CinematographySimulator`
+- **GoogleAIStudio** — last durable activity 2026-10-26; canonical folder `RileyProjects/GoogleAIStudio`
+- **HOME_BUYING_2027** — last durable activity 2026-10-26; canonical folder `RileyProjects/HOME_BUYING_2027`
+- **PhotoFinder** — last durable activity 2026-10-26; canonical folder `RileyProjects/PhotoFinder`
+- **Piano** — last durable activity 2026-10-26; canonical folder `RileyProjects/Piano`
+- **RileyAIClientPortfolio** — last durable activity 2026-10-26; canonical folder `RileyProjects/RileyAIClientPortfolio`
+- **SHOWTELL** — last durable activity 2026-10-26; canonical folder `RileyProjects/SHOWTELL`
+- **YOUTUBE_AI** — last durable activity 2026-10-26; canonical folder `RileyProjects/YOUTUBE_AI`
+- **BITMOJI APP** — last durable activity 2026-10-25; canonical folder `RileyProjects/BITMOJI APP`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
@@ -41,14 +52,17 @@ For a named-project status decision or canonical write, current project evidence
 <!-- prompted-private-access:start -->
 ## PROMPTED PRIVATE REPOSITORY ACCESS
 
-Issued by Riley: 2026-10-21. When Riley asks Claude questions requiring repository
-or project evidence, Claude is authorized to fetch, search, read, and analyze
-relevant files from private `rileyfied/RileyContext-private` on `main` without
-asking again for routine read permission. Use authenticated GitHub tools available
-to the actual Claude session, or a freshly verified canonical local checkout.
-This applies across Claude Code, Cowork, desktop, web, and mobile when that route
-exists; public context is an entry point, not a public-only or local-only limit.
-Older directives imposing those limits are superseded.
+Issued by Riley: 2026-10-21; extended to Grok Bot: 2026-10-26.
+When Riley asks Claude or Grok Bot questions requiring repository or project
+evidence, that agent is authorized to fetch, search, read, and analyze relevant
+files from private `rileyfied/RileyContext-private` on `main` without asking again
+for routine read permission. Use authenticated GitHub tools or a signed-in browser
+available to the actual agent session, or a freshly verified canonical local
+checkout. This applies across Claude Code, Cowork, desktop, web, and mobile, and
+Grok Bot sessions when that route exists. Grok Bot is part of Riley's agent team;
+this directive assigns no role or specialty. Public context is an entry point,
+not a public-only or local-only limit. Older directives imposing those limits
+are superseded.
 
 Read the target project README, `AGENT_WORK.md`, and relevant sources. Verify the
 revision/file actually read; refresh synced project files before calling them
