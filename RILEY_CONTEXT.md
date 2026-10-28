@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-10-27
+## Last Updated: 2026-10-28
 
 ## REGULAR WORK DIRECTIVE — RESUMED
 
