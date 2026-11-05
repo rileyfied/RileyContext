@@ -1,6 +1,6 @@
 # RILEY_CONTEXT.md
 
-## Last Updated: 2026-11-04
+## Last Updated: 2026-11-05
 
 ## REGULAR WORK DIRECTIVE — RESUMED
 
@@ -20,7 +20,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful publication date, including an explicitly authorized emergency directive update. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-10-26; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-11-05; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -30,19 +30,39 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
-- **38 Edelweiss Way** — last durable activity 2026-10-26; canonical folder `RileyProjects/38 Edelweiss Way`
-- **AIAudioBrief** — last durable activity 2026-10-26; canonical folder `RileyProjects/AIAudioBrief`
-- **ARMOR APP** — last durable activity 2026-10-26; canonical folder `RileyProjects/ARMOR APP`
-- **ArmorSongs** — last durable activity 2026-10-26; canonical folder `RileyProjects/ArmorSongs`
-- **CinematographySimulator** — last durable activity 2026-10-26; canonical folder `RileyProjects/CinematographySimulator`
+- **38 Edelweiss Way** — last durable activity 2026-11-05; canonical folder `RileyProjects/38 Edelweiss Way`
+- **AIAudioBrief** — last durable activity 2026-11-05; canonical folder `RileyProjects/AIAudioBrief`
+- **ARMOR APP** — last durable activity 2026-11-05; canonical folder `RileyProjects/ARMOR APP`
+- **ArmorSongs** — last durable activity 2026-11-05; canonical folder `RileyProjects/ArmorSongs`
+- **BIBLE IN 3-D** — last durable activity 2026-11-05; canonical folder `RileyProjects/BIBLE IN 3-D`
+- **Bibley-o-Tech** — last durable activity 2026-11-05; canonical folder `RileyProjects/Bibley-o-Tech`
+- **BITMOJI APP** — last durable activity 2026-11-05; canonical folder `RileyProjects/BITMOJI APP`
+- **CANONICAL BIBLICAL REFERENCES** — last durable activity 2026-11-05; canonical folder `RileyProjects/CANONICAL BIBLICAL REFERENCES`
+- **CarSpotterArcade** — last durable activity 2026-11-05; canonical folder `RileyProjects/CarSpotterArcade`
+- **CinematographySimulator** — last durable activity 2026-11-05; canonical folder `RileyProjects/CinematographySimulator`
+- **CodeVerter** — last durable activity 2026-11-05; canonical folder `RileyProjects/CodeVerter`
+- **HarmonyHelper** — last durable activity 2026-11-05; canonical folder `RileyProjects/HarmonyHelper`
+- **HOME_BUYING_2027** — last durable activity 2026-11-05; canonical folder `RileyProjects/HOME_BUYING_2027`
+- **NoLimitLeaderboard** — last durable activity 2026-11-05; canonical folder `RileyProjects/NoLimitLeaderboard`
+- **Piano** — last durable activity 2026-11-05; canonical folder `RileyProjects/Piano`
+- **ReLens-Video-Mastery-Course** — last durable activity 2026-11-05; canonical folder `RileyProjects/ReLens-Video-Mastery-Course`
+- **RILEY CLONE** — last durable activity 2026-11-05; canonical folder `RileyProjects/RILEY CLONE`
+- **RileyCapture** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyCapture`
+- **RileyClone** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyClone`
+- **RileyDaily** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyDaily`
+- **RileyDesignTaste** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyDesignTaste`
+- **RileyOriginalMusic** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyOriginalMusic`
+- **RileyThings** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyThings`
+- **RileyVideoClone** — last durable activity 2026-11-05; canonical folder `RileyProjects/RileyVideoClone`
+- **ShortcutSearch** — last durable activity 2026-11-05; canonical folder `RileyProjects/ShortcutSearch`
+- **SHOWTELL** — last durable activity 2026-11-05; canonical folder `RileyProjects/SHOWTELL`
+- **The Daily Build** — last durable activity 2026-11-05; canonical folder `RileyProjects/The Daily Build`
+- **Workouts_2026** — last durable activity 2026-11-05; canonical folder `RileyProjects/Workouts_2026`
+- **YOUTUBE_AI** — last durable activity 2026-11-05; canonical folder `RileyProjects/YOUTUBE_AI`
+- **YOUTUBE_BEHOLD** — last durable activity 2026-11-05; canonical folder `RileyProjects/YOUTUBE_BEHOLD`
 - **GoogleAIStudio** — last durable activity 2026-10-26; canonical folder `RileyProjects/GoogleAIStudio`
-- **HOME_BUYING_2027** — last durable activity 2026-10-26; canonical folder `RileyProjects/HOME_BUYING_2027`
 - **PhotoFinder** — last durable activity 2026-10-26; canonical folder `RileyProjects/PhotoFinder`
-- **Piano** — last durable activity 2026-10-26; canonical folder `RileyProjects/Piano`
 - **RileyAIClientPortfolio** — last durable activity 2026-10-26; canonical folder `RileyProjects/RileyAIClientPortfolio`
-- **SHOWTELL** — last durable activity 2026-10-26; canonical folder `RileyProjects/SHOWTELL`
-- **YOUTUBE_AI** — last durable activity 2026-10-26; canonical folder `RileyProjects/YOUTUBE_AI`
-- **BITMOJI APP** — last durable activity 2026-10-25; canonical folder `RileyProjects/BITMOJI APP`
 
 ### Full portfolio and executive board mode
 For an executive board meeting, portfolio review, all-project status, or similarly broad request, do not expand this recent list and call it complete. Reconcile the full `RileyProjects/` catalog, current README/`AGENT_WORK.md` evidence, recent activity, open handoffs, variants, and access gaps. Separate verified current state from stale, unknown, waiting, dormant, and archived work, then present the smallest decision-useful board view.
@@ -63,6 +83,13 @@ Grok Bot sessions when that route exists. Grok Bot is part of Riley's agent team
 this directive assigns no role or specialty. Public context is an entry point,
 not a public-only or local-only limit. Older directives imposing those limits
 are superseded.
+
+The active chat or project is not a retrieval boundary. Riley and authorized
+agents may search and reference relevant material across the project library
+without starting work inside its owning project. Preserve incoming information
+useful to current/future agents or to Riley's future recall and reference;
+registration alone does not mean contextual filing. Use the private library's
+discovery indexes and verify the actual file-access route for each session.
 
 Read the target project README, `AGENT_WORK.md`, and relevant sources. Verify the
 revision/file actually read; refresh synced project files before calling them
