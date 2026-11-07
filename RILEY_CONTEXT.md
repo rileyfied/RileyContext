@@ -20,7 +20,7 @@ This compact public file contains durable operating rules, preferences, and a re
 `Last Updated` is the most recent successful publication date, including an explicitly authorized emergency directive update. It does not certify every project's status; current project evidence must be read from the relevant project folder.
 
 ## PROJECT ORIENTATION
-<!-- Recent project activity through: 2026-11-05; rolling window: 14 days -->
+<!-- Recent project activity through: 2026-11-06; rolling window: 14 days -->
 <!-- Generated from durable activity and Git evidence. Routing signal only; not priority or project status. -->
 
 ### Automatic orientation contract
@@ -30,6 +30,7 @@ When Riley references a project, artifact, prior decision, person, shorthand, or
 
 ### Recent working set
 Projects with durable activity in the last 14 days are listed as routing hints. This list has no hard maximum and does not declare priority, approval, current phase, or a complete portfolio.
+- **YOUTUBE_AI** — last durable activity 2026-11-06; canonical folder `RileyProjects/YOUTUBE_AI`
 - **38 Edelweiss Way** — last durable activity 2026-11-05; canonical folder `RileyProjects/38 Edelweiss Way`
 - **AIAudioBrief** — last durable activity 2026-11-05; canonical folder `RileyProjects/AIAudioBrief`
 - **ARMOR APP** — last durable activity 2026-11-05; canonical folder `RileyProjects/ARMOR APP`
@@ -58,7 +59,6 @@ Projects with durable activity in the last 14 days are listed as routing hints. 
 - **SHOWTELL** — last durable activity 2026-11-05; canonical folder `RileyProjects/SHOWTELL`
 - **The Daily Build** — last durable activity 2026-11-05; canonical folder `RileyProjects/The Daily Build`
 - **Workouts_2026** — last durable activity 2026-11-05; canonical folder `RileyProjects/Workouts_2026`
-- **YOUTUBE_AI** — last durable activity 2026-11-05; canonical folder `RileyProjects/YOUTUBE_AI`
 - **YOUTUBE_BEHOLD** — last durable activity 2026-11-05; canonical folder `RileyProjects/YOUTUBE_BEHOLD`
 - **GoogleAIStudio** — last durable activity 2026-10-26; canonical folder `RileyProjects/GoogleAIStudio`
 - **PhotoFinder** — last durable activity 2026-10-26; canonical folder `RileyProjects/PhotoFinder`
